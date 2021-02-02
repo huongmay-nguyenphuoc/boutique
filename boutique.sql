@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 01, 2021 at 09:06 AM
+-- Generation Time: Feb 02, 2021 at 08:49 AM
 -- Server version: 5.7.30
 -- PHP Version: 7.4.9
 
@@ -23,67 +23,67 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `commande`
+-- Table structure for table `order`
 --
 
-CREATE TABLE `commande` (
-  `id_commande` int(11) NOT NULL,
-  `id_membre` int(11) DEFAULT NULL,
-  `montant` int(11) NOT NULL,
-  `date_enregistrement` datetime NOT NULL,
-  `etat` enum('en cours de traitement','envoyé','livré') NOT NULL
+CREATE TABLE `order` (
+  `id_order` int(11) NOT NULL,
+  `id_member` int(11) DEFAULT NULL,
+  `amount` int(11) NOT NULL,
+  `date_register` datetime NOT NULL,
+  `state` enum('being processed','send','delivered') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `details_commande`
+-- Table structure for table `order_details`
 --
 
-CREATE TABLE `details_commande` (
-  `id_details_commande` int(11) NOT NULL,
-  `id_commande` int(11) DEFAULT NULL,
-  `id_produit` int(11) DEFAULT NULL,
-  `quantite` int(11) NOT NULL,
-  `prix` int(11) NOT NULL
+CREATE TABLE `order_details` (
+  `id_order_details` int(11) NOT NULL,
+  `id_order` int(11) DEFAULT NULL,
+  `id_product` int(11) DEFAULT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `produits`
+-- Table structure for table `products`
 --
 
-CREATE TABLE `produits` (
-  `id_produit` int(3) NOT NULL,
+CREATE TABLE `products` (
+  `id_product` int(3) NOT NULL,
   `reference` varchar(20) NOT NULL,
-  `categorie` varchar(20) NOT NULL,
-  `titre` varchar(100) NOT NULL,
+  `category` varchar(20) NOT NULL,
+  `title` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `couleur` varchar(20) NOT NULL,
-  `taille` varchar(5) NOT NULL,
-  `photo` varchar(255) NOT NULL,
-  `prix` int(3) NOT NULL,
+  `color` varchar(20) NOT NULL,
+  `height` varchar(5) NOT NULL,
+  `picture` varchar(255) NOT NULL,
+  `price` int(3) NOT NULL,
   `stock` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `utilisateurs`
+-- Table structure for table `users`
 --
 
-CREATE TABLE `utilisateurs` (
-  `id_membre` int(11) NOT NULL,
+CREATE TABLE `users` (
+  `id_member` int(11) NOT NULL,
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `nom` varchar(25) NOT NULL,
-  `prenom` varchar(25) NOT NULL,
+  `lastname` varchar(25) NOT NULL,
+  `vorname` varchar(25) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `ville` varchar(20) NOT NULL,
-  `code_postal` int(5) UNSIGNED ZEROFILL NOT NULL,
-  `adresse` varchar(50) NOT NULL,
-  `statut` int(1) NOT NULL DEFAULT '0'
+  `city` varchar(20) NOT NULL,
+  `zip` int(5) UNSIGNED ZEROFILL NOT NULL,
+  `adress` varchar(50) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -91,56 +91,56 @@ CREATE TABLE `utilisateurs` (
 --
 
 --
--- Indexes for table `commande`
+-- Indexes for table `order`
 --
-ALTER TABLE `commande`
-  ADD PRIMARY KEY (`id_commande`);
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id_order`);
 
 --
--- Indexes for table `details_commande`
+-- Indexes for table `order_details`
 --
-ALTER TABLE `details_commande`
-  ADD PRIMARY KEY (`id_details_commande`);
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id_order_details`);
 
 --
--- Indexes for table `produits`
+-- Indexes for table `products`
 --
-ALTER TABLE `produits`
-  ADD PRIMARY KEY (`id_produit`);
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id_product`);
 
 --
--- Indexes for table `utilisateurs`
+-- Indexes for table `users`
 --
-ALTER TABLE `utilisateurs`
-  ADD PRIMARY KEY (`id_membre`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_member`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `commande`
+-- AUTO_INCREMENT for table `order`
 --
-ALTER TABLE `commande`
-  MODIFY `id_commande` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `order`
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `details_commande`
+-- AUTO_INCREMENT for table `order_details`
 --
-ALTER TABLE `details_commande`
-  MODIFY `id_details_commande` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `order_details`
+  MODIFY `id_order_details` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `produits`
+-- AUTO_INCREMENT for table `products`
 --
-ALTER TABLE `produits`
-  MODIFY `id_produit` int(3) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `products`
+  MODIFY `id_product` int(3) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `utilisateurs`
+-- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `utilisateurs`
-  MODIFY `id_membre` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `users`
+  MODIFY `id_member` int(11) NOT NULL AUTO_INCREMENT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
