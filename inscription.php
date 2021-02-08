@@ -1,8 +1,10 @@
 <?php
 
+require_once("includes/init.inc.php");
+
 require_once 'classes/user.php';
 require_once 'classes/validator.php';
-session_start();
+
 
 $db = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 
@@ -38,7 +40,7 @@ if(isset($_POST['submit'])){
 
     if(empty($errors)){
         $user = new user();
-        $user->register($login, $password, $firstname, $lastname, $email, $city, $zip, $adress);
+        $user->register($login, $password, $lastname, $firstname, $email, $city, $zip, $adress);
         $success = "Account created. <a href='connexion.php'>Log in</a>";
     }
 
@@ -63,14 +65,7 @@ if(isset($_POST['submit'])){
     <?php endif; ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+    <?php require_once("includes/header.php"); ?>
     
 
 <form method="post" action="inscription.php">
@@ -105,5 +100,5 @@ if(isset($_POST['submit'])){
 </form>
  
 
-</body>
-</html>
+
+<?php require_once("includes/footer.php"); ?>

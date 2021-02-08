@@ -1,5 +1,6 @@
 <?php
 
+require_once("includes/init.inc.php");
 require_once('user.php');
 
 class validator{
@@ -64,7 +65,7 @@ function sameLogin($login, $firstlogin){
 
 function passwordConnect($login, $password){
 
-$checkpassword = $this->db->prepare('SELECT password from users WHERE login = $this->login');
+$checkpassword = $this->db->prepare('SELECT password from users WHERE login = $this->login ');
 
     if (!empty($checkpassword)) {
 

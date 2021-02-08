@@ -1,5 +1,6 @@
 <?php
 
+require_once("includes/init.inc.php");
 require_once('validator.php');
 
 class user{
