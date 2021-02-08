@@ -28,7 +28,7 @@ class user
     //S'ENREGISTRER
     function register($login, $password, $lastname, $firstname, $email, $city, $zip, $adress)
     {
-        $this->pdo->Insert('Insert into users (login, password; lastname, firstname, email, city, zip, adress) values ( :login , :password, :lastname, :firstname, :email, :city, :zip, :adress )',
+        $this->pdo->Insert('Insert into users (login, password, lastname, firstname, email, city, zip, adress) values ( :login , :password, :lastname, :firstname, :email, :city, :zip, :adress )',
             ['login' => $login,
             'password' => password_hash($password, PASSWORD_BCRYPT, ["cost" => 10]),
             'lastname' => $lastname,
