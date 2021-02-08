@@ -4,9 +4,9 @@
 
 require_once 'classes/user.php';
 require_once 'classes/validator.php';
+
 session_start();
 
-$db = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
 
 
 if(isset($_POST['submit'])){
@@ -40,8 +40,9 @@ if(isset($_POST['submit'])){
 
     if(empty($errors)){
         $user = new user();
-        $user->register($login, $password, $firstname, $lastname, $email, $city, $zip, $adress);
+        $user->register($login, $password, $lastname, $firstname, $email, $city, $zip, $adress);
         $success = "Account created. <a href='connexion.php'>Log in</a>";
+        var_dump($user);
     }
 
 }
