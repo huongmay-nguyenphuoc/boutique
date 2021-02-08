@@ -1,9 +1,5 @@
 <?php
-<<<<<<< Updated upstream
-
-=======
 require_once('database.php');
->>>>>>> Stashed changes
 require_once('user.php');
 
 
@@ -54,26 +50,10 @@ class validator
         }
     }
 
-<<<<<<< Updated upstream
-}
-
-
-function passwordConnect($login, $password){
-
-$checkpassword = $this->db->prepare('SELECT password from users WHERE login = $this->login');
-
-    if (!empty($checkpassword)) {
-
-        $auth = password_verify($password, $checkpassword[0]['password']);
-
-        if ($auth == 1) {
-    
-=======
     // vérification login identique pour éviter un doublon (update)
     function sameLogin($login, $firstlogin)
     {
         if ($login != $firstlogin) {
->>>>>>> Stashed changes
             return 1;
         } else {
             return 0;

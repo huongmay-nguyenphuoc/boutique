@@ -1,9 +1,7 @@
 <?php
-<<<<<<< Updated upstream
 
-=======
 require_once('database.php');
->>>>>>> Stashed changes
+
 require_once('validator.php');
 
 
