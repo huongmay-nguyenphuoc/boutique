@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< Updated upstream
+=======
+//require_once("includes/init.inc.php");
+
+>>>>>>> Stashed changes
 require_once 'classes/user.php';
 require_once 'classes/validator.php';
 session_start();
