@@ -16,6 +16,7 @@ class user
     private $city;
     private $zip;
     private $adress;
+    private $etat_panier = false; #vide
 
     private $pdo;
 
@@ -70,15 +71,45 @@ class user
     }
 
     //GETID
-    function getId()
+    public function getId()
     {
         return $this->id;
     }
 
     //GETLOGIN
-    function getLogin()
+    public function getLogin()
     {
         return $this->login;
     }
+
+    //SUPPRIMER COMPTE????
+
+
+    public function afficherHistorique($id){
+
+        $requete = $this->pdo->Select("Select * FROM historique INNER JOIN products ON id_products = products_id WHERE id = ? ORDER BY date_achat DESC", ['$id']);
+        $historique = $requete->fetchall(PDO::FETCH_ASSOC);
+
+      echo '<table>';
+      echo '<thead>';
+      echo '<th> Produit </th>';
+      echo '<th> Prix </th>';
+      echo '<th> Quantité </th>';
+      echo '<th> Date d\'Achat </th>';
+      echo '</thead>';
+      echo '<tbody>';
+
+      foreach($historique as $recap){
+        echo '<tr>';
+        echo '<td>'.$recap['nom'].'</td>';
+        echo '<td>'.$recap['prix'].'</td>';
+        echo '<td>'.$recap['quantite'].'</td>';
+        echo '<td>'.$recap['date_achat'].'</td>';
+        echo '</tr>';
+      }
+      echo '</tbody>';
+      echo '</table>';
+    }
+
 
 }

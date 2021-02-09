@@ -4,6 +4,7 @@
 
 require_once 'classes/user.php';
 require_once 'classes/validator.php';
+require_once 'classes/database.php';
 
 session_start();
 
@@ -42,6 +43,49 @@ if(isset($_POST['submit'])){
     if($validator->passwordStrenght($password) == 0){
 
         $errors[] = "Password needs to contain min a number";
+    }
+
+    if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])){
+        
+        $tailleMax = 2097152;
+        $extensionsValides = array('jpg', 'gif', 'jpeg', 'png');
+
+        if($_FILES['avatar']['size'] <= $tailleMax){
+
+            $extensionsUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
+            
+            if(in_array($extensionsUpload, $extensionsValides)){
+
+                $chemin = "photo/avatar/". $_SESSION['user']->getLogin() . "." . $extensionsUpload;
+                $result = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);             
+
+                if($result){
+                       
+                    $updateAvatar = $pdo->prepare('UPDATE users SET avatar = :avatar WHERE id = :id');
+                    $updateAvatar->execute(array(
+                        'avatar' => $_SESSION['user']->getLogin() . "." . $extensionsUpload,
+                        'id' => $_SESSION['user']->getLogin(),
+                    ));
+                    
+                }
+
+                else{
+
+                    $errors[] = "download failed";
+                }
+                
+            }
+
+            else{
+
+                $errors[] = "Wrong formatation";
+            }
+        }
+
+        else{
+            $errors[] = "Picture too big, Max 2Mo!";
+        }
+
     }
 
     if(empty($errors)){
@@ -97,7 +141,7 @@ if(isset($_POST['submit'])){
 
 
 
-<form action="update.php" method="post">
+<form action="update.php" method="post" enctype="multipart/form-data">
     
     <label for="login">New Login</label><br>
     <input placeholder="login" id="login" type="text" name="login" maxlength="20"><br><br>
@@ -107,7 +151,10 @@ if(isset($_POST['submit'])){
 
     <label for="passwordcheck">Check Password</label><br>
     <input id="passwordcheck" type="password" class="validate white-text" name="passwordcheck" maxlength="20"><br><br>
-       
+    
+    <label>Avatar : </label><br>
+    <input type="file" name="avatar" /><br><br>
+
                
     <label for="lastname">Lastname</label><br>
     <input type="text" id="lastname" name="lastname" placeholder="lastname"  ><br><br>
@@ -127,6 +174,7 @@ if(isset($_POST['submit'])){
     <label for="adress">Adress</label><br>
     <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}" title="caractères acceptés :  a-zA-Z0-9-_." ></textarea><br><br>
  
+    
 
     <button class="btn waves-effect waves-light black" type="submit" name="submit">
                 <i class="material-icons right">send</i>
