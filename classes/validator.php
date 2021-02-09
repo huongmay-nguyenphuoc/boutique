@@ -8,7 +8,7 @@ class validator
     private $id;
     private $login;
     private $password;
-    private $password2;
+    private $passwordcheck;
     private $pdo;
 
 
@@ -21,7 +21,7 @@ class validator
     // vérification login existant
     function userExists($login)
     {
-        $check = $this->pdo->Select('Select * FROM utilisateurs WHERE login = :login', ['login' => $login]);
+        $check = $this->pdo->Select('Select * FROM users WHERE login = :login', ['login' => $login]);
         if (!empty($check)) {
             return 1;
         } else {
@@ -30,9 +30,9 @@ class validator
     }
 
     // vérification passwords identiques
-    function passwordConfirm($password, $password2)
+    function passwordConfirm($password, $passwordcheck)
     {
-        if ($password === $password2) {
+        if ($password === $passwordcheck) {
             return 1;
 
         } else {
@@ -64,7 +64,7 @@ class validator
     // vérification bons identifiants connexion
     function passwordConnect($login, $password)
     {
-        $checkpassword = $this->pdo->Select('Select password from utilisateurs WHERE login = :login',
+        $checkpassword = $this->pdo->Select('Select password from users WHERE login = :login',
             ['login' => $login]);
 
         if (!empty($checkpassword)) {
