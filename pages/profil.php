@@ -1,6 +1,6 @@
 <?php
 
-require_once 'classes/user.php';
+require_once '../classes/user.php';
 
 session_start();
 
@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
     header('location: connexion.php');
 }
 
-
+var_dump($_SESSION['user']);
 ?>
 
 

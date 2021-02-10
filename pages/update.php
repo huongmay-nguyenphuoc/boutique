@@ -6,7 +6,7 @@ require_once '../classes/user.php';
 require_once '../classes/validator.php';
 
 session_start();
-
+var_dump($_SESSION['user']);
 if (!(isset($_SESSION['user']))) {
     header('location:connexion.php');
 }

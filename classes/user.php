@@ -1,7 +1,6 @@
 <?php
 
 require_once('database.php');
-
 require_once('validator.php');
 
 
@@ -17,7 +16,6 @@ class user
     private $zip;
     private $adress;
     private $etat_panier = false; #vide
-
     private $pdo;
 
     function __construct()
