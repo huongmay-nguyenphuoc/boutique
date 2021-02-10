@@ -44,8 +44,24 @@ class admin{
 
 
 
+public function updateProduct(){
+    if(isset($_GET['confirm']) AND !empty($_GET['confirm'])){
+        $confirm = (int) $_GET['confirm'];
+
+        $requete = $pdo->prepare('UPDATE products SET confirm = 1 WHERE id = $this->id');
+        $requete->execute(array($confirm));
+    }
+}
 
 
+public function deleteProduct(){
+    if(isset($_GET['supprime']) AND !empty($_GET['supprime'])){
+        $supprime = (int) $_GET['supprime'];
+
+        $requete = $pdo->prepare('DELETE FROM products WHERE id = $this->id');
+        $requete->execute(array($supprime));
+    }
+}
 
 /*
 public function creer_categorie($new_categorie){
