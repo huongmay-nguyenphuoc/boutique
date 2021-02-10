@@ -1,7 +1,7 @@
 <?php
 
-require_once 'classes/user.php';
-require_once 'classes/validator.php';
+require_once '../classes/user.php';
+require_once '../classes/validator.php';
 session_start();
 
 
