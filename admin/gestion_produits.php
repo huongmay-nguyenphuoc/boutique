@@ -10,15 +10,13 @@ session_start();
 
 
 
-/*
-if(!isset($_SESSION['id']) OR $_SESSION['id'] != 1){
+
+if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
     exit();
     
 }
-*/
-$pdo = new PDO('mysql:host=localhost;dbname=boutique', 'root', '');
-$products = $pdo->prepare('SELECT * FROM products ORDER BY category DESC');
-$products->execute();
+
+
 
 
 

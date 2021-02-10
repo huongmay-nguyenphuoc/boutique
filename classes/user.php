@@ -16,7 +16,8 @@ class user
     private $city;
     private $zip;
     private $adress;
-    private $etat_panier = false; #vide
+    private $status;
+
 
     private $pdo;
 
@@ -49,6 +50,13 @@ class user
             ['login' => $login,]);
         $this->id = $requser[0]['id'];
         $this->login = $requser[0]['login'];
+        $this->status =  $requser[0]['status'];
+        $this->lastname = $requser[0]['lastname'];
+        $this->firstname = $requser[0]['firstname'];
+        $this->email =  $requser[0]['email'];
+        $this->city = $requser[0]['city'];
+        $this->zip = $requser[0]['zip'];
+        $this->adress =  $requser[0]['adress'];
         return $requser;
     }
 
@@ -80,6 +88,14 @@ class user
     public function getLogin()
     {
         return $this->login;
+    }
+
+    //GET STATUS
+
+    public function getStatus(){
+
+        return $this->status;
+
     }
 
     //SUPPRIMER COMPTE????
