@@ -1,6 +1,6 @@
 <?php
 
-require_once '../classes/user.php';
+require_once 'classes/user.php';
 
 session_start();
 
@@ -13,16 +13,17 @@ if (!isset($_SESSION['user'])) {
 ?>
 
 
+<html lang="en">
 
-<html>
+<main class="center mainSpace">
 
-<body>
+        <article class="container">
+            <h3><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h3>
+            <a class="waves-effect waves-light white black-text btn-small" href="update.php">Modifier vos
+                identifiants</a>
+        </article>
 
-    <h3><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h3>
 
-        <a class="waves-effect waves-light white black-text btn-small" href="update.php">Modifier vos
-            identifiants</a>
-
-</body>
+</main>
 
 </html>

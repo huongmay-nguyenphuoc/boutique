@@ -18,57 +18,36 @@ if(isset($_POST['submit'])){
 
     $user = new user();
 
-    $reference = htmlspecialchars($_POST['reference']);
-    $category = htmlspecialchars($_POST['category']);
-    $title = htmlspecialchars($_POST['title']);
-    $description = htmlspecialchars($_POST['description']);
-    $shortdescription = htmlspecialchars($_POST['shortdescription']);
-    $picture = htmlspecialchars($_FILES['picture']);
-    $price = htmlspecialchars($_POST['price']);
-    $stock = htmlspecialchars($_POST['stock']);
 
-    if(isset($_FILES['picture']) AND !empty($_FILES['picture']['name'])){
-        
-        $tailleMax = 2097152;
-        $extensionsValides = array('jpg', 'gif', 'jpeg', 'png');
-
-        if($_FILES['picture']['size'] <= $tailleMax){
-
-            $extensionsUpload = strtolower(substr(strrchr($_FILES['picture']['name'], '.'), 1));
-            
-            if(in_array($extensionsUpload, $extensionsValides)){
-
-                $chemin = "../photo/picture/". $_SESSION['user']->getLogin() . "." . $extensionsUpload;
-                $result = move_uploaded_file($_FILES['picture']['tmp_name'], $chemin);             
-
-                if($result){
-                       
-                    $updateAvatar = $pdo->prepare('UPDATE users SET picture = :picture WHERE id = :id');
-                    $updateAvatar->execute(array(
-                        'avatar' => $_SESSION['user']->getLogin() . "." . $extensionsUpload,
-                        'id' => $_SESSION['user']->getLogin(),
-                    ));
-                    
+    if (!empty($_POST)) {
+        if (!empty($_FILES['image_path'])) {
+            $img = $_FILES['image_path'];
+            $ext = strtolower(substr($img['name'], -3));
+            $allow_ext = ['jpg', 'png', 'gif'];
+            if (in_array($ext, $allow_ext)) {
+                move_uploaded_file($img['tmp_name'], ROOT . 'photo\picture\\' . $img['name']);
+                $result = $this->Product->create(
+                    [
+                        'reference' => htmlspecialchars($_POST['reference']),
+                        'title' => htmlspecialchars($_POST['title']),
+                        'category' => htmlspecialchars($_POST['category']),
+                        'description' => htmlspecialchars($_POST['description']),
+                        'shortdescription' => htmlspecialchars($_POST['shortdescription']),
+                        'image_path' => $img['name'],
+                        'price' => htmlspecialchars($_POST['price']),
+                        'stock' => htmlspecialchars($_POST['stock']),
+                    ]
+                );
+                $_FILES['image_path'] = '';
+                if ($result) {
+                    return $this->index();
                 }
-
-                else{
-
-                    $errors[] = "download failed";
-                }
-                
-            }
-
-            else{
-
-                $errors[] = "Wrong formatation";
+            } else {
+                $errors[] = "Votre fichier n'est pas une image";
             }
         }
-
-        else{
-            $errors[] = "Picture too big, Max 2Mo!";
-        }
-
     }
+
 
 if(empty($errors)){
     $admin = new admin();

@@ -84,7 +84,7 @@ class user
 
     //SUPPRIMER COMPTE????
 
-
+/*
     public function afficherHistorique($id){
 
         $requete = $this->pdo->Select("Select * FROM historique INNER JOIN products ON id_products = products_id WHERE id = ? ORDER BY date_achat DESC", ['$id']);
@@ -110,6 +110,6 @@ class user
       echo '</tbody>';
       echo '</table>';
     }
-
+*/
 
 }
