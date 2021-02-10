@@ -22,7 +22,8 @@ if (isset($_POST['submit'])) {
         $user->connect($login);
         
         $_SESSION['user'] = $user;
-        header("Location: profil.php");
+        var_dump($_SESSION['user']);
+//        header("Location: profil.php");
        
     }
 
@@ -69,7 +70,7 @@ if (isset($_POST['submit'])) {
     <input type="text" id="login" name="login"><br> <br>
          
     <label for="password">Password</label><br>
-    <input type="text" id="password" name="password"><br><br>
+    <input type="password" id="password" name="password"><br><br>
  
     <button class="btn waves-effect waves-light black " type="submit" name="submit">
                 <i class="material-icons right">send</i>

@@ -90,9 +90,8 @@ if(isset($_POST['submit'])){
     if(empty($errors)){
 
         $_SESSION['user']->update($login, $password, $lastname, $firstname, $email, $city, $zip, $adress);
-        $success = "Account has been upated<a href='boutique.php'>Continue shopping</a>";
-       
-        var_dump($_SESSION['user']->update($login, $password, $lastname, $firstname, $email, $city, $zip, $adress));
+        $success = "Account has been udpated<a href='boutique.php'>Continue shopping</a>";
+
         
     }
 

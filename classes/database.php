@@ -64,6 +64,8 @@ class database
     //Mise à jour de données
     public function Update($statement = "", $parameters = [])
     {
+        $this->__construct();
+
         try {
 
             $this->Execute($statement, $parameters);
