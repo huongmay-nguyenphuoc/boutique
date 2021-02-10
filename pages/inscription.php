@@ -58,19 +58,7 @@ if(isset($_POST['submit'])){
     <article class="row">
         <h3 class="center"><em>Inscription</em></h3>
 
-        <!--Alerte (erreur ou succès)-->
-        <?php if (!empty($errors)): ?>
-            <div>
-                <?php foreach ($errors as $error) {
-                    echo '<p class="red-text">' . $error . '</p>';
-                }
-                ?>
-            </div>
-        <?php elseif (isset($success)): ?>
-            <div>
-                <p class="white-text"><?php echo $success; ?></p>
-            </div>
-        <?php endif; ?>
+
 <!--Alerte (erreur ou succès)-->
 <?php if (!empty($errors)): ?>
         <div>

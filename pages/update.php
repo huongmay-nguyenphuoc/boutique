@@ -122,19 +122,7 @@ if(isset($_POST['submit'])){
                 <p class="white-text"><?php echo $success; ?></p>
             </div>
         <?php endif; ?>
-<!--Alerte (erreur ou succès)-->
-<?php if (!empty($errors)): ?>
-        <div>
-            <?php foreach ($errors as $error) {
-                echo '<p class="red-text">' . $error . '</p>';
-            }
-            ?>
-        </div>
-    <?php elseif (isset($success)): ?>
-        <div>
-            <p class="white-text"><?php echo $success; ?></p>
-        </div>
-    <?php endif; ?>
+
 
     <h3><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h3>
 
@@ -159,7 +147,7 @@ if(isset($_POST['submit'])){
     <input type="text" id="lastname" name="lastname" placeholder="lastname"  ><br><br>
           
     <label for="firstname">Firstname</label><br>
-    <input type="text" id="firstname" name="firstname" placeholder="firsrname"  ><br><br>
+    <input type="text" id="firstname" name="firstname" placeholder="firstname"  ><br><br>
   
     <label for="email">Email</label><br>
     <input type="email" id="email" name="email" placeholder="exemple@gmail.com"  ><br><br>
