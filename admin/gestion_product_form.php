@@ -25,7 +25,7 @@ if(isset($_POST['submit'])){
             $ext = strtolower(substr($img['name'], -3));
             $allow_ext = ['jpg', 'png', 'gif'];
             if (in_array($ext, $allow_ext)) {
-                move_uploaded_file($img['tmp_name'], ROOT . 'photo\picture\\' . $img['name']);
+                move_uploaded_file($img['tmp_name'], ROOT . '../photo/picture' . $img['name']);
                 $result = $this->Product->create(
                     [
                         'reference' => htmlspecialchars($_POST['reference']),
