@@ -147,7 +147,7 @@ if(isset($_POST['submit'])){
     <input type="text" id="lastname" name="lastname" placeholder="lastname"  ><br><br>
           
     <label for="firstname">Firstname</label><br>
-    <input type="text" id="firstname" name="firstname" placeholder="firsrname"  ><br><br>
+    <input type="text" id="firstname" name="firstname" placeholder="firstname"  ><br><br>
   
     <label for="email">Email</label><br>
     <input type="email" id="email" name="email" placeholder="exemple@gmail.com"  ><br><br>
