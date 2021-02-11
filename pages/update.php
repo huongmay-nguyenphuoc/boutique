@@ -130,7 +130,7 @@ if(isset($_POST['submit'])){
 <form action="update.php" method="post" enctype="multipart/form-data">
     
     <label for="login">New Login</label><br>
-    <input placeholder="login" id="login" type="text" name="login" maxlength="20"><br><br>
+    <input placeholder="login" id="login" type="text" name="login" maxlength="20" value="<?php echo $v; ?>"><br><br>
 
     <label for="password">New Password</label><br>
     <input id="password" type="password" class="validate white-text" name="password" maxlength="20"><br><br>

@@ -79,4 +79,5 @@ class validator
         }
     }
 
+    //VERIFICATION EMAIL UNIQUE !!!!!!!
 }
