@@ -128,37 +128,36 @@ if(isset($_POST['submit'])){
 
 
 <form action="update.php" method="post" enctype="multipart/form-data">
-    
+
+    <label>Avatar : </label><br>
+    <input type="file" name="avatar" /><br><br>
+
     <label for="login">New Login</label><br>
-    <input placeholder="login" id="login" type="text" name="login" maxlength="20"><br><br>
+    <input placeholder="login" id="login" type="text" name="login" maxlength="20" value="<?php echo $_SESSION['user']->getLogin(); ?>"><br><br>
 
     <label for="password">New Password</label><br>
     <input id="password" type="password" class="validate white-text" name="password" maxlength="20"><br><br>
 
     <label for="passwordcheck">Check Password</label><br>
     <input id="passwordcheck" type="password" class="validate white-text" name="passwordcheck" maxlength="20"><br><br>
-    
-    <label>Avatar : </label><br>
-    <input type="file" name="avatar" /><br><br>
-
                
     <label for="lastname">Lastname</label><br>
-    <input type="text" id="lastname" name="lastname" placeholder="lastname"  ><br><br>
+    <input type="text" id="lastname" name="lastname" placeholder="lastname" value="<?php echo $_SESSION['user']->getLastname(); ?>"><br><br>
           
     <label for="firstname">Firstname</label><br>
-    <input type="text" id="firstname" name="firstname" placeholder="firstname"  ><br><br>
+    <input type="text" id="firstname" name="firstname" placeholder="firstname"  value="<?php echo $_SESSION['user']->getFirstname(); ?>"><br><br>
   
     <label for="email">Email</label><br>
-    <input type="email" id="email" name="email" placeholder="exemple@gmail.com"  ><br><br>
+    <input type="email" id="email" name="email" placeholder="exemple@gmail.com"  value="<?php echo $_SESSION['user']->getEmail(); ?>" ><br><br>
                   
     <label for="city">City</label><br>
-    <input type="text" id="city" name="city" placeholder="city" title="caractères acceptés : a-zA-Z0-9-_."><br><br>
+    <input type="text" id="city" name="city" placeholder="city" title="caractères acceptés : a-zA-Z0-9-_." value="<?php echo $_SESSION['user']->getCity(); ?>"><br><br>
           
     <label for="zip">Zip</label><br>
-    <input type="text" id="zip" name="zip" placeholder="zip" pattern="[0-9]{5}" title="5 chiffres requis : 0-9"><br><br>
+    <input type="text" id="zip" name="zip" placeholder="zip" pattern="[0-9]{5}" title="5 chiffres requis : 0-9" value="<?php echo $_SESSION['user']->getZip(); ?>"><br><br>
           
     <label for="adress">Adress</label><br>
-    <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}" title="caractères acceptés :  a-zA-Z0-9-_." ></textarea><br><br>
+    <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}" title="caractères acceptés :  a-zA-Z0-9-_." value="<?php echo $_SESSION['user']->getAdress(); ?>"></textarea><br><br>
  
     
 

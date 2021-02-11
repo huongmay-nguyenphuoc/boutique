@@ -8,7 +8,6 @@ class user
 {
     private $id;
     private $login;
-    private $password;
     private $lastname;
     private $firstname;
     private $email;
@@ -92,6 +91,55 @@ class user
     public function getStatus(){
 
         return $this->status;
+
+    }
+
+    //GET PRENOM
+
+    public function getFirstname(){
+
+        return $this->firstname;
+
+    }
+
+    //GET NOM
+
+
+    public function getLastname(){
+
+        return $this->lastname;
+
+    }
+
+    //GET ADRESS
+
+    public function getAdress(){
+
+        return $this->adress;
+
+    }
+
+    //GET ZIP
+
+    public function getZip(){
+
+        return $this->zip;
+
+    }
+
+    //GET CITY
+
+    public function getCity(){
+
+        return $this->city;
+
+    }
+
+    //GET EMAIL
+
+    public function getEmail(){
+
+        return $this->email;
 
     }
 
