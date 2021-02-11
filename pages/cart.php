@@ -2,7 +2,8 @@
 require_once('../classes/cart.php');
 $cart = new cart();
 $shop = new shop();
-$price = $cart->calculatePrice();
+
+/*Traitement vider le panier*/
 if (isset($_POST['removeAll'])) {
     $alert = "Are you sure?";
 }
@@ -10,46 +11,38 @@ if (isset($_POST['confirmremoveAll'])) {
     $cart->deleteCart();
 }
 
+/*Traitement enlever un article*/
 if (isset($_POST['removeOne'])) {
     $cart->deleteProduct($_POST['position']);
-    $price = $cart->calculatePrice();
 }
 
+/*Traitement verif stock*/
 if (isset($_POST['verifyCart'])) {
     for ($i = 0; $i < count($_SESSION['panier']); $i++) {
-
-        $verif = $cart->verifyStock($i, $_SESSION['panier'][$i]['idproduct'], $_SESSION['panier'][$i]['quantity']);
-
-
+        $verif = $cart->verifyStock($i, $_SESSION['panier'][$i]->getId(), $_SESSION['panier'][$i]->getQuantity());
         if ($verif == 'adjustQuantity') {
-            $message[] = 'Quantity of ' . $_SESSION['panier'][$i]['title'] . ' have been adjusted to fit stock';
+            $message[] = 'Quantity of ' . $_SESSION['panier'][$i]->getTitle() . ' have been adjusted to fit stock';
         } elseif ($verif == 'deleteProduct') {
-            $message[] = 'Product ' . $_SESSION['panier'][$i]['title'] . ' have been removed because it was out of stock';
+            $message[] = 'Product ' . $_SESSION['panier'][$i]->getTitle() . ' have been removed because it was out of stock';
         }
-
         if (!isset($message)) {
             $success = 'Everything is okay';
         }
-        $price = $cart->calculatePrice();
     }
 }
 
-var_dump($_SESSION['panier']);
 ?>
-<html>
-<head>
-    <title>Buy cool new product</title>
-    <script src="https://js.stripe.com/v3/"></script>
-</head>
 
+<!--Si panier rempli-->
 <?php if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])) : ?>
 
+    <!--Affichage produit-->
     <?php foreach ($_SESSION['panier'] as $article) : ?>
         <div>
             <?php $i = 0; ?>
-            <?= $article['title'] ?>
-            <p>Price :<?= $article['price'] ?></p>
-            <p>Quantity :</p><?= $article['quantity'] ?></p>
+            <p>Title :<?= $article->getTitle() ?></p>
+            <p>Price :<?= $article->getPrice() ?></p>
+            <p>Quantity :</p><?= $article->getQuantity() ?></p>
             <form method="post" action="cart.php">
                 <input type="hidden" name="position" value="<?= $i ?>">
                 <input type="submit" name="removeOne" value="Delete">
@@ -58,12 +51,13 @@ var_dump($_SESSION['panier']);
         <?php $i++; ?>
     <?php endforeach; ?>
 
-    <?= $price ?>
+    <!--Affichage total et boutons action-->
+    <p>Total : <?= $cart->getTotal() ?></p>
 
+    <!--Affichage boutons vider panier-->
     <form method="post" action="cart.php">
         <input type="submit" name="removeAll" value="Empty Cart">
     </form>
-
     <?php if (isset($alert)) : ?>
         <div>
             <?= $alert ?>
@@ -73,36 +67,30 @@ var_dump($_SESSION['panier']);
         </div>
     <?php endif; ?>
 
-    <?php if (isset($message)) : ?>
-        <div>
-            <?php foreach ($message as $mess) {
-                echo $mess;
-            }
-            ?>
-        </div>
-    <?php endif; ?>
 
-
-
+    <!--Affichage bouton vérifier stock /paiement-->
     <div>
         <form method="post" action="cart.php">
-            <input type="submit" name="verifyCart" value="Verify">
+            <input type="submit" name="verifyCart" value="Verify Stock">
         </form>
     </div>
 
-    <?php if (isset($success)) : ?>
-        <?= $success ?>
+    <?php if (isset($message)) : ?>
         <div>
-            <button id="checkout-button">Checkout</button>
-            <!--<form method="post" action="payment.php">
+            <?php foreach ($message as $mess) : ?>
+                <?= $mess ?>
+            <?php endforeach; ?>
+        </div>
+    <?php elseif (isset($success)) : ?>
+        <div>
+            <?= $success ?>
+            <form method="post" action="payment.php">
                 <input type="submit" name="pay" value="Pay">
-            </form>-->
+            </form>
         </div>
     <?php endif; ?>
 
+    <!--Si panier vide-->
 <?php else : ?>
     <p>Nothing here.</p>
 <?php endif; ?>
-
-
-</html>

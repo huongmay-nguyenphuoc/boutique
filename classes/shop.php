@@ -1,5 +1,6 @@
 <?php
 require_once('database.php');
+require_once('product.php');
 
 class shop
 {
@@ -10,6 +11,7 @@ class shop
         $this->pdo = new database();
     }
 
+    /*VERIFIE EXISTENCE PRODUIT*/
     function productExists($id)
     {
         $product = $this->pdo->Select('SELECT id_product FROM products WHERE id_product ="' . $id . '"');
@@ -20,19 +22,23 @@ class shop
         }
     }
 
-
-    function selectProduct($id)
+    /*RECUPERE INFOS D'UN PRODUIT ET CREE UNE INSTANCE PRODUIT*/
+    function selectProduct($id, $quantity)
     {
-        $product = $this->pdo->Select('SELECT * FROM products WHERE id_product ="' . $id . '"');
+        $data = $this->pdo->Select('SELECT * FROM products WHERE id_product ="' . $id . '"');
+        $data = $data[0];
+        $product = new product($data['id_product'], $data['price'], $data['stock'], $data['title'], $data['shortdesc'], $data['category'], $data['subcategory'], $quantity);
         return $product;
     }
 
+    /*RECUPERE TOUS LES PRODUITS D'UNE CAT ET SOUS CAT ET CREE DES INSTANCES PRODUITS*/
     function selectProducts($cat, $subcat)
     {
-        $products = $this->pdo->Select('SELECT * FROM products WHERE category ="' . $cat . '" AND subcategory ="' . $subcat . '"');
+        $datas = $this->pdo->Select('SELECT * FROM products WHERE category ="' . $cat . '" AND subcategory ="' . $subcat . '"');
+
+        foreach ($datas as $data) {
+            $products[] = new product($data['id_product'], $data['price'], $data['stock'], $data['title'], $data['shortdesc'], $data['category'], $data['subcategory'], 0);
+        }
         return $products;
     }
 }
-
-//$shop = new shop;
-//var_dump($shop->selectProducts("nintendo", "games"));

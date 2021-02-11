@@ -1,74 +1,79 @@
 <?php
 require_once('database.php');
-require_once('../classes/shop.php');
+require_once('shop.php');
+require_once('product.php');
 session_start();
 
 class cart
 {
-    function calculatePrice()
+    private $totalPrice;
+    private $shop;
+
+    function __construct()
+    {
+        $this->totalPrice = 0;
+        $this->shop = new shop;
+    }
+
+    /*CALCULE MONTANT TOTAL PANIER*/
+    function getTotal()
     {
         $total = 0;
         for ($i = 0; $i < count($_SESSION['panier']); $i++) {
-            $total += $_SESSION['panier'][$i]['quantity'] * $_SESSION['panier'][$i]['price'];
+            $total += $_SESSION['panier'][$i]->getQuantity() * $_SESSION['panier'][$i]->getPrice();
         }
-        return round($total, 2);
+        $this->totalPrice = round($total, 2);
+        return $this->totalPrice;
     }
 
+    /*SUPPRIME UN ARTICLE DU PANIER*/
     function deleteProduct($position)
     {
-        unset($_SESSION['panier'][$position]['quantity']);
+        $_SESSION['panier'][$position]->deleteQ();
         array_splice($_SESSION['panier'], $position, 1);
+        $this->getTotal();
     }
 
-
-    function addQuantity($id)
+    /*AJOUTE QUANTITE SI UN ARTICLE DEJA PRESENT DANS LE PANIER */
+    function addQuantity($id, $quantity)
     {
-        $shop = new shop();
-        $data = $shop->selectProduct($_POST['id_product'])[0];
+        $data = $this->shop->selectProduct($_POST['id_product'], $quantity);
 
         if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])) {
             for ($i = 0; $i < count($_SESSION['panier']); $i++) {
-                if ($_SESSION['panier'][$i]['idproduct'] == $_POST['id_product']) {
-                    $_SESSION['panier'][$i]['quantity']++;
+                if ($_SESSION['panier'][$i]->getId() == $_POST['id_product']) {
+                    $_SESSION['panier'][$i]->addQ($quantity);
                     $_SESSION['alarm'] = 1;
                 }
             }
         }
     }
 
-    function addArticle($id)
+    /*AJOUTE UN NOUVEL ARTICLE DANS LE PANIER*/
+    function addArticle($id, $quantity)
     {
-        $shop = new shop();
-        $data = $shop->selectProduct($_POST['id_product'])[0];
+        $data = $this->shop->selectProduct($_POST['id_product'], $quantity);
         $_SESSION['alarm'] = 0;
-        $_SESSION['panier'][] = array(
-            "idproduct" => (int)$_POST['id_product'],
-            "quantity" => (int)$_POST['quantity'],
-            "title" => $data['title'],
-            "price" => $data['price'],
-            "picture" => $data['picture']
-        );
+        $_SESSION['panier'][] = $data;
     }
 
+    /*VIDE LE PANIER*/
     function deleteCart()
     {
         unset($_SESSION['panier']);
     }
 
-
+    /*COMPARE LES QUANTITES DEMANDEES AU STOCK*/
     function verifyStock($position, $id, $quantity)
     {
-        $shop = new shop();
-        $data = $shop->selectProduct($id)[0];
-
-        if ($data['stock'] == 0) {
+        $data = $this->shop->selectProduct($id, $quantity);
+        if ($data->getStock() == 0) {
             $this->deleteProduct($position);
-            $return = 'deleteProduct';
-            return $return;
-        } elseif ($data['stock'] < $quantity) {
-            $_SESSION['panier'][$position]['quantity'] = $data['stock'];
-            $return = 'adjustQuantity';
-            return $return;
+            return 'deleteProduct';
+        } elseif ($data->getStock() < $quantity) {
+            $_SESSION['panier'][$position]->adjustQuantity($data->getStock());
+            return 'adjustQuantity';
         }
+        $this->getTotal();
     }
 }
