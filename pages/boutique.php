@@ -18,6 +18,11 @@ if (empty($products)) {
     $error = "Something happened";
 }
 
+/*Traitement bouton description*/
+if (isset($_POST['show'])) {
+    $show[$_POST["value"]] = true;
+}
+
 ?>
 
 <p><?= $cat ?></p>
@@ -32,15 +37,26 @@ if (empty($products)) {
 
     <!--Affichage produits-->
 <?php else : ?>
-    <?php foreach ($products as $product) : ?>
-        <ul>
+    <ul>
+        <?php $i = 0; ?>
+        <?php foreach ($products as $product) : ?>
             <li>
                 <ul>
                     <li><?= $product->getTitle() ?></li>
-                    <li><?= $product->getShortdesc() ?></li>
+                    <li>
+                        <form method="post">
+                            <input type="hidden" name="value" value="<?= $i ?>">
+                            <input type="submit" name="show" value="show"></form>
+                    </li>
+                    <?php if (isset($show[$i])) : ?>
+                        <li><?= $product->getShortdesc() ?></li>
+                    <?php endif; ?>
                     <li><a href="fiche_produit.php?id=<?= $product->getId() ?>">More</a></li>
                 </ul>
+                <?php $i++; ?>
             </li>
-        </ul>
-    <?php endforeach; ?>
+
+        <?php endforeach; ?>
+    </ul>
+
 <?php endif; ?>

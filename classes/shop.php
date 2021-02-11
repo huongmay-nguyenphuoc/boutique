@@ -41,4 +41,14 @@ class shop
         }
         return $products;
     }
+
+    /*TRI LES PRODUITS PAR PRIX*/
+    /*function byPrice($products)
+    {
+        function cmp($a, $b) {
+            return strcmp($a->getPrice(), $b->getPrice());
+        }
+        usort($products, "cmp");
+        return $products;
+    }*/
 }

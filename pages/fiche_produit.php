@@ -1,7 +1,8 @@
 <?php
 require_once('../classes/shop.php');
 require_once('../classes/cart.php');
-
+var_dump($_SESSION);
+var_dump($_POST);
 /*Gestion erreurs des infos dans l'URL*/
 if (!empty($_GET['id']) and is_numeric($_GET['id'])) {
     $id = htmlspecialchars($_GET['id']);

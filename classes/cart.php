@@ -2,6 +2,7 @@
 require_once('database.php');
 require_once('shop.php');
 require_once('product.php');
+require_once('order.php');
 session_start();
 
 class cart
@@ -76,4 +77,5 @@ class cart
         }
         $this->getTotal();
     }
+
 }

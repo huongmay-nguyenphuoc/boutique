@@ -75,4 +75,9 @@ class database
             throw new Exception($e->getMessage());
         }
     }
+
+    public function getLastId()
+    {
+        return $this->connection->lastInsertId();
+    }
 }
