@@ -8,7 +8,6 @@ class user
 {
     private $id;
     private $login;
-    private $password;
     private $lastname;
     private $firstname;
     private $email;
