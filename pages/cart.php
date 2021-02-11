@@ -36,7 +36,11 @@ if (isset($_POST['verifyCart'])) {
 
 var_dump($_SESSION['panier']);
 ?>
-
+<html>
+<head>
+    <title>Buy cool new product</title>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
 
 <?php if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])) : ?>
 
@@ -89,12 +93,16 @@ var_dump($_SESSION['panier']);
     <?php if (isset($success)) : ?>
         <?= $success ?>
         <div>
-            <form method="post" action="payment.php">
+            <button id="checkout-button">Checkout</button>
+            <!--<form method="post" action="payment.php">
                 <input type="submit" name="pay" value="Pay">
-            </form>
+            </form>-->
         </div>
     <?php endif; ?>
 
 <?php else : ?>
     <p>Nothing here.</p>
 <?php endif; ?>
+
+
+</html>
