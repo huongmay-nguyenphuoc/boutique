@@ -6,7 +6,7 @@ require_once('validator.php');
 
 class user
 {
-    private $id;
+    private $id_member;
     private $login;
     private $lastname;
     private $firstname;
@@ -44,7 +44,7 @@ class user
     {
         $requser = $this->pdo->Select('Select * FROM users WHERE login = :login',
             ['login' => $login,]);
-        $this->id = $requser[0]['id'];
+        $this->id_member = $requser[0]['id_member'];
         $this->login = $requser[0]['login'];
         $this->status =  $requser[0]['status'];
         $this->lastname = $requser[0]['lastname'];
@@ -60,7 +60,7 @@ class user
     function update($login, $password, $lastname, $firstname, $email, $city, $zip, $adress)
     {
         $this->pdo = new database();
-        $update = $this->pdo->Update("Update users SET login = :login, password = :password, lastname = :lastname, firstname = :firstname, email = :email, city = :city, zip = :zip, adress = :adress WHERE id = $this->id ",
+        $update = $this->pdo->Update("Update users SET login = :login, password = :password, lastname = :lastname, firstname = :firstname, email = :email, city = :city, zip = :zip, adress = :adress WHERE id_member = $this->id_member ",
             ['login' => $login, 
             'password' => password_hash($password, PASSWORD_BCRYPT, ["cost" => 10]),
             'lastname' => $lastname,
@@ -77,7 +77,7 @@ class user
     //GETID
     public function getId()
     {
-        return $this->id;
+        return $this->id_member;
     }
 
     //GETLOGIN
@@ -143,34 +143,18 @@ class user
 
     }
 
+
+    //RECUPERER HISTORIC
+    public function cartHistoric()
+    {
+        $cartHistoric = $this->pdo->Select("SELECT id_member, id_order, amount, date_register, state FROM order WHERE id_member = :id_member ORDER BY order.state DESC",
+            ['id_member' => $this->id_member]);
+        return $cartHistoric;
+    }
+
+
+
     //SUPPRIMER COMPTE????
 
-/*
-    public function afficherHistorique($id){
-
-        $requete = $this->pdo->Select("Select * FROM historique INNER JOIN products ON id_products = products_id WHERE id = ? ORDER BY date_achat DESC", ['$id']);
-        $historique = $requete->fetchall(PDO::FETCH_ASSOC);
-
-      echo '<table>';
-      echo '<thead>';
-      echo '<th> Produit </th>';
-      echo '<th> Prix </th>';
-      echo '<th> Quantité </th>';
-      echo '<th> Date d\'Achat </th>';
-      echo '</thead>';
-      echo '<tbody>';
-
-      foreach($historique as $recap){
-        echo '<tr>';
-        echo '<td>'.$recap['nom'].'</td>';
-        echo '<td>'.$recap['prix'].'</td>';
-        echo '<td>'.$recap['quantite'].'</td>';
-        echo '<td>'.$recap['date_achat'].'</td>';
-        echo '</tr>';
-      }
-      echo '</tbody>';
-      echo '</table>';
-    }
-*/
 
 }

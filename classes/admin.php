@@ -114,7 +114,22 @@ public function getReference(){
 
 
 
-
+    //RECUPERER HISTORIC
+    public function productsHistoric($reference, $category, $subcategory, $title, $description, $short_description, $picture, $price, $stock)
+    {
+        $productsHistoric = $this->pdo->Select("SELECT reference, category, subcategory, title, description, short_description, picture, price, stock FROM products ORDER BY products.category DESC",
+            ['reference' => $reference,
+                'category' => $category,
+                'subcategory' => $subcategory,
+                'title' => $title,
+                'description' => $description,
+                'short_description' => $short_description,
+                'picture' =>$picture,
+                'price' => $price,
+                'stock' => $stock,
+            ]);
+        return $productsHistoric;
+    }
 
 
 }
