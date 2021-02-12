@@ -33,28 +33,6 @@ if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
   
   <body>
 
-    <ul>
-
-    <?php while($p = $products->fetch(PDO::FETCH_ASSOC)) { ?>
-
-        <li> <?= $p['id_product'] ?> : <?= $p['title'] ?> - 
-    
-        <?php if($p['confirm'] == 0) { ?> 
-
-            <a href="gestion_product_form.php?update=<?= $p['id_product']?>">
-            Update</a> - 
-
-            <a href="gestion_product_form.php?supprime=<?= $p['id_product']?>">
-            Delete</a>
-
-
-        <?php }?>
-        
-        </li>
-
-        <?php } ?>
-
-    </ul>
 
 
     <?php if (empty($historic)) : ?>
@@ -85,6 +63,8 @@ if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
                     echo "<tr>";
                     foreach ($row as $cell) {
                         echo "<td>" . $cell . "</td>";
+                        echo " <a href='update_product.php'> Update products </a>";
+                         echo " <a href='gestion_produits.php'> Delete products </a>";
                     }
                     echo "</tr>";
                 }
@@ -99,7 +79,7 @@ if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
 
     <article class="container">
 
-            <a class="waves-effect waves-light white black-text btn-small" href="gestion_product_form.php"> Add new products </a>
+            <a href="gestion_product_form.php"> Add new products </a>
         </article>
   </body>
 

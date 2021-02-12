@@ -3,7 +3,8 @@
 require_once('database.php');
 require_once('user.php');
 
-class admin{
+class admin
+{
 
     private $reference;
     private $category;
@@ -23,95 +24,97 @@ class admin{
     }
 
 
-
     //ENREGISTRER PRODUITS
     function add($reference, $category, $subcategory, $title, $description, $short_description, $picture, $price, $stock)
     {
         $this->pdo->Insert('Insert into products (reference, category, subcategory, title, description, short_description, picture, price, stock) values ( :reference , :category, :subcategory, :title, :description, :shortdescription, :picture, :price, :stock )',
             ['reference' => $reference,
-            'category' => $category,
+                'category' => $category,
                 'subcategory' => $subcategory,
-            'title' => $title,
-            'description' => $description,
-            'short_description' => $short_description,
-            'picture' =>$picture,
-            'price' => $price,
-            'stock' => $stock,
+                'title' => $title,
+                'description' => $description,
+                'short_description' => $short_description,
+                'picture' => $picture,
+                'price' => $price,
+                'stock' => $stock,
             ]);
         return $reference;
     }
 
 
+    public function updateProduct()
+    {
+        if (isset($_GET['confirm']) and !empty($_GET['confirm'])) {
+            $confirm = (int)$_GET['confirm'];
 
-
-
-
-public function updateProduct(){
-    if(isset($_GET['confirm']) AND !empty($_GET['confirm'])){
-        $confirm = (int) $_GET['confirm'];
-
-        $requete = $this->pdo->prepare('UPDATE products SET confirm = 1 WHERE id = $this->id');
-        $requete->execute(array($confirm));
+            $requete = $this->pdo->prepare('UPDATE products SET confirm = 1 WHERE id = $this->id');
+            $requete->execute(array($confirm));
+        }
     }
-}
 
 
-public function deleteProduct(){
-    if(isset($_GET['supprime']) AND !empty($_GET['supprime'])){
-        $supprime = (int) $_GET['supprime'];
+    public function deleteProduct()
+    {
+        if (isset($_GET['supprime']) and !empty($_GET['supprime'])) {
+            $supprime = (int)$_GET['supprime'];
 
-        $requete = $this->pdo->prepare('DELETE FROM products WHERE id = $this->id');
-        $requete->execute(array($supprime));
+            $requete = $this->pdo->prepare('DELETE FROM products WHERE id = $this->id');
+            $requete->execute(array($supprime));
+        }
     }
-}
 
-public function getReference(){
+    public function getReference()
+    {
 
         return $this->reference;
-}
+    }
 
-    public function getCategory(){
+    public function getCategory()
+    {
 
         return $this->category;
     }
 
-    public function getSubcategory(){
+    public function getSubcategory()
+    {
 
         return $this->subcategory;
     }
 
 
-    public function getTitle(){
+    public function getTitle()
+    {
 
         return $this->title;
     }
 
 
-    public function getDescription(){
+    public function getDescription()
+    {
 
         return $this->description;
     }
 
 
-    public function getShortdescription(){
+    public function getShortdescription()
+    {
 
         return $this->short_description;
     }
 
 
-    public function getPrice(){
+    public function getPrice()
+    {
 
         return $this->price;
     }
 
 
-    public function getStock(){
+    public function getStock()
+    {
 
         return $this->stock;
     }
-
-
-
 
 
     //RECUPERER HISTORIC
@@ -124,7 +127,7 @@ public function getReference(){
                 'title' => $title,
                 'description' => $description,
                 'short_description' => $short_description,
-                'picture' =>$picture,
+                'picture' => $picture,
                 'price' => $price,
                 'stock' => $stock,
             ]);
@@ -132,4 +135,13 @@ public function getReference(){
     }
 
 
+//SUPPRIMER PRODUIT
+
+    public function delete()
+    {
+
+        $requser = $this->pdo->prepare('DELETE * FROM products WHERE id_product = $this_>id_product');
+        $requser->execute();
+
+    }
 }
