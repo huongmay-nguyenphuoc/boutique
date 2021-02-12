@@ -42,26 +42,28 @@ class admin
     }
 
 
-    public function updateProduct()
+    //RECUPERER HISTORIC
+    public function productsHistoric()
     {
-        if (isset($_GET['confirm']) and !empty($_GET['confirm'])) {
-            $confirm = (int)$_GET['confirm'];
-
-            $requete = $this->pdo->prepare('UPDATE products SET confirm = 1 WHERE id = $this->id');
-            $requete->execute(array($confirm));
-        }
+        $productsHistoric = $this->pdo->Select("SELECT * FROM products ORDER BY products.category DESC");
+        return $productsHistoric;
     }
 
 
-    public function deleteProduct()
-    {
-        if (isset($_GET['supprime']) and !empty($_GET['supprime'])) {
-            $supprime = (int)$_GET['supprime'];
+//SUPPRIMER PRODUIT
 
-            $requete = $this->pdo->prepare('DELETE FROM products WHERE id = $this->id');
-            $requete->execute(array($supprime));
-        }
+    public function delete()
+    {
+
+        $requser = $this->pdo->prepare('DELETE * FROM products WHERE id_product = $this->id_product');
+        $requser->execute();
+
     }
+
+
+    //UPDATE PRODUIT
+
+
 
     public function getReference()
     {
@@ -117,31 +119,5 @@ class admin
     }
 
 
-    //RECUPERER HISTORIC
-    public function productsHistoric($reference, $category, $subcategory, $title, $description, $short_description, $picture, $price, $stock)
-    {
-        $productsHistoric = $this->pdo->Select("SELECT reference, category, subcategory, title, description, short_description, picture, price, stock FROM products ORDER BY products.category DESC",
-            ['reference' => $reference,
-                'category' => $category,
-                'subcategory' => $subcategory,
-                'title' => $title,
-                'description' => $description,
-                'short_description' => $short_description,
-                'picture' => $picture,
-                'price' => $price,
-                'stock' => $stock,
-            ]);
-        return $productsHistoric;
-    }
 
-
-//SUPPRIMER PRODUIT
-
-    public function delete()
-    {
-
-        $requser = $this->pdo->prepare('DELETE * FROM products WHERE id_product = $this_>id_product');
-        $requser->execute();
-
-    }
 }
