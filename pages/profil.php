@@ -5,7 +5,7 @@ require_once '../classes/cart.php';
 
 session_start();
 
-if (!isset($_SESSION['user'])) {
+if (isset($_SESSION['user'])) {
 
      $historic = $_SESSION['user']->cartHistoric(); //récup historique général
 

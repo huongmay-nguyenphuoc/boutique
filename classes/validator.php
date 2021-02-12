@@ -5,7 +5,7 @@ require_once('user.php');
 
 class validator
 {
-    private $id;
+    private $id_member;
     private $login;
     private $password;
     private $passwordcheck;

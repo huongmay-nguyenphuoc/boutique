@@ -147,7 +147,7 @@ class user
     //RECUPERER HISTORIC
     public function cartHistoric()
     {
-        $cartHistoric = $this->pdo->Select("SELECT id_member, id_order, amount, date_register, state FROM order WHERE id_member = :id_member ORDER BY order.state DESC",
+        $cartHistoric = $this->pdo->Select("SELECT id_order, amount, date_register, state FROM `order` WHERE id_member = :id_member ORDER BY order.state DESC",
             ['id_member' => $this->id_member]);
         return $cartHistoric;
     }
