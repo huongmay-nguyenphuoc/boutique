@@ -10,12 +10,12 @@ class admin
     private $category;
     private $title;
     private $description;
-    private $short_description;
+    private $shortdesc;
     private $picture;
     private $price;
     private $stock;
     private $subcategory;
-
+    private $id_product;
     private $pdo;
 
     public function __construct()
@@ -25,15 +25,15 @@ class admin
 
 
     //ENREGISTRER PRODUITS
-    function add($reference, $category, $subcategory, $title, $description, $short_description, $picture, $price, $stock)
+    function add($reference, $category, $subcategory, $title, $description, $shortdesc, $picture, $price, $stock)
     {
-        $this->pdo->Insert('Insert into products (reference, category, subcategory, title, description, short_description, picture, price, stock) values ( :reference , :category, :subcategory, :title, :description, :shortdescription, :picture, :price, :stock )',
+        $this->pdo->Insert('Insert into products (reference, category, subcategory, title, description, shortdesc, picture, price, stock) values ( :reference , :category, :subcategory, :title, :description, :shortdesc, :picture, :price, :stock )',
             ['reference' => $reference,
                 'category' => $category,
                 'subcategory' => $subcategory,
                 'title' => $title,
                 'description' => $description,
-                'short_description' => $short_description,
+                'shortdesc' => $shortdesc,
                 'picture' => $picture,
                 'price' => $price,
                 'stock' => $stock,
@@ -43,10 +43,11 @@ class admin
 
 
     //RECUPERER HISTORIC
-    public function productsHistoric()
+    public function allProducts()
     {
-        $productsHistoric = $this->pdo->Select("SELECT * FROM products ORDER BY products.category DESC");
-        return $productsHistoric;
+        $allproducts = $this->pdo->Select("SELECT * FROM products ORDER BY products.category DESC");
+
+            return $allproducts;
     }
 
 
@@ -61,7 +62,25 @@ class admin
     }
 
 
-    //UPDATE PRODUIT
+    //UPDATE
+    function update($reference, $category, $subcategory, $title, $description, $shortdesc, $picture, $price, $stock)
+    {
+        $this->pdo = new database();
+        $update = $this->pdo->Update("Update products SET reference = :reference, category = :category, subcategory = :subcategory, title = :title, description = :description, shortdesc = :shortdesc, picture = :picture, price = :price, stock = :stock WHERE id_product = $this->id_product ",
+            ['reference' => $reference,
+                'category' => $category,
+                'subcategory' => $subcategory,
+                'title' => $title,
+                'description' => $description,
+                'shortdesc' => $shortdesc,
+                'picture' => $picture,
+                'price' => $price,
+                'stock' => $stock,
+            ]);
+
+        return $update;
+    }
+
 
 
 
@@ -98,10 +117,10 @@ class admin
     }
 
 
-    public function getShortdescription()
+    public function getShortdesc()
     {
 
-        return $this->short_description;
+        return $this->shortdesc;
     }
 
 

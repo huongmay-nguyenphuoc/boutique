@@ -20,38 +20,23 @@ if(isset($_POST['submit'])){
 
 
     if (!empty($_POST)) {
-        if (!empty($_FILES['image_path'])) {
-            $img = $_FILES['image_path'];
-            $ext = strtolower(substr($img['name'], -3));
-            $allow_ext = ['jpg', 'png', 'gif'];
-            if (in_array($ext, $allow_ext)) {
-                move_uploaded_file($img['tmp_name'], ROOT . '../photo/picture' . $img['name']);
-                $result = $this->Product->create(
-                    [
-                        'reference' => htmlspecialchars($_POST['reference']),
-                        'title' => htmlspecialchars($_POST['title']),
-                        'category' => htmlspecialchars($_POST['category']),
-                        'description' => htmlspecialchars($_POST['description']),
-                        'shortdescription' => htmlspecialchars($_POST['shortdescription']),
-                        'image_path' => $img['name'],
-                        'price' => htmlspecialchars($_POST['price']),
-                        'stock' => htmlspecialchars($_POST['stock']),
-                    ]
-                );
-                $_FILES['image_path'] = '';
-                if ($result) {
-                    return $this->index();
-                }
-            } else {
-                $errors[] = "Votre fichier n'est pas une image";
-            }
-        }
+
+                        $reference = htmlspecialchars($_POST['reference']);
+                        $title = htmlspecialchars($_POST['title']);
+                        $category = htmlspecialchars($_POST['category']);
+                        $subcategory = htmlspecialchars($_POST['subcategory']);
+                        $description = htmlspecialchars($_POST['description']);
+                        $shortdesc = htmlspecialchars($_POST['shortdescription']);
+                        $picture = $_FILES['picture'];
+                        $price = htmlspecialchars($_POST['price']);
+                        $stock = htmlspecialchars($_POST['stock']);
+
     }
 
 
 if(empty($errors)){
     $admin = new admin();
-    $admin->register($reference, $category, $title, $description, $title, $description, $shortdescription, $picture, $price, $stock);
+    $admin->add($reference, $category, $subcategory, $title, $description, $shortdesc, $picture, $price, $stock);
     $success = "Product created. <a href='gestion_produits.php'>Log in</a>";
 }
 
@@ -104,6 +89,9 @@ if(empty($errors)){
  
     <label for="category">category</label><br>
     <input type="text" id="category" name="category" placeholder="product category"><br><br>
+
+    <label for="subcategory">subcategory</label><br>
+    <input type="text" id="category" name="subcategory" placeholder="product subcategory"><br><br>
  
     <label for="title">title</label><br>
     <input type="text" id="title" name="title" placeholder="product title"> <br><br>

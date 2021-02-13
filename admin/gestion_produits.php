@@ -8,16 +8,19 @@ require_once '../classes/database.php';
 session_start();
 
 
-
-
-
-if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
-    exit();
-    
+if (!isset($_SESSION['user'])) {
+    header('location: ../pages/connexion.php');
 }
- else{
-     $historic = $_SESSION['admin']->productsHistoric(); //récup historique général
- }
+
+$admin = new admin;
+$admin = $_SESSION['admin'];
+//if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
+//  exit();
+
+//}
+//else{
+$historic = $_SESSION['admin']->allProducts(); //récup historique général
+//}
 
 
 
@@ -38,7 +41,7 @@ if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
     <?php if (empty($historic)) : ?>
         <section class="container">
             <p class="white-text">You didn't buy anything yet.</p>
-            <a href="boutique.php" class="btn grey white-text">Go search something for spmething fun to play!</a>
+            <a href="boutique.php" class="btn grey white-text">Go search something for something fun to play!</a>
         </section>
 
 
@@ -63,8 +66,6 @@ if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
                     echo "<tr>";
                     foreach ($row as $cell) {
                         echo "<td>" . $cell . "</td>";
-                        echo " <a href='update_product.php'> Update products </a>";
-                         echo " <a href='gestion_produits.php'> Delete products </a>";
                     }
                     echo "</tr>";
                 }
@@ -73,6 +74,7 @@ if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
             </table>
         </section>
     <?php endif; ?>
+    </section>
 
 
 

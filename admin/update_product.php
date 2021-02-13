@@ -3,15 +3,16 @@
 
 require_once '../classes/admin.php';
 require_once '../classes/user.php';
+require_once '../classes/product.php';
 
 session_start();
 
-
+/*
 if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
     exit();
 
 }
-
+*/
 ?>
 
 
@@ -24,7 +25,7 @@ if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
 
 <h1> Products form </h1>
 
-<form method="post" enctype="multipart/form-data" action="gestion_product_form.php" >
+<form method="post" enctype="multipart/form-data" action="update_product.php" >
     <label for="reference">reference</label><br>
     <input type="text" id="reference" name="reference" placeholder="product reference" value="<?php echo $_SESSION['admin']->getReference(); ?>"> <br><br>
 
@@ -41,7 +42,7 @@ if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
     <textarea name="description" id="description" placeholder="product description" value="<?php echo $_SESSION['admin']->getDescription(); ?>"></textarea><br><br>
 
     <label for="description">description</label><br>
-    <textarea name="shortdescription" id="shortdescription" placeholder="product short description" value="<?php echo $_SESSION['admin']->getShortdescription(); ?>"></textarea><br><br>
+    <textarea name="shortdescription" id="shortdescription" placeholder="product short description" value="<?php echo $_SESSION['admin']->getShortdesc(); ?>"></textarea><br><br>
 
     <label for="picture">picture</label><br>
     <input type="file" id="picture" name="picture"><br><br>
