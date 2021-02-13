@@ -2,6 +2,7 @@
 
 require_once '../classes/user.php';
 require_once '../classes/validator.php';
+
 session_start();
 
 
@@ -22,6 +23,7 @@ if (isset($_POST['submit'])) {
         $user->connect($login);
         
         $_SESSION['user'] = $user;
+
         //var_dump($_SESSION['user']);
         header("Location: profil.php");
        
@@ -38,18 +40,6 @@ if (isset($_POST['submit'])) {
 <main class="valign-wrapper">
     <div class="row">
         <h3 class="center"><em>Connexion</em></h3>
-
-        <!--Alerte (erreur ou succès)-->
-        <?php if (isset($error)): ?>
-            <div>
-                <p class="red-text"><?php echo $error; ?></p>
-            </div>
-        <?php elseif (isset($success)): ?>
-            <div>
-                <p class="red-text"><?php echo $success; ?></p>
-            </div>
-        <?php endif; ?>
-
 
 
         <!--Alerte (erreur ou succès)-->

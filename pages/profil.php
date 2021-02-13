@@ -34,7 +34,7 @@ else{
     <?php if (empty($historic)) : ?>
     <section class="container">
         <p class="white-text">You didn't buy anything yet.</p>
-        <a href="boutique.php" class="btn grey white-text">Go search something for spmething fun to play!</a>
+        <a href="boutique.php" class="btn grey white-text">Go search something for something fun to play!</a>
     </section>
 
 
@@ -67,6 +67,40 @@ else{
                 </table>
             </section>
             <?php endif; ?>
+
+
+<?php
+    $products = $_SESSION['user']->cartHistoric();
+    //var_dump($user->cartHistoricdetails(26));
+
+    /*Traitement bouton description*/
+    if (isset($_POST['show'])) {
+     $show[$_POST["value"]] = true;
+    }
+
+
+    ?>
+
+    <ul>
+        <?php $i = 0; ?>
+        <?php foreach ($products as $product) : ?>
+            <li>
+                <ul>
+                    <li><?= $product['id_order'] ?></li>
+                    <li>
+                        <form method="post">
+                            <input type="hidden" name="value" value="<?= $i ?>">
+                            <input type="submit" name="show" value="show"></form>
+                    </li>
+                    <?php if (isset($show[$i])) : ?>
+                        <li><?= var_dump($user->cartHistoricdetails($product['id_order'])) ?></li>
+                    <?php endif; ?>
+                </ul>
+                <?php $i++; ?>
+            </li>
+
+        <?php endforeach; ?>
+    </ul>
 
 
 

@@ -6,6 +6,7 @@ require_once '../classes/user.php';
 require_once '../classes/validator.php';
 
 session_start();
+
 var_dump($_SESSION['user']);
 if (!(isset($_SESSION['user']))) {
     header('location:connexion.php');
@@ -55,48 +56,42 @@ if(isset($_POST['submit'])){
 
         $errors[] = "Password needs to contain min a number";
     }
+    if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name']))
 
-    if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name'])){
-        
+    {
         $tailleMax = 2097152;
-        $extensionsValides = array('jpg', 'gif', 'jpeg', 'png');
-
-        if($_FILES['avatar']['size'] <= $tailleMax){
-
-            $extensionsUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
-            
-            if(in_array($extensionsUpload, $extensionsValides)){
-
-                $chemin = "photo/avatar/". $_SESSION['user']->getLogin() . "." . $extensionsUpload;
-                $result = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);             
-
-                if($result){
-                       
-                    $updateAvatar = $pdo->prepare('UPDATE users SET avatar = :avatar WHERE id = :id');
-                    $updateAvatar->execute(array(
-                        'avatar' => $_SESSION['user']->getLogin() . "." . $extensionsUpload,
-                        'id' => $_SESSION['user']->getLogin(),
+        $extensionsValides = array('jpg', 'jpeg', 'gif', 'png');
+        if($_FILES['avatar']['size'] <= $tailleMax)
+        {
+            $extensionUpload = strtolower(substr(strrchr($_FILES['avatar']['name'], '.'), 1));
+            if(in_array($extensionUpload, $extensionsValides))
+            {
+                $chemin = "users/avatars/".$_SESSION['user']->getId().".".$extensionUpload;
+                $resultat = move_uploaded_file($_FILES['avatar']['tmp_name'], $chemin);
+                if($resultat)
+                {
+                    $bdd = new PDO('mysql:host=localhost;dbname=users;charset=utf8', 'root', '');
+                    $updateavatar = $bdd->prepare('UPDATE users SET avatar = :avatar WHERE id_member = :id_member');
+                    $updateavatar->execute(array(
+                        'avatar' => $_SESSION['user']->getId().".".$extensionUpload,
+                        'id_member' =>$_SESSION['user']->getId()
                     ));
-                    
+                    header('Location: update.php?id='.$_SESSION['user']->getId());
                 }
-
-                else{
-
-                    $errors[] = "download failed";
+                else
+                {
+                    $erreur = "Erreur durant l'importation de votre photo de profil";
                 }
-                
             }
-
-            else{
-
-                $errors[] = "Wrong formatation";
+            else
+            {
+                $erreur = "Votre photo de profil doit être au format jpg, jpeg, gif ou png";
             }
         }
-
-        else{
-            $errors[] = "Picture too big, Max 2Mo!";
+        else
+        {
+            $erreur = "Votre photo de profil ne doit pas dépasser 2Mo";
         }
-
     }
 
     if(empty($errors)){
