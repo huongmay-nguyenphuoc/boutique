@@ -22,8 +22,8 @@ if (isset($_POST['submit'])) {
         $user->connect($login);
         
         $_SESSION['user'] = $user;
-        var_dump($_SESSION['user']);
-//        header("Location: profil.php");
+        //var_dump($_SESSION['user']);
+        header("Location: profil.php");
        
     }
 

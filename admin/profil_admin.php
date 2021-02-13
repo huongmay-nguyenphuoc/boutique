@@ -82,6 +82,12 @@ if(isset($_POST['submit'])){
 
     <h3><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h3>
 
+    <a class="waves-effect waves-light white black-text btn-small" href="gestion_commande.php">Page des commandes clients</a><br><br>
+    <a class="waves-effect waves-light white black-text btn-small" href="gestion_membres.php">Gérer les membres</a><br><br>
+    <a class="waves-effect waves-light white black-text btn-small" href="produits.php">Gérer les produits</a><br><br>
+    <a class="waves-effect waves-light white black-text btn-small" href="product_form.php">Formulaire ajout produits</a><br><br>
+    <a class="waves-effect waves-light white black-text btn-small" href="update_product.php">Mettre à jour des produits</a><br><br>
+    <a class="waves-effect waves-light white black-text btn-small" href="../pages/boutique.php">Accès à la boutique en ligne</a>
 
 
     <form action="profil_admin.php" method="post" enctype="multipart/form-data">
@@ -122,6 +128,7 @@ if(isset($_POST['submit'])){
             <i class="material-icons right">send</i>
         </button>
     </form>
+
 
 
 </main>

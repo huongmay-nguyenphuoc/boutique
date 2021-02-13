@@ -11,7 +11,7 @@ class admin
     private $title;
     private $description;
     private $shortdesc;
-    private $picture;
+    private $image;
     private $price;
     private $stock;
     private $subcategory;
@@ -25,16 +25,16 @@ class admin
 
 
     //ENREGISTRER PRODUITS
-    function add($reference, $category, $subcategory, $title, $description, $shortdesc, $picture, $price, $stock)
+    function add($reference, $category, $subcategory, $title, $description, $shortdesc, $image, $price, $stock)
     {
-        $this->pdo->Insert('Insert into products (reference, category, subcategory, title, description, shortdesc, picture, price, stock) values ( :reference , :category, :subcategory, :title, :description, :shortdesc, :picture, :price, :stock )',
+        $this->pdo->Insert('Insert into products (reference, category, subcategory, title, description, shortdesc, image, price, stock) values ( :reference , :category, :subcategory, :title, :description, :shortdesc, :image, :price, :stock )',
             ['reference' => $reference,
                 'category' => $category,
                 'subcategory' => $subcategory,
                 'title' => $title,
                 'description' => $description,
                 'shortdesc' => $shortdesc,
-                'picture' => $picture,
+                'image' => $image,
                 'price' => $price,
                 'stock' => $stock,
             ]);
@@ -63,17 +63,17 @@ class admin
 
 
     //UPDATE
-    function update($reference, $category, $subcategory, $title, $description, $shortdesc, $picture, $price, $stock)
+    function update($reference, $category, $subcategory, $title, $description, $shortdesc, $image, $price, $stock)
     {
         $this->pdo = new database();
-        $update = $this->pdo->Update("Update products SET reference = :reference, category = :category, subcategory = :subcategory, title = :title, description = :description, shortdesc = :shortdesc, picture = :picture, price = :price, stock = :stock WHERE id_product = $this->id_product ",
+        $update = $this->pdo->Update("Update products SET reference = :reference, category = :category, subcategory = :subcategory, title = :title, description = :description, shortdesc = :shortdesc, image = :image, price = :price, stock = :stock WHERE id_product = $this->id_product ",
             ['reference' => $reference,
                 'category' => $category,
                 'subcategory' => $subcategory,
                 'title' => $title,
                 'description' => $description,
                 'shortdesc' => $shortdesc,
-                'picture' => $picture,
+                'image' => $image,
                 'price' => $price,
                 'stock' => $stock,
             ]);

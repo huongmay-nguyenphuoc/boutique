@@ -28,6 +28,11 @@ if(isset($_POST['submit'])){
         $errors[] = "This login already exists!";
     }
 
+    if($validator->emailExists($email) == 1){
+
+        $errors[] = "This email already exists!";
+    }
+
     if($validator->passwordConfirm($password, $passwordcheck) == 0){
         
         $errors[] = "Problems with the password";
@@ -91,22 +96,22 @@ if(isset($_POST['submit'])){
     <input type="password" id="passwordcheck" name="passwordcheck" required="required"><br><br>
           
     <label for="lastname">Lastname</label><br>
-    <input type="text" id="lastname" name="lastname" placeholder="lastname"><br><br>
+    <input type="text" id="lastname" name="lastname" placeholder="lastname" value="<?php if (isset($_POST['lastname'])) { echo htmlspecialchars($_POST['lastname']);} ?>"><br><br>
           
     <label for="firstname">Firstname</label><br>
-    <input type="text" id="firstname" name="firstname" placeholder="firsrname"><br><br>
+    <input type="text" id="firstname" name="firstname" placeholder="firstname" value="<?php if (isset($_POST['firstname'])) { echo htmlspecialchars($_POST['firstname']);} ?>"><br><br>
   
     <label for="email">Email</label><br>
-    <input type="email" id="email" name="email" placeholder="exemple@gmail.com"><br><br>
+    <input type="email" id="email" name="email" placeholder="exemple@gmail.com" value="<?php if (isset($_POST['email'])) { echo htmlspecialchars($_POST['email']);} ?>"><br><br>
                   
     <label for="city">City</label><br>
-    <input type="text" id="city" name="city" placeholder="city" title="caractères acceptés : a-zA-Z0-9-_."><br><br>
+    <input type="text" id="city" name="city" placeholder="city" title="caractères acceptés : a-zA-Z0-9-_." value="<?php if (isset($_POST['city'])) { echo htmlspecialchars($_POST['city']);} ?>"><br><br>
           
     <label for="zip">Zip</label><br>
-    <input type="text" id="zip" name="zip" placeholder="zip" pattern="[0-9]{5}" title="5 chiffres requis : 0-9"><br><br>
+    <input type="text" id="zip" name="zip" placeholder="zip" pattern="[0-9]{5}" title="5 chiffres requis : 0-9" value="<?php if (isset($_POST['zip'])) { echo htmlspecialchars($_POST['zip']);} ?>"><br><br>
           
     <label for="adress">Adress</label><br>
-    <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}" title="caractères acceptés :  a-zA-Z0-9-_."></textarea><br><br>
+    <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}" title="caractères acceptés :  a-zA-Z0-9-_." value="<?php if (isset($_POST['adress'])) { echo htmlspecialchars($_POST['adress']);} ?>"></textarea><br><br>
  
     <button class="btn waves-effect waves-light black" type="submit" name="submit">
                 <i class="material-icons right">send</i>

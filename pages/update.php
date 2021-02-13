@@ -34,6 +34,18 @@ if(isset($_POST['submit'])){
         }
     }
 
+
+    if($validator->emailExists($email) == 1){
+
+        if ($validator->sameEmail($email, $_SESSION['user']->getEmail()) == 1) {
+
+            $errors[] = "This email already exists!";
+
+        }
+    }
+
+
+
     if($validator->passwordConfirm($password, $passwordcheck) == 0){
         
         $errors[] = "Problems with the password";

@@ -29,6 +29,17 @@ class validator
         }
     }
 
+    // vérification email existant
+    function emailExists($email)
+    {
+        $check = $this->pdo->Select('Select * FROM users WHERE email = :email', ['email' => $email]);
+        if (!empty($check)) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
     // vérification passwords identiques
     function passwordConfirm($password, $passwordcheck)
     {
@@ -54,6 +65,16 @@ class validator
     function sameLogin($login, $firstlogin)
     {
         if ($login != $firstlogin) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+
+    // vérification email identique pour éviter un doublon (update)
+    function sameEmail($email, $firstemail)
+    {
+        if ($email != $firstemail) {
             return 1;
         } else {
             return 0;

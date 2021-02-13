@@ -36,7 +36,7 @@ $historic = $_SESSION['admin']->allProducts(); //récup historique général
   
   <body>
 
-
+  <td><form method="post"><input type="hidden" value="<?php echo $product->id; ?>" name="product_id"><input type="submit" name="del_product" value="DELETE"></form></td>;
 
     <?php if (empty($historic)) : ?>
         <section class="container">
@@ -80,8 +80,7 @@ $historic = $_SESSION['admin']->allProducts(); //récup historique général
 
 
     <article class="container">
-
-            <a href="gestion_product_form.php"> Add new products </a>
+            <a href="product_form.php"> Add new products </a>
         </article>
   </body>
 
