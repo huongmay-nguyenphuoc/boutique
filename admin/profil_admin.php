@@ -6,8 +6,9 @@ require_once '../classes/user.php';
 require_once '../classes/validator.php';
 
 session_start();
-var_dump($_SESSION['user']);
-if (!(isset($_SESSION['user']))) {
+//var_dump($_SESSION['user']);
+
+if(!isset($_SESSION['id']) OR $_SESSION['id'] != 1){
     header('location:connexion.php');
 }
 
@@ -48,7 +49,7 @@ if(isset($_POST['submit'])){
 
         $_SESSION['user']->update($login, $password, $lastname, $firstname, $email, $city, $zip, $adress);
         $success = "Account has been udpated<a href='../pages/boutique.php'>Continue shopping</a>";
-
+        $_SESSION['user'] = new admin();
 
     }
 

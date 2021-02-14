@@ -16,7 +16,7 @@ if(!isset($_SESSION['id']) OR $_SESSION['id'] != 1){
 
 if(isset($_POST['submit'])){
 
-    $user = new user();
+    $admin = new admin();
 
 
     if (!empty($_POST)) {
@@ -35,9 +35,10 @@ if(isset($_POST['submit'])){
 
 
 if(empty($errors)){
-    $admin = new admin();
+
     $admin->add($reference, $category, $subcategory, $title, $description, $shortdesc, $image, $price, $stock);
     $success = "Product created. <a href='produits.php'>Log in</a>";
+
 }
 
 }

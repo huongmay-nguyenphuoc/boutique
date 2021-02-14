@@ -82,6 +82,23 @@ class admin
     }
 
 
+    function deleteUser()
+    {
+
+        unset($_SESSION['user']);
+
+    }
+
+
+    //RECUPERER TOUS LES MEMBRES
+
+    public function allMembers()
+    {
+        $allmembers = $this->pdo->Select("Select * from users where 1");
+
+        return $allmembers;
+    }
+
 
 
     public function getReference()

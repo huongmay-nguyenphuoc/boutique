@@ -8,19 +8,15 @@ require_once '../classes/database.php';
 session_start();
 
 
-if (!isset($_SESSION['user'])) {
-    header('location: ../pages/connexion.php');
+
+if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
+  exit();
+
 }
-
-$admin = new admin;
-$admin = $_SESSION['admin'];
-//if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
-//  exit();
-
-//}
-//else{
+else{
+$_SESSION['admin'] = $admin;
 $historic = $_SESSION['admin']->allProducts(); //récup historique général
-//}
+}
 
 
 
@@ -78,8 +74,7 @@ $historic = $_SESSION['admin']->allProducts(); //récup historique général
 
 
 
-
-    <article class="container">
+  <article class="container">
             <a href="product_form.php"> Add new products </a>
         </article>
   </body>
