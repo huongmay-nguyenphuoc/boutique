@@ -1,9 +1,10 @@
 <?php
 
 require_once '../classes/admin.php';
+require_once '../classes/order.php';
 require_once '../classes/product.php';
 
-session_start();
+//session_start();
 
 
 var_dump($_POST);
@@ -15,10 +16,10 @@ $id = htmlspecialchars($_POST['id']);
 
 echo $id;
 
-if (isset($_POST['confirmremoveProduct'])) {
+if (isset($_POST['confirmremoveOrder'])) {
     $admin->deleteProduct($id);
     var_dump($admin->deleteProduct($id));
-    header("Location: produits.php");
+    header("Location: gestion_commande.php");
 }
 
 
@@ -31,9 +32,9 @@ if (isset($_POST['confirmremoveProduct'])) {
 
 <div>
 
-    <form method="post" action="delete_product.php">
+    <form method="post" action="delete_order.php">
         <input type="hidden" value="<?= $id ?>" name="id">
-        <input type="submit" name="confirmremoveProduct" value="Are you sure?">
+        <input type="submit" name="confirmremoveOrder" value="Are you sure?">
     </form>
 </div>
 

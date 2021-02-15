@@ -27,15 +27,12 @@ $admin = new admin;
 
       <tr>
 
-          <th>category</th>
-          <th>subcategory</th>
-          <th>title</th>
+          <th>id_order</th>
+          <th>id_member</th>
+          <th>amount</th>
           <th>description</th>
-          <th>shortdesc</th>
-          <th>price</th>
-          <th>stock</th>
-
-          <th>supprimer</th>
+          <th>date_register</th>
+          <th>state</th>
           <th>modifier</th>
 
       </tr>
@@ -53,13 +50,15 @@ $admin = new admin;
           <td><?=  $product['shortdesc']?></td>
           <td><?=  $product['price']?></td>
           <td><?=  $product['stock']?></td>
-
-          <td class="ajax-delete" data-id="<?= $product['id_product'] ?>"
-              data-name="product_id"><i
-                      class="fas fa-trash"></i></td>
+          <?php echo "id =" . $product['id_product'];?>
           <td>
+              <form method='post' action='delete_product.php'>
+                  <input type="hidden" value="<?= $product['id_product'] ?>" name="id">
+                  <input type='submit' name='removeProduct' value='Delete product'>
 
-          <td><a href="update_product.php"> Modifier </a></td>
+              </form>
+          </td>
+          <td><a href="update_product.php?id_product= <?= $product['id_product'] ?>"> Modifier </a></td>
       </tr>
 <?php } ?>
 

@@ -1,67 +1,62 @@
 <?php
 
 require_once '../classes/admin.php';
+require_once '../classes/product.php';
+require_once '../classes/order.php';
 
-require_once '../classes/user.php';
+//session_start();
 
-session_start();
 
-function scoreByMoves($level)
-{
-    $topMoves = $this->pdo->Select("SELECT login, score.id as 'partie n°', nb_coup as 'coups' FROM score inner join utilisateurs on score.id_utilisateur = utilisateurs.id WHERE niveau = :level ORDER BY nb_coup ASC LIMIT 10",
-        ['level' => $level]);
-    return $topMoves;
-}
+$admin = new admin;
 
-public function scoreByTime($level)
-{
-    $toptime = $this->pdo->Select("SELECT login, score.id as 'partie n°', time as 'temps' FROM score inner join utilisateurs on score.id_utilisateur = utilisateurs.id WHERE niveau = :level ORDER BY time ASC LIMIT 10",
-        ['level' => $level]);
-    return $toptime;
-}
-
-if(!isset($_SESSION['id']) OR $_SESSION['id'] != 1){
-    exit();
-    
-}
 ?>
 
-<html>
+<html lang="fr">
+
+<body>
+
+<table>
+
+    <thead>
+
+    <tr>
+
+        <th>id_order</th>
+        <th>id_member</th>
+        <th>amount</th>
+        <th>date_register</th>
+        <th>state</th>
+        <th>supprimer</th>
+        <th>modifier</th>
 
 
-<!--si niveau sélectionné a des scores-->
-<?php else : ?>
-<section class="sectionFame">
-    <?php foreach ($twoTables as $name => $oneTable) : ?>
-    <div class="divtableFame">
-        <table class='centered tableFame'>
-            <h6><em>Top 10 par <?php echo $name; ?></em></h6>
-            <?php $i = 1; ?>
-                                <?php foreach ($oneTable as $row) {
-            if ($i == 1) {
-            echo "<thead>";
-            foreach ($row as $key => $element) {
-            echo "<th>" . $key . "</th>";
-            }
-            echo "</thead>";
-            echo "<tbody>";
-            $i = 0;
-            }
-            echo "<tr>";
-            foreach ($row as $cell) {
-            echo "<td>" . $cell . "</td>";
-            }
-            echo "</tr>";
-            }
-            echo "</tbody>";
-            ?>
-        </table>
-    </div>
-    <?php endforeach; ?>
-</section>
-<?php endif; ?>
+    </tr>
+
+    </thead>
+    <tbody>
+
+    <?php foreach($admin->allOrders() as $orders){ ?>
+
+        <tr>
+            <td><?=  $orders['id_order']?></td>
+            <td><?=  $orders['id_member']?></td>
+            <td><?=  $orders['amount']?></td>
+            <td><?=  $orders['date_register']?></td>
+            <td><?=  $orders['state']?></td>
+            <?php echo "id =" . $orders['id_order'];?>
+            <td>
+                <form method='post' action='delete_order.php'>
+                    <input type="hidden" value="<?= $orders['id_order'] ?>" name="id">
+                    <input type='submit' name='removeOrder' value='Delete order'>
+
+                </form>
+            </td>
+            <td><a href="update_product.php?id_product= <?= $orders['id_order'] ?>"> Modifier </a></td>
+        </tr>
+    <?php } ?>
+
+    </tbody>
+
+</table>
 
 
-
-
-</html>
