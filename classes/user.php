@@ -144,21 +144,20 @@ class user
     }
 
 
-    //RECUPERER HISTORIC
-    public function cartHistoric()
+
+    //RECUPERER ORDERS
+    public function ordersUser($id_member)
     {
-        $cartHistoric = $this->pdo->Select("SELECT id_order, amount, date_register, state FROM `order` WHERE id_member = :id_member ORDER BY order.state DESC",
+        $orders_user = $this->pdo->Select("Select order.date_register, order.id_order, order_details.id_order_details, order.amount,  order_details.quantity, order_details.price, order.state
+FROM `order` 
+INNER JOIN order_details ON order.id_order = order_details.id_order_details
+WHERE id_member = :id_member 
+ORDER BY order.state DESC",
             ['id_member' => $this->id_member]);
-        return $cartHistoric;
+
+        return $orders_user;
     }
 
-
-    public function cartHistoricdetails($id_order)
-    {
-        $details = $this->pdo->Select('SELECT * from `order_details` WHERE id_order = :id_order',
-            ['id_order' => $id_order]);
-        return $details;
-    }
 
     //SUPPRIMER COMPTE????
 

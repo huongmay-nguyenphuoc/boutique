@@ -4,11 +4,34 @@ require_once '../classes/admin.php';
 require_once '../classes/product.php';
 require_once '../classes/order.php';
 
-//session_start();
-
-
+session_start();
 $admin = new admin;
 
+if (!empty($_GET['id']) and is_numeric($_GET['id'])) {
+    $id = htmlspecialchars($_GET['id']);
+
+
+    if (isset($_POST['submit'])) {
+
+
+        if ($admin->updateState($id)) {
+
+            $state = htmlspecialchars($_POST['state']);
+
+        }
+
+
+        if (empty($errors)) {
+
+            $_SESSION['admin']->updateState($state);
+            $success = "State has been udpated<a href='gestion_membres.php'>All orders</a>";
+
+
+        }
+
+    }
+
+}
 ?>
 
 <html lang="fr">
@@ -25,9 +48,9 @@ $admin = new admin;
         <th>id_member</th>
         <th>amount</th>
         <th>date_register</th>
-        <th>state</th>
         <th>supprimer</th>
-        <th>modifier</th>
+        <th>state</th>
+
 
 
     </tr>
@@ -42,21 +65,36 @@ $admin = new admin;
             <td><?=  $orders['id_member']?></td>
             <td><?=  $orders['amount']?></td>
             <td><?=  $orders['date_register']?></td>
-            <td><?=  $orders['state']?></td>
             <?php echo "id =" . $orders['id_order'];?>
             <td>
                 <form method='post' action='delete_order.php'>
                     <input type="hidden" value="<?= $orders['id_order'] ?>" name="id">
                     <input type='submit' name='removeOrder' value='Delete order'>
-
                 </form>
             </td>
-            <td><a href="update_product.php?id_product= <?= $orders['id_order'] ?>"> Modifier </a></td>
+            <td>
+                <form method='post' action='gestion_commande.php'>
+                    <input type="hidden" value="<?= $orders['state'] ?>" name="state">
+                    <label for="state">state</label><br>
+                    <select name="state" id="state">
+                        <option value=""> ----- Choose ----- </option>
+                        <option value="being processed"> being processed </option>
+                        <option value="send"> send </option>
+                        <option value="delivered"> delivered </option>
+                    </select><br><br>
+                    <button class="btn waves-effect waves-light black" type="submit" name="submit">
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </td>
         </tr>
     <?php } ?>
 
     </tbody>
 
 </table>
+
+</body>
+</html>
 
 

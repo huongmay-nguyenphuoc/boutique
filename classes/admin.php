@@ -107,6 +107,19 @@ class admin
     }
 
 
+ //UPDATE STATE
+    public function updateState($id_order){
+
+        $this->pdo = new database();
+        $update_state = $this->pdo->Update("Update `orders` SET state = :state WHERE id_order = $this->id_order ",
+            ['state' => $state,
+                'id_order' => $id_order,
+
+            ]);
+
+        return $update_state;
+    }
+
 //SUPPRIMER PRODUIT
 
     public function delete()

@@ -1,16 +1,14 @@
 <?php
 
 require_once '../classes/user.php';
-require_once '../classes/cart.php';
+require_once '../classes/order.php';
 
 session_start();
 
 if (isset($_SESSION['user'])) {
 
-     $historic = $_SESSION['user']->cartHistoric(); //récup historique général
 
 }
-
 
 
 else{
@@ -31,76 +29,51 @@ else{
                 identifiants</a>
         </article>
 
-    <?php if (empty($historic)) : ?>
-    <section class="container">
-        <p class="white-text">You didn't buy anything yet.</p>
-        <a href="boutique.php" class="btn grey white-text">Go search something for something fun to play!</a>
-    </section>
+    <html lang="fr">
+
+    <body>
+
+    <table>
+
+        <thead>
+
+        <tr>
+            <th>date_register</th>
+            <th>id_order</th>
+            <th>id_order_details</th>
+            <th>amount</th>
+            <th>quantity</th>
+            <th>price</th>
+            <th>state</th>
 
 
+        </tr>
 
-            <!--Affichage tableau historique-->
-            <section class="sectionHistoric">
-                <h5 class="center"><em>Cart historic</em></h5>
+        </thead>
+        <tbody>
 
-                <table class='centered tableHistoric'>
-                    <?php
-                    $i = 1;
-                    foreach ($historic as $row) {
-                        if ($i == 1) {
-                            echo "<thead>";
-                            foreach ($row as $key => $element) {
-                                echo "<th>" . $key . "</th>";
-                            }
-                            echo "</thead>";
-                            echo "<tbody>";
-                            $i = 0;
-                        }
-                        echo "<tr>";
-                        foreach ($row as $cell) {
-                            echo "<td>" . $cell . "</td>";
-                        }
-                        echo "</tr>";
-                    }
-                    echo "</tbody>";
-                    ?>
-                </table>
-            </section>
-            <?php endif; ?>
+        <?php foreach($_SESSION['user']->ordersUser() as $orders){ ?>
+
+            <tr>
+                <td><?=  $orders['date_register']?></td>
+                <td><?=  $orders['id_order']?></td>
+                <td><?=  $orders['id_order_details']?></td>
+                <td><?=  $orders['amount']?></td>
+                <td><?=  $orders['quantity']?></td>
+                <td><?=  $orders['price']?></td>
+                <td><?=  $orders['state']?></td>
 
 
-<?php
-    $products = $_SESSION['user']->cartHistoric();
-    //var_dump($user->cartHistoricdetails(26));
+            </tr>
+        <?php } ?>
 
-    /*Traitement bouton description*/
-    if (isset($_POST['show'])) {
-     $show[$_POST["value"]] = true;
-    }
+        </tbody>
 
+    </table>
 
-    ?>
+    </body>
+    </html>
 
-    <ul>
-        <?php $i = 0; ?>
-        <?php foreach ($products as $product) : ?>
-            <li>
-                <ul>
-                    <li><?= $product['id_order'] ?></li>
-                    <li>
-                        <form method="post">
-                            <input type="hidden" name="value" value="<?= $i ?>">
-                            <input type="submit" name="show" value="show"></form>
-                    </li>
-                    <?php if (isset($show[$i])) : ?>
-                        <li><?= var_dump($user->cartHistoricdetails($product['id_order'])) ?></li>
-                    <?php endif; ?>
-                </ul>
-                <?php $i++; ?>
-            </li>
-
-        <?php endforeach; ?>
-    </ul>
 
 
 

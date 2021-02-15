@@ -46,8 +46,8 @@ if(isset($_POST['submit'])){
     if(empty($errors)){
         $user = new user();
         $user->register($login, $password, $lastname, $firstname, $email, $city, $zip, $adress);
-        $success = "Account created. <a href='connexion.php'>Log in</a>";
-       
+        //$success = "Account created. <a href='connexion.php'>Log in</a>";
+       var_dump($user);
     }
 
 }

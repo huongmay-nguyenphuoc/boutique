@@ -79,7 +79,7 @@ if (isset($_POST['submit'])) {
     </select><br><br>
 
     <label for="subcat">subcategory</label><br>
-    <select name="subcat[]"  id=subcat">
+    <select name="subcat"  id=subcat">
         <option value=""> ----- Choose ----- </option>
         <option value="games"> games </option>
         <option value="secondhand"> secondhand </option>
