@@ -9,15 +9,17 @@ class product
     private $title;
     private $quantity;
     private $shortdesc;
+    private $description;
     private $cat;
     private $subcat;
 
-    function __construct($id, $price, $stock, $title, $shortdesc, $cat, $subcat, $quantity)
+    function __construct($id, $price, $stock, $title, $description, $shortdesc, $cat, $subcat, $quantity)
     {
         $this->id = $id;
         $this->price = $price;
         $this->stock = $stock;
         $this->title = $title;
+        $this->description = $description;
         $this->shortdesc = $shortdesc;
         $this->cat = $cat;
         $this->subcat = $subcat;
@@ -43,6 +45,12 @@ class product
     function getPrice()
     {
         return $this->price;
+    }
+
+
+    function getDescription()
+    {
+        return $this->description;
     }
 
     function getShortdesc()
@@ -79,4 +87,12 @@ class product
     {
         $this->quantity = $quantity;
     }
+
+
+
+
+
+
+
+
 }

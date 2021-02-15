@@ -14,7 +14,8 @@ class admin
     private $image;
     private $price;
     private $stock;
-    private $subcategory;
+    private $subcat;
+    private $quantity;
     private $id_product;
     private $pdo;
 
@@ -25,18 +26,19 @@ class admin
 
 
     //ENREGISTRER PRODUITS
-    function add($reference, $category, $subcategory, $title, $description, $shortdesc, $image, $price, $stock)
+    function add($reference, $category, $subcat, $title, $description, $shortdesc, $image, $price, $stock, $quantity)
     {
-        $this->pdo->Insert('Insert into products (reference, category, subcategory, title, description, shortdesc, image, price, stock) values ( :reference , :category, :subcategory, :title, :description, :shortdesc, :image, :price, :stock )',
+        $this->pdo->Insert('Insert into products (reference, category, subcategory, title, description, shortdesc, image, price, stock, quantity) values ( :reference , :category, :subcategory, :title, :description, :shortdesc, :image, :price, :stock, :quantity )',
             ['reference' => $reference,
                 'category' => $category,
-                'subcategory' => $subcategory,
+                'subcategory' => $subcat,
                 'title' => $title,
                 'description' => $description,
                 'shortdesc' => $shortdesc,
                 'image' => $image,
                 'price' => $price,
                 'stock' => $stock,
+                'quantity' => $quantity,
             ]);
         return $reference;
     }
@@ -63,42 +65,43 @@ class admin
 
 
     //UPDATE
-    function update($reference, $category, $subcategory, $title, $description, $shortdesc, $image, $price, $stock)
+    function update($reference, $category, $subcat, $title, $description, $shortdesc, $image, $price, $stock, $quantity)
     {
         $this->pdo = new database();
-        $update = $this->pdo->Update("Update products SET reference = :reference, category = :category, subcategory = :subcategory, title = :title, description = :description, shortdesc = :shortdesc, image = :image, price = :price, stock = :stock WHERE id_product = $this->id_product ",
+        $update = $this->pdo->Update("Update products SET reference = :reference, category = :category, subcategory = :subcategory, title = :title, description = :description, shortdesc = :shortdesc, image = :image, price = :price, stock = :stock, quantity = :quantity WHERE id_product = $this->id_product ",
             ['reference' => $reference,
                 'category' => $category,
-                'subcategory' => $subcategory,
+                'subcategory' => $subcat,
                 'title' => $title,
                 'description' => $description,
                 'shortdesc' => $shortdesc,
                 'image' => $image,
                 'price' => $price,
                 'stock' => $stock,
+                'quantity' => $quantity,
             ]);
 
         return $update;
     }
 
 
-    function deleteUser()
+
+
+    public function deleteProduct()
     {
+        $productId = $_POST['id_product'];
+        $product = $this->pdo('SELECT * FROM products WHERE $id_product = ?', [
+            $productId,
+        ])->fetch(\PDO::FETCH_ASSOC);
+        if (!empty($product)) {
+            $this->pdo('DELETE FROM products WHERE $id_product = ?', [
+                $productId
+            ]);
 
-        unset($_SESSION['user']);
+        }
 
+        return $productId;
     }
-
-
-    //RECUPERER TOUS LES MEMBRES
-
-    public function allMembers()
-    {
-        $allmembers = $this->pdo->Select("Select * from users where 1");
-
-        return $allmembers;
-    }
-
 
 
     public function getReference()
@@ -116,7 +119,7 @@ class admin
     public function getSubcategory()
     {
 
-        return $this->subcategory;
+        return $this->subcat;
     }
 
 
@@ -153,6 +156,44 @@ class admin
 
         return $this->stock;
     }
+
+    public function getQuantity()
+    {
+
+        return $this->quantity;
+    }
+
+
+
+    function deleteUser()
+    {
+
+        $userId = $_POST['id_member'];
+        $user = $this->pdo->Select('SELECT * FROM users WHERE id = ? AND id = ?', [
+            $_SESSION['id_member'],
+            $userId
+        ])->fetch(\PDO::FETCH_ASSOC);
+        if(empty($user))
+        {
+            $this->pdo('DELETE FROM users WHERE id = ?', [
+                $userId
+            ]);
+        }
+
+        return $userId;
+
+    }
+
+
+    //RECUPERER TOUS LES MEMBRES
+
+    public function allMembers()
+    {
+        $allmembers = $this->pdo->Select("Select * from users where 1");
+
+        return $allmembers->fetchALl(\PDO::FETCH_ASSOC);;
+    }
+
 
 
 
