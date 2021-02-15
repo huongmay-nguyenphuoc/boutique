@@ -1,0 +1,66 @@
+/*GENERAL*/
+@font-face {
+    font-family: pixel;
+    src: url('../fonts/FreePixel.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    background-size: 100%;
+    border: 1px solid black;
+    font-family: pixel;
+}
+
+body, main, article, a {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    min-height: 100vh;
+    background: url("../photo/style/wallhaven.png") center;
+    justify-content: space-between;
+}
+
+main {
+    width: 100%;
+    height: 80vh;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+article {
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    height: 100%;
+}
+
+
+div {
+    height: 100%;
+    width: 50%;
+    background: url("../photo/style/cloud1.png");
+}
+
+div a {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+a:hover {
+    opacity: 1;
+}
+
+@media screen and (max-width: 640px) {
+    article {
+        flex-direction: column;
+    }
+}
