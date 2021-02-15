@@ -7,12 +7,7 @@ require_once '../classes/product.php';
 
 session_start();
 
-/*
-if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
-    exit();
 
-}
-*/
 ?>
 
 
@@ -25,7 +20,9 @@ if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
 
 <h1> Products form </h1>
 
+
 <form method="post" enctype="multipart/form-data" action="update_product.php" >
+    
     <label for="reference">reference</label><br>
     <input type="text" id="reference" name="reference" placeholder="product reference" value="<?php echo $_SESSION['admin']->getReference(); ?>"> <br><br>
 
@@ -56,6 +53,7 @@ if(!isset($_SESSION['user']->getStatus) OR $_SESSION['user']->getStatus != 1){
     <button class="btn waves-effect waves-light black" type="submit" name="submit">
         <i class="material-icons right">send</i>
     </button>
+
 </form>
 
 

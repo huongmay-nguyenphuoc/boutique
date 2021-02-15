@@ -8,10 +8,11 @@ require_once '../classes/product.php';
 
 
 session_start();
-$user = new user;
-$admin = new admin;
-$product = new product;
 
+$admin = new admin;
+
+
+//var_dump($admin->allProducts());
 ?>
 
 
@@ -33,8 +34,7 @@ $product = new product;
           <th>shortdesc</th>
           <th>price</th>
           <th>stock</th>
-          <th>quantity</th>
-          <th>picture</th>
+
           <th>supprimer</th>
           <th>modifier</th>
 
@@ -46,7 +46,6 @@ $product = new product;
           <?php foreach($admin->allProducts() as $product){ ?>
 
       <tr>
-          <td><?=  $product['id_product']?></td>
           <td><?=  $product['category']?></td>
           <td><?=  $product['subcat']?></td>
           <td><?=  $product['title']?></td>
@@ -54,9 +53,12 @@ $product = new product;
           <td><?=  $product['shortdesc']?></td>
           <td><?=  $product['price']?></td>
           <td><?=  $product['stock']?></td>
-          <td><?=  $product['quantity']?></td>
-          <td><?=  $product['picture']?></td>
-          <td><a href="delete_product.php?id_products= <?= $product['id_product'] ?>"> Supprimer </a></td>
+
+          <td class="ajax-delete" data-id="<?= $product['id_product'] ?>"
+              data-name="product_id"><i
+                      class="fas fa-trash"></i></td>
+          <td>
+
           <td><a href="update_product.php"> Modifier </a></td>
       </tr>
 <?php } ?>

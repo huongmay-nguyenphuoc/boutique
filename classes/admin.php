@@ -15,7 +15,6 @@ class admin
     private $price;
     private $stock;
     private $subcat;
-    private $quantity;
     private $id_product;
     private $pdo;
 
@@ -26,19 +25,18 @@ class admin
 
 
     //ENREGISTRER PRODUITS
-    function add($reference, $category, $subcat, $title, $description, $shortdesc, $image, $price, $stock, $quantity)
+    function add($reference, $category, $subcat, $title, $description, $shortdesc, $image, $price, $stock)
     {
-        $this->pdo->Insert('Insert into products (reference, category, subcategory, title, description, shortdesc, image, price, stock, quantity) values ( :reference , :category, :subcategory, :title, :description, :shortdesc, :image, :price, :stock, :quantity )',
+        $this->pdo->Insert('Insert into products (reference, category, subcat, title, description, shortdesc, image, price, stock) values ( :reference , :category, :subcat, :title, :description, :shortdesc, :image, :price, :stock)',
             ['reference' => $reference,
                 'category' => $category,
-                'subcategory' => $subcat,
+                'subcat' => $subcat,
                 'title' => $title,
                 'description' => $description,
                 'shortdesc' => $shortdesc,
                 'image' => $image,
                 'price' => $price,
                 'stock' => $stock,
-                'quantity' => $quantity,
             ]);
         return $reference;
     }
@@ -47,7 +45,7 @@ class admin
     //RECUPERER HISTORIC
     public function allProducts()
     {
-        $allproducts = $this->pdo->Select("SELECT * FROM products ORDER BY products.category DESC");
+        $allproducts = $this->pdo->Select("SELECT category, subcat, title, description, shortdesc, price, stock FROM products ORDER BY products.category DESC");
 
             return $allproducts;
     }
@@ -68,10 +66,10 @@ class admin
     function update($reference, $category, $subcat, $title, $description, $shortdesc, $image, $price, $stock, $quantity)
     {
         $this->pdo = new database();
-        $update = $this->pdo->Update("Update products SET reference = :reference, category = :category, subcategory = :subcategory, title = :title, description = :description, shortdesc = :shortdesc, image = :image, price = :price, stock = :stock, quantity = :quantity WHERE id_product = $this->id_product ",
+        $update = $this->pdo->Update("Update products SET reference = :reference, category = :category, subcat = :subcat, title = :title, description = :description, shortdesc = :shortdesc, image = :image, price = :price, stock = :stock, quantity = :quantity WHERE id_product = $this->id_product ",
             ['reference' => $reference,
                 'category' => $category,
-                'subcategory' => $subcat,
+                'subcat' => $subcat,
                 'title' => $title,
                 'description' => $description,
                 'shortdesc' => $shortdesc,
@@ -86,22 +84,12 @@ class admin
 
 
 
+public function deleteProduct(){
+        $deletep = $this->pdo->Delete("Delete from products WHERE id_product = id_product" );
 
-    public function deleteProduct()
-    {
-        $productId = $_POST['id_product'];
-        $product = $this->pdo('SELECT * FROM products WHERE $id_product = ?', [
-            $productId,
-        ])->fetch(\PDO::FETCH_ASSOC);
-        if (!empty($product)) {
-            $this->pdo('DELETE FROM products WHERE $id_product = ?', [
-                $productId
-            ]);
+        return deletep;
+}
 
-        }
-
-        return $productId;
-    }
 
 
     public function getReference()
@@ -116,7 +104,7 @@ class admin
         return $this->category;
     }
 
-    public function getSubcategory()
+    public function getSubcat()
     {
 
         return $this->subcat;
@@ -157,41 +145,16 @@ class admin
         return $this->stock;
     }
 
-    public function getQuantity()
-    {
 
-        return $this->quantity;
-    }
-
-
-
-    function deleteUser()
-    {
-
-        $userId = $_POST['id_member'];
-        $user = $this->pdo->Select('SELECT * FROM users WHERE id = ? AND id = ?', [
-            $_SESSION['id_member'],
-            $userId
-        ])->fetch(\PDO::FETCH_ASSOC);
-        if(empty($user))
-        {
-            $this->pdo('DELETE FROM users WHERE id = ?', [
-                $userId
-            ]);
-        }
-
-        return $userId;
-
-    }
 
 
     //RECUPERER TOUS LES MEMBRES
 
     public function allMembers()
     {
-        $allmembers = $this->pdo->Select("Select * from users where 1");
+        $allmembers = $this->pdo->Select("Select login, lastname, firstname, email, city, zip, city, adress from users where 1");
 
-        return $allmembers->fetchALl(\PDO::FETCH_ASSOC);;
+        return $allmembers;
     }
 
 

@@ -76,6 +76,23 @@ class database
         }
     }
 
+
+    //Supprimer de données
+    public function Delete($statement = "", $parameters = [])
+    {
+        $this->__construct();
+
+        try {
+
+            $this->Execute($statement, $parameters);
+            return true;
+
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
+    }
+
+
     public function getLastId()
     {
         return $this->connection->lastInsertId();

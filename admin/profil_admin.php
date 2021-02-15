@@ -49,7 +49,7 @@ if(isset($_POST['submit'])){
 
         $_SESSION['user']->update($login, $password, $lastname, $firstname, $email, $city, $zip, $adress);
         $success = "Account has been udpated<a href='../pages/boutique.php'>Continue shopping</a>";
-        $_SESSION['user'] = new admin();
+        $_SESSION['user'] = new user();
 
     }
 

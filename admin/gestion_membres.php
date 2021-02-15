@@ -4,11 +4,9 @@ require_once '../classes/admin.php';
 require_once '../classes/user.php';
 
 session_start();
-
-
 $admin = new admin;
-$user = new user;
 
+//var_dump($admin->allMembers());
 ?>
 
 
@@ -34,21 +32,21 @@ $user = new user;
 
     <?php foreach($admin->allMembers() as $user){
 
-    }
+
     ?>
     <tr>
-        <td><?=  $user['id'];?></td>
+        <td><?=  $user['login'];?></td>
         <td><?=  $user['lastname'];?></td>
         <td><?=  $user['firstname'];?></td>
-        <td><?=   $user['email']; ?></td>
+        <td><?=  $user['email']; ?></td>
         <td><?=  $user['city'];?></td>
         <td><?=  $user['zip'];?></td>
         <td><?=  $user['adress'];?></td>
-        <td><?= $user['id'] == $_SESSION['id'] ? 'data-phrase-error="Impossible de supprimer ce compte !"' : '' ?>
-                data-can-delete="<?= $user['id'] != $_SESSION['id'] ? 'yes' : 'no' ?>"> </td>
+        <td><?=  ;?></td>
+
     </tr>
 
-
+    <?php } ?>
 </table>
 
 
