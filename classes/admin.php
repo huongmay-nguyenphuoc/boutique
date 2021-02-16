@@ -103,7 +103,7 @@ class admin
 
     //UPDATE PRODUIT
 
-    function update($reference, $category, $subcat, $title, $description, $shortdesc, $image, $price, $stock)
+    function update($reference, $category, $subcat, $title, $description, $shortdesc, $image, $price, $stock, $id_product)
     {
         $this->pdo = new database();
         $update = $this->pdo->Update("Update products SET reference = :reference, category = :category, subcat = :subcat, title = :title, description = :description, shortdesc = :shortdesc, image = :image, price = :price, stock = :stock WHERE id_product = :id_product ",
@@ -116,6 +116,7 @@ class admin
                 'image' => $image,
                 'price' => $price,
                 'stock' => $stock,
+                'id_product' => $id_product,
             ]);
 
         return true;

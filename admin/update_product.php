@@ -5,11 +5,15 @@ require_once '../classes/admin.php';
 require_once '../classes/user.php';
 require_once '../classes/product.php';
 
-if (!empty($_GET['id']) and is_numeric($_GET['id'])) {
-    $id = htmlspecialchars($_GET['id']);
 
+//var_dump($id);
+
+//$id_product = (int)$_GET['id_product'];
+
+//var_dump($id_product);
 if (isset($_POST['submit'])) {
     $admin = new admin;
+
 
         $reference = htmlspecialchars($_POST['reference']);
         $title = htmlspecialchars($_POST['title']);
@@ -20,15 +24,18 @@ if (isset($_POST['submit'])) {
         $image = $_FILES['image'];
         $price = htmlspecialchars($_POST['price']);
         $stock = htmlspecialchars($_POST['stock']);
+        $id_product = $_POST['id_product'];
+        var_dump($id_product);
 
-        if($admin->update($reference, $category, $subcat, $title, $description, $shortdesc, $image, $price, $stock == true)){
+        $admin->update($reference, $category, $subcat, $title, $description, $shortdesc, $image, $price, $stock, $id_product );
             $success = "Product has been udpated<a href='produits.php'>Tous les produits</a>";
-        }
+
+
 
 
 }
-}
 
+var_dump($_POST);
 ?>
 
 
@@ -54,7 +61,10 @@ if (isset($_POST['submit'])) {
 <h1> Update form </h1>
 
 
-<form method="post" enctype="multipart/form-data" action="update_product.php" >
+<form method="post" enctype="multipart/form-data" action="update_product.php?id_product=1" name="id">
+
+    <label for="id_product">id_product</label><br>
+    <input name="id_product" value="<?php echo $_GET["id_product"];?>" readonly="readonly"><br /><br />
 
     <label for="reference">reference</label><br>
     <input type="text" id="reference" name="reference" placeholder="product reference" > <br><br>
@@ -84,10 +94,10 @@ if (isset($_POST['submit'])) {
     <textarea name="description" id="description" placeholder="product description" ></textarea><br><br>
 
     <label for="description">description</label><br>
-    <textarea name="shortdescription" id="shortdescription" placeholder="product short description" ></textarea><br><br>
+    <textarea name="shortdesc" id="shortdesc" placeholder="product short description" ></textarea><br><br>
 
     <label for="picture">picture</label><br>
-    <input type="file" id="picture" name="picture"><br><br>
+    <input type="file" id="image" name="image"><br><br>
 
     <label for="price">price</label><br>
     <input type="text" id="price" name="price" placeholder="product price"><br><br>

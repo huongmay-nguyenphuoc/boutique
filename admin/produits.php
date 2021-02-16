@@ -57,14 +57,14 @@ $admin = new admin;
 
               </form>
           </td>
-          <td><a href="update_product.php?id_product= <?= $product['id_product'] ?>"> Modifier </a></td>
+          <?php echo "id =" . $product['id_product'];?>
+          <td><a href="update_product.php?id_product=<?= $product['id_product'] ?>"> Modifier </a></td>
       </tr>
 <?php } ?>
 
 </tbody>
 
   </table>
-
 
 
 
