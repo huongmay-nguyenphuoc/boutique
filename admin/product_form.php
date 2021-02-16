@@ -4,7 +4,7 @@ require_once '../classes/admin.php';
 
 require_once '../classes/user.php';
 
-session_start();
+
 
 /*
 if(!isset($_SESSION['id']) OR $_SESSION['id'] != 1){
@@ -14,12 +14,11 @@ if(!isset($_SESSION['id']) OR $_SESSION['id'] != 1){
 */
 
 
-if(isset($_POST['submit'])){
+if(isset($_POST['submit'])) {
 
     $admin = new admin();
 
 
-    if (!empty($_POST)) {
 
         $reference = htmlspecialchars($_POST['reference']);
         $title = htmlspecialchars($_POST['title']);
@@ -27,23 +26,23 @@ if(isset($_POST['submit'])){
         $subcat = htmlspecialchars($_POST['subcat']);
         $description = htmlspecialchars($_POST['description']);
         $shortdesc = htmlspecialchars($_POST['shortdesc']);
-        $file = $_FILES['file'];
         $price = htmlspecialchars($_POST['price']);
         $stock = htmlspecialchars($_POST['stock']);
+        $image = htmlspecialchars($_FILES['image']);
+        var_dump($_POST);
 
 
-    }
 
 
-if(empty($errors)){
+           if( $admin->add($reference, $category, $subcat, $title, $description, $shortdesc, $price, $stock, $image) == true) {
+               $success = "Product created. <a href='produits.php'>Log in</a>";
+           }
 
-    $admin->add($reference, $category, $subcat, $title, $description, $shortdesc, $file, $price, $stock);
-    $success = "Product created. <a href='produits.php'>Log in</a>";
+
+var_dump($admin);
+
 
 }
-
-}
-
 
 
 ?>

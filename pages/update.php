@@ -59,7 +59,7 @@ if(isset($_POST['submit'])){
     }
 
 
-
+/*
     if(isset($_FILES['avatar']) AND !empty($_FILES['avatar']['name']))
 
     {
@@ -97,7 +97,7 @@ if(isset($_POST['submit'])){
             $erreur = "Votre photo de profil ne doit pas dépasser 2Mo";
         }
     }
-
+*/
     if(empty($errors)){
 
         $_SESSION['user']->update($login, $password, $lastname, $firstname, $email, $city, $zip, $adress);

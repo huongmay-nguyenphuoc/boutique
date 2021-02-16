@@ -6,10 +6,9 @@ require_once '../classes/user.php';
 require_once '../classes/product.php';
 
 
-
-session_start();
-
 $admin = new admin;
+
+
 
 
 //var_dump($admin->allProducts());
