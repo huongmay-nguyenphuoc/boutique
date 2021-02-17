@@ -42,10 +42,10 @@ article {
 div {
     height: 100%;
     width: 50%;
-    background: url("../photo/style/cloud1.png");
+    /*background: url("../photo/style/cloud1.png");*/
 }
 
-div a {
+.catLink {
     height: 100%;
     width: 100%;
     align-items: center;
@@ -55,7 +55,7 @@ div a {
     transition: 0.5s;
 }
 
-a:hover {
+.catLink:hover {
     opacity: 1;
 }
 
