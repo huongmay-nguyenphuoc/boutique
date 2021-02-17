@@ -40,7 +40,7 @@ if(isset($_POST['submit'])){
 
     if($validator->passwordStrenght($password) == 0){
 
-        $errors[] = "Password needs to contain min a number";
+        $errors[] = "Password needs to contain min 1 number";
     }
 
     if(empty($errors)){

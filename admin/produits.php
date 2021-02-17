@@ -26,12 +26,13 @@ $admin = new admin;
 
       <tr>
 
-          <th>id_order</th>
-          <th>id_member</th>
-          <th>amount</th>
-          <th>description</th>
-          <th>date_register</th>
-          <th>state</th>
+          <th>category</th>
+          <th>subcategory</th>
+          <th>title</th>
+          <th>short description</th>
+          <th>price</th>
+          <th>image</th>
+          <th>stock</th>
           <th>modifier</th>
 
       </tr>
@@ -43,11 +44,11 @@ $admin = new admin;
 
       <tr>
           <td><?=  $product['category']?></td>
-          <td><?=  $product['subcat']?></td>
+          <td><?=  $product['subcategory']?></td>
           <td><?=  $product['title']?></td>
-          <td><?=  $product['description']?></td>
           <td><?=  $product['shortdesc']?></td>
           <td><?=  $product['price']?></td>
+          <td><img height="100px" src="../productPics/<?=$product['image']?>"</td>
           <td><?=  $product['stock']?></td>
           <?php echo "id =" . $product['id_product'];?>
           <td>
