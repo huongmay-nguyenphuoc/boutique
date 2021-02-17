@@ -15,6 +15,7 @@ class user
     private $zip;
     private $adress;
     private $status;
+    private $avatar;
     private $pdo;
 
     function __construct()
@@ -28,13 +29,13 @@ class user
     {
         $this->pdo->Insert('Insert into users (login, password, lastname, firstname, email, city, zip, adress) values ( :login , :password, :lastname, :firstname, :email, :city, :zip, :adress )',
             ['login' => $login,
-            'password' => password_hash($password, PASSWORD_BCRYPT, ["cost" => 10]),
-            'lastname' => $lastname,
-            'firstname' => $firstname,
-            'email' => $email,
-            'city' =>$city,
-            'zip' => $zip,
-            'adress' => $adress,
+                'password' => password_hash($password, PASSWORD_BCRYPT, ["cost" => 10]),
+                'lastname' => $lastname,
+                'firstname' => $firstname,
+                'email' => $email,
+                'city' => $city,
+                'zip' => $zip,
+                'adress' => $adress,
             ]);
         return $login;
     }
@@ -46,32 +47,46 @@ class user
             ['login' => $login,]);
         $this->id_member = $requser[0]['id_member'];
         $this->login = $requser[0]['login'];
-        $this->status =  $requser[0]['status'];
+        $this->status = $requser[0]['status'];
         $this->lastname = $requser[0]['lastname'];
         $this->firstname = $requser[0]['firstname'];
-        $this->email =  $requser[0]['email'];
+        $this->email = $requser[0]['email'];
         $this->city = $requser[0]['city'];
         $this->zip = $requser[0]['zip'];
-        $this->adress =  $requser[0]['adress'];
+        $this->adress = $requser[0]['adress'];
+        $this->avatar = $requser[0]['avatar'];
         return $requser;
     }
 
     //UPDATE
-    function update($login, $password, $lastname, $firstname, $email, $city, $zip, $adress)
+    function update($login, $password, $lastname, $firstname, $email, $city, $zip, $adress, $image)
     {
         $this->pdo = new database();
-        $update = $this->pdo->Update("Update users SET login = :login, password = :password, lastname = :lastname, firstname = :firstname, email = :email, city = :city, zip = :zip, adress = :adress WHERE id_member = $this->id_member ",
-            ['login' => $login, 
-            'password' => password_hash($password, PASSWORD_BCRYPT, ["cost" => 10]),
-            'lastname' => $lastname,
-            'firstname' => $firstname,
-            'email' => $email,
-            'city' =>$city,
-            'zip' => $zip,
-            'adress' => $adress,
+        $update = $this->pdo->Update("Update users SET login = :login, password = :password, lastname = :lastname, firstname = :firstname, email = :email, city = :city, zip = :zip, adress = :adress, avatar = :image WHERE id_member = $this->id_member ",
+            ['login' => $login,
+                'password' => password_hash($password, PASSWORD_BCRYPT, ["cost" => 10]),
+                'lastname' => $lastname,
+                'firstname' => $firstname,
+                'email' => $email,
+                'city' => $city,
+                'zip' => $zip,
+                'adress' => $adress,
+                'image' => $image
             ]);
         $this->login = $login;
+        $this->avatar = $image;
+        $this->lastname = $lastname;
+        $this->firstname = $firstname;
+        $this->email = $email;
+        $this->zip = $zip;
+        $this->adress = $adress;
+        $this->city = $city;
         return $update;
+    }
+
+    function getAvatar()
+    {
+        return $this->avatar;
     }
 
     //GETID
@@ -88,7 +103,8 @@ class user
 
     //GET STATUS
 
-    public function getStatus(){
+    public function getStatus()
+    {
 
         return $this->status;
 
@@ -96,7 +112,8 @@ class user
 
     //GET PRENOM
 
-    public function getFirstname(){
+    public function getFirstname()
+    {
 
         return $this->firstname;
 
@@ -105,7 +122,8 @@ class user
     //GET NOM
 
 
-    public function getLastname(){
+    public function getLastname()
+    {
 
         return $this->lastname;
 
@@ -113,7 +131,8 @@ class user
 
     //GET ADRESS
 
-    public function getAdress(){
+    public function getAdress()
+    {
 
         return $this->adress;
 
@@ -121,7 +140,8 @@ class user
 
     //GET ZIP
 
-    public function getZip(){
+    public function getZip()
+    {
 
         return $this->zip;
 
@@ -129,7 +149,8 @@ class user
 
     //GET CITY
 
-    public function getCity(){
+    public function getCity()
+    {
 
         return $this->city;
 
@@ -137,27 +158,23 @@ class user
 
     //GET EMAIL
 
-    public function getEmail(){
+    public function getEmail()
+    {
 
         return $this->email;
 
     }
 
 
-
     //RECUPERER ORDERS
-    public function ordersUser($id_member)
+    public function ordersUser()
     {
-        $orders_user = $this->pdo->Select("Select order.date_register, order.id_order, order_details.id_order_details, order.amount,  order_details.quantity, order_details.price, order.state
-FROM `order` 
-INNER JOIN order_details ON order.id_order = order_details.id_order_details
-WHERE id_member = :id_member 
-ORDER BY order.state DESC",
-            ['id_member' => $this->id_member]);
+        $this->pdo = new database();
 
+        $orders_user = $this->pdo->Select("Select * FROM `order` WHERE id_member = :id_member ORDER BY order.state DESC",
+            ['id_member' => 1]);
         return $orders_user;
     }
-
 
     //SUPPRIMER COMPTE????
 

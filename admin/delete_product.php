@@ -1,27 +1,13 @@
 <?php
-
 require_once '../classes/admin.php';
-require_once '../classes/product.php';
-
-session_start();
-
-
-var_dump($_POST);
-
 $admin = new admin;
-var_dump($admin);
-
+//var_dump($admin);
+//var_dump($_POST);
 $id = htmlspecialchars($_POST['id']);
-
-echo $id;
-
 if (isset($_POST['confirmremoveProduct'])) {
     $admin->deleteProduct($id);
-    var_dump($admin->deleteProduct($id));
     header("Location: produits.php");
 }
-
-
 
 
 ?>
@@ -30,13 +16,11 @@ if (isset($_POST['confirmremoveProduct'])) {
 <html>
 
 <div>
-
     <form method="post" action="delete_product.php">
         <input type="hidden" value="<?= $id ?>" name="id">
         <input type="submit" name="confirmremoveProduct" value="Are you sure?">
     </form>
 </div>
-
 
 </html>
 

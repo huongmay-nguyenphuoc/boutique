@@ -3,19 +3,12 @@
 require_once '../classes/user.php';
 require_once '../classes/order.php';
 
-session_start();
 
-if (isset($_SESSION['user'])) {
-
-
-}
-
-
-else{
-
+if (!isset($_SESSION['user'])) {
     header('location: connexion.php');
-
 }
+
+var_dump($_SESSION);
 ?>
 
 
@@ -23,58 +16,38 @@ else{
 
 <main class="center mainSpace">
 
-        <article class="container">
-            <h3><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h3>
-            <a class="waves-effect waves-light white black-text btn-small" href="update.php">Modifier vos
-                identifiants</a>
-        </article>
+    <article class="container">
+        <h3><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h3>
+        <a href="update.php">Modifier vos identifiants</a>
+    </article>
 
     <html lang="fr">
 
     <body>
-
+    <p>AVATAR</p>
+    <img height="100px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
     <table>
-
         <thead>
-
         <tr>
             <th>date_register</th>
-            <th>id_order</th>
-            <th>id_order_details</th>
-            <th>amount</th>
-            <th>quantity</th>
-            <th>price</th>
+            <th>total</th>
             <th>state</th>
 
-
         </tr>
-
         </thead>
         <tbody>
-
-        <?php foreach($_SESSION['user']->ordersUser() as $orders){ ?>
-
+        <?php foreach ($_SESSION['user']->ordersUser() as $orders): ?>
             <tr>
-                <td><?=  $orders['date_register']?></td>
-                <td><?=  $orders['id_order']?></td>
-                <td><?=  $orders['id_order_details']?></td>
-                <td><?=  $orders['amount']?></td>
-                <td><?=  $orders['quantity']?></td>
-                <td><?=  $orders['price']?></td>
-                <td><?=  $orders['state']?></td>
-
-
+                <td><?= $orders['date_register'] ?></td>
+                <td><?= $orders['amount'] ?></td>
+                <td><?= $orders['state'] ?></td>
             </tr>
-        <?php } ?>
-
+        <?php endforeach; ?>
         </tbody>
-
     </table>
 
     </body>
     </html>
-
-
 
 
 </main>
