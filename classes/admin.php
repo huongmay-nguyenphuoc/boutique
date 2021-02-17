@@ -14,12 +14,28 @@ class admin
     {
         $this->pdo = new database();
     }
-/************************PRODUIT****************************/
+
+    /************************PRODUIT****************************/
+
+    //CHECK REFERENCE EXISTS
+    function checkProductExists($reference, $title)
+    {
+        $product = $this->pdo->Select('SELECT reference, title FROM products WHERE reference = :ref or title = :title',
+            ['ref' => $reference, 'title'=> $title]);
+
+        if (!empty($product)) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 
     //ENREGISTRER PRODUITS
     function add($reference, $category, $subcat, $title, $description, $shortdesc, $price, $stock, $image)
     {
-        $this->pdo->Insert('Insert into `products` (reference, category, subcat, title, description, shortdesc, price, stock, image) values ( :reference , :category, :subcat, :title, :description, :shortdesc, :price, :stock, :image)',
+        $this->pdo->Insert('Insert into `products` (reference, category, subcategory, title, description, shortdesc, price, stock, image) values( :reference , :category, :subcat, :title, :description, :shortdesc, :price, :stock, :image)',
             ['reference' => $reference,
                 'category' => $category,
                 'subcat' => $subcat,
@@ -33,72 +49,14 @@ class admin
         return true;
     }
 
-/*
-        $this->checkPicture();
-
-//        $this->setPicture();
-        $photo = $_POST['title'] . "." . $this->extension;
-
-        if (empty($error)) {
-            $add = $this->pdo->Insert('Insert into products(reference, title, category, subcat, description, shortdesc, file, price, stock) VALUES(:reference , :category, :subcat, :title, :description, :shortdesc, :file, :price, :stock) ',
-                ['reference' => $reference,
-                    'category' => $category,
-                    'subcat' => $subcat,
-                    'title' => $title,
-                    'description' => $description,
-                    'shortdesc' => $shortdesc,
-                    'file' => $file,
-                    'price' => $price,
-                    'stock' => $stock,
-                ]);
-
-            $idProduct = $this->lastInsertId();
-
-            $arrayTaille = ['S', 'M', 'L', 'XL'];
-
-            foreach ($arrayTaille as $taille) {
-                if (empty($_POST[$taille])) {
-                    $currentTaille = 0;
-                } else {
-                    $currentTaille = $_POST[$taille];
-                }
-
-                $this->pdo->Insert('Insert into stock(id_product, taille, stock) VALUES(?,?,?) ', [$idProduct, $taille, $currentTaille]);
-            }
-        } else {
-            echo $error;
-        }
-
-
-    }
-
-    public function checkPicture()
-    {
-        $error = '';
-        $extensionsValides = array('jpg', 'jpeg', 'png');
-        $this->extension = strtolower(substr(strrchr($_FILES['file']['name'], '.'), 1));
-
-        if (in_array($this->extension, $extensionsValides)) {
-            $chemin = "../photo/picture/" . $_POST['title'] . "." . $this->extension;
-            $resultat = move_uploaded_file($_FILES['file']['tmp_name'], $chemin);
-        } else {
-            $error = 'pas bon format';
-
-        }
-
-        return $error;
-
-    }
-*/
 
     //RECUPERER ALL PRODUCTS
     public function allProducts()
     {
         $allproducts = $this->pdo->Select("SELECT * FROM products ORDER BY products.category DESC");
 
-            return $allproducts;
+        return $allproducts;
     }
-
 
 
     //UPDATE PRODUIT
@@ -125,7 +83,8 @@ class admin
 
     //SUPPRIMER PRODUIT
 
-    public function deleteProduct($id_product){
+    public function deleteProduct($id_product)
+    {
         $delete_product = $this->pdo->Delete("Delete from products WHERE id_product = :id_product",
             ['id_product' => $id_product,
             ]);
@@ -138,7 +97,7 @@ class admin
 
     function productExists($id)
     {
-        $product = $this->pdo->Select('SELECT id_product FROM products WHERE id_product ="' . $id . '"');
+        $product = $this->pdo->Select('SELECT id_product FROM products WHERE id_product = "' . $id . '"');
         if (!empty($product)) {
             return $product;
         } else {
@@ -158,9 +117,9 @@ class admin
     }
 
 
-
     //UPDATE STATE
-    public function updateState($state, $id_order){
+    public function updateState($state, $id_order)
+    {
 
         $this->pdo = new database();
         $update_state = $this->pdo->Update("Update `order` SET state = :state WHERE id_order = :id_order ",
@@ -200,7 +159,7 @@ class admin
     //ENREGISTRER CAT
     function addCat($name)
     {
-        $this->pdo->Insert('Insert into category (name) values ( :name)',
+        $this->pdo->Insert('Insert into category(name) values( :name)',
             ['name' => $name,
 
             ]);
@@ -220,7 +179,6 @@ class admin
     }
 
 
-
     //UPDATE SUBCATEGORY
 
     function updateSubcat($name)
@@ -235,12 +193,10 @@ class admin
     }
 
 
-
-
     //ENREGISTRER SUBCAT
     function addSubcat($name)
     {
-        $this->pdo->Insert('Insert into subcategory (name) values ( :name)',
+        $this->pdo->Insert('Insert into subcategory(name) values( :name)',
             ['name' => $name,
 
             ]);
@@ -303,7 +259,7 @@ class admin
         return $this->stock;
     }
 
-/******************************MEMBRES*********************************/
+    /******************************MEMBRES*********************************/
 
 
     //RECUPERER TOUS LES MEMBRES
@@ -316,10 +272,10 @@ class admin
     }
 
 
-
 //SUPPRIMER MEMBER
 
-    public function deleteUser($id_member){
+    public function deleteUser($id_member)
+    {
         $delete_user = $this->pdo->Delete("Delete from users WHERE id_member = :id_member",
             ['id_member' => $id_member,
             ]);
