@@ -3,7 +3,7 @@
 require_once '../classes/admin.php';
 require_once '../classes/user.php';
 
-session_start();
+
 $admin = new admin;
 
 //var_dump($admin->allMembers());
@@ -42,10 +42,17 @@ $admin = new admin;
         <td><?=  $user['city'];?></td>
         <td><?=  $user['zip'];?></td>
         <td><?=  $user['adress'];?></td>
-        <td><?=  ;?></td>
+        <td>
+            <form method='post' action='delete_member.php'>
+                <input type="hidden" value="<?= $user['id_member'] ?>" name="id">
+                <input type='submit' name='removeUser' value='Delete user'>
+
+            </form>
+        </td>
 
     </tr>
-
+<?php //var_dump($_POST);
+        //var_dump($user);?>
     <?php } ?>
 </table>
 

@@ -1,13 +1,9 @@
 <?php
 
-//require_once("includes/init.inc.php");
-
 require_once '../classes/user.php';
 require_once '../classes/validator.php';
 
 session_start();
-
-
 
 if(isset($_POST['submit'])){
 
@@ -24,30 +20,26 @@ if(isset($_POST['submit'])){
     $adress = htmlspecialchars($_POST['adress']);
 
     if($validator->userExists($login) == 1){
-
         $errors[] = "This login already exists!";
     }
 
     if($validator->emailExists($email) == 1){
-
         $errors[] = "This email already exists!";
     }
 
     if($validator->passwordConfirm($password, $passwordcheck) == 0){
-        
-        $errors[] = "Problems with the password";
+        $errors[] = "The two passwords are not the same.";
     }
 
     if($validator->passwordStrenght($password) == 0){
-
-        $errors[] = "Password needs to contain min a number";
+        $errors[] = "Password needs to contain at least 1 number";
     }
 
     if(empty($errors)){
         $user = new user();
         $user->register($login, $password, $lastname, $firstname, $email, $city, $zip, $adress);
         $success = "Account created. <a href='connexion.php'>Log in</a>";
-       
+       var_dump($user);
     }
 
 }
@@ -59,22 +51,20 @@ if(isset($_POST['submit'])){
 <html lang="en">
 
 
-<main class="valign-wrapper container">
-    <article class="row">
-        <h3 class="center"><em>Inscription</em></h3>
+<main>
+        <h3><em>Inscription</em></h3>
 
 
 <!--Alerte (erreur ou succès)-->
 <?php if (!empty($errors)): ?>
         <div>
-            <?php foreach ($errors as $error) {
-                echo '<p class="red-text">' . $error . '</p>';
-            }
-            ?>
+            <?php foreach ($errors as $error) :?>
+                <p><?= $error?></p>
+            <?php endforeach;?>
         </div>
     <?php elseif (isset($success)): ?>
         <div>
-            <p class="white-text"><?php echo $success; ?></p>
+           <p><?= $success ?></p>
         </div>
     <?php endif; ?>
 
@@ -89,8 +79,8 @@ if(isset($_POST['submit'])){
     
 
     <label for="password">Password</label><br>
-    <input type="password" id="password" name="password" required="required"><br><br>
-    <span class="helper-text">Password needs to contain min a number.</span>
+    <input type="password" id="password" name="password" required="required"><br>
+    <span>Password needs to contain at least one number.</span><br><br>
 
     <label for="passwordcheck">Password check</label><br>
     <input type="password" id="passwordcheck" name="passwordcheck" required="required"><br><br>
@@ -113,9 +103,7 @@ if(isset($_POST['submit'])){
     <label for="adress">Adress</label><br>
     <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}" title="caractères acceptés :  a-zA-Z0-9-_." value="<?php if (isset($_POST['adress'])) { echo htmlspecialchars($_POST['adress']);} ?>"></textarea><br><br>
  
-    <button class="btn waves-effect waves-light black" type="submit" name="submit">
-                <i class="material-icons right">send</i>
-            </button>
+    <button type="submit" name="submit">send</button>
 </form>
  
 

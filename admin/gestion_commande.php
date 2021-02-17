@@ -1,67 +1,93 @@
 <?php
 
 require_once '../classes/admin.php';
+require_once '../classes/product.php';
+require_once '../classes/order.php';
 
-require_once '../classes/user.php';
 
-session_start();
+$admin = new admin;
 
-function scoreByMoves($level)
-{
-    $topMoves = $this->pdo->Select("SELECT login, score.id as 'partie n°', nb_coup as 'coups' FROM score inner join utilisateurs on score.id_utilisateur = utilisateurs.id WHERE niveau = :level ORDER BY nb_coup ASC LIMIT 10",
-        ['level' => $level]);
-    return $topMoves;
-}
 
-public function scoreByTime($level)
-{
-    $toptime = $this->pdo->Select("SELECT login, score.id as 'partie n°', time as 'temps' FROM score inner join utilisateurs on score.id_utilisateur = utilisateurs.id WHERE niveau = :level ORDER BY time ASC LIMIT 10",
-        ['level' => $level]);
-    return $toptime;
-}
 
-if(!isset($_SESSION['id']) OR $_SESSION['id'] != 1){
-    exit();
-    
+
+    if (isset($_POST['submit'])) {
+
+
+            $state = htmlspecialchars($_POST['state']);
+            $id_order = htmlspecialchars($_POST['id']);
+
+            $admin->updateState($state, $id_order);
+            $success = "State has been udpated<a href='gestion_commande.php'>All orders</a>";
+
+
+
+
 }
 ?>
 
-<html>
+<html lang="fr">
 
+<?php include '../includes/header.php'; ?>
 
-<!--si niveau sélectionné a des scores-->
-<?php else : ?>
-<section class="sectionFame">
-    <?php foreach ($twoTables as $name => $oneTable) : ?>
-    <div class="divtableFame">
-        <table class='centered tableFame'>
-            <h6><em>Top 10 par <?php echo $name; ?></em></h6>
-            <?php $i = 1; ?>
-                                <?php foreach ($oneTable as $row) {
-            if ($i == 1) {
-            echo "<thead>";
-            foreach ($row as $key => $element) {
-            echo "<th>" . $key . "</th>";
-            }
-            echo "</thead>";
-            echo "<tbody>";
-            $i = 0;
-            }
-            echo "<tr>";
-            foreach ($row as $cell) {
-            echo "<td>" . $cell . "</td>";
-            }
-            echo "</tr>";
-            }
-            echo "</tbody>";
-            ?>
-        </table>
-    </div>
-    <?php endforeach; ?>
-</section>
-<?php endif; ?>
+<table>
+
+    <thead>
+
+    <tr>
+
+        <th>id_order</th>
+        <th>id_member</th>
+        <th>amount</th>
+        <th>date_register</th>
+        <th>supprimer</th>
+        <th>state</th>
 
 
 
+    </tr>
 
+    </thead>
+    <tbody>
+
+    <?php foreach($admin->allOrders() as $orders){ ?>
+
+        <tr>
+            <td><?=  $orders['id_order']?></td>
+            <td><?=  $orders['id_member']?></td>
+            <td><?=  $orders['amount']?></td>
+            <td><?=  $orders['date_register']?></td>
+            <?php echo "id =" . $orders['id_order'];?>
+            <td>
+                <form method='post' action='delete_order.php'>
+                    <input type="hidden" value="<?= $orders['id_order'] ?>" name="id">
+                    <input type='submit' name='removeOrder' value='Delete order'>
+                </form>
+            </td>
+
+            <td>
+                <form method='post' action='gestion_commande.php'>
+                    <input type="hidden" value="<?= $orders['id_order'] ?>" name="id">
+                    <label for="state">state</label><br>
+                    <select name="state" id="state" required>
+                        <option value=''> ----- Choose ----- </option>
+                        <option value='being processed'> being processed </option>
+                        <option value='send'> send </option>
+                        <option value='delivered'> delivered </option>
+                    </select><br><br>
+                    <button class="btn waves-effect waves-light black" type="submit" name="submit">
+                        <i class="material-icons right">send</i>
+                    </button>
+                </form>
+            </td>
+
+        </tr>
+    <?php } ?>
+
+    </tbody>
+
+</table>
+
+</body>
 </html>
+
+

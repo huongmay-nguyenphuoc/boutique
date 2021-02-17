@@ -1,79 +1,65 @@
-
 <?php
 
 require_once '../classes/admin.php';
-require_once '../classes/user.php';
 require_once '../classes/product.php';
 
 
-
-session_start();
-
 $admin = new admin;
 
-
-//var_dump($admin->allProducts());
 ?>
 
 
-
 <html lang="fr">
-  
-  <body>
 
-  <table>
+<body>
 
-      <thead>
+<table>
 
-      <tr>
+    <thead>
 
-          <th>category</th>
-          <th>subcategory</th>
-          <th>title</th>
-          <th>description</th>
-          <th>shortdesc</th>
-          <th>price</th>
-          <th>stock</th>
+    <tr>
 
-          <th>supprimer</th>
-          <th>modifier</th>
+        <th>category</th>
+        <th>subcategory</th>
+        <th>title</th>
+        <th>short description</th>
+        <th>price</th>
+        <th>image</th>
+        <th>stock</th>
+        <th>modifier</th>
 
-      </tr>
+    </tr>
 
-      </thead>
-<tbody>
+    </thead>
+    <tbody>
 
-          <?php foreach($admin->allProducts() as $product){ ?>
+    <?php foreach ($admin->allProducts() as $product) : ?>
+        <tr>
+            <td><?= $product['category'] ?></td>
+            <td><?= $product['subcategory'] ?></td>
+            <td><?= $product['title'] ?></td>
+            <td><?= $product['shortdesc'] ?></td>
+            <td><?= $product['price'] ?></td>
+            <td><img height="100px" src="../productPics/<?= $product['image'] ?>"</td>
+            <td><?= $product['stock'] ?></td>
+            <td><a href="update_product.php?id_product=<?= $product['id_product'] ?>"> Modifier </a></td>
+            <td>
+                <form method='post' action='delete_product.php'>
+                    <input type="hidden" value="<?= $product['id_product'] ?>" name="id">
+                    <input type='submit' name='removeProduct' value='Delete product'>
+                </form>
+            </td>
+        </tr>
+    <?php endforeach; ?>
 
-      <tr>
-          <td><?=  $product['category']?></td>
-          <td><?=  $product['subcat']?></td>
-          <td><?=  $product['title']?></td>
-          <td><?=  $product['description']?></td>
-          <td><?=  $product['shortdesc']?></td>
-          <td><?=  $product['price']?></td>
-          <td><?=  $product['stock']?></td>
+    </tbody>
 
-          <td class="ajax-delete" data-id="<?= $product['id_product'] ?>"
-              data-name="product_id"><i
-                      class="fas fa-trash"></i></td>
-          <td>
-
-          <td><a href="update_product.php"> Modifier </a></td>
-      </tr>
-<?php } ?>
-
-</tbody>
-
-  </table>
+</table>
 
 
-
-
-
-  <article class="container">
-            <a href="product_form.php"> Add new products </a>
-        </article>
-  </body>
+<article class="container">
+    <a href="product_form.php"> Add new product</a>
+</article>
+</body>
 
 </html>
