@@ -27,7 +27,7 @@ $admin = new admin;
 
 <html lang="fr">
 
-<body>
+<?php include '../includes/header.php'; ?>
 
 <table>
 
