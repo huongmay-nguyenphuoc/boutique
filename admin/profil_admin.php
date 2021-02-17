@@ -62,7 +62,7 @@ if(isset($_POST['submit'])){
 <html lang="en">
 
 
-<main>
+<?php include '../includes/header.php'; ?>
 
     <h3 class="center"><em>Update</em></h3>
 
