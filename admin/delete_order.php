@@ -19,7 +19,7 @@ echo $id;
 if (isset($_POST['confirmremoveOrder'])) {
     $admin->deleteProduct($id);
     var_dump($admin->deleteProduct($id));
-    header("Location: gestion_commande.php");
+    //header("Location: gestion_commande.php");
 }
 
 

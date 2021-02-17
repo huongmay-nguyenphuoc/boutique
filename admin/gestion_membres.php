@@ -3,7 +3,7 @@
 require_once '../classes/admin.php';
 require_once '../classes/user.php';
 
-session_start();
+
 $admin = new admin;
 
 //var_dump($admin->allMembers());

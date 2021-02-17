@@ -17,7 +17,7 @@ $admin = new admin;
             $id_order = htmlspecialchars($_POST['id']);
 
             $admin->updateState($state, $id_order);
-            $success = "State has been udpated<a href='gestion_membres.php'>All orders</a>";
+            $success = "State has been udpated<a href='gestion_commande.php'>All orders</a>";
 
 
 
@@ -68,7 +68,7 @@ $admin = new admin;
                 <form method='post' action='gestion_commande.php'>
                     <input type="hidden" value="<?= $orders['id_order'] ?>" name="id">
                     <label for="state">state</label><br>
-                    <select name="state" id="state">
+                    <select name="state" id="state" required>
                         <option value=''> ----- Choose ----- </option>
                         <option value='being processed'> being processed </option>
                         <option value='send'> send </option>

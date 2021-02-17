@@ -35,7 +35,7 @@ if(isset($_POST['submit'])) {
 
 
            if( $admin->add($reference, $category, $subcat, $title, $description, $shortdesc, $price, $stock, $image) == true) {
-               $success = "Product created. <a href='produits.php'>Log in</a>";
+               $success = header("Location: produits.php");
            }
 
 

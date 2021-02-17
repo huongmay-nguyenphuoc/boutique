@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
         $price = htmlspecialchars($_POST['price']);
         $stock = htmlspecialchars($_POST['stock']);
         $id_product = $_POST['id_product'];
-        var_dump($id_product);
+        //var_dump($id_product);
 
         $admin->update($reference, $category, $subcat, $title, $description, $shortdesc, $image, $price, $stock, $id_product );
             $success = "Product has been udpated<a href='produits.php'>Tous les produits</a>";
@@ -61,7 +61,7 @@ var_dump($_POST);
 <h1> Update form </h1>
 
 
-<form method="post" enctype="multipart/form-data" action="update_product.php?id_product=1" name="id">
+<form method="post" enctype="multipart/form-data" action="update_product.php?id_product=11" name="id">
 
     <label for="id_product">id_product</label><br>
     <input name="id_product" value="<?php echo $_GET["id_product"];?>" readonly="readonly"><br /><br />
