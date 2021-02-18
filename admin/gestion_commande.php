@@ -8,8 +8,6 @@ require_once '../classes/order.php';
 $admin = new admin;
 
 
-
-
     if (isset($_POST['submit'])) {
 
 
@@ -54,7 +52,7 @@ $admin = new admin;
             <td><?=  $orders['id_member']?></td>
             <td><?=  $orders['amount']?></td>
             <td><?=  $orders['date_register']?></td>
-            <?php echo "id =" . $orders['id_order'];?>
+            <?php //echo "id =" . $orders['id_order'];?>
             <td>
                 <form method='post' action='delete_order.php'>
                     <input type="hidden" value="<?= $orders['id_order'] ?>" name="id">

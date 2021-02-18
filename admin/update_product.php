@@ -53,7 +53,7 @@ if (isset($_POST['submit'])) {
             $id_product = $_POST['id_product'];
 
 
-            var_dump($admin->update($reference, $category, $subcat, $title, $image, $description, $shortdesc, $price, $stock, $id_product));
+            $admin->update($reference, $category, $subcat, $title, $image, $description, $shortdesc, $price, $stock, $id_product);
             $success = "Product has been updated<a href='produits.php'>Tous les produits</a>";
 
 
@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
-var_dump($_POST);
+
 ?>
 
 

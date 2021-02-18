@@ -57,9 +57,11 @@ $admin = new admin;
 </table>
 
 
-<article class="container">
     <a href="product_form.php"> Add new product</a>
-</article>
+
+
+
+
 </body>
 
 </html>

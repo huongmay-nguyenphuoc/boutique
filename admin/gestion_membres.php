@@ -6,7 +6,6 @@ require_once '../classes/user.php';
 
 $admin = new admin;
 
-//var_dump($admin->allMembers());
 ?>
 
 
@@ -51,8 +50,7 @@ $admin = new admin;
         </td>
 
     </tr>
-<?php //var_dump($_POST);
-        //var_dump($user);?>
+
     <?php } ?>
 </table>
 

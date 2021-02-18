@@ -14,10 +14,18 @@ class admin
         $this->pdo = new database();
     }
 
+
+
+
+
+
+
+
+
     /************************PRODUIT****************************/
 
     //CHECK REFERENCE EXISTS
-    function checkProductExists($reference, $title)
+    public function checkProductExists($reference, $title)
     {
         $product = $this->pdo->Select('SELECT reference, title FROM products WHERE reference = :ref or title = :title',
             ['ref' => $reference, 'title' => $title]);
@@ -29,7 +37,7 @@ class admin
     }
 
     //ENREGISTRER PRODUITS
-    function add($reference, $category, $subcat, $title, $description, $shortdesc, $price, $stock, $image)
+    public function add($reference, $category, $subcat, $title, $description, $shortdesc, $price, $stock, $image)
     {
         $this->pdo->Insert('Insert into `products` (reference, category, subcategory, title, description, shortdesc, price, stock, image) values( :reference , :category, :subcat, :title, :description, :shortdesc, :price, :stock, :image)',
             ['reference' => $reference,
@@ -54,7 +62,7 @@ class admin
     }
 
     /*RECUPERE INFOS D'UN PRODUIT ET CREE UNE INSTANCE PRODUIT*/
-    function selectProduct($id)
+    public function selectProduct($id)
     {
         $data = $this->pdo->Select('SELECT * FROM products WHERE id_product ="' . $id . '"');
         $data = $data[0];
@@ -64,7 +72,7 @@ class admin
 
     //UPDATE PRODUIT
 
-    function update($reference, $category, $subcat, $title, $image, $description, $shortdesc, $price, $stock, $id_product)
+    public function update($reference, $category, $subcat, $title, $image, $description, $shortdesc, $price, $stock, $id_product)
     {
         $this->pdo = new database();
         $update = $this->pdo->Update("Update products SET reference = :reference, category = :category, subcategory = :subcat, title = :title, description = :description, shortdesc = :shortdesc, price = :price, stock = :stock, image = :image WHERE id_product = :id_product ",
@@ -93,9 +101,10 @@ class admin
     }
 
 
+
     /*VERIFIE EXISTENCE PRODUIT*/
 
-    function productExists($id)
+   public function productExists($id)
     {
         $product = $this->pdo->Select('SELECT id_product FROM products WHERE id_product = "' . $id . '"');
         if (!empty($product)) {
@@ -104,6 +113,17 @@ class admin
             return false;
         }
     }
+
+
+
+
+
+
+
+
+
+
+
 
     /***********************COMMANDES****************************/
     //RECUPERER ORDERS
@@ -139,6 +159,19 @@ class admin
         return $delete_order;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     /******************************MEMBRES*********************************/
 
 
@@ -162,5 +195,8 @@ class admin
 
         return $delete_user;
     }
+
+
+
 
 }

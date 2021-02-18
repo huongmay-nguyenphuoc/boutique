@@ -5,19 +5,13 @@ require_once '../classes/user.php';
 
 session_start();
 
-
-var_dump($_POST);
-
     $admin = new admin;
-var_dump($admin);
 
     $id = htmlspecialchars($_POST['id']);
 
-echo $id;
 
     if (isset($_POST['confirmremoveUser'])) {
         $admin->deleteUser($id);
-        var_dump($admin->deleteUser($id));
         header("Location: gestion_membres.php");
     }
 

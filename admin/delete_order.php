@@ -4,22 +4,18 @@ require_once '../classes/admin.php';
 require_once '../classes/order.php';
 require_once '../classes/product.php';
 
-//session_start();
-
-
-var_dump($_POST);
 
 $admin = new admin;
-var_dump($admin);
+
 
 $id = htmlspecialchars($_POST['id']);
 
-echo $id;
+
 
 if (isset($_POST['confirmremoveOrder'])) {
+
     $admin->deleteOrder($id);
-    var_dump($admin->deleteOrder($id));
-    //header("Location: gestion_commande.php");
+    header("Location: gestion_commande.php");
 }
 
 
