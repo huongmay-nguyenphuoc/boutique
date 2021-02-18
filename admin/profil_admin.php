@@ -8,9 +8,7 @@ require_once '../classes/validator.php';
 session_start();
 //var_dump($_SESSION['user']);
 
-if(!isset($_SESSION['id']) OR $_SESSION['id'] != 1){
-    header('location:connexion.php');
-}
+
 
 if(isset($_POST['submit'])){
 
@@ -62,7 +60,7 @@ if(isset($_POST['submit'])){
 <html lang="en">
 
 
-<?php include '../includes/header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
     <h3 class="center"><em>Update</em></h3>
 

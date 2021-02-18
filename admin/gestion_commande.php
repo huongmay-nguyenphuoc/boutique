@@ -17,9 +17,7 @@ $admin = new admin;
             $id_order = htmlspecialchars($_POST['id']);
 
             $admin->updateState($state, $id_order);
-            $success = "State has been udpated<a href='gestion_commande.php'>All orders</a>";
-
-
+            $success = "State has been udpated<a href='gestion_commande.php'>All orders</a>"
 
 
 }

@@ -176,6 +176,15 @@ class user
         return $orders_user;
     }
 
+    public function ordersUserDetails($id_order)
+    {
+        $this->pdo = new database();
+
+        $orders_details = $this->pdo->Select("Select * FROM `order_details` WHERE id_order = :id_order",
+        ['id_order'=> $id_order]);
+        return $orders_details;
+    }
+
     //SUPPRIMER COMPTE????
 
 

@@ -30,20 +30,43 @@ var_dump($_SESSION);
     <?php endif; ?>
     <table>
         <thead>
-        <tr>
-            <th>date_register</th>
-            <th>total</th>
-            <th>state</th>
 
-        </tr>
         </thead>
         <tbody>
         <?php foreach ($_SESSION['user']->ordersUser() as $orders): ?>
+            <tr>
+                <th>Commande</th>
+            </tr>
+            <tr>
+                <th>date_register</th>
+                <th>total</th>
+                <th>state</th>
+
+            </tr>
             <tr>
                 <td><?= $orders['date_register'] ?></td>
                 <td><?= $orders['amount'] ?></td>
                 <td><?= $orders['state'] ?></td>
             </tr>
+
+            <tr>
+                <th>Detail</th>
+            </tr>
+
+            <?php foreach ($_SESSION['user']->ordersUserDetails($orders['id_order']) as $details) : ?>
+
+                <tr>
+                    <th>title</th>
+                    <th>price</th>
+                    <th>quantity</th>
+                </tr>
+
+                <tr>
+                    <td><?= $details['title'] ?></td>
+                    <td><?= $details['price'] ?></td>
+                    <td><?= $details['quantity'] ?></td>
+                </tr>
+            <?php endforeach; ?>
         <?php endforeach; ?>
         </tbody>
     </table>
