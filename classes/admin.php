@@ -120,6 +120,16 @@ class admin
         return $update_state;
     }
 
+
+    //SUPPRIMER ORDER
+    public function deleteOrder($id_order)
+    {
+        $delete_order = $this->pdo->Delete("Delete from `order` WHERE id_order = :id_order",
+            ['id_order' => $id_order,
+            ]);
+        return $delete_order;
+    }
+
     /******************************MEMBRES*********************************/
 
 

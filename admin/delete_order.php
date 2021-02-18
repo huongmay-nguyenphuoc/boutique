@@ -17,8 +17,8 @@ $id = htmlspecialchars($_POST['id']);
 echo $id;
 
 if (isset($_POST['confirmremoveOrder'])) {
-    $admin->deleteProduct($id);
-    var_dump($admin->deleteProduct($id));
+    $admin->deleteOrder($id);
+    var_dump($admin->deleteOrder($id));
     //header("Location: gestion_commande.php");
 }
 
