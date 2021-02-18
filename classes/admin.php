@@ -147,7 +147,7 @@ class admin
 
     public function deleteUser($id_member)
     {
-        $delete_user = $this->pdo->Delete("Delete * from users WHERE id_member = :id_member",
+        $delete_user = $this->pdo->Delete("Delete from users WHERE id_member = :id_member",
             ['id_member' => $id_member,
             ]);
 
