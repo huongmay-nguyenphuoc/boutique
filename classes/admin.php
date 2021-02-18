@@ -3,6 +3,7 @@
 require_once('database.php');
 require_once('user.php');
 require_once('order.php');
+require_once ('product.php');
 
 class admin
 {
@@ -52,13 +53,21 @@ class admin
         return $allproducts;
     }
 
+    /*RECUPERE INFOS D'UN PRODUIT ET CREE UNE INSTANCE PRODUIT*/
+    function selectProduct($id)
+    {
+        $data = $this->pdo->Select('SELECT * FROM products WHERE id_product ="' . $id . '"');
+        $data = $data[0];
+       return $data;
+    }
+
 
     //UPDATE PRODUIT
 
-    function update($reference, $category, $subcat, $title, $description, $shortdesc, $image, $price, $stock, $id_product)
+    function update($reference, $category, $subcat, $title, $image, $description, $shortdesc, $price, $stock, $id_product)
     {
         $this->pdo = new database();
-        $update = $this->pdo->Update("Update products SET reference = :reference, category = :category, subcategory = :subcat, title = :title, description = :description, shortdesc = :shortdesc, image = :image, price = :price, stock = :stock WHERE id_product = :id_product ",
+        $update = $this->pdo->Update("Update products SET reference = :reference, category = :category, subcategory = :subcat, title = :title, description = :description, shortdesc = :shortdesc, price = :price, stock = :stock, image = :image WHERE id_product = :id_product ",
             ['reference' => $reference,
                 'category' => $category,
                 'subcat' => $subcat,
