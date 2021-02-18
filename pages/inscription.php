@@ -8,7 +8,7 @@ session_start();
 if(isset($_POST['submit'])){
 
     $validator = new validator();
-
+    var_dump($_POST);
     $login = htmlspecialchars($_POST['login']);
     $password = htmlspecialchars($_POST['password']);
     $passwordcheck = htmlspecialchars($_POST['passwordcheck']);
@@ -37,7 +37,7 @@ if(isset($_POST['submit'])){
 
     if(empty($errors)){
         $user = new user();
-        $user->register($login, $password, $lastname, $firstname, $email, $city, $zip, $adress);
+       var_dump($user->register($login, $password, $lastname, $firstname, $email, $city, $zip, $adress));
         $success = "Account created. <a href='connexion.php'>Log in</a>";
        var_dump($user);
     }
@@ -101,7 +101,7 @@ if(isset($_POST['submit'])){
     <input type="text" id="zip" name="zip" placeholder="zip" pattern="[0-9]{5}" title="5 chiffres requis : 0-9" value="<?php if (isset($_POST['zip'])) { echo htmlspecialchars($_POST['zip']);} ?>"><br><br>
           
     <label for="adress">Adress</label><br>
-    <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}" title="caractères acceptés :  a-zA-Z0-9-_." value="<?php if (isset($_POST['adress'])) { echo htmlspecialchars($_POST['adress']);} ?>"></textarea><br><br>
+    <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}" title="caractères acceptés :  a-zA-Z0-9-_."><?php if (isset($_POST['adress'])) { echo htmlspecialchars($_POST['adress']);} ?></textarea><br><br>
  
     <button type="submit" name="submit">send</button>
 </form>

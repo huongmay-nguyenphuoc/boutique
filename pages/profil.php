@@ -24,8 +24,10 @@ var_dump($_SESSION);
     <html lang="fr">
 
     <body>
-    <p>AVATAR</p>
-    <img height="100px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
+    <?php if ($_SESSION['user']->getAvatar() != null) : ?>
+        <p>AVATAR</p>
+        <img height="100px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
+    <?php endif; ?>
     <table>
         <thead>
         <tr>
