@@ -1,12 +1,11 @@
 <?php
 
-//require_once("includes/init.inc.php");
 
 require_once '../classes/user.php';
 require_once '../classes/validator.php';
 
 
-//var_dump($_SESSION['user']);
+
 
 //if(!isset($_SESSION['id']) OR $_SESSION['id'] != 1){
   //  header('location:connexion.php');
@@ -39,6 +38,4 @@ require_once '../classes/validator.php';
 
 
 
-
-</main>
 </html>
