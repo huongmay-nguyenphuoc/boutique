@@ -26,6 +26,11 @@ class product
         $this->quantity = $quantity;
     }
 
+    function getReference()
+    {
+
+    }
+
     function getId()
     {
         return $this->id;
