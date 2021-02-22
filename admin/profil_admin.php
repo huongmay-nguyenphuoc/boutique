@@ -16,7 +16,6 @@ if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
 
 ?>
 
-<html lang="en">
 
 
 <?php include 'includes/header.php'; ?>

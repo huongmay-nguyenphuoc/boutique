@@ -26,7 +26,6 @@ else {
 }
 ?>
 
-<html lang="fr">
 
 <?php include 'includes/header.php'; ?>
 
@@ -59,7 +58,6 @@ else {
             <td><?=  $orders['id_member']?></td>
             <td><?=  $orders['amount']?></td>
             <td><?=  $orders['date_register']?></td>
-            <?php //echo "id =" . $orders['id_order'];?>
             <td>
                 <form method='post' action='delete_order.php'>
                     <input type="hidden" value="<?= $orders['id_order'] ?>" name="id">
@@ -77,9 +75,7 @@ else {
                         <option value='send'> send </option>
                         <option value='delivered'> delivered </option>
                     </select><br><br>
-                    <button class= type="submit" name="submit">
-                        <i class="material-icons right">send</i>
-                    </button>
+                    <button class= type="submit" name="submit">Send</button>
                 </form>
             </td>
 
