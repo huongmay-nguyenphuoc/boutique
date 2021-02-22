@@ -11,8 +11,10 @@ $admin = new admin;
 
 <html lang="fr">
 
-<body>
 
+<?php include 'includes/header.php'; ?>
+
+<h1>All Products</h1>
 <table>
 
     <thead>
@@ -59,9 +61,4 @@ $admin = new admin;
 
     <a href="product_form.php"> Add new product</a>
 
-
-
-
-</body>
-
-</html>
+<?php include 'includes/footer.php'; ?>

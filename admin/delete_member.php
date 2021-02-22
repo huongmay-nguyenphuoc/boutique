@@ -3,8 +3,6 @@
 require_once '../classes/admin.php';
 require_once '../classes/user.php';
 
-session_start();
-
     $admin = new admin;
 
     $id = htmlspecialchars($_POST['id']);
@@ -23,6 +21,9 @@ session_start();
 <html>
 
 
+<?php include 'includes/header.php'; ?>
+
+<h1>Delete Member</h1>
 
 <form method="post" action="delete_member.php">
     <input type="hidden" value="<?= $id ?>" name="id">
@@ -31,4 +32,4 @@ session_start();
 
 
 
-</html>
+<?php include 'includes/footer.php'; ?>

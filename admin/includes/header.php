@@ -11,8 +11,8 @@
 <body>
 <header>
     <nav>
-        <div class="nav-wrapper black">
-            <a href="../profil_admin.php" class="brand-logo">GameBusters<i class="material-icons right">flare</i></a>
+        <div class="nav-wrapper blue">
+            <a href="../pages/categorie.php" class="brand-logo">GameBusters<i class="material-icons right">videogame_asset</i></a>
             <a href="#" class="sidenav-trigger" data-target="mobile-links"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <li class="navlink"><a href="../gestion_membres.php">Gestion des membres</a></li>

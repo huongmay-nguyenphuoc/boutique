@@ -15,7 +15,7 @@ $admin = new admin;
             $id_order = htmlspecialchars($_POST['id']);
 
             $admin->updateState($state, $id_order);
-            $success = "State has been udpated<a href='gestion_commande.php'>All orders</a>"
+            $success = "State has been udpated<a href='gestion_commande.php'>All orders</a>";
 
 
 }
@@ -23,7 +23,9 @@ $admin = new admin;
 
 <html lang="fr">
 
-<?php include '../includes/header.php'; ?>
+<?php include 'includes/header.php'; ?>
+
+<h1>All Orders</h1>
 
 <table>
 
@@ -65,12 +67,12 @@ $admin = new admin;
                     <input type="hidden" value="<?= $orders['id_order'] ?>" name="id">
                     <label for="state">state</label><br>
                     <select name="state" id="state" required>
-                        <option value=''> ----- Choose ----- </option>
+                        <option selected value="<?= $orders['state'] ?>"> <?= $orders['state'] ?> </option>
                         <option value='being processed'> being processed </option>
                         <option value='send'> send </option>
                         <option value='delivered'> delivered </option>
                     </select><br><br>
-                    <button class="btn waves-effect waves-light black" type="submit" name="submit">
+                    <button class= type="submit" name="submit">
                         <i class="material-icons right">send</i>
                     </button>
                 </form>
@@ -83,7 +85,6 @@ $admin = new admin;
 
 </table>
 
-</body>
 </html>
 
 

@@ -21,20 +21,15 @@ if (!isset($_SESSION['user']) && $_SESSION[user] != 'admin') {
 
 <?php include 'includes/header.php'; ?>
 
+<h1>Control Center</h1>
+
+    <a class="waves-effect waves-light btn-small blue lighten-3" href="gestion_commande.php"><i class="material-icons left">shopping_cart</i>Customers orders</a><br><br>
+    <a class="waves-effect waves-light btn-small blue lighten-3" href="gestion_membres.php"><i class="material-icons left">account_circle</i>all members profile</a><br><br>
+    <a class="waves-effect waves-light btn-small blue lighten-3" href="produits.php"><i class="material-icons left">cloud</i>all products</a><br><br>
+    <a class="waves-effect waves-light btn-small blue lighten-3" href="product_form.php"><i class="material-icons left">add_circle</i>add new product</a><br><br>
+    <a class="waves-effect waves-light btn-small blue lighten-3" href="../pages/update.php"><i class="material-icons left">assignment_turned_in</i>Update profile</a><br><br>
+    <a class="waves-effect waves-light btn-small blue lighten-3" href="../pages/categorie.php"><i class="material-icons left">home</i>Access Shop</a><br><br>
 
 
+<?php include 'includes/footer.php'; ?>
 
-
-    <h3><em>Profil @<?php// echo $_SESSION['user']->getLogin(); ?></em></h3>
-
-    <a class="waves-effect waves-light white black-text btn-small" href="gestion_commande.php">Page des commandes clients</a><br><br>
-    <a class="waves-effect waves-light white black-text btn-small" href="gestion_membres.php">Gérer les membres</a><br><br>
-    <a class="waves-effect waves-light white black-text btn-small" href="produits.php">Gérer les produits</a><br><br>
-    <a class="waves-effect waves-light white black-text btn-small" href="product_form.php">Formulaire ajout produits</a><br><br>
-    <a class="waves-effect waves-light white black-text btn-small" href="update_product.php">Mettre à jour des produits</a><br><br>
-    <a class="waves-effect waves-light white black-text btn-small" href="../pages/update.php">Modifier le profil</a><br><br>
-    <a class="waves-effect waves-light white black-text btn-small" href="../pages/boutique.php">Accès à la boutique en ligne</a>
-
-
-
-</html>
