@@ -30,7 +30,7 @@ else {
 
 <form method="post" action="delete_member.php">
     <input type="hidden" value="<?= $id ?>" name="id">
-    <input type="submit" name="confirmremoveUser" value="Are you sure?">
+    <input class="delete" type="submit" name="confirmremoveUser" value="Are you sure?">
 </form>
 
 

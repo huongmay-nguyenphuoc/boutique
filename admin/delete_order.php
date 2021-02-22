@@ -35,7 +35,7 @@ else {
 
     <form method="post" action="delete_order.php">
         <input type="hidden" value="<?= $id ?>" name="id">
-        <input type="submit" name="confirmremoveOrder" value="Are you sure?">
+        <input class="delete" type="submit" name="confirmremoveOrder" value="Are you sure?">
     </form>
 </div>
 

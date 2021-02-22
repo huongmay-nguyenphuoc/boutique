@@ -29,7 +29,7 @@ else {
 <div>
     <form method="post" action="delete_product.php">
         <input type="hidden" value="<?= $id ?>" name="id">
-        <input type="submit" name="confirmremoveProduct" value="Are you sure?">
+        <input class="delete" type="submit" name="confirmremoveProduct" value="Are you sure?">
     </form>
 </div>
 

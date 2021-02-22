@@ -19,7 +19,7 @@ else {
 
 <h1>All Products</h1>
 <section class="new">
-    <a href="product_form.php"> <button>Add new product</button></a>
+    <a href="product_form.php"><button>Add new product</button></a>
 </section>
 
 <table>
@@ -53,10 +53,10 @@ else {
             <td><?= $product['stock'] ?></td>
 
             <td>
-                <a class="button" href="update_product.php?id_product=<?= $product['id_product'] ?>">Update </a>
+                <a class="button" href="update_product.php?id_product=<?= $product['id_product'] ?>"><button>Update</button></a>
                 <form method='post' action='delete_product.php'>
                     <input type="hidden" value="<?= $product['id_product'] ?>" name="id">
-                    <input type='submit' name='removeProduct' value='Delete product'>
+                    <input type='submit' name='removeProduct' value='Delete'>
                 </form>
             </td>
         </tr>
