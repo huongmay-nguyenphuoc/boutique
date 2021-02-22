@@ -26,6 +26,9 @@ if (isset($_POST['confirmremoveOrder'])) {
 
 <html>
 
+<?php include 'includes/header.php'; ?>
+
+<h1>Delete Order</h1>
 <div>
 
     <form method="post" action="delete_order.php">
@@ -35,5 +38,5 @@ if (isset($_POST['confirmremoveOrder'])) {
 </div>
 
 
-</html>
+<?php include 'includes/footer.php'; ?>
 

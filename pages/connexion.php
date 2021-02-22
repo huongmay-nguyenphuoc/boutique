@@ -23,8 +23,17 @@ if (isset($_POST['submit'])) {
 
         $_SESSION['user'] = $user;
 
-//        var_dump($_SESSION['user']);
-        header("Location: profil.php");
+        if($_SESSION['user']->getLogin()== 'admin')
+        {
+            header("Location: ../admin/profil_admin.php?id=".$_SESSION['user']->getId());
+        }
+
+        elseif ($_SESSION['user']->getLogin()!= 'admin')
+        {
+            header("Location: profil.php?id=".$_SESSION['user']->getId());
+        }
+
+//
 
     }
 

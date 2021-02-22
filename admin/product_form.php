@@ -65,7 +65,7 @@ if (isset($_POST['submit'])) {
 
 <html>
 
-<body>
+<?php include 'includes/header.php'; ?>
 
 <!--Alerte (erreur ou succès)-->
 <?php if (!empty($errors)): ?>
@@ -144,6 +144,4 @@ if (isset($_POST['submit'])) {
     </form>
 </main>
 
-</body>
-
-</html>
+<?php include 'includes/footer.php'; ?>

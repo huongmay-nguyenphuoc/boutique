@@ -13,6 +13,9 @@ $admin = new admin;
 
 <html>
 
+<?php include 'includes/header.php'; ?>
+
+    <h1>All Members</h1>
 
 <table>
     <tr>
@@ -55,5 +58,4 @@ $admin = new admin;
 </table>
 
 
-
-</html>
+<?php include 'includes/footer.php'; ?>

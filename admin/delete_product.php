@@ -18,6 +18,10 @@ if (isset($_POST['confirmremoveProduct'])) {
 
 <html>
 
+<?php include 'includes/header.php'; ?>
+
+<h1>Delete Product</h1>
+
 <div>
     <form method="post" action="delete_product.php">
         <input type="hidden" value="<?= $id ?>" name="id">
@@ -25,5 +29,5 @@ if (isset($_POST['confirmremoveProduct'])) {
     </form>
 </div>
 
-</html>
+<?php include 'includes/footer.php'; ?>
 
