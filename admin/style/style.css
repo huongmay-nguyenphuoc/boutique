@@ -96,6 +96,7 @@ body, main, a {
 body {
     min-height: 100vh;
     background: url("../../photo/style/wallhaven.png") center;
+    background-attachment: fixed;
     justify-content: space-between;
     background-attachment: fixed;
 
