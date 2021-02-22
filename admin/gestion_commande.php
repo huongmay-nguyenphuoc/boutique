@@ -3,25 +3,29 @@
 require_once '../classes/admin.php';
 require_once '../classes/product.php';
 require_once '../classes/order.php';
+if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
+    header('location:../pages/connexion.php');
+}
 
+else {
 
-$admin = new admin;
+    $admin = new admin;
 
 
     if (isset($_POST['submit'])) {
 
 
-            $state = htmlspecialchars($_POST['state']);
-            $id_order = htmlspecialchars($_POST['id']);
+        $state = htmlspecialchars($_POST['state']);
+        $id_order = htmlspecialchars($_POST['id']);
 
-            $admin->updateState($state, $id_order);
-            $success = "State has been udpated<a href='gestion_commande.php'>All orders</a>";
+        $admin->updateState($state, $id_order);
+        $success = "State has been udpated<a href='gestion_commande.php'>All orders</a>";
 
 
+    }
 }
 ?>
 
-<html lang="fr">
 
 <?php include 'includes/header.php'; ?>
 
@@ -54,7 +58,6 @@ $admin = new admin;
             <td><?=  $orders['id_member']?></td>
             <td><?=  $orders['amount']?></td>
             <td><?=  $orders['date_register']?></td>
-            <?php //echo "id =" . $orders['id_order'];?>
             <td>
                 <form method='post' action='delete_order.php'>
                     <input type="hidden" value="<?= $orders['id_order'] ?>" name="id">
@@ -72,9 +75,7 @@ $admin = new admin;
                         <option value='send'> send </option>
                         <option value='delivered'> delivered </option>
                     </select><br><br>
-                    <button class= type="submit" name="submit">
-                        <i class="material-icons right">send</i>
-                    </button>
+                    <button class= type="submit" name="submit">Send</button>
                 </form>
             </td>
 
@@ -85,6 +86,5 @@ $admin = new admin;
 
 </table>
 
-</html>
-
+<?php include 'includes/footer.php'; ?>
 

@@ -3,65 +3,69 @@
 require_once '../classes/admin.php';
 require_once '../classes/user.php';
 require_once '../classes/product.php';
-
-if (isset($_GET['id_product'])) {
-    $admin = new admin;
-    $product = $admin->selectProduct($_GET['id_product']);
+if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
+    header('location:../pages/connexion.php');
 }
 
-if (isset($_POST['submit'])) {
-    $admin = new admin;
-    /*Check Image*/
-    $target_dir = "../productPics/";
-    $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-
-    if (getimagesize($_FILES["fileToUpload"]["tmp_name"]) == false) {
-        $errors[] = "This file is not an image.";
+else {
+    if (isset($_GET['id_product'])) {
+        $admin = new admin;
+        $product = $admin->selectProduct($_GET['id_product']);
     }
+
+    if (isset($_POST['submit'])) {
+        $admin = new admin;
+        /*Check Image*/
+        $target_dir = "../productPics/";
+        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        if (getimagesize($_FILES["fileToUpload"]["tmp_name"]) == false) {
+            $errors[] = "This file is not an image.";
+        }
 
 // Check if file already exists in repo
-    if (file_exists($target_file)) {
-        $errors[] = "This picture already exists.";
-    }
+        if (file_exists($target_file)) {
+            $errors[] = "This picture already exists.";
+        }
 
 // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
-        $errors[] = "This picture is too large.";
-    }
+        if ($_FILES["fileToUpload"]["size"] > 500000) {
+            $errors[] = "This picture is too large.";
+        }
 
 // Allow certain file formats
-    if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif") {
-        $errors[] = "Only JPG, JPEG, PNG & GIF pictures are allowed.";
-    }
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif") {
+            $errors[] = "Only JPG, JPEG, PNG & GIF pictures are allowed.";
+        }
 
 //If everything is okay
-    if (empty($errors)) {
+        if (empty($errors)) {
 
 //move picture in repository : productPics
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            $image = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
-            $reference = htmlspecialchars($_POST['reference']);
-            $title = htmlspecialchars($_POST['title']);
-            $category = htmlspecialchars($_POST['category']);
-            $subcat = htmlspecialchars($_POST['subcat']);
-            $description = htmlspecialchars($_POST['description']);
-            $shortdesc = htmlspecialchars($_POST['shortdesc']);
-            $price = htmlspecialchars($_POST['price']);
-            $stock = htmlspecialchars($_POST['stock']);
-            $id_product = $_POST['id_product'];
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                $image = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
+                $reference = htmlspecialchars($_POST['reference']);
+                $title = htmlspecialchars($_POST['title']);
+                $category = htmlspecialchars($_POST['category']);
+                $subcat = htmlspecialchars($_POST['subcat']);
+                $description = htmlspecialchars($_POST['description']);
+                $shortdesc = htmlspecialchars($_POST['shortdesc']);
+                $price = htmlspecialchars($_POST['price']);
+                $stock = htmlspecialchars($_POST['stock']);
+                $id_product = $_POST['id_product'];
 
 
-            $admin->update($reference, $category, $subcat, $title, $image, $description, $shortdesc, $price, $stock, $id_product);
-            $success = "Product has been updated<a href='produits.php'>Tous les produits</a>";
+                $admin->update($reference, $category, $subcat, $title, $image, $description, $shortdesc, $price, $stock, $id_product);
+                $success = "Product has been updated<a href='produits.php'>Tous les produits</a>";
 
 
+            }
         }
     }
+
 }
-
-
 ?>
 
 

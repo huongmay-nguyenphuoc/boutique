@@ -23,14 +23,14 @@ if (isset($_POST['submit'])) {
 
         $_SESSION['user'] = $user;
 
-        if($_SESSION['user']->getLogin()== 'admin')
+        if($_SESSION['user']->getStatus()== 1)
         {
-            header("Location: ../admin/profil_admin.php?id=".$_SESSION['user']->getId());
+            header("Location: ../admin/profil_admin.php");
         }
 
-        elseif ($_SESSION['user']->getLogin()!= 'admin')
+        elseif ($_SESSION['user']->getStatus()!= 1)
         {
-            header("Location: profil.php?id=".$_SESSION['user']->getId());
+            header("Location: profil.php");
         }
 
 //
