@@ -68,7 +68,7 @@ else {
 
 <html>
 
-<?php include 'includes/header.php'; ?>
+
 
 <!--Alerte (erreur ou succès)-->
 <?php if (!empty($errors)): ?>
@@ -82,7 +82,7 @@ else {
         <p><?= $success ?></p>
     </div>
 <?php endif; ?>
-
+<?php include 'includes/header.php'; ?>
 <main>
     <h1> Product form </h1>
     <form method="post" enctype="multipart/form-data" action="product_form.php">

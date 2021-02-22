@@ -90,6 +90,5 @@ else {
 
 </table>
 
-</html>
-
+<?php include 'includes/footer.php'; ?>
 
