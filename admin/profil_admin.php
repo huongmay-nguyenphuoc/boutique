@@ -4,12 +4,11 @@
 require_once '../classes/user.php';
 require_once '../classes/validator.php';
 
-
-
-
-//if(!isset($_SESSION['id']) OR $_SESSION['id'] != 1){
-  //  header('location:connexion.php');
-//}
+/*
+if (!isset($_SESSION['user']) && $_SESSION[user] != 'admin') {
+    header('location:connexion.php');
+}
+*/
 
 
 
@@ -26,7 +25,7 @@ require_once '../classes/validator.php';
 
 
 
-    <h3><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h3>
+    <h3><em>Profil @<?php// echo $_SESSION['user']->getLogin(); ?></em></h3>
 
     <a class="waves-effect waves-light white black-text btn-small" href="gestion_commande.php">Page des commandes clients</a><br><br>
     <a class="waves-effect waves-light white black-text btn-small" href="gestion_membres.php">Gérer les membres</a><br><br>

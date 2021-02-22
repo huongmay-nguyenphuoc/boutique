@@ -1,0 +1,23 @@
+/*GENERAL*/
+@font-face {
+    font-family: pixel;
+    src: url('../fonts/FreePixel.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    background-size: 100%;
+    font-family: pixel;
+}
+
+body, main, article, a {
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    min-height: 100vh;
+    background: url("../photo/style/wallhaven.png") center;
+    justify-content: space-between;
+}
