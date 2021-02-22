@@ -19,7 +19,7 @@ nav div {
 
 nav div:nth-child(1) {
     width: 30%;
-    background: url("../photo/style/hearts.png") no-repeat;
+    background: url("../../photo/style/hearts.png") no-repeat;
     background-size: contain;
 }
 
@@ -134,6 +134,32 @@ h1{
     transition-duration: 2s;
 }
 
+
+
+
+/*TABLEAUX ADMIN*/
+
+.new a{
+    text-align: center;
+    text-decoration: none;
+}
+
+
+table{
+
+    border-collapse: collapse;
+    padding: 5px;
+
+}
+
+
+
+td{
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+}
+
 @media screen and (max-width: 640px) {
     table,
     tbody,
@@ -141,9 +167,34 @@ h1{
     td {
         display: block;
         width: auto;
+        border: none;
+        padding: 0;
 
     }
     th{
     display: none;
     }
+
+    tr{
+        padding: 10px;
+    }
+
+}
+
+
+a{
+    text-decoration: none;
+}
+
+/*BUTTON*/
+
+.button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
 }

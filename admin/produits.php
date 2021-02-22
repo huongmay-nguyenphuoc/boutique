@@ -18,6 +18,10 @@ else {
 <?php include 'includes/header.php'; ?>
 
 <h1>All Products</h1>
+<section class="new">
+    <a href="product_form.php"> <button>Add new product</button></a>
+</section>
+
 <table>
 
     <thead>
@@ -31,8 +35,7 @@ else {
         <th>price</th>
         <th>picture</th>
         <th>stock</th>
-        <th>update</th>
-        <th>delete</th>
+        <th>action</th>
 
     </tr>
 
@@ -48,8 +51,9 @@ else {
             <td><?= $product['price'] ?></td>
             <td><img height="100px" src="../productPics/<?= $product['image'] ?>"</td>
             <td><?= $product['stock'] ?></td>
-            <td><a href="update_product.php?id_product=<?= $product['id_product'] ?>"> Update </a></td>
+
             <td>
+                <a class="button" href="update_product.php?id_product=<?= $product['id_product'] ?>">Update </a>
                 <form method='post' action='delete_product.php'>
                     <input type="hidden" value="<?= $product['id_product'] ?>" name="id">
                     <input type='submit' name='removeProduct' value='Delete product'>
@@ -63,6 +67,5 @@ else {
 </table>
 
 
-    <a href="product_form.php"> Add new product</a>
 
 <?php include 'includes/footer.php'; ?>

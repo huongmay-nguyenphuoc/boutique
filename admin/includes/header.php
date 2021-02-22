@@ -14,7 +14,7 @@
         <div>
         </div>
         <div id="navClosed">
-            <input type="button" id="toggle" value="V">
+            <input type="button" id="toggle" value="Menu">
             <div id="navExpand">
                 <a href="./profil_admin.php">Index</a>
                 <a href="./gestion_membres.php">All members</a>
