@@ -21,7 +21,7 @@
                 <li class="navlink"><a href="../pages/categorie.php">Accès à la boutique</a></li>
 
                 <!-- Utilisateur déconnecté -->
-                <li class="navlink <?php if (!isset($_SESSION['user']) OR $_SESSION[user]->getStatus() != 1) { echo 'disabled'; } ?>"><a href=../pages/connexion.php">Log in</a></li>
+                <li class="navlink <?php if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) { echo 'disabled'; } ?>"><a href=../pages/connexion.php">Log in</a></li>
                 <?php if (!isset($_SESSION['user'])) : ?>
                     <!-- Utilisateur connecté-->
                 <?php else : ?>
