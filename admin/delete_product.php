@@ -1,18 +1,22 @@
 <?php
 require_once '../classes/admin.php';
 
-$admin = new admin;
-
-
-$id = htmlspecialchars($_POST['id']);
-
-
-if (isset($_POST['confirmremoveProduct'])) {
-    $admin->deleteProduct($id);
-    header("Location: produits.php");
+if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
+    header('location:../pages/connexion.php');
 }
+else {
+    $admin = new admin;
 
 
+    $id = htmlspecialchars($_POST['id']);
+
+
+    if (isset($_POST['confirmremoveProduct'])) {
+        $admin->deleteProduct($id);
+        header("Location: produits.php");
+    }
+
+}
 ?>
 
 

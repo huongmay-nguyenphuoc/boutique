@@ -2,7 +2,10 @@
 
 require_once '../classes/admin.php';
 require_once '../classes/user.php';
-
+if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
+    header('location:../pages/connexion.php');
+}
+else {
     $admin = new admin;
 
     $id = htmlspecialchars($_POST['id']);
@@ -13,7 +16,7 @@ require_once '../classes/user.php';
         header("Location: gestion_membres.php");
     }
 
-
+}
 
 
 ?>

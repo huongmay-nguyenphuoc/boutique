@@ -3,22 +3,24 @@
 require_once '../classes/admin.php';
 require_once '../classes/order.php';
 require_once '../classes/product.php';
-
-
-$admin = new admin;
-
-
-$id = htmlspecialchars($_POST['id']);
-
-
-
-if (isset($_POST['confirmremoveOrder'])) {
-
-    $admin->deleteOrder($id);
-    header("Location: gestion_commande.php");
+if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
+    header('location:../pages/connexion.php');
 }
+else {
+
+    $admin = new admin;
 
 
+    $id = htmlspecialchars($_POST['id']);
+
+
+    if (isset($_POST['confirmremoveOrder'])) {
+
+        $admin->deleteOrder($id);
+        header("Location: gestion_commande.php");
+    }
+
+}
 
 
 ?>

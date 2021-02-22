@@ -3,21 +3,26 @@
 require_once '../classes/admin.php';
 require_once '../classes/product.php';
 require_once '../classes/order.php';
+if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
+    header('location:../pages/connexion.php');
+}
 
+else {
 
-$admin = new admin;
+    $admin = new admin;
 
 
     if (isset($_POST['submit'])) {
 
 
-            $state = htmlspecialchars($_POST['state']);
-            $id_order = htmlspecialchars($_POST['id']);
+        $state = htmlspecialchars($_POST['state']);
+        $id_order = htmlspecialchars($_POST['id']);
 
-            $admin->updateState($state, $id_order);
-            $success = "State has been udpated<a href='gestion_commande.php'>All orders</a>";
+        $admin->updateState($state, $id_order);
+        $success = "State has been udpated<a href='gestion_commande.php'>All orders</a>";
 
 
+    }
 }
 ?>
 
