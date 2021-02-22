@@ -4,11 +4,7 @@
 require_once '../classes/user.php';
 require_once '../classes/validator.php';
 
-/*
-if (!isset($_SESSION['user']) && $_SESSION[user] != 'admin') {
-    header('location:connexion.php');
-}
-*/
+
 
 
 
