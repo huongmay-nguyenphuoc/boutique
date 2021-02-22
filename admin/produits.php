@@ -29,9 +29,10 @@ else {
         <th>title</th>
         <th>short description</th>
         <th>price</th>
-        <th>image</th>
+        <th>picture</th>
         <th>stock</th>
-        <th>modifier</th>
+        <th>update</th>
+        <th>delete</th>
 
     </tr>
 
@@ -47,7 +48,7 @@ else {
             <td><?= $product['price'] ?></td>
             <td><img height="100px" src="../productPics/<?= $product['image'] ?>"</td>
             <td><?= $product['stock'] ?></td>
-            <td><a href="update_product.php?id_product=<?= $product['id_product'] ?>"> Modifier </a></td>
+            <td><a href="update_product.php?id_product=<?= $product['id_product'] ?>"> Update </a></td>
             <td>
                 <form method='post' action='delete_product.php'>
                     <input type="hidden" value="<?= $product['id_product'] ?>" name="id">
