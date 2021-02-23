@@ -24,11 +24,12 @@ if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
 
 <section class="index">
     <a href="gestion_commande.php">Customers orders</a><br><br>
-    <a href="gestion_membres.php">all members profile</a><br><br>
+    <a href="gestion_membres.php">all members</a><br>
+    <a href="gestion_category.php">all categories</a><br><br>
+    <a href="gestion_subcategory.php">all subcategories</a><br><br>
     <a href="produits.php">all products</a><br><br>
     <a href="product_form.php">add new product</a><br><br>
-    <a href="../pages/update.php">Update profile</a><br><br>
-    <a href="../pages/categorie.php">Access Shop</a><br><br>
+
 </section>
 
 <?php include 'includes/footer.php'; ?>
