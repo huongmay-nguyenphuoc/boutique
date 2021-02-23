@@ -6,23 +6,33 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" media="screen" href="style/style.css">
-    <title>Gamebusters - $title</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../style/header.css">
+    <title>Gamebusters - <?= $title ?></title>
 </head>
 <body>
 <header>
     <nav>
-        <div>
+        <div class="navDiv" id="hearts">
         </div>
-        <div id="navClosed">
-            <input type="button" id="toggle" value="Menu">
+        <div class="navDiv" id="navClosed">
+            <p><b>~~~MENU~~~</b></p>
             <div id="navExpand">
-                <a href="./profil_admin.php">Index</a>
-                <a href="./gestion_membres.php">All members</a>
-                <a href="./produits.php">All products</a>
-                <a href="./gestion_commande.php">All orders</a>
+                <article>
+                    <h1>Ghostbusters</h1>
+                </article>
+                <ul>
+                        <li><a href="./profil_admin.php"><span> < </span>Index<span> > </span></a></li>
+                        <li><a href="./gestion_membres.php"><span> < </span> All members<span> > </span></a></li>
+                        <li><a href="./gestion_category.php"><span> < </span> All categories<span> > </span></a></li>
+                        <li><a href="./gestion_subcategory.php"><span> < </span> All subcategories<span> > </span></a></li>
+                        <li><a href="./produits.php"><span> < </span>All products<span> > </span></a></li>
+                        <li><a href="./gestion_commande.php"><span> < </span>All orders<span> > </span></a></li>
+                        <li><a href="../pages/deconnexion.php"><span> < </span>Log out<span> > </span></a></li>
+
+                </ul>
             </div>
         </div>
-        <div>
+        <div class="navDiv" >
             <a href="../pages/update.php">Update Account</a>
             <a href="../pages/categorie.php">Shop Access</a>
         </div>
