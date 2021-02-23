@@ -198,5 +198,75 @@ class admin
 
 
 
+    /******************************CATEGORIE*********************************/
+
+
+    //RECUPERER TOUTES LES CATEGORIES
+
+    public function allCat()
+    {
+        $allcat = $this->pdo->Select("Select * from category");
+
+        return $allcat;
+    }
+
+
+//SUPPRIMER CATEGORIE
+
+    public function deleteCategory($id_category)
+    {
+        $delete_cat = $this->pdo->Delete("Delete from category WHERE id_category = :id_category",
+            ['id_category' => $id_category,
+            ]);
+
+        return $delete_cat;
+    }
+
+
+    //ENREGISTRER CATEGORIE
+    public function registerCat($name)
+    {
+        $this->pdo->Insert('Insert into `category` (name) values( :name)',
+            ['name' => $name,
+            ]);
+        return true;
+    }
+
+
+    /******************************SOUS-CATEGORY*********************************/
+
+
+    //RECUPERER TOUTES LES SOUS-CATEGORIES
+
+    public function allSubcat()
+    {
+        $allsubcat = $this->pdo->Select("Select * from subcategory");
+
+        return $allsubcat;
+    }
+
+
+//SUPPRIMER SOUS-CATEGORIES
+
+    public function deleteSubcat($id_subcategory)
+    {
+        $delete_subcat = $this->pdo->Delete("Delete from subcategory WHERE id_subcategory= :id_subcategory",
+            ['id_subcategory' => $id_subcategory,
+            ]);
+
+        return $delete_subcat;
+    }
+
+
+    //ENREGISTRER SOUS-CATEGORIE
+    public function registerSubcat($name)
+    {
+        $this->pdo->Insert('Insert into `subcategory` (name) values( :name)',
+            ['name' => $name,
+            ]);
+        return true;
+    }
+
+
 
 }
