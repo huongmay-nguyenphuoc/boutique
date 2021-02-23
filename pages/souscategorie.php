@@ -11,32 +11,44 @@ $title = $cat;
 ?>
 <?php require_once('../includes/header.php'); ?>
 
-<main>
-    <article>
-        <div>
-            <a href="boutique.php?cat=<?= $cat ?>&subcat=games">Games</a>
-        </div>
-        <div>
-            <a href="boutique.php?cat=<?= $cat ?>&subcat=consoles">Consoles</a>
-        </div>
-        <div>
-            <a href="boutique.php?cat=<?= $cat ?>&subcat=secondhand">Second Hand</a>
-        </div>
-    </article>
-    <article>
-        <div></div>
-        <div class="text-box text-box2">
-            <p>So you chose the <span><b><?= $cat ?></b></span> island?</p>
-            <?php if ($cat = 'nintendo') :?>
-            <p>This island is full of love and passion!</p>
-            <p>You will be welcome warmly and heartily.</p>
-            <?php elseif ($cat = 'xbox') :?>
-                <p>This island is full of love and passion!</p>
-                <p>You will be welcome warmly and heartily.</p>
-            <?php elseif ($cat = 'playstation') :?>
-                <p>This island is for the brave</p>
-                <p>You will be welcome warmly and heartily.</p>
-            <?php endif;?>
-        </div>
-    </article>
-</main>
+<?php if ($cat == 'nintendo') : ?>
+<main id="mainsubCatNintendo">
+    <?php elseif ($cat == 'playstation') : ?>
+    <main id="mainsubCatPlayS">
+        <?php elseif ($cat == 'xbox') : ?>
+        <main id="mainsubCatxbox">
+            <?php endif; ?>
+            <article>
+                <div class="gouttes">
+                    <a href="boutique.php?cat=<?= $cat ?>&subcat=games">1</a>
+                </div>
+                <div class="gouttes">
+                    <a href="boutique.php?cat=<?= $cat ?>&subcat=consoles">2</a>
+                </div>
+                <div class="gouttes">
+                    <a href="boutique.php?cat=<?= $cat ?>&subcat=secondhand">3</a>
+                </div>
+            </article>
+            <article>
+                <div>
+
+                        <p class="gouttes">1. Games shop</p>
+                        <p class="gouttes">2. Consoles shop</p>
+                        <p class="gouttes">3. Seconhand shop</p>
+
+                </div>
+                <div class="text-box text-box2">
+                    <p>So you chose the <span><b><?= $cat ?></b></span> island?</p>
+                    <?php if ($cat == 'nintendo') : ?>
+                        <p>This island is full of love and passion!</p>
+                        <p>You will be welcome warmly and heartily.</p>
+                    <?php elseif ($cat == 'xbox') : ?>
+                        <p>This island is where the impossible comes true!</p>
+                        <p>You will find out who you are and what you can do.</p>
+                    <?php elseif ($cat == 'playstation') : ?>
+                        <p>This island is for the brave and the fearless!</p>
+                        <p>You will be welcome with solemnity and frankness.</p>
+                    <?php endif; ?>
+                </div>
+            </article>
+        </main>
