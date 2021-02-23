@@ -71,7 +71,7 @@ if (isset($_POST['show'])) {
 
 
     <?php if ($_SESSION['user']->getAvatar() != null) : ?>
-        <img height="200px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
+        <img id="avatar" height="200px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
     <?php endif; ?>
 </section>
 
@@ -92,20 +92,28 @@ if (isset($_POST['show'])) {
 </article>
 
 <article class="links">
-    <section class="orderlink">
-        <a href="shopcart.php"><button>Shopcart</button></a>
-        <img src="../photo/style/Xbox_button_B.svg.png" width="50px"/>
-    </section>
+    <section class="persolink">
 
-    <section class="imglink">
+        <div class="orderlink">
+            <a href="shopcart.php">
+                <span><b>Shopcart</b></span>
+                <img src="../photo/style/Xbox_button_B.svg.png" width="40px"/>
+            </a>
+        </div>
 
-    </section>
+        <img src="../photo/style/arrow.png" width="80px"/>
 
-    <section class="updatelink">
-        <img src="../photo/style/Xbox_button_A.svg.png" width="50px"/>
-        <a href="update.php"><button>Update your Profile</button></a>
+        <div class="updatelink">
+            <a href="update.php">
+                <img src="../photo/style/Xbox_button_A.svg.png" width="40px"/>
+                <span><b>Update Profile</b></span>
+            </a>
+        </div>
     </section>
 
 </article>
 
 </main>
+
+
+<?php include '../includes/footer.php'; ?>

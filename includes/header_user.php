@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/user.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/header.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../style/footer.css">
+
     <title>Gamebusters - <?= $title ?></title>
 </head>
 <body>
