@@ -75,7 +75,7 @@ article {
     }
 }
 
-#catDiv4 {
+.catDiv4 {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -84,7 +84,7 @@ article {
     animation: none;
 }
 
-#catDiv4 div {
+.text-box {
     border: 3px solid black;
     box-shadow: 0 0 5px black;
     display: flex;
@@ -99,8 +99,11 @@ article {
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.5);
 }
+.text-box2 {
+    width: 50%;
+}
 
-#catDiv4 p {
+.text-box p {
     width: 80%;
     opacity: 1;
     text-align: justify;
@@ -162,11 +165,11 @@ article {
         flex-direction: column;
     }
 
-    #catDiv4 p {
+    .text-box p {
         font-size: 0.8em;
     }
 
-    #catDiv4 div {
+    .text-box {
         width: 100%;
         height: auto;
     }
