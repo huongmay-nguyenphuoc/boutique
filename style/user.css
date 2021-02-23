@@ -216,7 +216,6 @@ button{
 }
 
 
-
 /*FORM*/
 form{
     max-width:800px /*-- à modifier en fonction de la largeur désirée --*/;
@@ -286,3 +285,27 @@ a{
 
 
 
+/*PROFIL USER*/
+
+.profil{
+    display: flex;
+flex-direction: column;
+}
+
+
+.profiluser{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.links{
+    display: flex;
+    flex-direction: row;
+}
+
+.updatelink, .orderlink{
+display: flex;
+    flex-direction: row;
+
+}
