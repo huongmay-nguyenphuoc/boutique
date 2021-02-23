@@ -48,11 +48,8 @@ if(isset($_POST['submit'])){
 
 ?>
 
-<html lang="en">
 
-
-<main>
-        <h3><em>Inscription</em></h3>
+<?php include '../includes/header_user.php'; ?>
 
 
 <!--Alerte (erreur ou succès)-->
@@ -69,8 +66,9 @@ if(isset($_POST['submit'])){
     <?php endif; ?>
 
 
-<body>
-    
+
+<main>
+    <h3><em>Inscription</em></h3>
 
 <form method="post" action="inscription.php">
     <label for="login">Login</label><br>
@@ -78,9 +76,8 @@ if(isset($_POST['submit'])){
           
     
 
-    <label for="password">Password</label><br>
-    <input type="password" id="password" name="password" required="required"><br>
-    <span>Password needs to contain at least one number.</span><br><br>
+    <label for="password">Password(needs to contain at least one number!)</label><br>
+    <input type="password" id="password" name="password" required="required"><br><br>
 
     <label for="passwordcheck">Password check</label><br>
     <input type="password" id="passwordcheck" name="passwordcheck" required="required"><br><br>
@@ -105,7 +102,5 @@ if(isset($_POST['submit'])){
  
     <button type="submit" name="submit">send</button>
 </form>
- 
 
-</body>
-</html>
+<?php include '../includes/footer_user.php'; ?>

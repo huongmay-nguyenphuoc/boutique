@@ -5,7 +5,7 @@ require_once '../classes/validator.php';
 
 session_start();
 
-var_dump($_SESSION['user']);
+
 if (!isset($_SESSION['user'])) {
     header('location:connexion.php');
 }
@@ -82,12 +82,8 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-<html lang="en">
+<?php include '../includes/header_user.php'; ?>
 
-
-<main>
-
-    <h3 class="center"><em>Update</em></h3>
 
     <!--Alerte (erreur ou succès)-->
     <?php if (!empty($errors)): ?>
@@ -102,9 +98,10 @@ if (isset($_POST['submit'])) {
             <p class="white-text"><?php echo $success; ?></p>
         </div>
     <?php endif; ?>
+    <main>
 
-
-    <h3><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h3>
+    <h1 class="center"><em>Update</em></h1>
+    <h2><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h2>
 
 
     <form action="update.php" method="post" enctype="multipart/form-data">
@@ -156,4 +153,4 @@ if (isset($_POST['submit'])) {
 
 
 </main>
-</html>
+<?php include '../includes/footer_user.php'; ?>

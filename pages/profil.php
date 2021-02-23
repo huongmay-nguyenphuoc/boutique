@@ -8,22 +8,19 @@ if (!isset($_SESSION['user'])) {
     header('location: connexion.php');
 }
 
-var_dump($_SESSION);
 ?>
 
 
-<html lang="en">
+<?php include '../includes/header_user.php'; ?>
 
 <main class="center mainSpace">
 
     <article class="container">
-        <h3><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h3>
-        <a href="update.php">Modifier vos identifiants</a>
+        <h1><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h1>
+        <a href="update.php"><button>Update your Profile</button></a>
     </article>
 
-    <html lang="fr">
 
-    <body>
     <?php if ($_SESSION['user']->getAvatar() != null) : ?>
         <p>AVATAR</p>
         <img height="100px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">

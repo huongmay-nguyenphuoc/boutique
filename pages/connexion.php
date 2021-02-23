@@ -42,10 +42,10 @@ if (isset($_POST['submit'])) {
 ?>
 
 
-<html lang="en">
+<?php include '../includes/header_user.php'; ?>
 
 <main>
-        <h3><em>Connexion</em></h3>
+        <h3><em>Log in</em></h3>
 
         <!--Alerte (erreur ou succès)-->
         <?php if (isset($error)): ?>
@@ -67,5 +67,9 @@ if (isset($_POST['submit'])) {
             </button>
         </form>
 
+
+    <a href="inscription.php">No Account yet, register now !  </a>
+
 </main>
-</html>
+
+<?php include '../includes/footer_user.php'; ?>
