@@ -124,7 +124,7 @@ else {
     <textarea name="description" id="description"
               placeholder="product description"><?= $product['description'] ?></textarea><br><br>
 
-    <label for="description">description</label><br>
+    <label for="description">Short description</label><br>
     <textarea name="shortdesc" id="shortdesc"
               placeholder="product short description"><?= $product['shortdesc'] ?></textarea><br><br>
 
