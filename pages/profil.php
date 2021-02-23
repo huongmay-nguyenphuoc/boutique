@@ -13,17 +13,13 @@ if (!isset($_SESSION['user'])) {
 
 <?php include '../includes/header_user.php'; ?>
 
-<main class="center mainSpace">
 
-    <article class="container">
         <h1><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h1>
         <a href="update.php"><button>Update your Profile</button></a>
-    </article>
 
 
     <?php if ($_SESSION['user']->getAvatar() != null) : ?>
-        <p>AVATAR</p>
-        <img height="100px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
+        <img height="200px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
     <?php endif; ?>
     <table>
         <thead>

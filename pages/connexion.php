@@ -44,8 +44,7 @@ if (isset($_POST['submit'])) {
 
 <?php include '../includes/header_user.php'; ?>
 
-<main>
-        <h3><em>Log in</em></h3>
+        <h1><em>Log in</em></h1>
 
         <!--Alerte (erreur ou succès)-->
         <?php if (isset($error)): ?>
@@ -68,8 +67,8 @@ if (isset($_POST['submit'])) {
         </form>
 
 
-    <a href="inscription.php">No Account yet, register now !  </a>
+    <a href="inscription.php"><button>No Account yet, register now !</button> </a>
 
-</main>
+
 
 <?php include '../includes/footer_user.php'; ?>

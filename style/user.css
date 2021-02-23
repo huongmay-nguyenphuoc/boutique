@@ -338,3 +338,64 @@ button{
     text-decoration: none;
 
 }
+
+
+
+/*FORM*/
+form{
+    max-width:800px /*-- à modifier en fonction de la largeur désirée --*/;
+    margin:0 auto;
+    width:14%;
+
+
+}
+
+img{
+    margin: 0 auto;
+    clip-path:circle(40%);
+
+}
+
+/*TABLEAUX */
+
+table{
+
+    border-collapse: collapse;
+    padding: 5px;
+    margin-top: 20px;
+
+}
+
+
+
+td{
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+}
+
+@media screen and (max-width: 640px) {
+    table,
+    tbody,
+    tr,
+    td {
+        display: block;
+        width: auto;
+        border: none;
+        padding: 0;
+
+    }
+    th{
+        display: none;
+    }
+
+    tr{
+        padding: 10px;
+    }
+
+}
+
+
+a{
+    text-decoration: none;
+}
