@@ -142,8 +142,7 @@ if (isset($_POST['submit'])) {
 
         <label for="adress">Adress</label><br>
         <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}"
-                  title="caractères acceptés :  a-zA-Z0-9-_."
-                  value="<?php echo $_SESSION['user']->getAdress(); ?>"></textarea><br><br>
+                  title="caractères acceptés :  a-zA-Z0-9-_."><?php echo $_SESSION['user']->getAdress(); ?></textarea><br><br>
 
 
         <button class="btn waves-effect waves-light black" type="submit" name="submit">
@@ -151,4 +150,4 @@ if (isset($_POST['submit'])) {
         </button>
     </form>
 
-<?php include '../includes/footer_user.php'; ?>
+<?php include '../includes/footer.php'; ?>

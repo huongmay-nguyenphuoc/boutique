@@ -225,7 +225,7 @@ form{
 
 }
 
-img{
+ #avatar{
     margin: 0 auto;
     clip-path:circle(40%);
 
@@ -286,10 +286,27 @@ a{
 
 
 /*PROFIL USER*/
+.userinfos, .order{
+    width: 300px;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 2px 5px 5px  goldenrod;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+
+  .order{
+         box-shadow: -2px 5px 5px  goldenrod;
+  }
+
 
 .profil{
     display: flex;
-flex-direction: column;
+    flex-direction: column;
+    background-color: white;
+
 }
 
 
@@ -302,10 +319,49 @@ flex-direction: column;
 .links{
     display: flex;
     flex-direction: row;
+
+}
+
+ .persolink {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+width: 100%;
+     justify-content: center;
+ }
+
+
+.persolink img{
+    padding: 5px;
+}
+
+.updatelink a, .orderlink a {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    color: white;
+
 }
 
 .updatelink, .orderlink{
-display: flex;
-    flex-direction: row;
-
+    width: 100%;
 }
+
+.orderlink a{
+    justify-content: flex-end;
+    background: rgb(249,246,249);
+    background: linear-gradient(90deg, rgba(249,246,249,0.2) 0%, rgba(25,24,25,0.8) 100%, rgba(241,246,247,1) 100%);
+}
+
+.updatelink{
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(25,24,25,0.8) 0%, rgba(241,246,247,0.2) 100%);
+}
+
+
+
+
+
+
+

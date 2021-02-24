@@ -98,4 +98,4 @@ if(isset($_POST['submit'])){
     <button type="submit" name="submit">send</button>
 </form>
 
-<?php include '../includes/footer_user.php'; ?>
+<?php include '../includes/footer.php'; ?>
