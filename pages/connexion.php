@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 
 <?php include '../includes/header_user.php'; ?>
 
-        <h1><em>Log in</em></h1>
+
 
         <!--Alerte (erreur ou succès)-->
         <?php if (isset($error)): ?>
@@ -55,15 +55,24 @@ if (isset($_POST['submit'])) {
 
 
         <form method="post" action="connexion.php">
-            <label for="login">Login</label><br>
-            <input type="text" id="login" name="login"><br><br>
+            <fieldset>
+                <legend><em><b>Log in</b></em></legend><br>
 
-            <label for="password">Password</label><br>
-            <input type="password" id="password" name="password"><br><br>
+                <div>
+                    <label for="login">Login</label><br>
+                    <input type="text" id="login" name="login"><br><br>
+                </div>
+
+                <div>
+                    <label for="password">Password</label><br>
+                    <input type="password" id="password" name="password"><br><br>
+                </div>
+
 
             <button class="btn waves-effect waves-light black " type="submit" name="submit">
                LOGIN
             </button>
+            </fieldset>
         </form>
 
 
