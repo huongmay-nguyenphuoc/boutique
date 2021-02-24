@@ -218,12 +218,11 @@ button{
 
 /*FORM*/
 form{
-    max-width:800px /*-- à modifier en fonction de la largeur désirée --*/;
+    max-width:800px/*-- à modifier en fonction de la largeur désirée --*/;
     margin:0 auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    height: 100%;
-    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 20px;
+    text-align: center;
 }
 
  #avatar{
@@ -232,9 +231,7 @@ form{
 
 }
 
- legend{
-     font-size: 2em;
- }
+
 
 /*TABLEAUX */
 

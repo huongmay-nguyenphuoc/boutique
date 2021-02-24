@@ -64,28 +64,33 @@ if(isset($_POST['submit'])){
         </div>
     <?php endif; ?>
 
-
+<main>
 <form method="post" action="inscription.php">
-    <fieldset>
+    <div class="form">
+    <fieldset class="formregister">
         <legend><em><b>Register</b></em></legend>
     <label for="login">Login</label><br>
     <input type="text" id="login" name="login" maxlength="20" placeholder="login" pattern="[a-zA-Z0-9-_.]{1,20}" title="caractères acceptés : a-zA-Z0-9-_." required="required" value="<?php if (isset($_POST['login'])) { echo htmlspecialchars($_POST['login']);} ?>"><br><br>
+
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" placeholder="exemple@gmail.com" value="<?php if (isset($_POST['email'])) { echo htmlspecialchars($_POST['email']);} ?>" required><br><br>
 
     <label for="password">Password(min 1 number!)</label><br>
     <input type="password" id="password" name="password" required="required"><br><br>
 
     <label for="passwordcheck">Password check</label><br>
     <input type="password" id="passwordcheck" name="passwordcheck" required="required"><br><br>
-          
+    </fieldset>
+
+        <fieldset class="forminfos">
+
     <label for="lastname">Lastname</label><br>
     <input type="text" id="lastname" name="lastname" placeholder="lastname" value="<?php if (isset($_POST['lastname'])) { echo htmlspecialchars($_POST['lastname']);} ?>" required><br><br>
           
     <label for="firstname">Firstname</label><br>
     <input type="text" id="firstname" name="firstname" placeholder="firstname" value="<?php if (isset($_POST['firstname'])) { echo htmlspecialchars($_POST['firstname']);} ?>"><br><br>
-  
-    <label for="email">Email</label><br>
-    <input type="email" id="email" name="email" placeholder="exemple@gmail.com" value="<?php if (isset($_POST['email'])) { echo htmlspecialchars($_POST['email']);} ?>" required><br><br>
-                  
+
+        <legend><em><b>More infos</b></em></legend>
     <label for="city">City</label><br>
     <input type="text" id="city" name="city" placeholder="city" title="caractères acceptés : a-zA-Z0-9-_." value="<?php if (isset($_POST['city'])) { echo htmlspecialchars($_POST['city']);} ?>" required><br><br>
           
@@ -94,9 +99,12 @@ if(isset($_POST['submit'])){
           
     <label for="adress">Adress</label><br>
     <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}" title="caractères acceptés :  a-zA-Z0-9-_." required><?php if (isset($_POST['adress'])) { echo htmlspecialchars($_POST['adress']);} ?> </textarea><br><br>
- 
-    <button type="submit" name="submit">send</button>
     </fieldset>
+    </div>
+
+    <button type="submit" name="submit">send</button>
+
 </form>
+</main>
 
 <?php include '../includes/footer.php'; ?>
