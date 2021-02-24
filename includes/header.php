@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" media="screen" href="../style/boutique.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="../style/boutique.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/header.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/footer.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/panier.css">
@@ -22,16 +22,21 @@
                 <article>
                     <h1>Ghostbusters</h1>
                 </article>
-                <ul>
-                    <li><a href="../index.php"><span> < </span>Title Screen<span> > </span></a></li>
-                    <li><a href="../pages/souscategorie.php?cat=nintendo"><span> < </span>Nintendo Island<span> > </span></a></li>
-                    <li><a href="../pages/souscategorie.php?cat=playstation"><span> < </span>Playstation Island<span> > </span></a></li>
-                    <li><a href="../pages/souscategorie.php?cat=xbox"><span> < </span>Xbox Island<span> > </span></a></li>
-                    <li><a href="../pages/newproducts.php"><span> < </span>New Products<span> > </span></a></li>
-                </ul>
+                <article>
+                    <ul>
+                        <li><a href="../index.php"><span> < </span>Title Screen<span> > </span></a></li>
+                        <li><a href="../pages/souscategorie.php?cat=nintendo"><span> < </span>Nintendo
+                                Island<span> > </span></a></li>
+                        <li><a href="../pages/souscategorie.php?cat=playstation"><span> < </span>Playstation
+                                Island<span> > </span></a></li>
+                        <li><a href="../pages/souscategorie.php?cat=xbox"><span> < </span>Xbox
+                                Island<span> > </span></a></li>
+                        <li><a href="../pages/newproducts.php"><span> < </span>New Products<span> > </span></a></li>
+                    </ul>
+                </article>
             </div>
         </div>
-        <div class="navDiv" >
+        <div class="navDiv">
             <a href="profil.php">Account</a>
             <a href="shopcart.php">Cart</a>
             <a href="search.php">Search</a>

@@ -28,44 +28,64 @@ if (isset($_POST['show'])) {
 
 <?php require_once('../includes/header.php'); ?>
 <main>
-    <section class="shopTitle shopSection">
-        <p><?= $cat ?> Island</p>
-        <p>___________________________________<+>___________________________________</p>
-        <p><?= $subcat ?> Shop</p>
-    </section>
-
     <!--Affichage erreur-->
     <?php if (isset($error)): ?>
+        <section class="shopTitle shopSection">
+            <p><?= $cat ?> Island</p>
+            <p>___________________________________<+>___________________________________</p>
+            <p><?= $subcat ?> Shop</p>
+        </section>
         <section class="shopSection">
             <article class="text-box text-box2 text-box3">
                 <p><?= $error ?></p>
                 <a href="souscategorie.php?cat=<?= $cat ?>">Back</a>
             </article>
         </section>
+
+
         <!--Affichage produits-->
     <?php else : ?>
-        <ul>
-            <?php $i = 0; ?>
-            <?php foreach ($products as $product) : ?>
-                <li>
-                    <ul>
-                        <li><?= $product->getTitle() ?></li>
-                        <li>
-                            <form method="post">
-                                <input type="hidden" name="value" value="<?= $i ?>">
-                                <input type="submit" name="show" value="show"></form>
-                        </li>
-                        <?php if (isset($show[$i])) : ?>
-                            <li><?= $product->getShortdesc() ?></li>
-                        <?php endif; ?>
-                        <li><a href="fiche_produit.php?id=<?= $product->getId() ?>">More</a></li>
-                    </ul>
-                    <?php $i++; ?>
-                </li>
+        <section class="bigSectionShop">
+            <section class="productList">
+                <ul>
+                    <?php $i = 0; ?>
+                    <?php foreach ($products as $product) : ?>
+                        <li class="eachProduct">
+                            <ul>
+                                <li><?= $product->getTitle() ?> | <?= $product->getPrice() ?>€ |
 
-            <?php endforeach; ?>
-        </ul>
+                                    <form method="post">
+                                        <input type="hidden" name="value" value="<?= $i ?>">
+                                        <input type="submit" name="show" value="Tell me more"></form>
+                                </li>
+
+                                <?php if (isset($show[$i])) : ?>
+                                    <?php $shortdesc = $product->getShortdesc(); ?>
+                                    <?php $id = $product->getId(); ?>
+                                <?php endif; ?>
+                            </ul>
+                            <?php $i++; ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </section>
+
+            <section class="shopKeeper">
+                <?php if (!isset($shortdesc)) : ?>
+                    <p class="bubble">Hello! How can I help you?</p>
+                <?php else: ?>
+                    <p class="bubble"><?= $shortdesc ?> <br><br>At least, that's what it says ...</p>
+                <?php endif; ?>
+            </section>
+        </section>
+
+        <section class="smallSectionShop">
+            <?php if (isset($shortdesc) and (isset($id))) : ?>
+                <a href="fiche_produit.php?id=<?= $id ?>">I'm interested, can I see the item?</a>
+            <?php else : ?>
+                <p>Hi! I'm just looking...</p>
+            <?php endif; ?>
+        </section>
 
     <?php endif; ?>
-
 </main>

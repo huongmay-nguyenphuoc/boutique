@@ -44,7 +44,7 @@ body {
 }
 
 .bodyShop {
-    background: url("../photo/style/seaback.jpg") center;
+    background: url("../photo/style/shopopen.jpg") center;
     background-size: cover;
 }
 
@@ -52,6 +52,7 @@ body {
     background: url("../photo/style/closedback.png") center;
     background-size: cover;
 }
+
 
 main {
     width: 100%;
@@ -132,6 +133,7 @@ article {
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
 .text-box2 {
     width: 50%;
 }
@@ -152,6 +154,7 @@ article {
 .text-box a:hover {
     text-shadow: 0 0 10px white;
 }
+
 .spanName {
     text-transform: uppercase;
 }
@@ -174,7 +177,7 @@ article {
     animation: appear 2.5s 2s 1 backwards;
 }
 
-.text-box  p:nth-child(4) {
+.text-box p:nth-child(4) {
     animation: appear 2.5s 3s 1 backwards;
 }
 
@@ -212,6 +215,7 @@ article {
     font-style: italic;
 
 }
+
 /*SOUS CATEGORIE*/
 .gouttes {
     display: flex;
@@ -252,13 +256,12 @@ article {
 .bodySubCat {
     color: white;
 }
+
 .bodySubCat section {
     height: 100%;
     width: 100%;
     display: flex;
 }
-
-
 
 
 .bodySubCat section:nth-child(1) {
@@ -281,14 +284,15 @@ article {
     font-weight: bold;
     border: 2px solid white;
     padding: 10px;
-    background-color: rgba(0,0,0, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 #gouttesArticle:nth-child(1) {
-align-items: center;
+    align-items: center;
 }
+
 #gouttesArticle article:nth-child(2) {
-align-items: start;
+    align-items: start;
 }
 
 #gouttesArticle article:nth-child(3) {
@@ -296,36 +300,12 @@ align-items: start;
 }
 
 
-@media screen and (max-width: 640px) {
-    article {
-        flex-direction: column;
-    }
-
-    .bodyCat .text-box p {
-        font-size: 0.8em;
-    }
-
-    .bodySubCat .gouttes {
-        flex-direction: column;
-        justify-content: center;
-        padding: 10px;
-    }
-
-    .text-box {
-        width: 100%;
-        height: auto;
-    }
-
-    .catLink p {
-        font-size: 1em;
-    }
-}
-
 /*BOUTIQUE*/
 
-.bodyClosedShop {
-    justify-content: center;
 
+
+.bodyClosedShop nav {
+    color: white;
 }
 
 .shopSection {
@@ -334,6 +314,16 @@ align-items: start;
     align-items: center;
     justify-content: center;
     padding: 10px;
+}
+
+
+.bigSectionShop {
+    display: flex;
+    height: 80%;
+}
+
+.bigSectionShop section:nth-child(2) {
+    width: 60%;
 }
 
 .shopTitle {
@@ -362,10 +352,159 @@ align-items: start;
 
 .shopTitle p:nth-child(3) {
     font-style: italic;
-    animation: appear 4s 1 backwards, side  2s 1 backwards;
+    animation: appear 4s 1 backwards, side 2s 1 backwards;
 }
 
 @keyframes side {
-from{left: -300px;}
-    to {left: 0px;}
+    from {
+        left: -300px;
+    }
+    to {
+        left: 0px;
+    }
 }
+
+/*BODY SHOP*/
+
+.bodyShop ul, li {
+    list-style-type: none;
+    width: 100%;
+}
+
+.shopKeeper {
+    background: url("../photo/style/witchback2.png") bottom right no-repeat;
+    background-size: contain;
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    padding: 2em;
+}
+
+.bubble {
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50%;
+    padding: 2em;
+    border-radius: 20px 20px 0px 20px;
+    color: white;
+    font-size: 1.2em;
+
+    text-align: justify;
+}
+
+.productList {
+    width: 30%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-sizing: border-box;
+    align-self: center;
+    overflow: scroll;
+}
+
+.eachProduct {
+    border-bottom: 2px solid white;
+    color: white;
+    box-sizing: border-box;
+}
+
+.eachProduct ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+
+    padding: 10px;
+}
+
+.eachProduct input {
+    color: white;
+    border: none;
+    background: none;
+}
+
+.eachProduct input:hover {
+    text-shadow: 0 0 10px white;
+}
+
+.bigSectionShop {
+    height: 80%;
+    justify-content: center;
+}
+
+.smallSectionShop {
+    border: 3px solid black;
+    box-shadow: 0 0 5px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: none;
+    text-align: center;
+    padding: 10px;
+    /*border-radius: 10px 10px 0 0;*/
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 20%;
+    color: white;
+    font-size: 1.2em;
+}
+
+.smallSectionShop a {
+    color: white;
+    text-decoration: none;
+    transition: 0.4s;
+    font-size: 1.2em;
+}
+
+.smallSectionShop a:hover {
+    text-shadow: 0 0 10px white;
+}
+
+
+
+
+
+@media screen and (max-width: 640px) {
+    article {
+        flex-direction: column;
+    }
+
+    .bodyCat .text-box p {
+        font-size: 0.8em;
+    }
+
+    .bodySubCat .gouttes {
+        flex-direction: column;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .text-box {
+        width: 100%;
+        height: auto;
+    }
+
+    .catLink p {
+        font-size: 1em;
+    }
+
+    .bubble {
+        width: 100%;
+        font-size: 1em;
+        padding: 1em;
+    }
+
+    .smallSectionShop a, .smallSectionShop p {
+        font-size: 1em;
+    }
+    .bigSectionShop {
+        height: 90%;
+    }
+    .smallSectionShop {
+        height: 10%;
+    }
+
+    .eachProduct ul li {
+        flex-direction: column;
+    }
+}
+
