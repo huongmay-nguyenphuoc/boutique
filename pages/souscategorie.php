@@ -18,25 +18,28 @@ $title = $cat;
         <?php elseif ($cat == 'xbox') : ?>
         <main id="mainsubCatxbox">
             <?php endif; ?>
-            <article>
+
+            <article id="gouttesArticle">
                 <div class="gouttes">
-                    <a href="boutique.php?cat=<?= $cat ?>&subcat=games">1</a>
+                    <a href="boutique.php?cat=<?= $cat ?>&subcat=games">1 <span>Games shop</span> </a>
                 </div>
                 <div class="gouttes">
-                    <a href="boutique.php?cat=<?= $cat ?>&subcat=consoles">2</a>
+                    <a href="boutique.php?cat=<?= $cat ?>&subcat=consoles">2 <span>Consoles shop</span> </a>
                 </div>
                 <div class="gouttes">
-                    <a href="boutique.php?cat=<?= $cat ?>&subcat=secondhand">3</a>
+                    <a href="boutique.php?cat=<?= $cat ?>&subcat=secondhand">3 <span>Secondhand shop</span> </a>
                 </div>
             </article>
-            <article>
-                <div>
 
-                        <p class="gouttes">1. Games shop</p>
-                        <p class="gouttes">2. Consoles shop</p>
-                        <p class="gouttes">3. Seconhand shop</p>
+            <article>
+                <div id="legend">
+
+                        <p>1. Games shop</p>
+                        <p>2. Consoles shop</p>
+                        <p>3. Seconhand shop</p>
 
                 </div>
+
                 <div class="text-box text-box2">
                     <p>So you chose the <span><b><?= $cat ?></b></span> island?</p>
                     <?php if ($cat == 'nintendo') : ?>

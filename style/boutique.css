@@ -26,6 +26,7 @@ body {
 
 #mainsubCatPlayS {
     background: url("../photo/style/japan.jpg") center;
+    padding-top: 20px;
 }
 
 main {
@@ -190,34 +191,60 @@ article {
 }
 
 .gouttes {
-    height: 100%;
-    width: auto;
     display: flex;
-    color: white;
-    font-weight: bold;
+    transition: 0.5s;
 }
 
-
 .gouttes a {
-border-radius: 50px;
-    padding: 20px;
     text-decoration: none;
-    background-color:  rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 15px;
+    height: 15px;
+    width: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: 0.5s;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.gouttes span {
+    opacity: 0;
     color: white;
-    transition: 0.3s;
+    transition: 0.5s linear 0.5s;
+}
+
+.gouttes:hover span {
+    opacity: 1;
+    color: dimgrey;
 }
 
 .gouttes a:hover {
     filter: drop-shadow(0 0 0.75rem white);
+    width: 200px;
 }
 
-#mainsubCatPlayS article div:nth-child(1) {
+
+#mainsubCatPlayS p {
+    color: white;
+}
+
+#legend {
+    font-weight: bold;
+    border: 2px solid white;
+    padding: 10px;
+    background-color: rgba(0,0,0, 0.2);
+}
+
+#gouttesArticle:nth-child(1) {
 align-items: center;
 }
-#mainsubCatPlayS article div:nth-child(2) {
+#gouttesArticle article:nth-child(2) {
 align-items: start;
 }
 
-#mainsubCatPlayS article div:nth-child(3) {
+#gouttesArticle article:nth-child(3) {
     align-items: end;
 }
