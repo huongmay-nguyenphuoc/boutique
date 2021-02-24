@@ -12,6 +12,7 @@
 
     <section class="newsletter">
         <p><b>newsletter</b></p>
+        <p><a href="../pages/apropos.php"><b>À Propos</b></a> </p>
     </section>
 </article>
 

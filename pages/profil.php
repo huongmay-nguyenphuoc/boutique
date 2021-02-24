@@ -101,7 +101,9 @@ if (isset($_POST['show'])) {
             </a>
         </div>
 
-        <img src="../photo/style/arrow.png" width="80px"/>
+        <div class="joystick">
+            <img src="../photo/style/arrow.png" width="80px"/>
+        </div>
 
         <div class="updatelink">
             <a href="update.php">

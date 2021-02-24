@@ -286,11 +286,26 @@ a{
 
 
 /*PROFIL USER*/
+.userinfos, .order{
+    width: 300px;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 2px 5px 5px  goldenrod;
+    text-align: center;
+    padding-top: 20px;
+  }
+
+
+  .order{
+         box-shadow: -2px 5px 5px  goldenrod;
+  }
+
 
 .profil{
     display: flex;
     flex-direction: column;
-    
+    background-color: white;
 
 }
 
@@ -343,3 +358,10 @@ width: 100%;
     background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(25,24,25,0.8) 0%, rgba(241,246,247,0.2) 100%);
 }
+
+
+
+
+
+
+
