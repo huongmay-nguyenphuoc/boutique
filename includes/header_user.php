@@ -11,7 +11,7 @@
 
     <title>Gamebusters - <?= $title ?></title>
 </head>
-<body>
+<body class="<?= $bodyname ?>">
 <header>
     <nav>
         <div class="navDiv" id="hearts">

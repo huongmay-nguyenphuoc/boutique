@@ -3,6 +3,8 @@
 require_once '../classes/user.php';
 require_once '../classes/order.php';
 
+$title = "Profile";
+$bodyname = "bodyuser";
 
 if (!isset($_SESSION['user'])) {
     header('location: connexion.php');
