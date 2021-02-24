@@ -3,6 +3,9 @@
 require_once '../classes/user.php';
 require_once '../classes/validator.php';
 
+$title = "Register";
+$bodyname = "bodyuser";
+
 session_start();
 
 if(isset($_POST['submit'])){
@@ -50,6 +53,7 @@ if(isset($_POST['submit'])){
 
 
 <?php include '../includes/header_user.php'; ?>
+    <h1><em><b>Register</b></em></h1>
 
 <!--Alerte (erreur ou succès)-->
 <?php if (!empty($errors)): ?>

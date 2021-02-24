@@ -220,9 +220,29 @@ button{
 form{
     max-width:800px/*-- à modifier en fonction de la largeur désirée --*/;
     margin:0 auto;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 20px;
     text-align: center;
+    color: white;
+}
+
+.form, .formlogin{
+    display: flex;
+    flex-direction: row;
+    max-width: 600px;
+    padding: 20px;
+}
+
+.form input, textarea, .formlogin input, .formupdate input{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    padding: 10px;
+
+}
+
+.formregister, .formupdate{
+    margin-right: 15px;
 }
 
  #avatar{
@@ -230,7 +250,6 @@ form{
     clip-path:circle(40%);
 
 }
-
 
 
 /*TABLEAUX */
@@ -300,7 +319,7 @@ a{
     color: white;
      font-size: 1.2em;
     margin-top: 20px;
-    border-image: url("@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);");
+
   }                    
                        
 
@@ -312,9 +331,6 @@ a{
 .profil{
     display: flex;
     flex-direction: column;
-    background-image: url("../photo/style/mountain4.jpg");
-    min-height: 100%;
-
 }
 
 
@@ -327,7 +343,6 @@ a{
 .links{
     display: flex;
     flex-direction: row;
-
 }
 
  .persolink {
@@ -349,17 +364,18 @@ a{
     width: 100%;
     align-items: center;
     color: white;
-
 }
 
 .updatelink, .orderlink{
     width: 100%;
+
 }
 
 .orderlink a{
     justify-content: flex-end;
     background: rgb(249,246,249);
     background: linear-gradient(90deg, rgba(249,246,249,0.2) 0%, rgba(25,24,25,0.8) 100%, rgba(241,246,247,1) 100%);
+
 }
 
 .updatelink{
@@ -369,7 +385,16 @@ a{
 
 
 
+.updatelink:hover, .orderlink:hover{
+    background-color: goldenrod;
+
+}
 
 
 
 
+.bodyuser {
+    background-image: url("../photo/style/mountain4.jpg");
+    min-height: 100%;
+    justify-content: space-between;
+} 

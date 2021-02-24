@@ -3,6 +3,10 @@
 require_once '../classes/user.php';
 require_once '../classes/validator.php';
 
+
+$title = "Update";
+$bodyname = "bodyuser";
+
 session_start();
 
 
@@ -105,7 +109,9 @@ if (isset($_POST['submit'])) {
 
 
     <form action="update.php" method="post" enctype="multipart/form-data">
-
+        <div class="form">
+            <fieldset class="formupdate">
+                <legend><em><b>Update</b></em></legend>
         <label for="file">Avatar : </label><br>
         <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
 
@@ -113,13 +119,20 @@ if (isset($_POST['submit'])) {
         <input placeholder="login" id="login" type="text" name="login" maxlength="20"
                value="<?php echo $_SESSION['user']->getLogin(); ?>"><br><br>
 
+        <label for="email">Email</label><br>
+        <input type="email" id="email" name="email" placeholder="exemple@gmail.com"
+               value="<?php echo $_SESSION['user']->getEmail(); ?>"><br><br>
+
         <label for="password">New Password</label><br>
         <input id="password" type="password" class="validate white-text" name="password" maxlength="20"><br><br>
 
         <label for="passwordcheck">Check Password</label><br>
         <input id="passwordcheck" type="password" class="validate white-text" name="passwordcheck"
                maxlength="20"><br><br>
+            </fieldset>
 
+            <fieldset class="formplusinfos">
+                <legend><em><b>Plus d'infos</b></em></legend>
         <label for="lastname">Lastname</label><br>
         <input type="text" id="lastname" name="lastname" placeholder="lastname"
                value="<?php echo $_SESSION['user']->getLastname(); ?>"><br><br>
@@ -128,9 +141,6 @@ if (isset($_POST['submit'])) {
         <input type="text" id="firstname" name="firstname" placeholder="firstname"
                value="<?php echo $_SESSION['user']->getFirstname(); ?>"><br><br>
 
-        <label for="email">Email</label><br>
-        <input type="email" id="email" name="email" placeholder="exemple@gmail.com"
-               value="<?php echo $_SESSION['user']->getEmail(); ?>"><br><br>
 
         <label for="city">City</label><br>
         <input type="text" id="city" name="city" placeholder="city" title="caractères acceptés : a-zA-Z0-9-_."
@@ -144,7 +154,8 @@ if (isset($_POST['submit'])) {
         <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}"
                   title="caractères acceptés :  a-zA-Z0-9-_."><?php echo $_SESSION['user']->getAdress(); ?></textarea><br><br>
 
-
+            </fieldset>
+        </div>
         <button class="btn waves-effect waves-light black" type="submit" name="submit">
             <i class="material-icons right">send</i>
         </button>

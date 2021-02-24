@@ -3,6 +3,10 @@
 require_once '../classes/user.php';
 require_once '../classes/validator.php';
 
+
+$title = "Log in";
+$bodyname = "bodyuser";
+
 session_start();
 if (isset($_SESSION['user'])) {
     header("Location: profil.php");
@@ -45,7 +49,7 @@ if (isset($_POST['submit'])) {
 <?php include '../includes/header_user.php'; ?>
 
 
-
+<h1><em><b>Log in</b></em></h1>
         <!--Alerte (erreur ou succès)-->
         <?php if (isset($error)): ?>
             <div>
@@ -53,8 +57,8 @@ if (isset($_POST['submit'])) {
             </div>
         <?php endif; ?>
 
-
-        <form method="post" action="connexion.php">
+<main>
+        <form method="post" action="connexion.php" class="formlogin">
             <fieldset>
                 <legend><em><b>Log in</b></em></legend><br>
 
@@ -77,7 +81,7 @@ if (isset($_POST['submit'])) {
 
 
     <a href="inscription.php"><button>No Account yet, register now !</button> </a>
-
+</main>
 
 
 <?php include '../includes/footer.php'; ?>
