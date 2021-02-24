@@ -224,6 +224,8 @@ form{
     border-radius: 20px;
     text-align: center;
     color: white;
+
+
 }
 
 .form, .formlogin{
@@ -396,5 +398,5 @@ a{
 .bodyuser {
     background-image: url("../photo/style/mountain4.jpg");
     min-height: 100%;
-    justify-content: space-between;
+
 } 

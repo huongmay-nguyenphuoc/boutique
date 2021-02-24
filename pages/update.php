@@ -87,7 +87,7 @@ if (isset($_POST['submit'])) {
 ?>
 
 <?php include '../includes/header_user.php'; ?>
-
+<main>
     <h1 class="center"><em>Update</em></h1>
     <h2><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h2>
 
@@ -160,5 +160,5 @@ if (isset($_POST['submit'])) {
             <i class="material-icons right">send</i>
         </button>
     </form>
-
+</main>
 <?php include '../includes/footer.php'; ?>
