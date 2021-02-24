@@ -51,8 +51,6 @@ if(isset($_POST['submit'])){
 
 <?php include '../includes/header_user.php'; ?>
 
-    <h1><em>Inscription</em></h1>
-
 <!--Alerte (erreur ou succès)-->
 <?php if (!empty($errors)): ?>
         <div>
@@ -68,6 +66,8 @@ if(isset($_POST['submit'])){
 
 
 <form method="post" action="inscription.php">
+    <fieldset>
+        <legend><em><b>Register</b></em></legend>
     <label for="login">Login</label><br>
     <input type="text" id="login" name="login" maxlength="20" placeholder="login" pattern="[a-zA-Z0-9-_.]{1,20}" title="caractères acceptés : a-zA-Z0-9-_." required="required" value="<?php if (isset($_POST['login'])) { echo htmlspecialchars($_POST['login']);} ?>"><br><br>
 
@@ -96,6 +96,7 @@ if(isset($_POST['submit'])){
     <textarea id="adress" name="adress" placeholder="adress" pattern="[a-zA-Z0-9-_.]{5,15}" title="caractères acceptés :  a-zA-Z0-9-_." required><?php if (isset($_POST['adress'])) { echo htmlspecialchars($_POST['adress']);} ?> </textarea><br><br>
  
     <button type="submit" name="submit">send</button>
+    </fieldset>
 </form>
 
 <?php include '../includes/footer.php'; ?>

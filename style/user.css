@@ -220,9 +220,10 @@ button{
 form{
     max-width:800px /*-- à modifier en fonction de la largeur désirée --*/;
     margin:0 auto;
-    width:14%;
-
-
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    padding: 30px;
+    border-radius: 20px;
 }
 
  #avatar{
@@ -230,6 +231,10 @@ form{
     clip-path:circle(40%);
 
 }
+
+ legend{
+     font-size: 2em;
+ }
 
 /*TABLEAUX */
 
@@ -291,21 +296,27 @@ a{
     height: 100%;
     box-sizing: border-box;
     border-radius: 10px;
-    box-shadow: 2px 5px 5px  goldenrod;
+    box-shadow: 4px 5px 5px  black;
     text-align: center;
     padding-top: 20px;
-  }
-
+    background-color: rgba(0, 0, 0, 0.5) ;
+    color: white;
+     font-size: 1.2em;
+    margin-top: 20px;
+    border-image: url("@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);");
+  }                    
+                       
 
   .order{
-         box-shadow: -2px 5px 5px  goldenrod;
+         box-shadow: -4px 5px 5px  black;
   }
 
 
 .profil{
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-image: url("../photo/style/mountain4.jpg");
+    min-height: 100%;
 
 }
 
@@ -326,7 +337,7 @@ a{
      display: flex;
      flex-direction: row;
      align-items: center;
-width: 100%;
+     width: 100%;
      justify-content: center;
  }
 

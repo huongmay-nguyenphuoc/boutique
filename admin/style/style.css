@@ -180,6 +180,15 @@ form{
     max-width:800px /*-- à modifier en fonction de la largeur désirée --*/;
     margin:0 auto;
     width:14%;
+    text-align: center;
+}
 
+legend {
 
+  text-align: center;
+}
+
+fieldset{
+
+    padding: 20px;
 }

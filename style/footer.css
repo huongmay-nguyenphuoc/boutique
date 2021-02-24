@@ -8,3 +8,16 @@ footer{
     display: flex;
     flex-direction: row;
 }
+
+.social{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+
+.imgsocial{
+    display: flex;
+    flex-direction: row;
+}

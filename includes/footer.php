@@ -4,10 +4,12 @@
 <article class="footerinfos">
     <section class="social">
         <p><b>Our social media</b></p>
-        <img src="../photo/style/icons8-facebook-64.png"/>
-        <img src="../photo/style/icons8-twitter-64.png"/>
-        <img src="../photo/style/icons8-instagram-64.png"/>
-        <img src="../photo/style/icons8-tiktok-64.png"/>
+        <div class="imgsocial">
+        <a href="http://facebook.com"><img src="../photo/style/icons8-facebook-64.png" width="40px"/></a>
+        <a href="http://twitter.com"><img src="../photo/style/icons8-twitter-64.png" width="40px"/></a>
+        <a href="http://instagram.com"><img src="../photo/style/icons8-instagram-64.png" width="40px"/></a>
+        <a href="http://titktok.com"><img src="../photo/style/icons8-tiktok-64.png" width="40px"/></a>
+        </div>
     </section>
 
     <section class="newsletter">
