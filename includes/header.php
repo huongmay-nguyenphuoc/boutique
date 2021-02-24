@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../style/panier.css">
     <title>Gamebusters - <?= $title ?></title>
 </head>
-<body class="bodySubCat">
+<body class="<?= $bodyname ?>">
 <header>
     <nav>
         <div class="navDiv" id="hearts">

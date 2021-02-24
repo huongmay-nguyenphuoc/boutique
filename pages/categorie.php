@@ -1,5 +1,5 @@
-<?php $title = 'Category' ?>
-
+<?php $title = 'Category'; ?>
+<?php $bodyname = 'bodyCat'; ?>
 <?php require_once('../includes/header.php'); ?>
 
 

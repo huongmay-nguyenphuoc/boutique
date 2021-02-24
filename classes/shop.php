@@ -27,7 +27,7 @@ class shop
     {
         $data = $this->pdo->Select('SELECT * FROM products WHERE id_product ="' . $id . '"');
         $data = $data[0];
-        $product = new product($data['id_product'], $data['price'], $data['stock'], $data['title'], $data['shortdesc'], $data['category'], $data['subcategory'], $quantity);
+        $product = new product($data['id_product'], $data['price'], $data['stock'], $data['title'], $data['description'], $data['shortdesc'], $data['category'], $data['subcategory'], $data['image'], $quantity);
         return $product;
     }
 
@@ -36,10 +36,15 @@ class shop
     {
         $datas = $this->pdo->Select('SELECT * FROM products WHERE category ="' . $cat . '" AND subcategory ="' . $subcat . '"');
 
-        foreach ($datas as $data) {
-            $products[] = new product($data['id_product'], $data['price'], $data['stock'], $data['title'], $data['shortdesc'], $data['category'], $data['subcategory'], 0);
+        if (empty($datas)) {
+            return false;
+        } else {
+            foreach ($datas as $data) {
+                $products[] = new product($data['id_product'], $data['price'], $data['stock'], $data['title'], $data['description'], $data['shortdesc'], $data['category'], $data['subcategory'], $data['image'], 0);
+                return $products;
+            }
+
         }
-        return $products;
     }
 
     /*TRI LES PRODUITS PAR PRIX*/

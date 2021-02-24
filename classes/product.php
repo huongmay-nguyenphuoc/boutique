@@ -13,7 +13,7 @@ class product
     private $cat;
     private $subcat;
 
-    function __construct($id, $price, $stock, $title, $description, $shortdesc, $cat, $subcat, $quantity)
+    function __construct($id, $price, $stock, $title, $description, $shortdesc, $cat, $subcat, $picture, $quantity)
     {
         $this->id = $id;
         $this->price = $price;
@@ -24,6 +24,7 @@ class product
         $this->cat = $cat;
         $this->subcat = $subcat;
         $this->quantity = $quantity;
+        $this->picture = $picture;
     }
 
     function getReference()
