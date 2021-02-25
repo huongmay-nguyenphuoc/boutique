@@ -58,6 +58,14 @@ if (isset($_POST['submit'])) {
         <?php endif; ?>
 
 <main>
+    <article class="mainlogin">
+    <div class="text-box-login">
+        <p>Don't forget to log in to see your Profile</b></p>
+        <a href="inscription.php">No Account yet, don't hesitate to register now ! </a>
+    </div>
+
+
+
         <form method="post" action="connexion.php" class="formlogin">
             <fieldset>
                 <legend><em><b>Log in</b></em></legend><br>
@@ -80,7 +88,10 @@ if (isset($_POST['submit'])) {
         </form>
 
 
-    <a href="inscription.php"><button>No Account yet, register now !</button> </a>
+
+
+
+    </article>
 </main>
 
 

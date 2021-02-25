@@ -399,4 +399,73 @@ a{
     background-image: url("../photo/style/mountain4.jpg");
     min-height: 100%;
 
-} 
+}
+
+
+/*ESSAI MESSAGES*/
+
+.mainlogin{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.text-box-login, .text-box-register {
+    border: 3px solid black;
+    box-shadow: 0 0 5px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: none;
+    text-align: justify;
+    text-align: center;
+    width: 80%;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50%;
+}
+
+
+
+
+.text-box-login a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.5em;
+    transition: 0.5s;
+}
+
+.text-box-login a:hover {
+    text-shadow: 0 0 10px white;
+}
+
+
+.text-box-login p, .text-box-register p  {
+    width: 80%;
+    opacity: 1;
+    text-align: justify;
+    text-shadow: 1px 1px #555555, -1px 1px #555555, 1px -1px #555555, -1px -1px #555555, 1px 1px 5px #555555;
+    font-size: 1.2em;
+    color: white;
+}
+
+
+.text-box-login p:nth-child(1), .text-box-login p:nth-child(2),
+.text-box-register p:nth-child(1), .text-box-register p:nth-child(2){
+    animation: appear 5s 1 backwards;
+}
+
+
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

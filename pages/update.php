@@ -88,8 +88,9 @@ if (isset($_POST['submit'])) {
 
 <?php include '../includes/header_user.php'; ?>
 <main>
-    <h1 class="center"><em>Update</em></h1>
-    <h2><em>Profil @<?php echo $_SESSION['user']->getLogin(); ?></em></h2>
+
+    <h1 class="center"><em>Update your Profile</em></h1>
+    <h2><em>@<?php echo $_SESSION['user']->getLogin(); ?> Profile</em></h2>
 
     <!--Alerte (erreur ou succès)-->
     <?php if (!empty($errors)): ?>
@@ -104,8 +105,6 @@ if (isset($_POST['submit'])) {
             <p class="white-text"><?php echo $success; ?></p>
         </div>
     <?php endif; ?>
-
-
 
 
     <form action="update.php" method="post" enctype="multipart/form-data">

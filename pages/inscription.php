@@ -69,7 +69,16 @@ if(isset($_POST['submit'])){
     <?php endif; ?>
 
 <main>
-<form method="post" action="inscription.php">
+    <article class="mainregister">
+
+    <div class="text-box-register">
+        <p>Welcome, new friend!</b></p>
+        <p>Don't hesitate to register to continue your experience! </p>
+    </div>
+
+
+
+    <form method="post" action="inscription.php">
     <div class="form">
     <fieldset class="formregister">
         <legend><em><b>Register</b></em></legend>
@@ -109,6 +118,8 @@ if(isset($_POST['submit'])){
     <button type="submit" name="submit">send</button>
 
 </form>
+
+    </article>
 </main>
 
 <?php include '../includes/footer.php'; ?>
