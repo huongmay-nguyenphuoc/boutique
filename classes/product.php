@@ -12,6 +12,7 @@ class product
     private $description;
     private $cat;
     private $subcat;
+    private $picture;
 
     function __construct($id, $price, $stock, $title, $description, $shortdesc, $cat, $subcat, $picture, $quantity)
     {
@@ -53,6 +54,11 @@ class product
         return $this->price;
     }
 
+    function getPicture()
+
+    {
+        return $this->picture;
+    }
 
     function getDescription()
     {

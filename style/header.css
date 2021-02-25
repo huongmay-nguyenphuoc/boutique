@@ -125,3 +125,14 @@ nav li:hover span {
 nav h1 {
     font-size: 4em;
 }
+
+.imgheader {
+    height: 30px;
+    filter: invert(100%);
+    transition: 0.5s;
+}
+
+.imgheader:hover {
+    filter: drop-shadow(0 0 5px white);
+    filter: invert(100%);
+}

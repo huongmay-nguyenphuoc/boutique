@@ -37,143 +37,24 @@ article {
     width: 100%;
     flex-direction: row;
     height: 100%;
-}
-
-
-.catDiv {
-    height: 100%;
-    width: 50%;
-    z-index: 0;
-    position: relative;
-}
-
-.catDiv {
-    animation: shake 2s infinite alternate both;
-}
-
-#catDiv1 {
-    background: url("../photo/style/island1.png") no-repeat center;
-    background-size: contain;
-}
-
-#catDiv2 {
-    background: url("../photo/style/island3.png") no-repeat center;
-    background-size: contain;
-}
-
-#catDiv3 {
-    background: url("../photo/style/island2.png") no-repeat center;
-    background-size: contain;
-}
-
-
-@keyframes shake {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(20px);
-    }
-}
-
-#catDiv4 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 0;
-    animation: none;
-}
-
-#catDiv4 div {
-    border: 3px solid black;
-    box-shadow: 0 0 5px black;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    animation: none;
-    text-align: justify;
     text-align: center;
-    width: 80%;
-    height: auto;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-#catDiv4 p {
-    width: 80%;
-    opacity: 1;
-    text-align: justify;
-    text-shadow: 1px 1px #555555, -1px 1px #555555, 1px -1px #555555, -1px -1px #555555, 1px 1px 5px #555555;
-    font-size: 1.2em;
-    color: white;
 }
 
 
-#catDiv4 p:nth-child(1) {
-    animation: appear 5s 1 backwards;
-}
-
-#catDiv4 p:nth-child(2) {
-    animation: appear 3s 2s 1 backwards;
-}
-
-#catDiv4 p:nth-child(3) {
-    animation: appear 3s 3s 1 backwards;
-}
-
-#catDiv4 p:nth-child(4) {
-    animation: appear 3s 4s 1 backwards;
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.catLink {
-    height: 100%;
+.error {
+    margin: 10px 0 10px 0;
+    text-align: center;
     width: 100%;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    opacity: 0;
-    transition: 0.5s;
+    background: rgba(0,0,0,0.8);
+    padding: 10px 0 10px 0;
 }
 
-.catLink:hover {
-    opacity: 1;
-}
-
-.catLink p {
+.error a {
     color: white;
-    margin-bottom: 20px;
-    font-size: 2em;
-    font-style: italic;
-
 }
-
 @media screen and (max-width: 640px) {
     article {
         flex-direction: column;
-    }
-
-    #catDiv4 p {
-        font-size: 0.8em;
-    }
-
-    #catDiv4 div {
-        width: 100%;
-        height: auto;
-    }
-
-    .catLink p {
-        font-size: 1em;
     }
 }
 
@@ -228,6 +109,9 @@ form{
 
 }
 
+form input, textarea, p {
+    color: white;
+}
 .form, .formlogin{
     display: flex;
     flex-direction: row;
@@ -240,6 +124,7 @@ form{
     border: none;
     border-bottom: 1px solid white;
     padding: 10px;
+
 
 }
 
@@ -371,6 +256,8 @@ a{
 .updatelink, .orderlink{
     width: 100%;
 
+    transition: 1s;
+
 }
 
 .orderlink a{
@@ -382,6 +269,7 @@ a{
 
 .updatelink{
     background: rgb(0,0,0);
+
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(25,24,25,0.8) 0%, rgba(241,246,247,0.2) 100%);
 }
 

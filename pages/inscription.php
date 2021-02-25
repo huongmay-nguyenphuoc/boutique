@@ -53,22 +53,12 @@ if(isset($_POST['submit'])){
 
 
 <?php include '../includes/header_user.php'; ?>
-    <h1><em><b>Register</b></em></h1>
-
-<!--Alerte (erreur ou succès)-->
-<?php if (!empty($errors)): ?>
-        <div>
-            <?php foreach ($errors as $error) :?>
-                <p><?= $error?></p>
-            <?php endforeach;?>
-        </div>
-    <?php elseif (isset($success)): ?>
-        <div>
-           <p><?= $success ?></p>
-        </div>
-    <?php endif; ?>
 
 <main>
+    <h1><em><b>Register</b></em></h1>
+
+
+
     <article class="mainregister">
 
     <div class="text-box-register">
@@ -77,6 +67,18 @@ if(isset($_POST['submit'])){
     </div>
 
 
+        <!--Alerte (erreur ou succès)-->
+        <?php if (!empty($errors)): ?>
+            <div class="error">
+                <?php foreach ($errors as $error) :?>
+                    <p><?= $error?></p>
+                <?php endforeach;?>
+            </div>
+        <?php elseif (isset($success)): ?>
+            <div class="error">
+                <p><?= $success ?></p>
+            </div>
+        <?php endif; ?>
 
     <form method="post" action="inscription.php">
     <div class="form">

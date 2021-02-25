@@ -40,11 +40,13 @@ class shop
             return false;
         } else {
             foreach ($datas as $data) {
-                $products[] = new product($data['id_product'], $data['price'], $data['stock'], $data['title'], $data['description'], $data['shortdesc'], $data['category'], $data['subcategory'], $data['image'], 0);
-                return $products;
+                $product = new product($data['id_product'], $data['price'], $data['stock'], $data['title'], $data['description'], $data['shortdesc'], $data['category'], $data['subcategory'], $data['image'], 0);
+                $products[] = $product;
             }
-
+            return $products;
         }
+
+
     }
 
     /*TRI LES PRODUITS PAR PRIX*/

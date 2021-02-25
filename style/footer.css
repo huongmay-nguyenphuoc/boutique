@@ -3,6 +3,8 @@
 footer{
     background-color: rgba(255, 255, 255, 0.5);
     margin-top: 25px;
+    opacity: 0.3;
+    transition: 0.5s;
 }
 
 .footerinfos{
@@ -23,3 +25,7 @@ footer{
     flex-direction: row;
 }
 
+
+footer:hover {
+    opacity: 1;
+}

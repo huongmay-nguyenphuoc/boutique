@@ -24,23 +24,25 @@
                 </article>
                 <ul>
                     <!-- Utilisateur déconnecté -->
-                    <li class="navlink <?php if (!isset($_SESSION['user'])) { echo 'disabled'; } ?>"><a href="../index.php"><span> < </span>Index<span> > </span></a></li>
+                    <li class="navlink <?php if (!isset($_SESSION['user'])) {
+                        echo 'disabled';
+                    } ?>"><a href="../index.php"><span> < </span>Index<span> > </span></a></li>
                     <?php if (!isset($_SESSION['user'])) : ?>
-                    <li><a href="../pages/inscription.php"><span> < </span>New user<span> > </span></a></li>
-                    <li><a href="../pages/connexion.php"><span> < </span>Log in<span> > </span></a></li>
+                        <li><a href="../pages/inscription.php"><span> < </span>New user<span> > </span></a></li>
+                        <li><a href="../pages/connexion.php"><span> < </span>Log in<span> > </span></a></li>
                         <!-- Utilisateur connecté-->
                     <?php else : ?>
-                    <li><a href="../pages/profil.php"><span> < </span>Profile<span> > </span></a></li>
-                    <li><a href="../pages/update.php"><span> < </span>Update Profile<span> > </span></a></li>
-                    <li><a href="../pages/deconnexion.php"><span> < </span>Log out<span> > </span></a></li>
+                        <li><a href="../pages/profil.php"><span> < </span>Profile<span> > </span></a></li>
+                        <li><a href="../pages/update.php"><span> < </span>Update Profile<span> > </span></a></li>
+                        <li><a href="../pages/deconnexion.php"><span> < </span>Log out<span> > </span></a></li>
                     <?php endif; ?>
                 </ul>
             </div>
         </div>
-        <div class="navDiv" >
-            <a href="profil.php">Account</a>
-            <a href="shopcart.php">Cart</a>
-            <a href="search.php">Search</a>
+        <div class="navDiv">
+            <a href="profil.php"><img class="imgheader" src="../photo/style/iconehead.png"></a>
+            <a href="shopcart.php"><img class="imgheader" src="../photo/style/chest.png"></a>
+            <a href="search.php"><img class="imgheader" src="../photo/style/loupe.png"></a>
         </div>
     </nav>
 

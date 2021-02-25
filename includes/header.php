@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../style/header.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/footer.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/panier.css">
-    <title>Gamebusters - <?= $title ?></title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../style/ficheproduit.css">
+    <title> <?= $title ?> - Gamebusters</title>
 </head>
 <body class="<?= $bodyname ?>">
 <header>
@@ -37,9 +38,9 @@
             </div>
         </div>
         <div class="navDiv">
-            <a href="profil.php">Account</a>
-            <a href="shopcart.php">Cart</a>
-            <a href="search.php">Search</a>
+            <a href="profil.php"><img class="imgheader" src="../photo/style/iconehead.png"></a>
+            <a href="shopcart.php"><img class="imgheader" src="../photo/style/chest.png"></a>
+            <a href="search.php"><img class="imgheader" src="../photo/style/loupe.png"></a>
         </div>
     </nav>
 

@@ -49,36 +49,41 @@ if (isset($_POST['submit'])) {
     }
 
 
-    if (isset($_FILES)) {
+    if (!empty($_FILES)) {
         /*Check Image*/
         $target_dir = "../avatars/";
+
         $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
-        if (getimagesize($_FILES["fileToUpload"]["tmp_name"]) == false) {
-            $errors[] = "This file is not an image.";
-        }
+        if (!empty($_FILES["fileToUpload"]["tmp_name"])) {
+            if (getimagesize($_FILES["fileToUpload"]["tmp_name"]) == false) {
+                $errors[] = "This file is not an image.";
+            }
 
+            // Allow certain file formats
+            if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif") {
+                $errors[] = "Only JPG, JPEG, PNG & GIF pictures are allowed.";
+            }
 
 // Check file size
-        if ($_FILES["fileToUpload"]["size"] > 500000) {
-            $errors[] = "This picture is too large.";
+            if ($_FILES["fileToUpload"]["size"] > 500000) {
+                $errors[] = "This picture is too large.";
+            }
         }
 
-// Allow certain file formats
-        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif") {
-            $errors[] = "Only JPG, JPEG, PNG & GIF pictures are allowed.";
-        }
     }
 
     //If everything is okay
     if (empty($errors)) {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $image = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
+    } else {
+            $image = '';
+        }
         $_SESSION['user']->update($login, $password, $lastname, $firstname, $email, $city, $zip, $adress, $image);
-        $success = "Account has been updated<a href='categorie.php'>Continue shopping</a>";
-    }
+        $success = "Account has been updated <a href='categorie.php'>Continue shopping?</a>";
     }
 
 }
@@ -94,15 +99,14 @@ if (isset($_POST['submit'])) {
 
     <!--Alerte (erreur ou succès)-->
     <?php if (!empty($errors)): ?>
-        <div>
-            <?php foreach ($errors as $error) {
-                echo '<p class="red-text">' . $error . '</p>';
-            }
-            ?>
+        <div class="error">
+            <?php foreach ($errors as $error) :?>
+            <p><?= $error ?></p>
+           <?php endforeach;?>
         </div>
     <?php elseif (isset($success)): ?>
-        <div>
-            <p class="white-text"><?php echo $success; ?></p>
+        <div class="error">
+            <p><?php echo $success; ?></p>
         </div>
     <?php endif; ?>
 

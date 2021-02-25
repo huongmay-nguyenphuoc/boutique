@@ -1,8 +1,10 @@
 <?php
 require_once('../classes/shop.php');
 require_once('../classes/cart.php');
-var_dump($_SESSION);
-var_dump($_POST);
+$title = 'fiche produit';
+$bodyname = 'bodyFicheProd';
+/*var_dump($_SESSION);
+var_dump($_POST);*/
 /*Gestion erreurs des infos dans l'URL*/
 if (!empty($_GET['id']) and is_numeric($_GET['id'])) {
     $id = htmlspecialchars($_GET['id']);
@@ -44,36 +46,68 @@ if (isset($_POST['addBasket'])) {
 }
 
 ?>
+<?php require_once('../includes/header.php'); ?>
+<main>
 
-<?php if (isset($error)) : ?>
-    <div>
-        <p><?= $error ?></p>
-        <a href="categorie.php">Back</a>
-    </div>
+    <?php if (isset($error)) : ?>
+        <div>
+            <p><?= $error ?></p>
+            <a href="categorie.php">Back to the shop</a>
+        </div>
 
-<?php else : ?>
-    <h3><?= $product->getTitle() ?></h3>
-    <p>Price : <?= $product->getPrice() ?></p>
-
-    <!--Si en stock-->
-    <?php if ($product->getStock() > 0): ?>
-        <!--Si stock temporaire-->
-        <?php if ($tempStock >= 1) : ?>
-            <form method="post" action="fiche_produit.php">
-                <input type='hidden' name='id_product' value='<?= $product->getId() ?>'>
-                <select id="quantity" name="quantity">
-                    <?php for ($i = 1; $i <= $tempStock && $i <= 5; $i++) : ?>
-                        <option><?= $i ?></option>
-                    <?php endfor; ?>
-                </select>
-                <input type="submit" name="addBasket" value="add">
-            </form>
-        <?php else : ?>
-            <p>Lucky you, you took the last ones!</p>
-        <?php endif; ?>
     <?php else : ?>
-        <p>Out of stock...</p>
+
+
+        <section>
+            <article>
+                <div class="imgcontainer">
+                    <img class="productPic" src="../productPics/<?= $product->getPicture() ?>">
+                </div>
+            </article>
+
+            <article class="productInfo">
+                <div class="titleInfo">
+                    <h2><?= $product->getTitle() ?></h2>
+                    <p><?= $product->getDescription() ?></p>
+                </div>
+                <div>
+                    <div class="divStock">
+                        <!--Si en stock-->
+                        <?php if ($product->getStock() > 0): ?>
+                            <!--Si stock temporaire-->
+                            <?php if ($tempStock >= 1) : ?>
+                                <form method="post" action="fiche_produit.php">
+                                    <input type='hidden' name='id_product' value='<?= $product->getId() ?>'>
+                                    <select id="quantity" name="quantity">
+                                        <?php for ($i = 1; $i <= $tempStock && $i <= 5; $i++) : ?>
+                                            <option><?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select>
+                                    <input type="submit" name="addBasket" value="Add to basket">
+                                </form>
+
+                            <?php else : ?>
+                                <p>Lucky you, you took the last ones!</p>
+                            <?php endif; ?>
+
+                        <?php else : ?>
+                            <p>Out of stock...</p>
+                        <?php endif; ?>
+
+                    </div>
+                    <div>
+
+                        <p class="price"><?= $product->getPrice() ?><img height="50px"
+                                                                         src="../photo/style/diamond.png"</p>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <section>
+            <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>">Give item back</a>
+        </section>
+
     <?php endif; ?>
 
-    <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>">Back</a>
-<?php endif; ?>
+</main>

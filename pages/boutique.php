@@ -15,6 +15,7 @@ if (in_array(($_GET['cat']), $cats) and in_array(($_GET['subcat']), $subcats)) {
 /*Récupère les produits correspondant à la cat et souscat*/
 $shop = new shop;
 $products = $shop->selectProducts($cat, $subcat);
+
 if (empty($products)) {
     $bodyname = 'bodyClosedShop';
     $error = "Oh ... Seems like the shop is closed! Maybe you should come back later?";
@@ -25,9 +26,11 @@ if (isset($_POST['show'])) {
     $show[$_POST["value"]] = true;
 }
 ?>
-
 <?php require_once('../includes/header.php'); ?>
+
 <main>
+
+
     <!--Affichage erreur-->
     <?php if (isset($error)): ?>
         <section class="shopTitle shopSection">
@@ -54,6 +57,12 @@ if (isset($_POST['show'])) {
                             <ul>
                                 <li><?= $product->getTitle() ?> | <?= $product->getPrice() ?>€ |
 
+                                    <?php if ($product->getStock() <= 0) {
+                                        echo 'out of stock';
+                                    } else {
+                                        echo 'in stock';
+                                    }
+                                    ?>
                                     <form method="post">
                                         <input type="hidden" name="value" value="<?= $i ?>">
                                         <input type="submit" name="show" value="Tell me more"></form>
@@ -62,6 +71,9 @@ if (isset($_POST['show'])) {
                                 <?php if (isset($show[$i])) : ?>
                                     <?php $shortdesc = $product->getShortdesc(); ?>
                                     <?php $id = $product->getId(); ?>
+                                    <?php if ($product->getStock() <= 0) {
+                                        $out = true;
+                                    } ?>
                                 <?php endif; ?>
                             </ul>
                             <?php $i++; ?>
@@ -80,11 +92,22 @@ if (isset($_POST['show'])) {
         </section>
 
         <section class="smallSectionShop">
-            <?php if (isset($shortdesc) and (isset($id))) : ?>
-                <a href="fiche_produit.php?id=<?= $id ?>">I'm interested, can I see the item?</a>
-            <?php else : ?>
-                <p>Hi! I'm just looking...</p>
-            <?php endif; ?>
+            <div>
+                <span class="shopname"><small><em><?= $cat ?> Island, <?= $subcat ?> Shop</em></small></span>
+            </div>
+            <div>
+                <?php if (isset($shortdesc) and (isset($id))) : ?>
+                    <?php if (isset($out) and $out == true) : ?>
+                        <a href="fiche_produit.php?id=<?= $id ?>">I know it's out of stock, can I still see the
+                            sample?</a>
+                        <?php $out = false; ?>
+                    <?php else : ?>
+                        <a href="fiche_produit.php?id=<?= $id ?>">I'm interested, can I see the item?</a>
+                    <?php endif; ?>
+                <?php else : ?>
+                    <p>Hi! I'm just looking...</p>
+                <?php endif; ?>
+            </div>
         </section>
 
     <?php endif; ?>

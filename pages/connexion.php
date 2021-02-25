@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
 <h1><em><b>Log in</b></em></h1>
         <!--Alerte (erreur ou succès)-->
         <?php if (isset($error)): ?>
-            <div>
+            <div class="error">
                 <p><?= $error?></p>
             </div>
         <?php endif; ?>

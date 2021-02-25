@@ -18,10 +18,29 @@ body, main, article, a {
 }
 
 
+main {
+    width: 100%;
+    min-height: 80vh;
+    flex-grow: 2;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+
+article {
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    height: 100%;
+}
+
+
 body {
     min-height: 100vh;
     justify-content: space-between;
 }
+
 
 /*BACKGROUNDS*/
 .bodyCat {
@@ -53,25 +72,7 @@ body {
     background-size: cover;
 }
 
-
-main {
-    width: 100%;
-    min-height: 80vh;
-    flex-grow: 2;
-    justify-content: space-around;
-    overflow: hidden;
-}
-
-
-article {
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    flex-direction: row;
-    height: 100%;
-}
-
-
+/*CATEGORIES*/
 .catDiv {
     height: 100%;
     width: 50%;
@@ -79,23 +80,23 @@ article {
     position: relative;
 }
 
-.catDiv {
-    animation: shake 2s infinite alternate both;
-}
 
 #catDiv1 {
     background: url("../photo/style/island1.png") no-repeat center;
     background-size: contain;
+    animation: shake 2s infinite alternate both;
 }
 
 #catDiv2 {
     background: url("../photo/style/island3.png") no-repeat center;
     background-size: contain;
+    animation: shake 2s infinite 0.5s alternate both;
 }
 
 #catDiv3 {
     background: url("../photo/style/island2.png") no-repeat center;
     background-size: contain;
+    animation: shake 2s infinite 1s alternate both;
 }
 
 
@@ -206,6 +207,7 @@ article {
 
 .catLink:hover {
     opacity: 1;
+    text-shadow: 0 0 5px black;
 }
 
 .catLink p {
@@ -303,7 +305,6 @@ article {
 /*BOUTIQUE*/
 
 
-
 .bodyClosedShop nav {
     color: white;
 }
@@ -398,8 +399,11 @@ article {
     background-color: rgba(0, 0, 0, 0.7);
     box-sizing: border-box;
     align-self: center;
+    outline: 2px solid black;
     overflow: scroll;
+    outline-offset: 5px;
 }
+
 
 .eachProduct {
     border-bottom: 2px solid white;
@@ -437,15 +441,16 @@ article {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    animation: none;
-    text-align: center;
     padding: 10px;
     /*border-radius: 10px 10px 0 0;*/
     background-color: rgba(0, 0, 0, 0.7);
     height: 20%;
     color: white;
     font-size: 1.2em;
+}
+
+.smallSectionShop div {
+height: 50%;
 }
 
 .smallSectionShop a {
@@ -459,10 +464,9 @@ article {
     text-shadow: 0 0 10px white;
 }
 
-
-
-
-
+.smallSectionShop div:nth-child(2) {
+    text-align: center;
+}
 @media screen and (max-width: 640px) {
     article {
         flex-direction: column;
@@ -496,11 +500,18 @@ article {
     .smallSectionShop a, .smallSectionShop p {
         font-size: 1em;
     }
+
     .bigSectionShop {
         height: 90%;
     }
+
     .smallSectionShop {
         height: 10%;
+        padding-bottom: 5px;
+    }
+
+    .bigSectionShop section {
+        width: 50%;
     }
 
     .eachProduct ul li {
