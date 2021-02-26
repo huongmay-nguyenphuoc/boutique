@@ -39,9 +39,9 @@
             </div>
         </div>
         <div class="navDiv">
-            <a href="profil.php"><img class="imgheader" src="../photo/style/iconehead.png"></a>
-            <a href="shopcart.php"><img class="imgheader" src="../photo/style/chest.png"></a>
-            <a href="search.php"><img class="imgheader" src="../photo/style/loupe.png"></a>
+            <a class="picNav" href="profil.php"><img class="imgheader" src="../photo/style/iconehead.png"></a>
+            <a class="picNav" href="shopcart.php"><img class="imgheader" src="../photo/style/chest.png"></a>
+            <a class="picNav" href="search.php"><img class="imgheader" src="../photo/style/loupe.png"></a>
         </div>
     </nav>
 

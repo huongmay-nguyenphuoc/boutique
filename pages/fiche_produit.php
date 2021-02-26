@@ -3,8 +3,8 @@ require_once('../classes/shop.php');
 require_once('../classes/cart.php');
 $title = 'fiche produit';
 $bodyname = 'bodyFicheProd';
-/*var_dump($_SESSION);
-var_dump($_POST);*/
+//var_dump($_SESSION);
+//var_dump($_POST);
 /*Gestion erreurs des infos dans l'URL*/
 if (!empty($_GET['id']) and is_numeric($_GET['id'])) {
     $id = htmlspecialchars($_GET['id']);
@@ -42,6 +42,7 @@ if (isset($_POST['addBasket'])) {
     if ($_SESSION['alarm'] == 0 or empty($_SESSION['panier']) or !isset($_SESSION['panier'])) {
         $cart->addArticle($_POST['id_product'], $_POST['quantity']);
     }
+    $_SESSION['added'] = $_POST['quantity'];
     header("location:fiche_produit.php?id=$id");
 }
 
@@ -78,12 +79,19 @@ if (isset($_POST['addBasket'])) {
                             <?php if ($tempStock >= 1) : ?>
                                 <form method="post" action="fiche_produit.php">
                                     <input type='hidden' name='id_product' value='<?= $product->getId() ?>'>
-                                    <select id="quantity" name="quantity">
-                                        <?php for ($i = 1; $i <= $tempStock && $i <= 5; $i++) : ?>
-                                            <option><?= $i ?></option>
-                                        <?php endfor; ?>
-                                    </select>
-                                    <input type="submit" name="addBasket" value="Add to basket">
+                                    <div>
+                                        <label for="quantity">How many?</label>
+                                        <select id="quantity" name="quantity" required>
+                                            <?php for ($i = 1; $i <= $tempStock && $i <= 5; $i++) : ?>
+                                                <option><?= $i ?></option>
+                                            <?php endfor; ?>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label for="addBasket">Add to basket</label>
+                                        <input type="submit" name="addBasket" class="addBasket" value="">
+                                    </div>
+
                                 </form>
 
                             <?php else : ?>
@@ -105,7 +113,16 @@ if (isset($_POST['addBasket'])) {
         </section>
 
         <section>
-            <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>">Give item back</a>
+            <?php if (isset($_SESSION['added']) and $_SESSION['added'] != false) : ?>
+                <p><small><?= $_SESSION['added'] ?> Item added to
+                        the basket!</small></p><br>
+                <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>">Continue
+                    shopping</a>
+                <a href="shopcart.php">Open basket</a>
+                <?php $_SESSION['added'] = false; ?>
+            <?php else: ?>
+                <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>">Continue shopping</a>
+            <?php endif; ?>
         </section>
 
     <?php endif; ?>

@@ -59,8 +59,6 @@ if (isset($_POST['show'])) {
 
                                     <?php if ($product->getStock() <= 0) {
                                         echo 'out of stock';
-                                    } else {
-                                        echo 'in stock';
                                     }
                                     ?>
                                     <form method="post">

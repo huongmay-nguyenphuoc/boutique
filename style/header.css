@@ -24,6 +24,25 @@ nav a {
     width: 100%;
 }
 
+.picNav {
+
+    display: flex;
+}
+
+
+.imgheader {
+    height: 30px;
+    filter: invert(100%);
+    transition: 0.2s;
+
+}
+
+
+
+.picNav:hover img {
+    transform: scale(1.1);
+}
+
 nav #hearts {
     width: 30%;
     background: url("../photo/style/hearts.png") no-repeat;
@@ -124,15 +143,4 @@ nav li:hover span {
 
 nav h1 {
     font-size: 4em;
-}
-
-.imgheader {
-    height: 30px;
-    filter: invert(100%);
-    transition: 0.5s;
-}
-
-.imgheader:hover {
-    filter: drop-shadow(0 0 5px white);
-    filter: invert(100%);
 }
