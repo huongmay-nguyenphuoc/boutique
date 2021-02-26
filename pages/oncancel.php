@@ -1,23 +1,27 @@
+<?php
 
+$title = "On Cancel";
+$bodyname = "bodyoncancel";
+
+
+?>
 
 <?php include '../includes/header.php'; ?>
-
+<main>
 <article class="fail">
 
-<section class="message">
-    <p><b>OOPSIE!!!!</b></p>
-    <p><b>Fail!</b></p>
-</section>
 
-<section class="gif">
-    <img src="https://media.giphy.com/media/12Bpme5pTzGmg8/giphy.gif" height="400px"/>
-</section>
+    <section class="shopKeeperPb">
+        <p class="bubblePb"><b>OOPSIE!!!! Fail!!</b></p>
+    </section>
+
 
     <section class="linkfail">
-        <a href="profil.php"><b><span> < </span>Go back to your Profile<span> > </span></b></a><br>
-        <a href="panier.php"><b><span> < </span>Try again<span> > </span></b></a>
+        <a href="profil.php"><b><span><img src="../photo/style/icons8-hand-right-50.png" width="40px"/> </span>Go back to your Profile<span> <img src="../photo/style/icons8-hand-left-50.png" width="40px"/> </span></b></a><br>
+        <a href="panier.php"><b><span> <img src="../photo/style/icons8-hand-right-50.png" width="40px"/> </span>Try again<span> <img src="../photo/style/icons8-hand-left-50.png" width="40px"/> </span></b></a>
 
     </section>
-</article>
 
+</article>
+</main>
 <?php include '../includes/footer.php'; ?>

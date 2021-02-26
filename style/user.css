@@ -138,6 +138,10 @@ form input, textarea, p {
 
 }
 
+ .order input{
+     color: black;
+ }
+
 
 /*TABLEAUX */
 
@@ -328,7 +332,7 @@ a{
 }
 
 .text-box-login a:hover {
-    text-shadow: 0 0 10px white;
+    text-shadow: 0 0 10px red;
 }
 
 
@@ -357,3 +361,5 @@ a{
         opacity: 1;
     }
 }
+
+

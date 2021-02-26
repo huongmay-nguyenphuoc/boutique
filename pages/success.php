@@ -1,11 +1,16 @@
 <?php
 require_once('../classes/order.php');
 
+$title = "Success";
+$bodyname = "bodysuccess";
+
+/*
+
 if (isset($_SESSION['panier']) AND !empty($_SESSION['panier'])) {
     $_SESSION['order']->insertOrder();
     $_SESSION['order']->changeStock();
     $_SESSION['order']->deleteCart();
-}
+}*/
 ?>
 
 
@@ -14,19 +19,15 @@ if (isset($_SESSION['panier']) AND !empty($_SESSION['panier'])) {
 
     <article class="success">
 
-        <section class="message">
-            <p><b>CONGRATS!!!</b></p>
-            <p><b>Success!</b></p>
-            <p><b>Your order have been registered.</b></p>
-        </section>
 
-        <section class="gif">
-            <img src="https://media.giphy.com/media/kzwzTIbi7sBm8/giphy.gif" height="400px"/>
+
+        <section class="shopKeeperOk">
+            <p class="bubbleOk"><b>CONGRATS!!!! It worked!</b></p>
         </section>
 
         <section class="linksuccess">
-            <a href="profil.php"><b><span> < </span>Go back to your Profile to see your Order<span> > </span></b></a><br>
-            <a href="categorie.php"><b><span> < </span>Continue to shop<span> > </span></b></a>
+            <a href="profil.php"><b><span> <img src="../photo/style/icons8-hand-right-50.png" width="40px"/>  </span>Go back to your Profile to see your Order<span> <img src="../photo/style/icons8-hand-left-50.png" width="40px"/> </span></b></a><br>
+            <a href="categorie.php"><b><span> <img src="../photo/style/icons8-hand-right-50.png" width="40px"/>  </span>Continue to shop<span> <img src="../photo/style/icons8-hand-left-50.png" width="40px"/>  </span></b></a>
 
         </section>
     </article>
