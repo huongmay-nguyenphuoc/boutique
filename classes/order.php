@@ -32,7 +32,7 @@ class order
         $this->id_order = $this->pdo->getLastId();
 
         for ($i = 0; $i < count($_SESSION['panier']); $i++) {
-            $this->pdo->Insert('Insert into `order_details` (title, id_order, quantity, price) values ( :title, :product, :quantity, :price)',
+            $this->pdo->Insert('Insert into `order_details` (title, id_order, quantity, price) values ( :title,  :id, :product, :quantity, :price)',
                 ['id' => $this->id_order,
                     'product' => $_SESSION['panier'][$i]->getTitle(),
                     'quantity' => $_SESSION['panier'][$i]->getQuantity(),

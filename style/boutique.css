@@ -411,6 +411,10 @@ body {
     box-sizing: border-box;
 }
 
+.eachProduct ul li img {
+    filter: invert(100%);
+}
+
 .eachProduct ul li {
     display: flex;
     justify-content: space-between;

@@ -1,6 +1,6 @@
 paypal.Buttons({
     style : {
-        color: 'blue',
+        color: 'white',
         shape: 'pill'
     },
     createOrder: function (data, actions) {

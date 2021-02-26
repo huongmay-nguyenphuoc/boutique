@@ -3,7 +3,9 @@ require_once('../classes/cart.php');
 require_once('../classes/order.php');
 $cart = new cart();
 $shop = new shop();
-
+$title = 'cart';
+$bodyname = 'bodyCart';
+//var_dump($_SESSION);
 /*Traitement vider le panier*/
 if (isset($_POST['removeAll'])) {
     $alert = "Are you sure?";
@@ -11,7 +13,7 @@ if (isset($_POST['removeAll'])) {
 if (isset($_POST['confirmremoveAll'])) {
     $cart->deleteCart();
 }
-var_dump($_POST);
+//var_dump($_POST);
 /*Traitement enlever un article*/
 if (isset($_POST['removeOne'])) {
     $cart->deleteProduct($_POST['position']);
@@ -35,71 +37,120 @@ if (isset($_POST['verifyCart'])) {
 if (isset($_POST['pay'])) {
     /*REMPLACER PAR SESSION ID*/
     $_SESSION['order'] = new order(1, $cart->getTotal(), date('Y-m-d'));
-    $_SESSION['price'] =  $cart->getTotal();
-   header('location:payment.php');
+    $_SESSION['price'] = $cart->getTotal();
+    header('location:payment.php');
 }
-
 ?>
+<?php require_once('../includes/header.php'); ?>
 
-<!--Si panier rempli-->
-<?php if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])) : ?>
-    <?php $i = 0;?>
-    <!--Affichage produit-->
-    <?php foreach ($_SESSION['panier'] as $article) : ?>
-        <div>
+<main class="mainCart">
 
-            <p>Title :<?= $article->getTitle() ?></p>
-            <p>Price :<?= $article->getPrice() ?></p>
-            <p>Quantity :</p><?= $article->getQuantity() ?></p>
-            <form method="post" action="shopcart.php">
-                <input type="hidden" name="position" value="<?= $i ?>">
-                <input type="submit" name="removeOne" value="Delete">
-            </form>
-            <?php $i++; ?>
-        </div>
+    <section>
+        <h1>Basket</h1><br>
+        <table>
+            <tr>
+                <th>
+                    <?php if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])) : ?>
+                        <?= count($_SESSION['panier']) ?>
+                    <?php else : ?>
+                        0
+                    <?php endif; ?>
+                    /10
+                </th>
+            </tr>
+            <tr>
+                <?php $i = 0; ?>
+                <?php while ($i <= 9) : ?>
 
-    <?php endforeach; ?>
+                    <?php if (isset($_SESSION['panier']) and !empty($_SESSION['panier']) and ($i < count($_SESSION['panier']))): ?>
+                        <?php foreach ($_SESSION['panier'] as $article) : ?>
+                            <td class="hovertd">
+                                <p>x<?= $article->getQuantity() ?></p>
+                                <div class="container">
+                                    <img src="../productPics/<?= $article->getPicture() ?>">
+                                </div>
 
-    <!--Affichage total et boutons action-->
-    <p>Total : <?= $cart->getTotal() ?></p>
+                                <div class="blocinfo">
+                                    <div>
+                                        <?= $article->getTitle() ?><br>
+                                        <?= $article->getPrice() ?><img class="diamond" height="15px"
+                                                                        src="../photo/style/diamond.png">
+                                    </div>
+                                    <form method="post" action="shopcart.php">
+                                        <input type="hidden" name="position" value="<?= $i ?>">
+                                        <input type="submit" name="removeOne" value="Remove">
+                                    </form>
+                                </div>
+                                <?php $i++; ?>
+                            </td>
+                        <?php endforeach; ?>
 
-    <!--Affichage boutons vider panier-->
-    <form method="post" action="shopcart.php">
-        <input type="submit" name="removeAll" value="Empty Cart">
-    </form>
-    <?php if (isset($alert)) : ?>
-        <div>
-            <?= $alert ?>
-            <form method="post" action="shopcart.php">
-                <input type="submit" name="confirmremoveAll" value="Yes">
-            </form>
-        </div>
-    <?php endif; ?>
+                    <?php else : ?>
+                        <td></td>
+                        <?php $i++; ?>
+                    <?php endif; ?>
+                    <?php if ($i == 5) {
+                        echo '</tr><tr>';
+                    } ?>
+                <?php endwhile; ?>
+
+            </tr>
+
+        </table>
+    </section>
+    <section>
+
+        <?php if (isset($_SESSION['panier']) and !(empty($_SESSION['panier']))): ?>
+            <p>Total: <?= $cart->getTotal() ?> <img class="diamond" height="15px"
+                                                    src="../photo/style/diamond.png"></p>
 
 
-    <!--Affichage bouton vérifier stock /paiement-->
-    <div>
-        <form method="post" action="shopcart.php">
-            <input type="submit" name="verifyCart" value="Verify Stock">
-        </form>
-    </div>
+            <!--Affichage boutons vider panier-->
+            <?php if (!isset($alert)): ?>
+                <form method="post" action="shopcart.php">
+                    <input type="submit" name="removeAll" value="Empty Cart">
+                </form>
 
-    <?php if (isset($message)) : ?>
-        <div>
-            <?php foreach ($message as $mess) : ?>
-                <?= $mess ?>
-            <?php endforeach; ?>
-        </div>
-    <?php elseif (isset($success)) : ?>
-        <div>
-            <?= $success ?>
-            <form method="post" action="shopcart.php">
-                <input type="submit" name="pay" value="Pay">
-            </form>
-        </div>
-    <?php endif; ?>
+                <?php if (!isset($success)): ?>
+                    <!--Affichage bouton vérifier stock /paiement-->
+                    <div>
+                        <form method="post" action="shopcart.php">
+                            <input type="submit" name="verifyCart" value="Verify Stock">
+                        </form>
+                    </div>
+                <?php endif; ?>
+                <?php if (isset($message)) : ?>
+                    <div>
+                        <?php foreach ($message as $mess) : ?>
+                            <?= $mess ?>
+                        <?php endforeach; ?>
+                    </div>
+                <?php elseif (isset($success)) : ?>
+                    <div>
+                        <p><small>  <?= $success ?></small></p>
+                        <form method="post" action="shopcart.php">
+                            <input type="submit" name="pay" value="Pay">
+                        </form>
+                    </div>
+                <?php endif; ?>
 
-    <!--Si panier vide-->
-<?php else : ?>
-    <p>Nothing here!</p>
-<?php endif; ?>
+
+            <?php elseif (isset($alert)) : ?>
+                <div>
+                    <p><small><?= $alert ?></small></p>
+                    <span><form method="post" action="shopcart.php">
+                        <input type="submit" name="confirmremoveAll" value="Yes">
+                    </form> <a href="shopcart.php">No</a></span>
+                </div>
+            <?php endif; ?>
+
+
+        <?php else: ?>
+            <p> Nothing here ...</p>
+        <?php endif; ?>
+
+    </section>
+
+
+</main>
+

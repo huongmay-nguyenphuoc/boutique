@@ -10,6 +10,7 @@
     background-size: 100%;
     /*border: 1px solid black;*/
     font-family: pixel;
+    /*color: black;*/
 }
 
 body, main, article, a {
@@ -22,7 +23,7 @@ main {
     width: 100%;
     min-height: 80vh;
     flex-grow: 2;
-    justify-content: space-around;
+    justify-content: space-between;
     overflow: hidden;
 }
 
@@ -115,4 +116,140 @@ body {
 .fail a:hover, .success a:hover
 {
     text-shadow: 0 0 10px red;
+}
+
+
+/*PANIER*/
+
+.bodyCart, .bodyPay {
+    background: url("../photo/style/ficheproduitback.png") center;
+
+}
+
+.bodyCart table {
+margin: 0 auto;
+    overflow: scroll;
+    background: rgba(0,0,0,0.3);
+    border: 3px solid black;
+    color: white;
+}
+
+.bodyCart th {
+    padding: 5px;
+}
+
+
+
+.bodyCart tr {
+    display: flex;
+    flex-direction: row;
+}
+
+.bodyCart td {
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    width: 150px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    margin: 20px;
+    position: relative;
+    border: 1px solid black;
+    transition: 0.5s;
+    color: white;
+    background-color: rgba(0,0,0,0.5);
+    /*background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(39,39,39,0.8) 85%, rgba(79,79,79,0.6) 100%);*/
+}
+
+.hovertd:hover {
+    box-shadow:  0 0 10px white;
+}
+
+.bodyCart form {
+    background: none;
+}
+
+.bodyCart table input {
+    background: none;
+    border: 1px solid rgba(0,0,0,0);
+    transition: 0.5s;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.bodyCart input:hover {
+    border: 1px solid white;
+}
+.bodyCart td p {
+    position: absolute;
+    text-shadow: 1px 1px 2px black;
+    top: 10px;
+    right: 10px;
+    font-size: 1.5em;
+    color: gold;
+    font-style: italic;
+}
+
+.container {
+    width: 100px;
+    height: 120px;
+    overflow: hidden;
+    display: flex;
+    /*position: relative;*/
+    align-content: center;
+    justify-content: center;
+}
+
+.container img {
+    min-width:  fit-content;
+    min-height: fit-content;
+}
+
+.diamond {
+    filter: invert(100%);
+}
+
+
+.bodyCart section:nth-child(2), .bodyPay section:nth-child(2) {
+
+    border: 3px solid black;
+    box-shadow: 0 0 5px white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 20%;
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+
+
+
+
+.bodyCart section:nth-child(2) input, a {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    transition: 0.4s;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+.bodyCart section:nth-child(2) input:hover, .bodyCart section:nth-child(2) a:hover {
+    text-shadow: 0 0 10px white;
+}
+
+#mainPay section {
+    height: 30%;
+}
+
+#paypal-payment-button {
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-end;
 }

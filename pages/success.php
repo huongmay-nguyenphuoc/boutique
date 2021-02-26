@@ -1,6 +1,6 @@
 <?php
 require_once('../classes/order.php');
-
+var_dump($_SESSION);
 $title = "Success";
 $bodyname = "bodysuccess";
 

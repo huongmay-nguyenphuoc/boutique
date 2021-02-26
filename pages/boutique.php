@@ -55,12 +55,13 @@ if (isset($_POST['show'])) {
                     <?php foreach ($products as $product) : ?>
                         <li class="eachProduct">
                             <ul>
-                                <li><?= $product->getTitle() ?> | <?= $product->getPrice() ?>€ |
+                                <li><span><?= $product->getTitle() ?> | <?= $product->getPrice() ?><img height="15px"
+                                                                                                        src="../photo/style/diamond.png">
 
-                                    <?php if ($product->getStock() <= 0) {
-                                        echo 'out of stock';
-                                    }
-                                    ?>
+                                    <?php if ($product->getStock() <= 0) : ?>
+                                        | out of stock
+                                    <?php endif; ?>
+                                        </span>
                                     <form method="post">
                                         <input type="hidden" name="value" value="<?= $i ?>">
                                         <input type="submit" name="show" value="Tell me more"></form>

@@ -37,12 +37,19 @@ if (isset($_POST['addBasket'])) {
     $id = $_POST['id_product'];
 
     if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])) {
-        $cart->addQuantity($_POST['id_product'], $_POST['quantity']);
+        if (count($_SESSION['panier']) >= 10) {
+            $_SESSION['toomuch'] = true;
+        } else {
+            $cart->addQuantity($_POST['id_product'], $_POST['quantity']);
+
+            $_SESSION['added'] = $_POST['quantity'];
+        }
     }
     if ($_SESSION['alarm'] == 0 or empty($_SESSION['panier']) or !isset($_SESSION['panier'])) {
         $cart->addArticle($_POST['id_product'], $_POST['quantity']);
+
+        $_SESSION['added'] = $_POST['quantity'];
     }
-    $_SESSION['added'] = $_POST['quantity'];
     header("location:fiche_produit.php?id=$id");
 }
 
@@ -113,8 +120,12 @@ if (isset($_POST['addBasket'])) {
         </section>
 
         <section>
-            <?php if (isset($_SESSION['added']) and $_SESSION['added'] != false) : ?>
-                <p><small><?= $_SESSION['added'] ?> Item added to
+            <?php if (isset($_SESSION['toomuch']) and ($_SESSION['toomuch']) == true) :?>
+            <p><small>Sorry, your basket is full!</small></p>
+                <a href="shopcart.php">Open basket</a>
+                <?php $_SESSION['toomuch'] = false; ?>
+            <?php elseif (isset($_SESSION['added']) and $_SESSION['added'] != false) : ?>
+                <p><small><?= $_SESSION['added'] ?> Item(s) added to
                         the basket!</small></p><br>
                 <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>">Continue
                     shopping</a>
