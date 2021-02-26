@@ -1,16 +1,28 @@
+<?php
+
+$title = "Success";
+$bodyname = "bodyapropros";
+
+?>
+
+
+
 <?php require_once('../includes/header.php'); ?>
-    <link rel="stylesheet" type="text/css" media="screen" href="../style/user.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="../style/header.css">
-    <article class="apropos">
 
-    <section class="mascotte">
+    <main>
+
 <h1>À PROPOS</h1>
-<h2>WHO ARE WE?</h2>
-    <img src="../avatars/retro-videogame-ghost-character-cartoon_24640-8043.jpg" width="250px"/>
-    </section>
+
+        <article class="apropos">
 
 
-<section class="text">
+        <section class="shopKeeperAP">
+            <p class="bubbleAP"><b>WHO ARE WE?</b></p>
+        </section>
+
+
+
+<section class="text-box-AP">
 
 <p>GhostBursters are based in Marseille, France and best known for their expertise and fast-dispatch of video games and electronics Internationally.</p>
 <p>Prices are always competitive and finance is available on a number of items across the site making things more affordable.</p><br>
@@ -21,8 +33,7 @@
 </section>
 
 
-
 </article>
-
+    </main>
 
 <?php require_once('../includes/footer.php'); ?>

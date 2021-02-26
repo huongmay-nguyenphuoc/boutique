@@ -5,6 +5,7 @@
     src: url('../fonts/FreePixel.ttf');
 }
 
+
 * {
     margin: 0;
     padding: 0;
@@ -18,18 +19,15 @@ body, main, article, a {
     flex-direction: column;
 }
 
-body {
-    min-height: 100vh;
-    background: url("../photo/style/wallhaven.png") center;
-    justify-content: space-between;
-}
 
 main {
     width: 100%;
-    height: 80vh;
+    min-height: 80vh;
+    flex-grow: 2;
     justify-content: space-around;
     overflow: hidden;
 }
+
 
 article {
     justify-content: space-around;
@@ -37,26 +35,14 @@ article {
     width: 100%;
     flex-direction: row;
     height: 100%;
-    text-align: center;
 }
 
 
-.error {
-    margin: 10px 0 10px 0;
-    text-align: center;
-    width: 100%;
-    background: rgba(0,0,0,0.8);
-    padding: 10px 0 10px 0;
+body {
+    min-height: 100vh;
+    justify-content: space-between;
 }
 
-.error a {
-    color: white;
-}
-@media screen and (max-width: 640px) {
-    article {
-        flex-direction: column;
-    }
-}
 
 
 h1{
@@ -185,14 +171,6 @@ td{
 
 a{
     text-decoration: none;
-}
-
-
-/*A PROPOS */
-
-.apropos{
-    display: flex;
-    flex-direction: column;
 }
 
 
@@ -347,7 +325,8 @@ a{
 
 
 .text-box-login p:nth-child(1), .text-box-login p:nth-child(2),
-.text-box-register p:nth-child(1), .text-box-register p:nth-child(2){
+.text-box-register p:nth-child(1), .text-box-register p:nth-child(2)
+.text-box-AP p:nth-child(1), .text-box-AP p:nth-child(2){
     animation: appear 5s 1 backwards;
 }
 
@@ -360,6 +339,71 @@ a{
     to {
         opacity: 1;
     }
+}
+
+
+
+/*A PROPOS */
+.bodyapropros{
+background-image: url("../photo/style/1.gif");
+max-height: 100%;
+
+}
+
+.apropos{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.shopKeeperAP{
+    background: url("../photo/style/witchback2.png") bottom right no-repeat;
+    background-size: contain;
+    display: flex;
+    justify-content: left;
+    align-items: start;
+    padding: 2em;
+    width: 100%;
+}
+
+
+.bubbleAP {
+    border: 1px solid white;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 50%;
+    padding: 2em;
+    border-radius: 20px 20px 0px 20px;
+    color: white;
+    font-size: 1.8em;
+    text-align: center;
+}
+
+
+.text-box-AP{
+    border: 3px solid white;
+    box-shadow: 0 0 5px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: none;
+    text-align: justify;
+    text-align: center;
+    width: 80%;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 50%;
+}
+
+.text-box-AP p {
+    width: 80%;
+    opacity: 1;
+    text-align: justify;
+    text-shadow: 1px 1px #ffffff, -1px 1px #ffffff, 1px -1px #ffffff, -1px -1px #ffffff, 1px 1px 5px #ffffff;
+    font-size: 1.2em;
+    color: black;
 }
 
 

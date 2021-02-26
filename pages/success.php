@@ -4,19 +4,19 @@ require_once('../classes/order.php');
 $title = "Success";
 $bodyname = "bodysuccess";
 
-/*
+
 
 if (isset($_SESSION['panier']) AND !empty($_SESSION['panier'])) {
     $_SESSION['order']->insertOrder();
     $_SESSION['order']->changeStock();
     $_SESSION['order']->deleteCart();
-}*/
+}
 ?>
 
 
 <?php include '../includes/header.php'; ?>
 
-
+<main>
     <article class="success">
 
 
@@ -31,5 +31,8 @@ if (isset($_SESSION['panier']) AND !empty($_SESSION['panier'])) {
 
         </section>
     </article>
+
+
+</main>
 
 <?php include '../includes/footer.php'; ?>

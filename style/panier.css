@@ -1,3 +1,48 @@
+/*GENERAL*/
+@font-face {
+    font-family: pixel;
+    src: url('../fonts/FreePixel.ttf');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    background-size: 100%;
+    /*border: 1px solid black;*/
+    font-family: pixel;
+}
+
+body, main, article, a {
+    display: flex;
+    flex-direction: column;
+}
+
+
+main {
+    width: 100%;
+    min-height: 80vh;
+    flex-grow: 2;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+
+article {
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    flex-direction: row;
+    height: 100%;
+}
+
+
+body {
+    min-height: 100vh;
+    justify-content: space-between;
+}
+
+
+
 /*ONCANCEL*/
 .bodyoncancel{
     background-image: url("../photo/style/store1.jpg");
@@ -39,7 +84,7 @@
     justify-content: left;
     align-items: start;
     padding: 2em;
-
+    width: 100%;
 }
 
 
@@ -51,7 +96,7 @@
     border-radius: 20px 20px 0px 20px;
     color: white;
     font-size: 1.2em;
-    text-align: justify;
+    text-align: center;
 }
 
 
