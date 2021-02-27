@@ -22,6 +22,8 @@ class order
 
     function insertOrder()
     {
+
+
         $this->pdo = new database();
         $this->pdo->Insert('Insert into `order` (id_member, amount, date_register) values ( :id, :amount, :date)',
             ['id' => $this->id_member,
@@ -32,9 +34,9 @@ class order
         $this->id_order = $this->pdo->getLastId();
 
         for ($i = 0; $i < count($_SESSION['panier']); $i++) {
-            $this->pdo->Insert('Insert into `order_details` (title, id_order, quantity, price) values ( :title,  :id, :product, :quantity, :price)',
-                ['id' => $this->id_order,
-                    'product' => $_SESSION['panier'][$i]->getTitle(),
+            $this->pdo->Insert('Insert into `order_details` (title, id_order, quantity, price) values ( :title,  :id, :quantity, :price)',
+                [   'id' => $this->id_order,
+                    'title' => $_SESSION['panier'][$i]->getTitle(),
                     'quantity' => $_SESSION['panier'][$i]->getQuantity(),
                     'price' => $_SESSION['panier'][$i]->getPrice()
                 ]);

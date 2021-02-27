@@ -125,7 +125,9 @@ form input, textarea, p {
 }
 
  .order input{
-     color: black;
+     color: white;
+     border: none;
+     background: none;
  }
 
 
@@ -192,20 +194,23 @@ a{
   }                    
                        
 
-  .order{
-         box-shadow: -4px 5px 5px  black;
-  }
-
-
 .profil{
     display: flex;
     flex-direction: column;
+    max-height: 100%;
 }
 
 
 .profiluser{
     display: flex;
     flex-direction: row;
+    height: 100%;
+
+}
+.order {
+    overflow: scroll;
+    height: 70vh;
+    box-shadow: -4px 5px 5px  black;
 }
 
 
@@ -266,9 +271,15 @@ a{
 
 
 .bodyuser {
-    background-image: url("../photo/style/mountain4.jpg");
+    background: url("../photo/style/mountain4.jpg") no-repeat;
     min-height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
 
+}
+
+.bodyuser ul {
+    list-style-type: none;
 }
 
 

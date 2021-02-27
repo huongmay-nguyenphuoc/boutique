@@ -6,6 +6,7 @@ $shop = new shop();
 $title = 'cart';
 $bodyname = 'bodyCart';
 //var_dump($_SESSION);
+
 /*Traitement vider le panier*/
 if (isset($_POST['removeAll'])) {
     $alert = "Are you sure?";
@@ -36,7 +37,7 @@ if (isset($_POST['verifyCart'])) {
 
 if (isset($_POST['pay'])) {
     /*REMPLACER PAR SESSION ID*/
-    $_SESSION['order'] = new order(1, $cart->getTotal(), date('Y-m-d'));
+    $_SESSION['order'] = new order($_SESSION['user']->getId(), $cart->getTotal(), date('Y-m-d'));
     $_SESSION['price'] = $cart->getTotal();
     header('location:payment.php');
 }
@@ -46,7 +47,7 @@ if (isset($_POST['pay'])) {
 <main class="mainCart">
 
     <section>
-        <h1>Basket</h1><br>
+        <h1><em>Basket</em></h1><br>
         <table>
             <tr>
                 <th>
@@ -106,33 +107,36 @@ if (isset($_POST['pay'])) {
 
 
             <!--Affichage boutons vider panier-->
-            <?php if (!isset($alert)): ?>
-                <form method="post" action="shopcart.php">
-                    <input type="submit" name="removeAll" value="Empty Cart">
-                </form>
+            <div>
+                <?php if (!isset($success) and (!isset($alert))) : ?>
 
-                <?php if (!isset($success)): ?>
-                    <!--Affichage bouton vérifier stock /paiement-->
-                    <div>
-                        <form method="post" action="shopcart.php">
-                            <input type="submit" name="verifyCart" value="Verify Stock">
-                        </form>
-                    </div>
+                    <form method="post" action="shopcart.php">
+                        <input type="submit" name="removeAll" value="Empty Cart">
+                    </form>
+
+                    <form method="post" action="shopcart.php">
+                        <input type="submit" name="verifyCart" value="Verify Stock">
+                    </form>
+
                 <?php endif; ?>
-                <?php if (isset($message)) : ?>
-                    <div>
-                        <?php foreach ($message as $mess) : ?>
-                            <?= $mess ?>
-                        <?php endforeach; ?>
-                    </div>
-                <?php elseif (isset($success)) : ?>
-                    <div>
-                        <p><small>  <?= $success ?></small></p>
-                        <form method="post" action="shopcart.php">
-                            <input type="submit" name="pay" value="Pay">
-                        </form>
-                    </div>
-                <?php endif; ?>
+            </div>
+
+
+            <?php if (isset($message)) : ?>
+                <div>
+                    <?php foreach ($message as $mess) : ?>
+                        <?= $mess ?>
+                    <?php endforeach; ?>
+                </div>
+
+            <?php elseif (isset($success)) : ?>
+                <div>
+                    <p><small>  <?= $success ?></small></p>
+                    <form method="post" action="shopcart.php">
+                        <input type="submit" name="pay" value="I will pay!">
+                    </form> <a href="shopcart.php">I'd rather not...</a></span>
+                    </form>
+                </div>
 
 
             <?php elseif (isset($alert)) : ?>
