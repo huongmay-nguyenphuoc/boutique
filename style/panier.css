@@ -126,12 +126,23 @@ body {
     color: white;
 }
 
+.bodyCart section {
+    overflow: auto;
+}
+
+
 .bodyCart table {
 margin: 0 auto;
-    overflow: scroll;
     background: rgba(0,0,0,0.3);
     border: 3px solid black;
     color: white;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
 }
 
 .bodyCart th {
@@ -143,6 +154,7 @@ margin: 0 auto;
 .bodyCart tr {
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 .bodyCart td {
@@ -159,8 +171,6 @@ margin: 0 auto;
     transition: 0.5s;
     color: white;
     background-color: rgba(0,0,0,0.5);
-    /*background: rgb(0,0,0);
-    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(39,39,39,0.8) 85%, rgba(79,79,79,0.6) 100%);*/
 }
 
 .hovertd:hover {
@@ -197,7 +207,6 @@ margin: 0 auto;
     height: 120px;
     overflow: hidden;
     display: flex;
-    /*position: relative;*/
     align-content: center;
     justify-content: center;
 }
@@ -231,7 +240,7 @@ margin: 0 auto;
 
 
 
-.bodyCart section:nth-child(2) input, a {
+.bodyCart section:nth-child(2) input, .bodyCart section:nth-child(2) a {
     color: white;
     text-decoration: none;
     background: none;
@@ -252,4 +261,12 @@ margin: 0 auto;
     margin: 0 auto;
     display: flex;
     align-items: flex-end;
+}
+
+
+@media screen and (max-width: 900px) {
+.bodyCart td {
+    max-width: 75px;
+}
+
 }

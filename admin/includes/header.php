@@ -34,6 +34,7 @@
         </div>
         <div class="navDiv" >
             <a href="../pages/update.php">Update Account</a>
+            <span> | </span>
             <a href="../pages/categorie.php">Shop Access</a>
         </div>
     </nav>

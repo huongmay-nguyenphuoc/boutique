@@ -11,7 +11,7 @@ session_start();
 if(isset($_POST['submit'])){
 
     $validator = new validator();
-    var_dump($_POST);
+//    var_dump($_POST);
     $login = htmlspecialchars($_POST['login']);
     $password = htmlspecialchars($_POST['password']);
     $passwordcheck = htmlspecialchars($_POST['passwordcheck']);
@@ -40,9 +40,9 @@ if(isset($_POST['submit'])){
 
     if(empty($errors)){
         $user = new user();
-       var_dump($user->register($login, $password, $lastname, $firstname, $email, $city, $zip, $adress));
+       $user->register($login, $password, $lastname, $firstname, $email, $city, $zip, $adress);
         $success = "Account created. <a href='connexion.php'>Log in</a>";
-       var_dump($user);
+//       var_dump($user);
     }
 
 }

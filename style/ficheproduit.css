@@ -5,7 +5,7 @@
 }
 
 
-.bodyFicheProd {
+.bodyFicheProd, .bodySearch {
 
     background: url("../photo/style/ficheproduitback.png") center;
     color: white;
@@ -153,4 +153,42 @@ display: flex;
     text-decoration: none;
     transition: 0.4s;
     font-size: 1.2em;
+}
+
+/*SEARCH*/
+
+.bodySearch {
+    text-align: center;
+
+}
+.bodySearch input,.bodySearch form  {
+    background: transparent;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    font-size: 1.5em;
+}
+
+.bodySearch input {
+    border-bottom: 2px solid rgba(255,255,255,0.5);
+    transition: 0.5s;
+}
+
+.bodySearch input:focus {
+
+    border-bottom: 2px solid white;
+}
+
+.bodySearch section:nth-child(2) {
+   width: 50%;
+    align-self: center;
+}
+
+.bodySearch ul {
+    text-align: justify;
+}
+
+.barre {
+    text-align: center;
 }

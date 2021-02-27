@@ -49,15 +49,14 @@ if (isset($_POST['pay'])) {
     <section>
         <h1><em>Basket</em></h1><br>
         <table>
-            <tr>
-                <th>
+            <caption>
                     <?php if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])) : ?>
                         <?= count($_SESSION['panier']) ?>
                     <?php else : ?>
                         0
                     <?php endif; ?>
                     /10
-                </th>
+                </caption>
             </tr>
             <tr>
                 <?php $i = 0; ?>

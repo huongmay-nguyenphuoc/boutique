@@ -3,6 +3,9 @@
 require_once '../classes/admin.php';
 require_once '../classes/product.php';
 require_once '../classes/order.php';
+$title = 'orders';
+
+
 if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
     header('location:../pages/connexion.php');
 }
@@ -51,7 +54,7 @@ else {
     </thead>
     <tbody>
 
-    <?php foreach($admin->allOrders() as $orders){ ?>
+    <?php foreach($admin->allOrders() as $orders): ?>
 
         <tr>
             <td><?=  $orders['id_order']?></td>
@@ -80,7 +83,7 @@ else {
             </td>
 
         </tr>
-    <?php } ?>
+    <?php endforeach; ?>
 
     </tbody>
 
