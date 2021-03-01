@@ -119,7 +119,7 @@ if (isset($_POST['addBasket'])) {
             </article>
         </section>
 
-        <section>
+        <section id="ShoptextBox">
             <?php if (isset($_SESSION['toomuch']) and ($_SESSION['toomuch']) == true) :?>
             <p><small>Sorry, your basket is full!</small></p>
                 <a href="shopcart.php">Open basket</a>

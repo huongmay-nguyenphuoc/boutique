@@ -43,19 +43,18 @@ body {
 }
 
 
-
 /*ONCANCEL*/
-.bodyoncancel{
+.bodyoncancel {
     background-image: url("../photo/style/store1.jpg");
     min-height: 100%;
 }
 
-.fail, .success{
+.fail, .success {
     display: flex;
     flex-direction: column;
 }
 
-.linkfail, .linksuccess{
+.linkfail, .linksuccess {
     border: 1px solid white;
     background-color: rgba(255, 255, 255, 0.3);
     width: 50%;
@@ -70,9 +69,10 @@ body {
 /*SUCCESS*/
 
 
-.bodysuccess{
+.bodysuccess {
     background-image: url("../photo/style/store2.jpg");
-    min-height: 100%;}
+    min-height: 100%;
+}
 
 
 /*BOTH*/
@@ -89,7 +89,7 @@ body {
 }
 
 
-.bubblePb,.bubbleOk  {
+.bubblePb, .bubbleOk {
     border: 1px solid white;
     background-color: rgba(0, 0, 0, 0.5);
     width: 50%;
@@ -101,20 +101,19 @@ body {
 }
 
 
-.fail p, .success p{
+.fail p, .success p {
     font-size: 2em;
     text-align: center;
 }
 
-.fail a, .success a{
+.fail a, .success a {
     text-decoration: none;
     color: black;
     font-size: 1.4em;
     text-align: center;
 }
 
-.fail a:hover, .success a:hover
-{
+.fail a:hover, .success a:hover {
     text-shadow: 0 0 10px red;
 }
 
@@ -127,21 +126,20 @@ body {
 }
 
 .bodyCart section {
-    overflow: auto;
+    /*overflow: auto;*/
 }
 
 
 .bodyCart table {
-margin: 0 auto;
-    background: rgba(0,0,0,0.3);
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.3);
     border: 3px solid black;
     color: white;
     width: 100%;
+    height: 64vh;
     display: flex;
     flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
+    overflow: auto;
 
 }
 
@@ -150,11 +148,12 @@ margin: 0 auto;
 }
 
 
-
 .bodyCart tr {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .bodyCart td {
@@ -170,11 +169,11 @@ margin: 0 auto;
     border: 1px solid black;
     transition: 0.5s;
     color: white;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .hovertd:hover {
-    box-shadow:  0 0 10px white;
+    box-shadow: 0 0 10px white;
 }
 
 .bodyCart form {
@@ -183,7 +182,7 @@ margin: 0 auto;
 
 .bodyCart table input {
     background: none;
-    border: 1px solid rgba(0,0,0,0);
+    border: 1px solid rgba(0, 0, 0, 0);
     transition: 0.5s;
     border-radius: 10px;
     padding: 5px;
@@ -192,6 +191,7 @@ margin: 0 auto;
 .bodyCart input:hover {
     border: 1px solid white;
 }
+
 .bodyCart td p {
     position: absolute;
     text-shadow: 1px 1px 2px black;
@@ -205,6 +205,7 @@ margin: 0 auto;
 .container {
     width: 100px;
     height: 120px;
+
     overflow: hidden;
     display: flex;
     align-content: center;
@@ -212,8 +213,8 @@ margin: 0 auto;
 }
 
 .container img {
-    min-width:  fit-content;
-    min-height: fit-content;
+    /*min-width: fit-content;*/
+    /*min-height: fit-content;*/
 }
 
 .diamond {
@@ -237,9 +238,6 @@ margin: 0 auto;
 }
 
 
-
-
-
 .bodyCart section:nth-child(2) input, .bodyCart section:nth-child(2) a {
     color: white;
     text-decoration: none;
@@ -249,6 +247,7 @@ margin: 0 auto;
     font-size: 1.2em;
     cursor: pointer;
 }
+
 .bodyCart section:nth-child(2) input:hover, .bodyCart section:nth-child(2) a:hover {
     text-shadow: 0 0 10px white;
 }
@@ -265,8 +264,10 @@ margin: 0 auto;
 
 
 @media screen and (max-width: 900px) {
-.bodyCart td {
-    max-width: 75px;
-}
+
+
+    .bodyCart tr {
+        flex-direction: column;
+    }
 
 }

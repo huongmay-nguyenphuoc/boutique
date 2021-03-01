@@ -37,9 +37,13 @@ if (isset($_POST['verifyCart'])) {
 
 if (isset($_POST['pay'])) {
     /*REMPLACER PAR SESSION ID*/
-    $_SESSION['order'] = new order($_SESSION['user']->getId(), $cart->getTotal(), date('Y-m-d'));
-    $_SESSION['price'] = $cart->getTotal();
-    header('location:payment.php');
+    if (!isset($_SESSION['user'])) {
+        header('location: connexion.php');
+    } else {
+        $_SESSION['order'] = new order($_SESSION['user']->getId(), $cart->getTotal(), date('Y-m-d'));
+        $_SESSION['price'] = $cart->getTotal();
+        header('location:payment.php');
+    }
 }
 ?>
 <?php require_once('../includes/header.php'); ?>
@@ -50,14 +54,13 @@ if (isset($_POST['pay'])) {
         <h1><em>Basket</em></h1><br>
         <table>
             <caption>
-                    <?php if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])) : ?>
-                        <?= count($_SESSION['panier']) ?>
-                    <?php else : ?>
-                        0
-                    <?php endif; ?>
-                    /10
-                </caption>
-            </tr>
+                <?php if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])) : ?>
+                    <?= count($_SESSION['panier']) ?>
+                <?php else : ?>
+                    0
+                <?php endif; ?>
+                /10
+            </caption>
             <tr>
                 <?php $i = 0; ?>
                 <?php while ($i <= 9) : ?>
@@ -86,7 +89,7 @@ if (isset($_POST['pay'])) {
                         <?php endforeach; ?>
 
                     <?php else : ?>
-                        <td></td>
+                        <td class="emptyTd"></td>
                         <?php $i++; ?>
                     <?php endif; ?>
                     <?php if ($i == 5) {
@@ -133,7 +136,8 @@ if (isset($_POST['pay'])) {
                     <p><small>  <?= $success ?></small></p>
                     <form method="post" action="shopcart.php">
                         <input type="submit" name="pay" value="I will pay!">
-                    </form> <a href="shopcart.php">I'd rather not...</a></span>
+                    </form>
+                    <a href="shopcart.php">I'd rather not...</a></span>
                     </form>
                 </div>
 

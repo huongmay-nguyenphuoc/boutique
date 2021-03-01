@@ -45,8 +45,17 @@ class shop
             }
             return $products;
         }
+    }
 
 
+    function selectLastProducts()
+    {
+        $datas = $this->pdo->Select('SELECT * FROM products ORDER BY id_product ASC LIMIT 5');
+        foreach ($datas as $data) {
+            $product = new product($data['id_product'], $data['price'], $data['stock'], $data['title'], $data['description'], $data['shortdesc'], $data['category'], $data['subcategory'], $data['image'], 0);
+            $products[] = $product;
+        }
+        return $products;
     }
 
     /*TRI LES PRODUITS PAR PRIX*/

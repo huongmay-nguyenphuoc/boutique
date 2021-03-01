@@ -66,10 +66,6 @@
     height: 65vh;
 }
 
-.bodyFicheProd section:nth-child(2) {
-flex-grow: 1;
-}
-
 .bodyFicheProd article {
 display: flex;
     width: 50%;
@@ -95,15 +91,22 @@ display: flex;
 }
 
 .productInfo div {
-   height: 50%;
+   flex-grow: 1;
     width: 100%;
     display: flex;
 }
 .titleInfo {
     align-items: flex-end;
     justify-content: center;
-
+    height: 50%;
+    flex-grow: 1;
+    text-align: justify;
     flex-direction: column;
+}
+
+.titleInfo p {
+    height: 50%;
+    overflow: auto;
 }
 
 .divStock {
@@ -207,3 +210,54 @@ display: flex;
 .listResult a:visited {
     color: yellow;
 }
+
+
+/*NEW PRODUCTS*/
+
+.bodyNew {
+    background: url("../photo/style/ficheproduitback.png") center no-repeat;
+    background-attachment: fixed;
+}
+
+.bodyNew section {
+    flex-direction: row;
+    display: flex;
+    min-height: 80vh;
+}
+
+.bodyNew article {
+   flex-grow: 1;
+    position: relative;
+    height: 80vh;
+
+}
+
+.bodyNew article:nth-child(1) {
+    background: rgba(0,0,0,0.5);
+    border-radius: 25px;
+}
+
+.bodyNew article:nth-child(2) {
+    background: url("../photo/style/witchback.png") center no-repeat;
+    background-size: contain;
+}
+
+
+/*RESPONSIVE*/
+@media screen and (max-width: 640px) {
+.bodyFicheProd section {
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+}
+    .bodyFicheProd section article {
+        margin: 0 auto;
+        width: 80%;
+    }
+
+    .bodyNew section {
+        flex-direction: column;
+    }
+
+}
+
