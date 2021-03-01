@@ -7,6 +7,7 @@ require_once('validator.php');
 class user
 {
     private $id_member;
+    private $id_message;
     private $login;
     private $lastname;
     private $firstname;
@@ -17,6 +18,8 @@ class user
     private $status;
     private $avatar;
     private $newsletter;
+    private $date;
+    private $message;
     private $pdo;
 
     function __construct()
@@ -214,6 +217,19 @@ class user
             ]);
 
         return $update_state;
+    }
+
+
+    //MESSAGES EMAIL
+
+    public function registerEmail($login, $message){
+        $this->pdo->Insert('Insert into contact(login, message) values(:login, :message)',
+        [
+            'login' => $login,
+            'message' => $message,
+        ]);
+
+        return true;
     }
 
 

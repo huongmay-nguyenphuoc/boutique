@@ -454,8 +454,3 @@ max-height: 100%;
     text-align: center;
 }
 
-
-.fileToUpload{
-    width: 20px; /* à modifier selon vos besoins */
-    overflow: hidden; /* les dépassements seront masqués */
-}
