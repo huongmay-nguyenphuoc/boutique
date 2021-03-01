@@ -8,7 +8,7 @@
     margin: 0;
     padding: 0;
     background-size: 100%;
-    /*border: 1px solid black;*/
+    border: 1px solid black;
     font-family: pixel;
 }
 
@@ -73,11 +73,21 @@ body {
 }
 
 /*CATEGORIES*/
+
+#mainCat {
+    height: 100%;
+}
+
+#mainCat article {
+    display: flex;
+   height: 40vh;
+    position: relative;
+}
 .catDiv {
     height: 100%;
     width: 50%;
     z-index: 0;
-    position: relative;
+    /*position: relative;*/
 }
 
 
@@ -219,6 +229,11 @@ body {
 }
 
 /*SOUS CATEGORIE*/
+
+
+#gouttesArticle {
+    height: 50vh;
+}
 .gouttes {
     display: flex;
     transition: 0.5s;
@@ -309,6 +324,11 @@ body {
     color: white;
 }
 
+#mainShop {
+    justify-content: flex-end;
+    height: 100%;
+}
+
 .shopSection {
     display: flex;
     flex-direction: column;
@@ -320,7 +340,7 @@ body {
 
 .bigSectionShop {
     display: flex;
-    height: 80%;
+    flex-grow: 1;
 }
 
 .bigSectionShop section:nth-child(2) {
@@ -395,7 +415,7 @@ body {
 
 .productList {
     width: 30%;
-    height: 80%;
+    height: 64vh;
     background-color: rgba(0, 0, 0, 0.7);
     box-sizing: border-box;
     align-self: center;
@@ -420,7 +440,6 @@ body {
     justify-content: space-between;
     align-items: center;
     box-sizing: border-box;
-
     padding: 10px;
 }
 
@@ -436,6 +455,7 @@ body {
 
 .bigSectionShop {
     height: 80%;
+    flex-grow: 1;
     justify-content: center;
 }
 
@@ -472,7 +492,7 @@ height: 50%;
     text-align: center;
 }
 @media screen and (max-width: 640px) {
-    article {
+    #mainCat article {
         flex-direction: column;
     }
 

@@ -37,7 +37,7 @@ if (isset($_GET['q']) and !empty($_GET['q'])) {
                 <?php if (!empty($results)) : ?>
 
                     <p><small><?= count($results) ?> résultat(s)</small></p><br>
-                    <ul>
+                    <ul class="listResult">
                         <?php foreach ($results as $result) : ?>
 
                             <li>

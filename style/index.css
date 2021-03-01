@@ -100,6 +100,7 @@ a {
 p {
     position: relative;
     font-size: 1.5em;
+    background: none;
     animation: credit 0.5s 2s 1 backwards;
 }
 
