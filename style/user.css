@@ -455,3 +455,7 @@ max-height: 100%;
 }
 
 
+.fileToUpload{
+    width: 20px; /* à modifier selon vos besoins */
+    overflow: hidden; /* les dépassements seront masqués */
+}
