@@ -217,29 +217,30 @@ display: flex;
 .bodyNew {
     background: url("../photo/style/ficheproduitback.png") center no-repeat;
     background-attachment: fixed;
+    color: white;
 }
 
-.bodyNew section {
+
+.bodyNew main section {
     flex-direction: row;
     display: flex;
-    min-height: 80vh;
-}
-
-.bodyNew article {
-   flex-grow: 1;
-    position: relative;
-    height: 80vh;
+    padding: 10px;
 
 }
 
-.bodyNew article:nth-child(1) {
+.bodyNew main article:nth-child(1) {
     background: rgba(0,0,0,0.5);
-    border-radius: 25px;
 }
 
-.bodyNew article:nth-child(2) {
-    background: url("../photo/style/witchback.png") center no-repeat;
+.bodyNew main article:nth-child(2) {
+    background: url("../photo/style/witchback.png") right no-repeat;
     background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 65vh;
+    padding: 10px;
+    min-height: 80vh;
 }
 
 
@@ -255,8 +256,13 @@ display: flex;
         width: 80%;
     }
 
-    .bodyNew section {
+    .bodyNew main section {
         flex-direction: column;
+    }
+
+    .bodyNew main section article {
+        padding: 0;
+
     }
 
 }

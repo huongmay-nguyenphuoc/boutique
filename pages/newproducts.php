@@ -24,6 +24,7 @@ $datas = $shop->selectLastProducts();
                 <ul>
                     <li style="text-transform: uppercase"><b><?= $data->getTitle() ?></b></li>
                     <li><?= $data->getShortdesc() ?></li>
+                    <li><em><?= $data->getCat() ?> | <?= $data->getSubcat() ?> </em></li>
                     <li class="barre"><a href="fiche_produit.php?id=<?= $data->getId() ?>">See
                             product</a></li>
                     <li class="barre">----------<+>-----------</li>
@@ -40,6 +41,10 @@ $datas = $shop->selectLastProducts();
 
 
 </article>
-<article></article>
+<article>
+    <div>
+        <p class="text-box bubble">Please check our last products!</p>
+    </div>
+</article>
 </section>
 </main>
