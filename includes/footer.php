@@ -13,8 +13,10 @@
         </section>
 
         <section class="newsletter">
-            <p><b>newsletter</b></p>
+            <p><b>More</b></p>
             <p><a href="../pages/apropos.php"><b>À Propos</b></a></p>
+            <p><a href="../pages/contact.php"><b>Contact us</b></a></p>
+            <p><a href="../pages/newsletter.php"><b>Follow us </b></a></p>
         </section>
     </article>
 

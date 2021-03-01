@@ -107,7 +107,7 @@ class user
                 'id_member' => $id_member,
             ]);
 
-        return $update_state;
+
     }
 
 

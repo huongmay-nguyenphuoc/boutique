@@ -105,7 +105,7 @@ form input, textarea, p {
     padding: 20px;
 }
 
-.form input, textarea, .formlogin input, .formupdate input{
+.form input, textarea, .formlogin input, .formupdate input, .formcontact input{
     background: transparent;
     border: none;
     border-bottom: 1px solid white;
