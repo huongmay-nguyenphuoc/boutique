@@ -80,12 +80,13 @@ if (isset($_POST['show'])) {
     <section class="userinfos">
         <?php
         echo "Login:  " .$_SESSION['user']->getLogin(). "<br><br>";
-        echo "Email:  " .$_SESSION['user']->getEmail(). "<br><br>";;
-        echo "Firstname:  " .$_SESSION['user']->getFirstname(). "<br><br>";;
-        echo "Lastname:  " .$_SESSION['user']->getLastname(). "<br><br>";;
-        echo "City:  " .$_SESSION['user']->getCity(). "<br><br>";;
-        echo "ZIP:  " .$_SESSION['user']->getZip(). "<br><br>";;
-        echo "Adress:  " .$_SESSION['user']->getAdress(). "<br><br>";;
+        echo "Email:  " .$_SESSION['user']->getEmail(). "<br><br>";
+        echo "Firstname:  " .$_SESSION['user']->getFirstname(). "<br><br>";
+        echo "Lastname:  " .$_SESSION['user']->getLastname(). "<br><br>";
+        echo "City:  " .$_SESSION['user']->getCity(). "<br><br>";
+        echo "ZIP:  " .$_SESSION['user']->getZip(). "<br><br>";
+        echo "Adress:  " .$_SESSION['user']->getAdress(). "<br><br>";
+        echo "Newsletter:  " .$_SESSION['user']->getNewsletter(). "<br><br>";
 
 
         ?>
