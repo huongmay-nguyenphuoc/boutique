@@ -52,7 +52,7 @@ else {
             <td><img height="100px" src="../productPics/<?= $product['image'] ?>"</td>
             <td><?= $product['stock'] ?></td>
 
-            <td>
+            <td class="td_button">
                 <a class="button" href="update_product.php?id_product=<?= $product['id_product'] ?>"><button>Update</button></a>
                 <form method='post' action='delete_product.php'>
                     <input type="hidden" value="<?= $product['id_product'] ?>" name="id">

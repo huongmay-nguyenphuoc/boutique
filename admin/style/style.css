@@ -78,8 +78,8 @@ table{
 
     border-collapse: collapse;
     padding: 5px;
-    margin-top: 20px;
-
+    margin : auto;
+    width: 100%;
 }
 
 
@@ -88,6 +88,7 @@ td{
     padding: 20px;
     text-align: center;
     border-bottom: 1px solid #000;
+
 }
 
 @media screen and (max-width: 640px) {
@@ -176,6 +177,7 @@ a{
      padding: 5px;
  }
 
+
  /*FORM*/
 form{
     max-width:800px /*-- à modifier en fonction de la largeur désirée --*/;
@@ -193,3 +195,4 @@ fieldset{
 
     padding: 20px;
 }
+

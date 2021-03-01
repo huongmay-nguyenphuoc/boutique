@@ -132,13 +132,13 @@ else {
         <input type="file" name="fileToUpload" id="fileToUpload" required><br><br>
 
         <label for="price">price</label><br>
-        <input type="text" id="price" name="price" placeholder="product price" required
+        <input type="text" id="price" name="price" placeholder="product price"  pattern="[0-9]{5}" title="5 chiffres requis : 0-9" required
                value="<?php if (isset($_POST['price'])) {
                    echo htmlspecialchars($_POST['price']);
                } ?>"><br><br>
 
         <label for="stock">stock</label><br>
-        <input type="text" id="stock" name="stock" placeholder="product stock" required
+        <input type="text" id="stock" name="stock" placeholder="product stock"  pattern="[0-9]{5}"  title="5 chiffres requis : 0-9" required
                value="<?php if (isset($_POST['stock'])) {
                    echo htmlspecialchars($_POST['stock']);
                } ?>"><br><br>
