@@ -92,7 +92,14 @@ if (isset($_POST['show'])) {
         ?>
     </section>
 
+
 </article>
+
+    <section class="button_admin">
+        <?php if ( $_SESSION['user']->getStatus() == 1) {
+            echo "<a href='../admin/profil_admin.php'><button>BUTTON ADMIN</button></a>";
+        }?>
+    </section>
 
 <article class="links">
     <section class="persolink">
