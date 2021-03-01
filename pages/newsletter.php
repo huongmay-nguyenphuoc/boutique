@@ -21,10 +21,15 @@ if($_SESSION['user']){
         $newsletter = htmlspecialchars($_POST['newsletter']);
         $id_member = htmlspecialchars($_POST['id']);
 
-        $_SESSION['user']->updateState($newsletter, $id_member);
-        $success = "State has been udpated<a href='profil.php'>Profile</a>";
+       $_SESSION['user']->updateState($newsletter, $id_member);
 
+           if ($_SESSION['user']->updateState($newsletter, $id_member) == 'yes') {
+               echo 'cool';
+           }
 
+           else if ($_SESSION['user']->updateState($newsletter, $id_member) == 'no') {
+               echo 'really?';
+           }
     }
 
 
@@ -33,7 +38,7 @@ if($_SESSION['user']){
 
 ?>
 
-<?php include '../includes/header_user.php'; ?>
+<?php //include '../includes/header_user.php'; ?>
 
 <h1>Newsletter</h1>
 <main class="news">
