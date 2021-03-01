@@ -38,9 +38,10 @@ if(isset($_SESSION['user'])) {
 
 
 <?php include '../includes/header.php'; ?>
+<main class="contact">
+<h2>Contact form</h2>
 
-<h2>Contact us for more questions/answers !</h2>
-<form method="POST" action="contact.php">
+<form method="POST" action="contact.php" name="formcontact">
     <label for="login">LOGIN</label><br>
     <input placeholder="login" id="login" type="text" name="login" maxlength="20"
            value="<?php echo $_SESSION['user']->getLogin(); ?>"><br><br>
@@ -53,6 +54,12 @@ if(isset($_SESSION['user'])) {
 
     <input type="submit" value="submit" name="submit"/>
 </form>
+
+    <section class="shopKeeperContact">
+        <p class="bubbleContact"><b>Contact us for more questions/answers !</b></p>
+    </section>
+
+</main>
 
 
     <!--Alerte (erreur ou succès)-->

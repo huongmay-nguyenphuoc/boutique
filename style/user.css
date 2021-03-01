@@ -419,20 +419,20 @@ max-height: 100%;
 
 /*NEWSLETTER*/
 
-.news {
+.news, .contact {
     display: flex;
     flex-direction: row;
     margin-left: 10px;
 }
 
-.formnews{
+.formnews, .formcontact{
     display: flex;
     flex-direction: column;
     margin: auto;
     padding: 15px;
 }
 
-.shopKeeperNews {
+.shopKeeperNews, .shopKeeperContact {
     background: url("../photo/style/witchback2.png") bottom right no-repeat;
     background-size: contain;
     display: flex;
@@ -443,7 +443,7 @@ max-height: 100%;
 }
 
 
-.bubbleNews  {
+.bubbleNews, .bubbleContact {
     border: 1px solid white;
     background-color: rgba(0, 0, 0, 0.5);
     width: 50%;
