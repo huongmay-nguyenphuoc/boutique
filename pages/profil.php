@@ -97,8 +97,8 @@ if (isset($_POST['show'])) {
     <section class="persolink">
 
         <div class="orderlink">
-            <a href="shopcart.php">
-                <span><b>Shopcart</b></span>
+            <a href="newsletter.php">
+                <span><b>Newsletter</b></span>
                 <img src="../photo/style/Xbox_button_B.svg.png" width="40px"/>
             </a>
         </div>
