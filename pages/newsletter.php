@@ -23,11 +23,11 @@ if($_SESSION['user']){
 
        $_SESSION['user']->updateState($newsletter, $id_member);
 
-           if ($_SESSION['user']->updateState($newsletter, $id_member) == 'yes') {
+           if ($newsletter == 'yes') {
                echo 'cool';
            }
 
-           else if ($_SESSION['user']->updateState($newsletter, $id_member) == 'no') {
+           elseif ($newsletter == 'no') {
                echo 'really?';
            }
     }
@@ -38,12 +38,10 @@ if($_SESSION['user']){
 
 ?>
 
-<?php //include '../includes/header_user.php'; ?>
+<?php include '../includes/header_user.php'; ?>
 
 <h1>Newsletter</h1>
 <main class="news">
-
-
 
 
     <form method='post' action='newsletter.php' class="formnews">

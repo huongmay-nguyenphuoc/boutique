@@ -269,4 +269,26 @@ class admin
 
 
 
+    /***************RECUPERER LES EMAILS**********/
+
+  public function showEmail()
+  {
+      $email = $this->pdo->Select('Select login, date, title, message, id_message from `contact` inner join `users` on contact.id_member = users.id_member');
+      return $email;
+
+  }
+
+
+    //SUPPRIMER EMAIL
+
+    public function deleteMail($id_message)
+    {
+        $delete_mail = $this->pdo->Delete("Delete from contact WHERE id_message= :id_message",
+            ['id_message' => $id_message,
+            ]);
+
+        return $delete_mail;
+    }
+
+
 }

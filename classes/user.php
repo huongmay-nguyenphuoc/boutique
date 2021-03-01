@@ -7,6 +7,7 @@ require_once('validator.php');
 class user
 {
     private $id_member;
+    private $id_message;
     private $login;
     private $lastname;
     private $firstname;
@@ -17,6 +18,9 @@ class user
     private $status;
     private $avatar;
     private $newsletter;
+    private $date_message;
+    private $message;
+    private $title;
     private $pdo;
 
     function __construct()
@@ -84,6 +88,57 @@ class user
         $this->city = $city;
         return $update;
     }
+
+
+
+
+
+
+
+    //UPDATE STATE NEWSLETTER
+
+    public function updateState($newsletter, $id_member)
+    {
+
+        $this->pdo = new database();
+        $update_state = $this->pdo->Update("Update `users` SET newsletter = :newsletter WHERE id_member = :id_member ",
+            [
+                'newsletter' => $newsletter,
+                'id_member' => $id_member,
+            ]);
+
+
+    }
+
+
+    //MESSAGES EMAIL
+
+    public function registerEmail($message, $id_member, $date_message, $title){
+        $this->pdo = new database();
+        $add_mail = $this->pdo->Insert('Insert into contact(message, id_member, date_message, title) values(:message, :id_member, :date_message, :title)',
+            [
+                'message' => $message,
+                'id_member' => $id_member,
+                'date_message' => $date_message,
+                'title' => $title,
+            ]);
+
+        return $add_mail;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     function getAvatar()
     {
@@ -201,22 +256,11 @@ class user
 
 
 
-    //UPDATE STATE NEWSLETTER
-
-    public function updateState($newsletter, $id_member)
-    {
-
-        $this->pdo = new database();
-        $update_state = $this->pdo->Update("Update `users` SET newsletter = :newsletter WHERE id_member = :id_member ",
-            [
-                'newsletter' => $newsletter,
-                'id_member' => $id_member,
-            ]);
-
-        return $update_state;
-    }
 
 
 }
+
+
+
 
 

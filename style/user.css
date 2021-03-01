@@ -105,7 +105,7 @@ form input, textarea, p {
     padding: 20px;
 }
 
-.form input, textarea, .formlogin input, .formupdate input{
+.form input, textarea, .formlogin input, .formupdate input, .formcontact input{
     background: transparent;
     border: none;
     border-bottom: 1px solid white;
@@ -419,20 +419,20 @@ max-height: 100%;
 
 /*NEWSLETTER*/
 
-.news {
+.news, .contact {
     display: flex;
     flex-direction: row;
     margin-left: 10px;
 }
 
-.formnews{
+.formnews, .formcontact{
     display: flex;
     flex-direction: column;
     margin: auto;
     padding: 15px;
 }
 
-.shopKeeperNews {
+.shopKeeperNews, .shopKeeperContact {
     background: url("../photo/style/witchback2.png") bottom right no-repeat;
     background-size: contain;
     display: flex;
@@ -443,7 +443,7 @@ max-height: 100%;
 }
 
 
-.bubbleNews  {
+.bubbleNews, .bubbleContact {
     border: 1px solid white;
     background-color: rgba(0, 0, 0, 0.5);
     width: 50%;
@@ -454,8 +454,3 @@ max-height: 100%;
     text-align: center;
 }
 
-
-.fileToUpload{
-    width: 20px; /* à modifier selon vos besoins */
-    overflow: hidden; /* les dépassements seront masqués */
-}

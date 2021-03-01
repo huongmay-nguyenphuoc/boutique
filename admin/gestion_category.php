@@ -21,10 +21,6 @@ else {
 ?>
 
 
-
-
-    <html>
-
 <?php include 'includes/header.php'; ?>
 
     <h1>All Categories</h1>
