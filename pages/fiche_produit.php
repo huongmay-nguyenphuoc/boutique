@@ -110,7 +110,7 @@ if (isset($_POST['addBasket'])) {
                         <?php endif; ?>
 
                     </div>
-                    <div>
+                    <div class="divPrice">
 
                         <p class="price"><?= $product->getPrice() ?><img height="50px"
                                                                          src="../photo/style/diamond.png"</p>
