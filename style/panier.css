@@ -83,8 +83,7 @@ body {
 
 
 .shopKeeperPb, .shopKeeperOk {
-    background: url("../photo/style/witch.png") ;
-    background-color: red;
+    background: url("../photo/style/witchback1.png") no-repeat;
     background-size: contain;
     display: flex;
     justify-content: left;
