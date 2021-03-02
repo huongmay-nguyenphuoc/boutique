@@ -431,9 +431,11 @@ max-height: 100%;
     flex-direction: column;
     margin: auto;
     padding: 15px;
+    width: 40%;
+    height: 60%;
 }
 
-.formcontact input[type=text], .formcontact textarea {
+.formcontact input, .formcontact textarea, .formnews textarea{
     background: transparent;
     border: none;
     border-bottom: 1px solid white;
@@ -441,7 +443,7 @@ max-height: 100%;
 }
 
 .shopKeeperNews, .shopKeeperContact {
-    background: url("../photo/style/witchback2.png") bottom right no-repeat;
+    background: url("../photo/style/witchback.png") bottom right no-repeat;
     background-size: contain;
     display: flex;
     justify-content: left;
