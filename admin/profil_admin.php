@@ -1,6 +1,6 @@
 <?php
 
-
+$title = "Profil Admin";
 require_once '../classes/user.php';
 require_once '../classes/validator.php';
 require_once '../classes/admin.php';
