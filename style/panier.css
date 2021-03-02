@@ -55,7 +55,7 @@ body {
 
 .fail, .success {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .linkfail, .linksuccess {
@@ -83,42 +83,44 @@ body {
 
 
 .shopKeeperPb, .shopKeeperOk {
-    background: url("../photo/style/witchback.png") bottom right no-repeat;
+    background: url("../photo/style/witch.png") ;
+    background-color: red;
     background-size: contain;
     display: flex;
     justify-content: left;
     align-items: start;
-    padding: 2em;
-    width: 100%;
+    padding: 20%;
+    width: 50%;
+
 }
 
 
 .bubblePb, .bubbleOk {
     border: 1px solid white;
     background-color: rgba(0, 0, 0, 0.5);
-    width: 50%;
+    width: 40%;
     padding: 2em;
     border-radius: 20px 20px 0px 20px;
     color: white;
-    font-size: 1.2em;
     text-align: center;
+
 }
 
 
 .fail p, .success p {
-    font-size: 2em;
+    font-size: 1.2em;
     text-align: center;
 }
 
 .fail a, .success a {
     text-decoration: none;
     color: black;
-    font-size: 1.4em;
+    font-size: 1.2em;
     text-align: center;
 }
 
 .fail a:hover, .success a:hover {
-    text-shadow: 0 0 10px red;
+    text-shadow: 2px 2px 2px red;
 }
 
 
