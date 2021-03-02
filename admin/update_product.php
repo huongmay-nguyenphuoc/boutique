@@ -1,5 +1,5 @@
 <?php
-
+$title = 'update Product';
 require_once '../classes/admin.php';
 require_once '../classes/user.php';
 require_once '../classes/product.php';
@@ -14,7 +14,8 @@ if (!isset($_SESSION['user']) or $_SESSION['user']->getStatus() != 1) {
     if (isset($_POST['submit'])) {
         $admin = new admin;
 
-        if (isset($_FILES)) {
+
+        if (isset($_POST['fileToUpload'])) {
             /*Check Image*/
             $target_dir = "../productPics/";
             $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
@@ -39,6 +40,8 @@ if (!isset($_SESSION['user']) or $_SESSION['user']->getStatus() != 1) {
                 && $imageFileType != "gif") {
                 $errors[] = "Only JPG, JPEG, PNG & GIF pictures are allowed.";
             }
+        } else {
+            $image = $product['image'];
         }
 
 
@@ -46,8 +49,10 @@ if (!isset($_SESSION['user']) or $_SESSION['user']->getStatus() != 1) {
         if (empty($errors)) {
 
 //move picture in repository : productPics
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                $image = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
+            if (isset($_POST['fileToUpload'])) {
+                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                    $image = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
+                }
             }
             $reference = htmlspecialchars($_POST['reference']);
             $title = htmlspecialchars($_POST['title']);
@@ -60,21 +65,20 @@ if (!isset($_SESSION['user']) or $_SESSION['user']->getStatus() != 1) {
             $id_product = $_POST['id_product'];
 
 
-                $admin->update($reference, $category, $subcat, $title, $description, $shortdesc, $price, $stock, $id_product);
-            if (isset($image)) {
-                $admin->updatePic($image);
-            }
+            $admin->update($reference, $category, $subcat, $title, $image, $description, $shortdesc, $price, $stock, $id_product);
+
             $success = "Product has been updated<a href='produits.php'>Tous les produits</a>";
 
 
         }
-    }
 
+    }
 }
 ?>
 
 
 <?php include 'includes/header.php'; ?>
+
 <main>
 
     
@@ -128,18 +132,6 @@ if (!isset($_SESSION['user']) or $_SESSION['user']->getStatus() != 1) {
 
     <label for="stock">stock</label><br>
     <input type="text" id="stock" name="stock" placeholder="product stock"  pattern="[0-9]{1,3}" title="1 à 3 nombres requis : 0-9" value="<?= $product['stock'] ?>"><br><br>
-
-    <input type="text" id="price" name="price" placeholder="product price" pattern="[0-9]{2}" title="2 nombres requis : 0-9"   value="<?= $product['price'] ?>"><br><br>
-
-    <label for="stock">stock</label><br>
-    <input type="text" id="stock" name="stock" placeholder="product stock"  pattern="[0-9]{2}" title="2 nombres requis : 0-9" value="<?= $product['stock'] ?>"><br><br>
-
-    <input type="text" id="price" name="price" placeholder="product price" pattern="[0-9]{5}"
-           title="5 chiffres requis : 0-9" value="<?= $product['price'] ?>"><br><br>
-
-    <label for="stock">stock</label><br>
-    <input type="text" id="stock" name="stock" placeholder="product stock" pattern="[0-9]{5}"
-           title="5 chiffres requis : 0-9" value="<?= $product['stock'] ?>"><br><br>
 
 
     <button class="btn waves-effect waves-light black" type="submit" name="submit">

@@ -49,7 +49,8 @@ if (isset($_POST['submit'])) {
     }
 
 
-    if (!empty($_FILES)) {
+    if (isset($_POST['fileToUpload'])) {
+        /*Check Image*/
         /*Check Image*/
         $target_dir = "../avatars/";
 
@@ -73,14 +74,16 @@ if (isset($_POST['submit'])) {
             }
         }
 
+    } else {
+        $image = $_SESSION['user']->getAvatar();
     }
 
     //If everything is okay
     if (empty($errors)) {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            $image = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
-    } else {
-            $image = '';
+        if (isset($_POST['fileToUpload'])) {
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                $image = htmlspecialchars(basename($_FILES["fileToUpload"]["name"]));
+            }
         }
         $_SESSION['user']->update($login, $password, $lastname, $firstname, $email, $city, $zip, $adress, $image);
         $success = "Account has been updated <a href='categorie.php'>Continue shopping?</a>";

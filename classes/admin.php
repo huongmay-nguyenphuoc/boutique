@@ -81,6 +81,7 @@ class admin
                 'subcat' => $subcat,
                 'title' => $title,
                 'description' => $description,
+                'image' => $image,
                 'shortdesc' => $shortdesc,
                 'price' => $price,
                 'stock' => $stock,
