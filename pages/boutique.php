@@ -65,9 +65,11 @@ if (isset($_POST['show'])) {
                                         | out of stock
                                     <?php endif; ?>
                                         </span>
+                                        <span>
                                         <form method="post">
                                             <input type="hidden" name="value" value="<?= $i ?>">
                                             <input type="submit" name="show" value="Tell me more"></form>
+                                            </span>
                                     </li>
 
                                     <?php if (isset($show[$i])) : ?>

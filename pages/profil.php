@@ -10,7 +10,9 @@ if (!isset($_SESSION['user'])) {
     header('location: connexion.php');
 }
 $commandes = $_SESSION['user']->ordersUser();
-if (isset($_POST['show'])) {
+//var_dump($commandes);
+if (isset($_POST['show'
+    ])) {
     $show[$_POST["value"]] = true;
 }
 ?>
@@ -25,7 +27,7 @@ if (isset($_POST['show'])) {
                 <div>
                     <p>No orders yet.</p>
                 </div>
-                <php else : ?>
+                <?php elseif (!empty($commandes)) : ?>
                     <ul>
                         <?php $i = 0; ?>
                         <?php foreach ($commandes as $order) : ?>

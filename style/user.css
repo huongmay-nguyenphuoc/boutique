@@ -133,7 +133,7 @@ form input, textarea, p {
 
 #avatarHole {
 
-    z-index: 10;
+    z-index: 2;
 
     position: relative;
 }
