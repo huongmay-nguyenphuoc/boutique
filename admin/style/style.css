@@ -189,7 +189,7 @@ form{
     max-width:800px /*-- à modifier en fonction de la largeur désirée --*/;
     margin:0 auto;
     text-align: center;
-    overflow: auto;
+    overflow-y: auto;
 }
 
 legend {
