@@ -230,7 +230,7 @@ class user
         $this->pdo = new database();
 
         $orders_user = $this->pdo->Select("Select * FROM `order` WHERE id_member = :id_member ORDER BY order.id_order DESC",
-            ['id_member' => 1]);
+            ['id_member' => $this->id_member]);
         return $orders_user;
     }
 

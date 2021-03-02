@@ -4,6 +4,9 @@ require_once('../classes/order.php');
 $title = "Success";
 $bodyname = "bodysuccess";
 
+if (!isset($_SESSION['user'])) {
+    header('location: connexion.php');
+}
 if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])
     and isset($_SESSION['order']) and !empty($_SESSION['order'])) {
     ($_SESSION['order']->insertOrder());

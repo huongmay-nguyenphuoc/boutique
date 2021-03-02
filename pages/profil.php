@@ -21,50 +21,55 @@ if (isset($_POST['show'])) {
         <article class="profiluser">
 
             <section class="order">
-                <ul>
-                    <?php $i = 0; ?>
-                    <?php foreach ($commandes as $order) : ?>
-                        <li>
-                            <ul>
+                <?php if (empty($commandes)) : ?>
+                <div>
+                    <p>No orders yet.</p>
+                </div>
+                <php else : ?>
+                    <ul>
+                        <?php $i = 0; ?>
+                        <?php foreach ($commandes as $order) : ?>
+                            <li>
+                                <ul>
 
-                                <li>
-                                    <ul>
-                                        <li>Date: <?= $order['date_register'] ?></li>
-                                        <li>Total: <?= $order['amount'] ?></li>
-                                        <li>State: <?= $order['state'] ?></li>
-                                        <li>
-                                            <form method="post">
-                                                <input type="hidden" name="value" value="<?= $i ?>">
-                                                <input type="submit" name="show" value="show details">
-                                            </form>
-                                        </li>
-                                    </ul>
-                                <li>
-
-                                <li>
-                                    <?php if (isset($show[$i])) : ?>
-                                        <?php $j = 1; ?>
+                                    <li>
                                         <ul>
-                                            <?php foreach ($_SESSION['user']->ordersUserDetails($order['id_order']) as $detail) : ?>
-                                                <li>
-                                                    <ul>
-                                                        <li><?= $j ?> / <?= $detail['title'] ?></li>
-                                                        <li>price: <?= $detail['price'] ?> €</li>
-                                                        <li>quantity: <?= $detail['quantity'] ?></li>
-                                                        <?php $j++; ?>
-                                                    </ul>
-                                                </li><br>
-                                            <?php endforeach; ?>
+                                            <li>Date: <?= $order['date_register'] ?></li>
+                                            <li>Total: <?= $order['amount'] ?></li>
+                                            <li>State: <?= $order['state'] ?></li>
+                                            <li>
+                                                <form method="post">
+                                                    <input type="hidden" name="value" value="<?= $i ?>">
+                                                    <input type="submit" name="show" value="show details">
+                                                </form>
+                                            </li>
                                         </ul>
-                                    <?php endif; ?>
-                                </li>
+                                    <li>
 
-                            </ul>
-                            <?php $i++; ?>
-                        </li><br><br>
-                    <?php endforeach; ?>
-                </ul>
+                                    <li>
+                                        <?php if (isset($show[$i])) : ?>
+                                            <?php $j = 1; ?>
+                                            <ul>
+                                                <?php foreach ($_SESSION['user']->ordersUserDetails($order['id_order']) as $detail) : ?>
+                                                    <li>
+                                                        <ul>
+                                                            <li><?= $j ?> / <?= $detail['title'] ?></li>
+                                                            <li>price: <?= $detail['price'] ?> €</li>
+                                                            <li>quantity: <?= $detail['quantity'] ?></li>
+                                                            <?php $j++; ?>
+                                                        </ul>
+                                                    </li><br>
+                                                <?php endforeach; ?>
+                                            </ul>
+                                        <?php endif; ?>
+                                    </li>
 
+                                </ul>
+                                <?php $i++; ?>
+                            </li><br><br>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php endif; ?>
             </section>
 
 
@@ -73,8 +78,18 @@ if (isset($_POST['show'])) {
 
 
                 <?php if ($_SESSION['user']->getAvatar() != null) : ?>
-                    <img id="avatar" height="200px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
-                <?php endif; ?>
+                    <div id="containerPeach">
+                        <div id="divAvatar">
+                            <img id="avatarHole" width="200px" src="../photo/style/peach1.png">
+                            <div id="avatar">
+                                <img height="80px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
+                            </div>
+                        </div>
+                        <div>
+                            <img width=" 200px" src="../photo/style/peach2.png">
+                        </div>
+                    </div>
+                <?php endif; ?>>
             </section>
 
             <section class="userinfos">
@@ -112,7 +127,7 @@ if (isset($_POST['show'])) {
                 </div>
 
                 <div class="joystick">
-                    <a href="deconnexion.php">
+                    <a class="joystick2" href="deconnexion.php">
                         <p>Déconnexion</p>
                         <img src="../photo/style/arrow.png" width="80px"/>
                     </a>

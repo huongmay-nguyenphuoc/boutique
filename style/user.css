@@ -117,13 +117,43 @@ form input, textarea, p {
 .formregister, .formupdate{
     margin-right: 15px;
 }
-
- #avatar{
-    margin: 0 auto;
-    clip-path:circle(40%);
-
+#containerPeach {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+#divAvatar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#avatarHole {
+
+    z-index: 10;
+
+    position: relative;
+}
+
+#avatar{
+
+    z-index: 0;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#avatar img {
+
+    clip-path:circle(40%);
+}
  .order input{
      color: white;
      border: none;
@@ -191,10 +221,11 @@ a{
     margin-top: 20px;
 
   }                    
-                       
 
-.profil{
+
+.profil, .userinfos {
     display: flex;
+    justify-content: space-around;
     flex-direction: column;
     max-height: 100%;
 }
@@ -207,9 +238,17 @@ a{
 
 }
 .order {
-    overflow: scroll;
+    overflow: auto;
     height: 70vh;
     box-shadow: -4px 5px 5px  black;
+
+}
+
+.order div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -226,6 +265,14 @@ a{
      justify-content: center;
  }
 
+.joystick a {
+    border-top: 1px solid rgba(0,0,0,0);
+    transition: 0.5s;
+}
+
+.joystick a:hover {
+    border-top: 1px solid white;
+}
 
 .persolink img{
     padding: 5px;
