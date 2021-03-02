@@ -188,8 +188,8 @@ a{
 form{
     max-width:800px /*-- à modifier en fonction de la largeur désirée --*/;
     margin:0 auto;
-    width:14%;
     text-align: center;
+    overflow: auto;
 }
 
 legend {
@@ -202,3 +202,13 @@ fieldset{
     padding: 20px;
 }
 
+.form{
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+
+}
+
+.error{
+    font-size: 1.2em;
+}

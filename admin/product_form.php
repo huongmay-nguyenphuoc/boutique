@@ -65,26 +65,11 @@ else {
 }
 ?>
 
-
-<html>
-
-
-
-<!--Alerte (erreur ou succès)-->
-<?php if (!empty($errors)): ?>
-    <div>
-        <?php foreach ($errors as $error) : ?>
-            <p><?= $error ?></p>
-        <?php endforeach; ?>
-    </div>
-<?php elseif (isset($success)): ?>
-    <div>
-        <p><?= $success ?></p>
-    </div>
-<?php endif; ?>
 <?php include 'includes/header.php'; ?>
-<main>
+
     <h1> Product form </h1>
+    <section class="form">
+
     <form method="post" enctype="multipart/form-data" action="product_form.php">
         <label for="reference">reference</label><br>
         <input type="text" id="reference" name="reference" placeholder="product reference" required
@@ -145,6 +130,24 @@ else {
 
         <button type="submit" name="submit">send</button>
     </form>
+
+
+
+
+
+    <!--Alerte (erreur ou succès)-->
+    <?php if (!empty($errors)): ?>
+        <div>
+            <?php foreach ($errors as $error) : ?>
+                <p><?= $error ?></p>
+            <?php endforeach; ?>
+        </div>
+    <?php elseif (isset($success)): ?>
+        <div>
+            <p><?= $success ?></p>
+        </div>
+    <?php endif; ?>
+</section>
 </main>
 
 <?php include 'includes/footer.php'; ?>

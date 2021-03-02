@@ -69,27 +69,12 @@ else {
 ?>
 
 
-<html>
-
 <?php include 'includes/header.php'; ?>
-<!--Alerte (erreur ou succès)-->
-<?php if (!empty($errors)): ?>
-    <div>
-        <?php foreach ($errors as $error) {
-            echo '<p class="red-text">' . $error . '</p>';
-        }
-        ?>
-    </div>
-<?php elseif (isset($success)): ?>
-    <div>
-        <p class="white-text"><?php echo $success; ?></p>
-    </div>
-<?php endif; ?>
-<body>
-
+<main>
 
 <h1> Update form </h1>
 
+    <section class="form">
 
 <form method="post" enctype="multipart/form-data" action="update_product.php?id_product=<?= $_GET["id_product"] ?>">
 
@@ -132,14 +117,32 @@ else {
     <input type="file" name="fileToUpload" id="fileToUpload" required><br><br>
 
     <label for="price">price</label><br>
-    <input type="text" id="price" name="price" placeholder="product price"  pattern="[0-9]{5}" title="5 chiffres requis : 0-9" value="<?= $product['price'] ?>"><br><br>
+    <input type="text" id="price" name="price" placeholder="product price" pattern="[0-9]{2}" title="2 nombres requis : 0-9"   value="<?= $product['price'] ?>"><br><br>
 
     <label for="stock">stock</label><br>
-    <input type="text" id="stock" name="stock" placeholder="product stock"  pattern="[0-9]{5}" title="5 chiffres requis : 0-9" value="<?= $product['stock'] ?>"><br><br>
+    <input type="text" id="stock" name="stock" placeholder="product stock"  pattern="[0-9]{2}" title="2 nombres requis : 0-9" value="<?= $product['stock'] ?>"><br><br>
 
     <button class="btn waves-effect waves-light black" type="submit" name="submit">
         <i class="material-icons right">send</i>
     </button>
 
 </form>
+
+
+    <!--Alerte (erreur ou succès)-->
+<?php if (!empty($errors)): ?>
+    <div>
+        <?php foreach ($errors as $error) {
+            echo '<p class="red-text">' . $error . '</p>';
+        }
+        ?>
+    </div>
+<?php elseif (isset($success)): ?>
+    <div>
+        <p class="white-text"><?php echo $success; ?></p>
+    </div>
+<?php endif; ?>
+    </section>
+</main>
+
 <?php include 'includes/footer.php'; ?>
