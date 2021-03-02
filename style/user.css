@@ -434,6 +434,13 @@ max-height: 100%;
     padding: 15px;
 }
 
+.formcontact input[type=text], .formcontact textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+
+}
+
 .shopKeeperNews, .shopKeeperContact {
     background: url("../photo/style/witchback2.png") bottom right no-repeat;
     background-size: contain;

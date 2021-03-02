@@ -41,7 +41,7 @@ if(isset($_SESSION['user'])) {
 <main class="contact">
 <h2>Contact form</h2>
 
-<form method="POST" action="contact.php" name="formcontact">
+<form method="POST" action="contact.php" name="formcontact" class="formcontact">
     <label for="login">LOGIN</label><br>
     <input placeholder="login" id="login" type="text" name="login" maxlength="20"
            value="<?php echo $_SESSION['user']->getLogin(); ?>"><br><br>
