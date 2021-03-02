@@ -3,7 +3,9 @@ require_once('../classes/order.php');
 //var_dump($_SESSION);
 $title = "Success";
 $bodyname = "bodysuccess";
-if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])) {
+
+if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])
+    and isset($_SESSION['order']) and !empty($_SESSION['order'])) {
     ($_SESSION['order']->insertOrder());
     $_SESSION['order']->changeStock();
     $_SESSION['order']->deleteCart();

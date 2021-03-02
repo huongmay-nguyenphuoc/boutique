@@ -19,7 +19,7 @@ $bodyname = "bodyoncancel";
 
     <section class="linkfail">
         <a href="profil.php"><b><span><img src="../photo/style/icons8-hand-right-50.png" width="40px"/> </span>Go back to your Profile<span> <img src="../photo/style/icons8-hand-left-50.png" width="40px"/> </span></b></a><br>
-        <a href="panier.php"><b><span> <img src="../photo/style/icons8-hand-right-50.png" width="40px"/> </span>Try again<span> <img src="../photo/style/icons8-hand-left-50.png" width="40px"/> </span></b></a>
+        <a href="shopcart.php"><b><span> <img src="../photo/style/icons8-hand-right-50.png" width="40px"/> </span>Try again<span> <img src="../photo/style/icons8-hand-left-50.png" width="40px"/> </span></b></a>
 
     </section>
 

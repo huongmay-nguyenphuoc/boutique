@@ -60,6 +60,7 @@ class user
         $this->zip = $requser[0]['zip'];
         $this->adress = $requser[0]['adress'];
         $this->avatar = $requser[0]['avatar'];
+        $this->newsletter = $requser[0]['newsletter'];
         return $requser;
     }
 
@@ -125,16 +126,6 @@ class user
 
         return $add_mail;
     }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -238,7 +229,7 @@ class user
     {
         $this->pdo = new database();
 
-        $orders_user = $this->pdo->Select("Select * FROM `order` WHERE id_member = :id_member ORDER BY order.state DESC",
+        $orders_user = $this->pdo->Select("Select * FROM `order` WHERE id_member = :id_member ORDER BY order.id_order DESC",
             ['id_member' => 1]);
         return $orders_user;
     }
@@ -251,10 +242,6 @@ class user
         ['id_order'=> $id_order]);
         return $orders_details;
     }
-
-    //SUPPRIMER COMPTE????
-
-
 
 
 

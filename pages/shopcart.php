@@ -1,11 +1,12 @@
 <?php
+require_once('../classes/user.php');
 require_once('../classes/cart.php');
 require_once('../classes/order.php');
+
 $cart = new cart();
 $shop = new shop();
 $title = 'cart';
 $bodyname = 'bodyCart';
-//var_dump($_SESSION);
 
 /*Traitement vider le panier*/
 if (isset($_POST['removeAll'])) {
