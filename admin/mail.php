@@ -32,10 +32,9 @@ else {
 
         <?php foreach($admin->showEmail() as $mail){
 
-
             ?>
             <tr>
-                <td><?=  $mail['date'];?></td>
+                <td><?=  $mail['date_message'];?></td>
                 <td><?=  $mail['login'];?></td>
                 <td><?=  $mail['title'];?></td>
                 <td><?=  $mail['message'];?></td>

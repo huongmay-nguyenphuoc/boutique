@@ -280,7 +280,7 @@ class admin
 
     public function showEmail()
     {
-        $email = $this->pdo->Select('Select login, date, title, message, id_message from `contact` inner join `users` on contact.id_member = users.id_member');
+        $email = $this->pdo->Select('Select login, date_message, title, message, id_message from `contact` inner join `users` on contact.id_member = users.id_member');
         return $email;
 
     }
