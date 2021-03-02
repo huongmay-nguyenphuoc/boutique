@@ -285,9 +285,10 @@ a{
 
 /*ESSAI MESSAGES*/
 
-.mainlogin{
+.mainlogin, .mainregister{
     display: flex;
     flex-direction: column;
+
 }
 
 
@@ -308,6 +309,7 @@ a{
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.5);
     width: 50%;
+    margin-bottom: 15px;
 }
 
 

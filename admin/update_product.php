@@ -117,10 +117,10 @@ else {
     <input type="file" name="fileToUpload" id="fileToUpload" required><br><br>
 
     <label for="price">price</label><br>
-    <input type="text" id="price" name="price" placeholder="product price" pattern="[0-9]{2}" title="2 nombres requis : 0-9"   value="<?= $product['price'] ?>"><br><br>
+    <input type="text" id="price" name="price" placeholder="product price" pattern="[0-9]{1,3}" title="1 à 3 nombres requis : 0-9"   value="<?= $product['price'] ?>"><br><br>
 
     <label for="stock">stock</label><br>
-    <input type="text" id="stock" name="stock" placeholder="product stock"  pattern="[0-9]{2}" title="2 nombres requis : 0-9" value="<?= $product['stock'] ?>"><br><br>
+    <input type="text" id="stock" name="stock" placeholder="product stock"  pattern="[0-9]{1,3}" title="1 à 3 nombres requis : 0-9" value="<?= $product['stock'] ?>"><br><br>
 
     <button class="btn waves-effect waves-light black" type="submit" name="submit">
         <i class="material-icons right">send</i>
