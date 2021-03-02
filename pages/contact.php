@@ -38,8 +38,12 @@ if(isset($_SESSION['user'])) {
 
 
 <?php include '../includes/header.php'; ?>
+
+    <h1>Contact form</h1>
+
+
 <main class="contact">
-<h2>Contact form</h2>
+
 
 <form method="POST" action="contact.php" name="formcontact" class="formcontact">
     <label for="login">LOGIN</label><br>
@@ -61,7 +65,7 @@ if(isset($_SESSION['user'])) {
 
 </main>
 
-
+    <section class="errors">
     <!--Alerte (erreur ou succès)-->
 <?php if (!empty($errors)): ?>
     <div class="error">
@@ -74,6 +78,6 @@ if(isset($_SESSION['user'])) {
         <p><?php echo $success; ?></p>
     </div>
 <?php endif; ?>
-
+    </section>
 
 <?php include '../includes/footer.php'; ?>

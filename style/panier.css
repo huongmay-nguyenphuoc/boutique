@@ -40,6 +40,9 @@ article {
 body {
     min-height: 100vh;
     justify-content: space-between;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 
@@ -47,6 +50,7 @@ body {
 .bodyoncancel {
     background-image: url("../photo/style/store1.jpg");
     min-height: 100%;
+
 }
 
 .fail, .success {
@@ -79,7 +83,7 @@ body {
 
 
 .shopKeeperPb, .shopKeeperOk {
-    background: url("../photo/style/witchback2.png") bottom right no-repeat;
+    background: url("../photo/style/witchback.png") bottom right no-repeat;
     background-size: contain;
     display: flex;
     justify-content: left;

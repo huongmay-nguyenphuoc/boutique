@@ -441,7 +441,7 @@ max-height: 100%;
 }
 
 .shopKeeperNews, .shopKeeperContact {
-    background: url("../photo/style/witchback2.png") bottom right no-repeat;
+    background: url("../photo/style/witchback.png") bottom right no-repeat;
     background-size: contain;
     display: flex;
     justify-content: left;

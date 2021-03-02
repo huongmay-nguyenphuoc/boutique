@@ -21,18 +21,19 @@ if($_SESSION['user']){
         $newsletter = htmlspecialchars($_POST['newsletter']);
         $id_member = htmlspecialchars($_POST['id']);
 
-       $_SESSION['user']->updateState($newsletter, $id_member);
 
-           if ($newsletter == 'yes') {
-               echo 'cool';
-           }
+        if (empty($errors)) {
+            $_SESSION['user']->updateState($newsletter, $id_member);
 
-           elseif ($newsletter == 'no') {
-               echo 'really?';
-           }
+
+            if ($newsletter == 'yes') {
+                $success = "bravo";
+            } elseif ($newsletter == 'no') {
+                $success = "really?";
+            }
+        }
+
     }
-
-
 }
 
 
@@ -41,9 +42,9 @@ if($_SESSION['user']){
 <?php include '../includes/header_user.php'; ?>
 
 <h1>Newsletter</h1>
-<main class="news">
+    <main>
 
-
+<section class="news">
     <form method='post' action='newsletter.php' class="formnews">
         <input type="hidden" value="<?= $_SESSION['user']->getId() ?>" name="id">
         <label for="newsletter">state</label><br>
@@ -59,7 +60,22 @@ if($_SESSION['user']){
     <section class="shopKeeperNews">
         <p class="bubbleNews"><b>Don't forget to update your Newsletter state</b></p>
     </section>
+</section>
 
+    <section class="errors">
+        <!--Alerte (erreur ou succès)-->
+        <?php if (!empty($errors)): ?>
+            <div class="error">
+                <?php foreach ($errors as $error) :?>
+                    <p><?= $error ?></p>
+                <?php endforeach;?>
+            </div>
+        <?php elseif (isset($success)): ?>
+            <div class="error">
+                <p><?php echo $success; ?></p>
+            </div>
+        <?php endif; ?>
+    </section>
 </main>
 
 <?php include '../includes/footer.php'; ?>
