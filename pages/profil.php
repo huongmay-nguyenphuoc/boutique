@@ -118,6 +118,11 @@ if (isset($_POST['show'
             } ?>
         </section>
 
+        <section class="button_logout">
+            <a href='deconnexion.php'><button>LOG OUT</button></a>
+
+        </section>
+
         <article class="links">
             <section class="persolink">
 
@@ -129,8 +134,8 @@ if (isset($_POST['show'
                 </div>
 
                 <div class="joystick">
-                    <a class="joystick2" href="deconnexion.php">
-                        <p>Déconnexion</p>
+                    <a class="joystick2" href="shopcart.php">
+                        <p>Shopcart</p>
                         <img src="../photo/style/arrow.png" width="80px"/>
                     </a>
                 </div>
