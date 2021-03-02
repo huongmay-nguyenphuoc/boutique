@@ -18,6 +18,7 @@ else {
 
 <?php include 'includes/header.php'; ?>
 <main>
+    <section class="mail">
     <table>
         <tr>
             <th>date</th>
@@ -50,6 +51,9 @@ else {
 
         <?php } ?>
     </table>
+    </section>
+
 </main>
+
 
 <?php include 'includes/footer.php'; ?>
