@@ -97,18 +97,6 @@ if (isset($_POST['submit'])) {
     <h1 class="center"><em>Update your Profile</em></h1>
     <h2><em>@<?php echo $_SESSION['user']->getLogin(); ?> Profile</em></h2>
 
-    <!--Alerte (erreur ou succès)-->
-    <?php if (!empty($errors)): ?>
-        <div class="error">
-            <?php foreach ($errors as $error) :?>
-            <p><?= $error ?></p>
-           <?php endforeach;?>
-        </div>
-    <?php elseif (isset($success)): ?>
-        <div class="error">
-            <p><?php echo $success; ?></p>
-        </div>
-    <?php endif; ?>
 
 
     <form action="update.php" method="post" enctype="multipart/form-data">
@@ -163,5 +151,21 @@ if (isset($_POST['submit'])) {
             <i class="material-icons right">send</i>
         </button>
     </form>
+
+    <section class="errors">
+    <!--Alerte (erreur ou succès)-->
+    <?php if (!empty($errors)): ?>
+        <div class="error">
+            <?php foreach ($errors as $error) :?>
+                <p><?= $error ?></p>
+            <?php endforeach;?>
+        </div>
+    <?php elseif (isset($success)): ?>
+        <div class="error">
+            <p><?php echo $success; ?></p>
+        </div>
+    <?php endif; ?>
+    </section>
+
 </main>
 <?php include '../includes/footer.php'; ?>

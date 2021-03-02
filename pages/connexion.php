@@ -50,12 +50,6 @@ if (isset($_POST['submit'])) {
 
 
 <h1><em><b>Log in</b></em></h1>
-        <!--Alerte (erreur ou succès)-->
-        <?php if (isset($error)): ?>
-            <div class="error">
-                <p><?= $error?></p>
-            </div>
-        <?php endif; ?>
 
 <main>
     <article class="mainlogin">
@@ -89,6 +83,16 @@ if (isset($_POST['submit'])) {
 
 
     </article>
+
+<section class="errors">
+    <!--Alerte (erreur ou succès)-->
+    <?php if (isset($error)): ?>
+        <div class="error">
+            <p><?= $error?></p>
+        </div>
+    <?php endif; ?>
+</section>
+
 </main>
 
 

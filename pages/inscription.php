@@ -67,19 +67,6 @@ if(isset($_POST['submit'])){
     </div>
 
 
-        <!--Alerte (erreur ou succès)-->
-        <?php if (!empty($errors)): ?>
-            <div class="error">
-                <?php foreach ($errors as $error) :?>
-                    <p><?= $error?></p>
-                <?php endforeach;?>
-            </div>
-        <?php elseif (isset($success)): ?>
-            <div class="error">
-                <p><?= $success ?></p>
-            </div>
-        <?php endif; ?>
-
     <form method="post" action="inscription.php">
     <div class="form">
     <fieldset class="formregister">
@@ -122,6 +109,24 @@ if(isset($_POST['submit'])){
 </form>
 
     </article>
+
+    <section class="errors">
+
+    <!--Alerte (erreur ou succès)-->
+    <?php if (!empty($errors)): ?>
+        <div class="error">
+            <?php foreach ($errors as $error) :?>
+                <p><?= $error?></p>
+            <?php endforeach;?>
+        </div>
+    <?php elseif (isset($success)): ?>
+        <div class="error">
+            <p><?= $success ?></p>
+        </div>
+    <?php endif; ?>
+
+    </section>
+
 </main>
 
 <?php include '../includes/footer.php'; ?>
