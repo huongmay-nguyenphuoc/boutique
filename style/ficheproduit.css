@@ -82,13 +82,10 @@ display: flex;
     position: relative;
     overflow: hidden;
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
 }
-.productPic {
-    /*min-width:  fit-content;*/
-    /*min-height: fit-content;*/
-}
+
 
 .productInfo div {
    flex-grow: 1;
@@ -230,6 +227,8 @@ display: flex;
 
 .bodyNew main article:nth-child(1) {
     background: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 5px;
 }
 
 .bodyNew main article:nth-child(2) {

@@ -69,7 +69,7 @@ if (isset($_POST['addBasket'])) {
         <section>
             <article>
                 <div class="imgcontainer">
-                    <img class="productPic" src="../productPics/<?= $product->getPicture() ?>">
+                    <img class="productPic" height="300px" src="../productPics/<?= $product->getPicture() ?>">
                 </div>
             </article>
 

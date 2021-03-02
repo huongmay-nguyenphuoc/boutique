@@ -3,7 +3,7 @@
 require_once('database.php');
 require_once('user.php');
 require_once('order.php');
-require_once ('product.php');
+require_once('product.php');
 
 class admin
 {
@@ -66,7 +66,7 @@ class admin
     {
         $data = $this->pdo->Select('SELECT * FROM products WHERE id_product ="' . $id . '"');
         $data = $data[0];
-       return $data;
+        return $data;
     }
 
 
@@ -82,11 +82,19 @@ class admin
                 'title' => $title,
                 'description' => $description,
                 'shortdesc' => $shortdesc,
-                'image' => $image,
                 'price' => $price,
                 'stock' => $stock,
                 'id_product' => $id_product,
             ]);
+        return true;
+    }
+
+    public function updatePic($image)
+    {
+        $this->pdo = new database();
+        $update = $this->pdo->Update("Update products SET image = :image WHERE id_product = :id_product ",
+            ['image' => $image]);
+
         return true;
     }
 
@@ -101,10 +109,9 @@ class admin
     }
 
 
-
     /*VERIFIE EXISTENCE PRODUIT*/
 
-   public function productExists($id)
+    public function productExists($id)
     {
         $product = $this->pdo->Select('SELECT id_product FROM products WHERE id_product = "' . $id . '"');
         if (!empty($product)) {
@@ -268,15 +275,14 @@ class admin
     }
 
 
-
     /***************RECUPERER LES EMAILS**********/
 
-  public function showEmail()
-  {
-      $email = $this->pdo->Select('Select login, date, title, message, id_message from `contact` inner join `users` on contact.id_member = users.id_member');
-      return $email;
+    public function showEmail()
+    {
+        $email = $this->pdo->Select('Select login, date, title, message, id_message from `contact` inner join `users` on contact.id_member = users.id_member');
+        return $email;
 
-  }
+    }
 
 
     //SUPPRIMER EMAIL
