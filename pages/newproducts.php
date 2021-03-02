@@ -27,7 +27,7 @@ $datas = $shop->selectLastProducts();
                     <li><em><?= $data->getCat() ?> | <?= $data->getSubcat() ?> </em></li>
                     <li class="barre"><a href="fiche_produit.php?id=<?= $data->getId() ?>">See
                             product</a></li>
-                    <li class="barre">----------<+>-----------</li>
+                    <li class="barre">----------------<+>-----------------</li>
                     <br>
                 </ul>
             </li>
