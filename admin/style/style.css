@@ -88,7 +88,13 @@ td{
     padding: 20px;
     text-align: center;
     border-bottom: 1px solid #000;
+    margin : auto;
+}
 
+
+
+.td_button form{
+   padding-right: 85%;
 }
 
 @media screen and (max-width: 640px) {
