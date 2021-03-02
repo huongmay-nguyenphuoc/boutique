@@ -29,6 +29,7 @@ if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
     <a href="gestion_subcategory.php">all subcategories</a><br><br>
     <a href="produits.php">all products</a><br><br>
     <a href="product_form.php">add new product</a><br><br>
+    <a href="mail.php">All your Email</a><br><br>
 
 </section>
 
