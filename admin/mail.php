@@ -43,7 +43,7 @@ else {
                     <a class="button" href="../pages/contact.php"><button>Response</button></a>
                     <form method='post' action='delete_mail.php'>
                         <input type="hidden" value="<?= $mail['id_message'] ?>" name="id">
-                        <input type='submit' name='removeMail' value='Delete mail'>
+                        <input type='submit' name='removeMail' value='Delete it'>
                     </form>
                 </td>
 

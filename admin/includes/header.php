@@ -27,6 +27,7 @@
                         <li><a href="./gestion_subcategory.php"><span> < </span> All subcategories<span> > </span></a></li>
                         <li><a href="./produits.php"><span> < </span>All products<span> > </span></a></li>
                         <li><a href="./gestion_commande.php"><span> < </span>All orders<span> > </span></a></li>
+                        <li><a href="./mail.php"><span> < </span>All Email<span> > </span></a></li>
                         <li><a href="../pages/deconnexion.php"><span> < </span>Log out<span> > </span></a></li>
 
                 </ul>
