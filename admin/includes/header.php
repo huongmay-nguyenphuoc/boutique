@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" media="screen" href="style/style.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/header.css">
-    <title>Gamebusters - <?= $title ?></title>
+    <title><?= $title ?> - Gamebusters</title>
 </head>
 <body>
 <header>

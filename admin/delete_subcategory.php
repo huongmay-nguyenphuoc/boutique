@@ -2,6 +2,9 @@
 
 require_once '../classes/admin.php';
 require_once '../classes/user.php';
+
+$title = 'delete subcategory';
+
 if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
     header('location:../pages/connexion.php');
 }
