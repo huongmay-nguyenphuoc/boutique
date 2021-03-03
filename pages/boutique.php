@@ -102,11 +102,11 @@ if (isset($_POST['show'])) {
                 <div>
                     <?php if (isset($shortdesc) and (isset($id))) : ?>
                         <?php if (isset($out) and $out == true) : ?>
-                            <a href="fiche_produit.php?id=<?= $id ?>">I know it's out of stock, can I still see the
-                                sample?</a>
+                            <a href="fiche_produit.php?id=<?= $id ?>"> < I know it's out of stock, can I still see the
+                                sample? > </a>
                             <?php $out = false; ?>
                         <?php else : ?>
-                            <a href="fiche_produit.php?id=<?= $id ?>">I'm interested, can I see the item?</a>
+                            <a href="fiche_produit.php?id=<?= $id ?>"> < I'm interested, can I see the item? > </a>
                         <?php endif; ?>
                     <?php else : ?>
                         <p>Hi! I'm just looking...</p>

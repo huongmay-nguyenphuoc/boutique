@@ -60,7 +60,7 @@ if (isset($_POST['addBasket'])) {
     <?php if (isset($error)) : ?>
         <div>
             <p><?= $error ?></p>
-            <a href="categorie.php">Back to the shop</a>
+            <a href="categorie.php"> < Back to the shop > </a>
         </div>
 
     <?php else : ?>
@@ -129,10 +129,10 @@ if (isset($_POST['addBasket'])) {
                         the basket!</small></p><br>
                 <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>">Continue
                     shopping</a>
-                <a href="shopcart.php">Open basket</a>
+                <a href="shopcart.php">< Open basket ></a>
                 <?php $_SESSION['added'] = false; ?>
             <?php else: ?>
-                <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>">Continue shopping</a>
+                <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>">< Continue shopping ></a>
             <?php endif; ?>
         </section>
 

@@ -1,11 +1,11 @@
 <?php
 session_start();
-//var_dump($_SESSION);
+var_dump($_SESSION);
 
 if (!isset($_SESSION['user'])) {
     header('location: connexion.php');
 }
-$title = 'pay';
+$title = 'Pay';
 $bodyname = 'bodyPay';
 ?>
 
@@ -15,10 +15,12 @@ $bodyname = 'bodyPay';
 <main id="mainPay">
 
     <section id="paypal-payment-button">
-
     </section>
+    <div>
+        <h1>OR</h1>
+    </div>
     <section>
-        <a href="shopcart.php">I'm not ready to pay yet...</a>
+        <a href="shopcart.php">< I'm not ready to pay yet... > </a>
     </section>
 
 </main>

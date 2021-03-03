@@ -42,7 +42,13 @@ if (isset($_POST['pay'])) {
         header('location: connexion.php');
     } else {
         $_SESSION['order'] = new order($_SESSION['user']->getId(), $cart->getTotal(), date('Y-m-d'));
-        $_SESSION['price'] = $cart->getTotal();
+
+        if (isset($_POST['fee'])) {
+            $_SESSION['price'] = $cart->getTotal();
+            $_SESSION['price'] =  $_SESSION['price'] + 3;
+        } else {
+            $_SESSION['price'] = $cart->getTotal();
+        }
         header('location:payment.php');
     }
 }
@@ -105,9 +111,16 @@ if (isset($_POST['pay'])) {
     <section>
 
         <?php if (isset($_SESSION['panier']) and !(empty($_SESSION['panier']))): ?>
-            <p>Total: <?= $cart->getTotal() ?> <img class="diamond" height="15px"
-                                                    src="../photo/style/diamond.png"></p>
-
+            <div>
+            <span>Total: <?= $cart->getTotal() ?> <img class="diamond" height="15px"
+                                                       src="../photo/style/diamond.png"></span>
+                <?php if ($cart->getTotal() < 100) : ?>
+                    <span>| Shipping fees: 3</span>
+                    <?php $fee = true; ?>
+                <?php else : ?>
+                    <span>| Shipping fees: on the house</span>
+                <?php endif; ?>
+            </div>
 
             <!--Affichage boutons vider panier-->
             <div>
@@ -136,6 +149,9 @@ if (isset($_POST['pay'])) {
                 <div>
                     <p><small>  <?= $success ?></small></p>
                     <form method="post" action="shopcart.php">
+                        <?php if (isset($fee) and $fee == true) : ?>
+                        <input type="hidden" name="fee" value="3">
+                        <?php endif; ?>
                         <input type="submit" name="pay" value="I will pay!">
                     </form>
                     <a href="shopcart.php">I'd rather not...</a></span>

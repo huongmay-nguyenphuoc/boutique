@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="../style/header.css">
     <link rel="stylesheet" type="text/css" media="screen" href="../style/footer.css">
 
-    <title>Gamebusters - <?= $title ?></title>
+    <title><?= $title ?> - Gamebusters </title>
 </head>
 <body class="<?= $bodyname ?>">
 <header>

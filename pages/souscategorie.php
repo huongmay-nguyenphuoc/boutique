@@ -17,6 +17,7 @@ if ($cat == 'nintendo') {
         }
 
 $title = $cat;
+$bodyname = 'bodySubCat';
 ?>
 <?php require_once('../includes/header.php'); ?>
 <main>

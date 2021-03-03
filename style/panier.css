@@ -227,7 +227,7 @@ body {
 }
 
 
-.bodyCart section:nth-child(2), .bodyPay section:nth-child(2) {
+.bodyCart section:nth-child(2), .bodyPay section:nth-child(3) {
 
     border: 3px solid black;
     box-shadow: 0 0 5px white;
