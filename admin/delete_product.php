@@ -1,6 +1,8 @@
 <?php
 require_once '../classes/admin.php';
 
+$title = 'delete product';
+
 if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
     header('location:../pages/connexion.php');
 }

@@ -1,6 +1,6 @@
 <?php
 
-$title = "Success";
+$title = "A Propos";
 $bodyname = "bodyapropros";
 
 ?>

@@ -1,6 +1,9 @@
 <?php
 
 require_once '../classes/admin.php';
+
+$title = 'product form';
+
 if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
     header('location:../pages/connexion.php');
 }
