@@ -107,6 +107,7 @@ class user
                 'newsletter' => $newsletter,
                 'id_member' => $id_member,
             ]);
+        $this->newsletter = $newsletter;
 
 
     }
