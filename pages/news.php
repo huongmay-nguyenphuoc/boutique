@@ -1,0 +1,1 @@
+<h1>NEWS OF THE MOMENT</h1>

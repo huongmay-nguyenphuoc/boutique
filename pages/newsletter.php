@@ -34,6 +34,8 @@ if($_SESSION['user']){
         }
 
     }
+
+
 }
 
 
@@ -76,6 +78,13 @@ if($_SESSION['user']){
             </div>
         <?php endif; ?>
     </section>
+
+
+<?php
+        if ($_SESSION['user']->getNewsletter() == 1) {
+        echo "<a href='news.php'><button>NEWSLETTER OF THE MOMENT</button></a>";
+        }
+?>
 </main>
 
 <?php include '../includes/footer.php'; ?>
