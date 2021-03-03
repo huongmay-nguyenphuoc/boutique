@@ -54,7 +54,7 @@ if(isset($_SESSION['user'])) {
     <input placeholder="title" id="title" type="text" name="title" required><br><br>
 
     <label for="message">Message</label><br>
-    <textarea name="message" cols="30" rows="15" placeholder="Your message" required></textarea><br/><br/>
+    <textarea name="message" cols="15" rows="10" placeholder="Your message" required></textarea><br/><br/>
 
     <input type="submit" value="submit" name="submit"/>
 </form>
