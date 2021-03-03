@@ -245,6 +245,16 @@ class user
 
 
 
+
+//VISITES
+
+public function newVisit($id_produit, $iporid){
+    $this->pdo = new database();
+    $this->pdo->Select("Select id_visit from visits where id_member = '$iporid' AND id_produit = '$id_produit'");
+
+}
+
+
 }
 
 
