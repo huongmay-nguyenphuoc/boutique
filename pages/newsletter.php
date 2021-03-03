@@ -80,11 +80,11 @@ if($_SESSION['user']){
     </section>
 
 
-<?php
-        if ($_SESSION['user']->getNewsletter() == 1) {
+<?php/*
+        if ($_SESSION['user']->getNewsletter() == "yes") {
         echo "<a href='news.php'><button>NEWSLETTER OF THE MOMENT</button></a>";
         }
-?>
+*/?>
 </main>
 
 <?php include '../includes/footer.php'; ?>
