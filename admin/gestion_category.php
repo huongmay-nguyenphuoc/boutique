@@ -24,7 +24,7 @@ else {
 
 
 <?php include 'includes/header.php'; ?>
-
+<main>
     <h1>All Categories</h1>
 
     <form method="post" action="gestion_category.php">
@@ -35,6 +35,7 @@ else {
     </form>
 
     <table>
+        <thead>
         <tr>
             <th>id</th>
             <th>name</th>
@@ -42,7 +43,8 @@ else {
 
 
         </tr>
-
+        </thead>
+    <tbody>
 
         <?php foreach($admin->allCat() as $cat){
 
@@ -62,7 +64,8 @@ else {
             </tr>
 
         <?php } ?>
+    </tbody>
     </table>
 
-
+    </main>
 <?php include 'includes/footer.php'; ?>

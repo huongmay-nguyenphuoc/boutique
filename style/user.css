@@ -117,6 +117,14 @@ form input, textarea, p {
 .formregister, .formupdate{
     margin-right: 15px;
 }
+
+.formupdate {
+    align-items: center;
+}
+
+.formupdate fieldset {
+    height: 100%;
+}
 #containerPeach {
     display: flex;
     flex-direction: column;
@@ -226,20 +234,36 @@ a{
 .profil, .userinfos {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     flex-direction: column;
     max-height: 100%;
 }
 
+.userinfos {
+    height: 70vh;
+}
+.userinfos p {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+
+}
 
 .profiluser{
     display: flex;
     flex-direction: row;
     height: 100%;
+}
 
+.profiluser2 {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
 }
 .order {
     overflow: auto;
     height: 70vh;
+    padding: 5px;
     box-shadow: -4px 5px 5px  black;
 
 }
@@ -266,13 +290,24 @@ a{
  }
 
 .joystick a {
-    border-top: 1px solid rgba(0,0,0,0);
+    position: relative;
+
+
+
+}
+.joystick a p {
     transition: 0.5s;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.joystick a:hover {
-    border-top: 1px solid white;
-}
 
 .persolink img{
     padding: 5px;
@@ -286,30 +321,34 @@ a{
     color: white;
 }
 
-.updatelink, .orderlink{
+.updatelink, .orderlink {
     width: 100%;
 
-    transition: 1s;
+    transition: 0.4s;
 
 }
 
 .orderlink a{
     justify-content: flex-end;
     background: rgb(249,246,249);
+    border-radius: 0 25px 25px 0;
     background: linear-gradient(90deg, rgba(249,246,249,0.2) 0%, rgba(25,24,25,0.8) 100%, rgba(241,246,247,1) 100%);
 
 }
 
 .updatelink{
+    border-radius: 25px 0 0 25px;
     background: rgb(0,0,0);
 
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(25,24,25,0.8) 0%, rgba(241,246,247,0.2) 100%);
 }
 
+.joystick {
+    transition: 0.4s;
+}
 
-
-.updatelink:hover, .orderlink:hover{
-    background-color: goldenrod;
+.updatelink:hover, .orderlink:hover, .joystick:hover {
+ filter: drop-shadow(0 0 5px white);
 
 }
 
@@ -416,10 +455,10 @@ max-height: 100%;
 
 
 .shopKeeperAP{
-    background: url("../photo/style/witchback2.png") bottom right no-repeat;
+    background: url("../photo/style/witchback2.png") center right no-repeat;
     background-size: contain;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: start;
     padding: 2em;
     width: 100%;
@@ -452,7 +491,7 @@ max-height: 100%;
     height: auto;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
     width: 50%;
 }
 
@@ -482,18 +521,26 @@ max-height: 100%;
     height: 60%;
 }
 
-.formcontact input, .formcontact textarea, .formnews textarea{
+.formcontact textarea, .formnews textarea{
     background: transparent;
     border: none;
     border-bottom: 1px solid white;
+}
 
+#formSubmitContact, #formSubmitNews {
+    border: none;
+    border-radius: 25px;
+    margin-top: 10px;
+    background: rgba(0,0,0,0.5);
+    padding: 5px;
+    color: white;
 }
 
 .shopKeeperNews, .shopKeeperContact {
     background: url("../photo/style/witchback.png") bottom right no-repeat;
     background-size: contain;
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: start;
     padding: 2em;
     width: 100%;
@@ -520,7 +567,6 @@ max-height: 100%;
     align-content: center;
     justify-content: center;
     background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
     padding: 20px;
 }
 
@@ -529,3 +575,14 @@ max-height: 100%;
     text-align: center;
     font-size: 1.4em;
 }
+
+@media screen and (max-width: 640px) {
+    .profiluser {
+    flex-direction: column;
+    }
+
+#formUpdate {
+    flex-direction: column;
+}
+
+    }

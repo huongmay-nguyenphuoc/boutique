@@ -27,9 +27,9 @@ if ($_SESSION['user']) {
 
 
             if ($newsletter == 'yes') {
-                $success = "bravo";
+                $success = "Thanks, you won't be disappointed!";
             } elseif ($newsletter == 'no') {
-                $success = "really?";
+                $success = "Oh really? :( I respect your decision ...";
             }
         }
 
@@ -62,12 +62,14 @@ if ($_SESSION['user']) {
                     <?php endif; ?>
 
                 </select><br><br>
-                <button class=type="submit" name="submit">Send</button>
+                <div>
+                <button id="formSubmitNews" type="submit" name="submit">Send</button>
+                </div>
             </form>
 
 
             <section class="shopKeeperNews">
-                <p class="bubbleNews"><b>Don't forget to update your Newsletter state</b></p>
+                <p class="bubbleNews"><b>Don't forget to update your Newsletter state!</b></p>
             </section>
         </section>
 

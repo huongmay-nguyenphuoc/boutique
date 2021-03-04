@@ -54,13 +54,13 @@ if(isset($_SESSION['user'])) {
     <input placeholder="title" id="title" type="text" name="title" required><br><br>
 
     <label for="message">Message</label><br>
-    <textarea name="message" cols="15" rows="10" placeholder="Your message" required></textarea><br/><br/>
+    <textarea name="message" cols="15" rows="6" placeholder="Your message" required></textarea><br/><br/>
 
-    <input type="submit" value="submit" name="submit"/>
+    <input type="submit" id="formSubmitContact" value="submit" name="submit"/>
 </form>
 
     <section class="shopKeeperContact">
-        <p class="bubbleContact"><b>Contact us for more questions/answers !</b></p>
+        <p class="bubbleContact"><b>Contact us if you have any question!</b></p>
     </section>
 
 </main>

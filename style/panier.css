@@ -67,7 +67,7 @@ body {
     color: white;
     font-size: 1.2em;
     text-align: justify;
-    margin-top: 20px;
+    margin: 20px 20px 0 0;
 }
 
 /*SUCCESS*/
@@ -116,6 +116,7 @@ body {
     color: black;
     font-size: 1.2em;
     text-align: center;
+    transition: 0.5s;
 }
 
 .fail a:hover, .success a:hover {
@@ -188,6 +189,17 @@ body {
     background: none;
 }
 
+.linkNo {
+    display: inline;
+}
+.bodyCart form div span, .linkNo span {
+    opacity: 0.2;
+    transition: 0.5s;
+}
+
+.bodyCart form div:hover span, .linkNo:hover span {
+    opacity: 1;
+}
 .bodyCart table input {
     background: none;
     border: 1px solid rgba(0, 0, 0, 0);
@@ -228,7 +240,11 @@ body {
 .diamond {
     filter: invert(100%);
 }
-
+.linkHidden {
+    color: white;
+    font-size: 0.8em;
+    display: inline;
+}
 
 .bodyCart section:nth-child(2), .bodyPay section:nth-child(3) {
 
@@ -239,7 +255,7 @@ body {
     justify-content: space-around;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.7);
-    height: 20%;
+    height: 20vh;
     color: white;
     text-align: center;
     font-size: 1.2em;
@@ -270,6 +286,7 @@ body {
     margin: 0 auto;
     display: flex;
     align-items: flex-end;
+    z-index: 2;
 }
 
 

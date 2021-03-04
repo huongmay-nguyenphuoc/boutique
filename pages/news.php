@@ -20,11 +20,11 @@ else{
 */
 ?>
 <?php include '../includes/header_user.php'; ?>
-
+<main>
 <h1>NEWS OF THE MOMENT</h1>
 
 
 <p>Lorem ipsum</p>
 
-
+</main>
 <?php include '../includes/footer.php'; ?>

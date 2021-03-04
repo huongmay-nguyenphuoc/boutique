@@ -5,14 +5,13 @@ require_once '../classes/user.php';
 
 $title = 'Subcategory';
 
-if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
+if (!isset($_SESSION['user']) or $_SESSION['user']->getStatus() != 1) {
     header('location:../pages/connexion.php');
-}
-else {
+} else {
 
     $admin = new admin;
 
-    if(isset($_POST['submit'])){
+    if (isset($_POST['submit'])) {
 
         $name = htmlspecialchars($_POST['name']);
 
@@ -24,20 +23,22 @@ else {
 
 
 
-    <html>
-
 <?php include 'includes/header.php'; ?>
-
+<main>
     <h1>All Subcategories</h1>
 
     <form method="post" action="gestion_subcategory.php">
         <label for="name">name</label><br>
-        <input type="text" id="name" name="name" maxlength="20" placeholder="name" pattern="[a-zA-Z0-9-_.]{1,20}" title="caractères acceptés : a-zA-Z0-9-_." required="required" value="<?php if (isset($_POST['name'])) { echo htmlspecialchars($_POST['name']);} ?>"><br><br>
+        <input type="text" id="name" name="name" maxlength="20" placeholder="name" pattern="[a-zA-Z0-9-_.]{1,20}"
+               title="caractères acceptés : a-zA-Z0-9-_." required="required" value="<?php if (isset($_POST['name'])) {
+            echo htmlspecialchars($_POST['name']);
+        } ?>"><br><br>
 
         <button type="submit" name="submit">send</button>
     </form>
 
     <table>
+        <thead>
         <tr>
             <th>id</th>
             <th>name</th>
@@ -45,15 +46,16 @@ else {
 
 
         </tr>
+        </thead>
+        <tbody>
 
-
-        <?php foreach($admin->allSubcat() as $subcat){
+        <?php foreach ($admin->allSubcat() as $subcat) {
 
 
             ?>
             <tr>
-                <td><?=  $subcat['id_subcategory'];?></td>
-                <td><?=  $subcat['name'];?></td>
+                <td><?= $subcat['id_subcategory']; ?></td>
+                <td><?= $subcat['name']; ?></td>
                 <td>
                     <form method='post' action='delete_subcategory.php'>
                         <input type="hidden" value="<?= $subcat['id_subcategory'] ?>" name="id">
@@ -65,7 +67,8 @@ else {
             </tr>
 
         <?php } ?>
+        </tbody>
     </table>
-
+</main>
 
 <?php include 'includes/footer.php'; ?>

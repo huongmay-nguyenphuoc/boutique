@@ -1,4 +1,3 @@
-</body>
 
 <footer>
     <article class="footerinfos">
@@ -14,9 +13,11 @@
 
         <section class="newsletter">
             <p><b>More</b></p>
-            <p><a href="../pages/apropos.php"><b>À Propos</b></a></p>
-            <p><a href="../pages/contact.php"><b>Contact us</b></a></p>
-            <p><a href="../pages/newsletter.php"><b>Follow us </b></a></p>
+            <div>
+            <a href="../pages/apropos.php"><span>< </span>About<span> ></span></a>
+            <a href="../pages/contact.php"><span>< </span>Contact<span> ></span></a>
+            <a href="../pages/newsletter.php"><span>< </span>Newsletter<span> ></span></a>
+            </div>
         </section>
     </article>
 
@@ -24,5 +25,6 @@
         <p><b> Ⓒ Malycia Production 2021</b></p>
     </article>
 </footer>
+</body>
 
 </html>

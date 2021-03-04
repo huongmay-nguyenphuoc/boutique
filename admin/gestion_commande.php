@@ -33,7 +33,7 @@ else {
 
 
 <?php include 'includes/header.php'; ?>
-
+<main>
 <h1>All Orders</h1>
 
 <table>
@@ -46,7 +46,7 @@ else {
         <th>id_member</th>
         <th>amount</th>
         <th>date_register</th>
-        <th>supprimer</th>
+        <th>delete</th>
         <th>state</th>
 
 
@@ -90,6 +90,6 @@ else {
     </tbody>
 
 </table>
-
+</main>
 <?php include 'includes/footer.php'; ?>
 

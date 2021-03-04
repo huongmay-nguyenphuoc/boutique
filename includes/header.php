@@ -22,7 +22,7 @@
             <p><b>~~~MENU~~~</b></p>
             <div id="navExpand">
                 <article>
-                    <h1>Ghostbusters</h1>
+                    <h1>Gamebusters</h1>
                 </article>
                 <article>
                     <ul>

@@ -104,7 +104,7 @@ if (isset($_POST['submit'])) {
 
 
         <form action="update.php" method="post" enctype="multipart/form-data">
-            <div class="form">
+            <div class="form" id="formUpdate">
                 <fieldset class="formupdate">
                     <legend><em><b>Update</b></em></legend>
                     <label for="file">Avatar : </label><br>
@@ -118,7 +118,7 @@ if (isset($_POST['submit'])) {
                     <input type="email" id="email" name="email" placeholder="exemple@gmail.com" required
                            value="<?php echo $_SESSION['user']->getEmail(); ?>"><br><br>
 
-                    <label for="password">New Password</label><br>
+                    <label for="password">Password</label><br>
                     <input id="password" type="password" class="validate white-text" name="password" maxlength="20"
                            required><br><br>
 

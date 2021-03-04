@@ -19,19 +19,19 @@ if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
 
 
 <?php include 'includes/header.php'; ?>
-
+<main>
 <h1>Control Center</h1>
 
 <section class="index">
-    <a href="gestion_commande.php">Customers orders</a><br><br>
+    <a href="gestion_commande.php">all orders</a><br><br>
     <a href="gestion_membres.php">all members</a><br>
     <a href="gestion_category.php">all categories</a><br><br>
     <a href="gestion_subcategory.php">all subcategories</a><br><br>
     <a href="produits.php">all products</a><br><br>
     <a href="product_form.php">add new product</a><br><br>
-    <a href="mail.php">All your Email</a><br><br>
+    <a href="mail.php">all inbox messages</a><br><br>
 
 </section>
-
+</main>
 <?php include 'includes/footer.php'; ?>
 

@@ -13,11 +13,13 @@ class product
     private $cat;
     private $subcat;
     private $picture;
+    private $reference;
 
-    function __construct($id, $price, $stock, $title, $description, $shortdesc, $cat, $subcat, $picture, $quantity)
+    function __construct($id, $ref, $price, $stock, $title, $description, $shortdesc, $cat, $subcat, $picture, $quantity)
     {
         $this->id = $id;
         $this->price = $price;
+        $this->reference = $ref;
         $this->stock = $stock;
         $this->title = $title;
         $this->description = $description;
@@ -28,10 +30,6 @@ class product
         $this->picture = $picture;
     }
 
-    function getReference()
-    {
-
-    }
 
     function getId()
     {
@@ -43,6 +41,10 @@ class product
         return $this->title;
     }
 
+    function getReference()
+    {
+        return $this->reference;
+    }
 
     function getStock()
     {

@@ -15,6 +15,12 @@ if (!empty($_GET['id']) and is_numeric($_GET['id'])) {
         $product = $shop->selectProduct($id, 0);
         $tempStock = $product->getStock();
 
+        if ($product->getSubcat() != 'secondhand') {
+            $secondHandId = $shop->findSecondHand($product->getReference());
+        } else {
+            $newId = $shop->findNew($product->getReference());
+        }
+
         /*Crée un stock temporaire pour éviter de revenir sur la page et ajouter des quantités > au stock */
         if (isset($_SESSION['panier']) and !empty($_SESSION['panier'])) {
             for ($i = 0; $i < count($_SESSION['panier']); $i++) {
@@ -111,28 +117,39 @@ if (isset($_POST['addBasket'])) {
 
                     </div>
                     <div class="divPrice">
+                        <?php if (!empty($secondHandId)) : ?>
+                            <p><a class="existLink" href="fiche_produit.php?id=<?= $secondHandId ?>"><span>< </span>See
+                                    secondhand</a><span> ></span></p>
+                        <?php elseif (!empty($newId)) : ?>
+                            <p><a class="existLink" href="fiche_produit.php?id=<?= $newId ?>"><span>< </span>See New<span> ></span></a></p>
+                        <?php endif; ?>
+                        <?php if ($product->getSubcat() == 'secondhand') : ?>
+                    <p class="price priceDiscount"><span>Discount:</span>
+                    <?php else : ?>
+                        <p class="price">
+                            <?php endif; ?>
+                            <?= $product->getPrice() ?><img height="50px" src="../photo/style/diamond.png"
+                        </p>
 
-                        <p class="price"><?= $product->getPrice() ?><img height="50px"
-                                                                         src="../photo/style/diamond.png"</p>
+
                     </div>
                 </div>
             </article>
         </section>
 
         <section id="ShoptextBox">
-            <?php if (isset($_SESSION['toomuch']) and ($_SESSION['toomuch']) == true) :?>
-            <p><small>Sorry, your basket is full!</small></p>
-                <a href="shopcart.php">Open basket</a>
+            <?php if (isset($_SESSION['toomuch']) and ($_SESSION['toomuch']) == true) : ?>
+                <p><small>Sorry, your basket is full!</small></p>
+                <a href="shopcart.php"><span>< </span>Open basket<span> ></span></a>
                 <?php $_SESSION['toomuch'] = false; ?>
             <?php elseif (isset($_SESSION['added']) and $_SESSION['added'] != false) : ?>
                 <p><small><?= $_SESSION['added'] ?> Item(s) added to
                         the basket!</small></p><br>
-                <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>">Continue
-                    shopping</a>
-                <a href="shopcart.php">< Open basket ></a>
+                <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>"><span>< </span>Continue Shopping<span> ></span></a>
+                <a href="shopcart.php"><span>< </span>Open basket<span> ></span></a>
                 <?php $_SESSION['added'] = false; ?>
             <?php else: ?>
-                <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>">< Continue shopping ></a>
+                <a href="boutique.php?cat=<?= $product->getCat() ?>&subcat=<?= $product->getSubcat() ?>"><span>< </span>Continue Shopping<span> ></span></a>
             <?php endif; ?>
         </section>
 

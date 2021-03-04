@@ -45,7 +45,7 @@ if (isset($_POST['pay'])) {
 
         if (isset($_POST['fee'])) {
             $_SESSION['price'] = $cart->getTotal();
-            $_SESSION['price'] =  $_SESSION['price'] + 3;
+            $_SESSION['price'] = $_SESSION['price'] + 3;
         } else {
             $_SESSION['price'] = $cart->getTotal();
         }
@@ -82,7 +82,8 @@ if (isset($_POST['pay'])) {
 
                                 <div class="blocinfo">
                                     <div>
-                                        <?= $article->getTitle() ?><br>
+                                        <a class="linkHidden"
+                                           href="fiche_produit.php?id=<?= $article->getId() ?>"><?= $article->getTitle() ?> </a><br>
                                         <?= $article->getPrice() ?><img class="diamond" height="15px"
                                                                         src="../photo/style/diamond.png">
                                     </div>
@@ -92,6 +93,7 @@ if (isset($_POST['pay'])) {
                                     </form>
                                 </div>
                                 <?php $i++; ?>
+
                             </td>
                         <?php endforeach; ?>
 
@@ -115,7 +117,8 @@ if (isset($_POST['pay'])) {
             <span>Total: <?= $cart->getTotal() ?> <img class="diamond" height="15px"
                                                        src="../photo/style/diamond.png"></span>
                 <?php if ($cart->getTotal() < 100) : ?>
-                    <span>| Shipping fees: 3</span>
+                    <span>| Shipping fees: 3 <img class="diamond" height="15px"
+                                                  src="../photo/style/diamond.png"></span>
                     <?php $fee = true; ?>
                 <?php else : ?>
                     <span>| Shipping fees: on the house</span>
@@ -127,11 +130,19 @@ if (isset($_POST['pay'])) {
                 <?php if (!isset($success) and (!isset($alert))) : ?>
 
                     <form method="post" action="shopcart.php">
-                        <input type="submit" name="removeAll" value="Empty Cart">
+                        <div>
+                            <span>< </span>
+                            <input type="submit" name="removeAll" value="Empty Cart">
+                            <span> ></span>
+                        </div>
                     </form>
 
                     <form method="post" action="shopcart.php">
-                        <input type="submit" name="verifyCart" value="Verify Stock">
+                        <div>
+                            <span>< </span>
+                            <input type="submit" name="verifyCart" value="Verify Stock">
+                            <span> ></span>
+                        </div>
                     </form>
 
                 <?php endif; ?>
@@ -150,11 +161,17 @@ if (isset($_POST['pay'])) {
                     <p><small>  <?= $success ?></small></p>
                     <form method="post" action="shopcart.php">
                         <?php if (isset($fee) and $fee == true) : ?>
-                        <input type="hidden" name="fee" value="3">
+                            <input type="hidden" name="fee" value="3">
                         <?php endif; ?>
-                        <input type="submit" name="pay" value="I will pay!">
+                        <div>
+                            <span>< </span>
+                            <input type="submit" name="pay" value="I will pay!">
+                            <span> ></span>
+                        </div>
                     </form>
-                    <a href="shopcart.php">I'd rather not...</a></span>
+
+                    <a class="linkNo" href="shopcart.php"><span>< </span>I'd rather not...<span> ></span></a>
+
                     </form>
                 </div>
 
@@ -163,8 +180,12 @@ if (isset($_POST['pay'])) {
                 <div>
                     <p><small><?= $alert ?></small></p>
                     <span><form method="post" action="shopcart.php">
+                            <div>
+                        <span>< </span>
                         <input type="submit" name="confirmremoveAll" value="Yes">
-                    </form> <a href="shopcart.php">No</a></span>
+                             <span> ></span>
+                </div>
+                    </form> <a class="linkNo" href="shopcart.php"><span>< </span>No<span> ></span></a></span>
                 </div>
             <?php endif; ?>
 

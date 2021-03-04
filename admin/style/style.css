@@ -31,9 +31,8 @@ body {
 
 main {
     width: 100%;
-    height: 80vh;
+    min-height: 80vh;
     justify-content: space-around;
-    overflow: hidden;
 
 }
 
@@ -91,33 +90,18 @@ td{
     border-bottom: 1px solid #000;
     margin : auto;
 }
+tr {
+    transition: 0.5s;
+}
 
-
+tbody tr:hover {
+    background: rgba(255,255,255,0.5);
+}
 
 .td_button form{
    padding-right: 85%;
 }
 
-@media screen and (max-width: 640px) {
-    table,
-    tbody,
-    tr,
-    td {
-        display: block;
-        width: auto;
-        border: none;
-        padding: 0;
-
-    }
-    th{
-    display: none;
-    }
-
-    tr{
-        padding: 10px;
-    }
-
-}
 
 
 a{
@@ -216,4 +200,31 @@ fieldset{
 
 .mail{
     overflow: auto;
+}
+
+footer p {
+   text-align: center;
+    padding-top: 5px;
+}
+
+
+@media screen and (max-width: 640px) {
+    table,
+    tbody,
+    tr,
+    td {
+        display: block;
+        width: auto;
+        border: none;
+        padding: 0;
+
+    }
+    th{
+        display: none;
+    }
+
+    tr{
+        padding: 10px;
+    }
+
 }

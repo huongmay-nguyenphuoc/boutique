@@ -11,8 +11,7 @@ if (!isset($_SESSION['user'])) {
 }
 $commandes = $_SESSION['user']->ordersUser();
 //var_dump($commandes);
-if (isset($_POST['show'
-    ])) {
+if (isset($_POST['show'])) {
     $show[$_POST["value"]] = true;
 }
 ?>
@@ -24,9 +23,9 @@ if (isset($_POST['show'
 
             <section class="order">
                 <?php if (empty($commandes)) : ?>
-                <div>
-                    <p>No orders yet.</p>
-                </div>
+                    <div>
+                        <p>No orders yet.</p>
+                    </div>
                 <?php elseif (!empty($commandes)) : ?>
                     <ul>
                         <?php $i = 0; ?>
@@ -71,7 +70,7 @@ if (isset($_POST['show'
                             </li><br><br>
                         <?php endforeach; ?>
                     </ul>
-                    <?php endif; ?>
+                <?php endif; ?>
             </section>
 
 
@@ -84,7 +83,7 @@ if (isset($_POST['show'
                         <div id="divAvatar">
                             <img id="avatarHole" width="200px" src="../photo/style/peach1.png">
                             <div id="avatar">
-                                <img height="80px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
+                                <img width="80px" height="auto" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
                             </div>
                         </div>
                         <div>
@@ -95,59 +94,58 @@ if (isset($_POST['show'
             </section>
 
             <section class="userinfos">
-                <?php
-                echo "Login:  " . $_SESSION['user']->getLogin() . "<br><br>";
-                echo "Email:  " . $_SESSION['user']->getEmail() . "<br><br>";
-                echo "Firstname:  " . $_SESSION['user']->getFirstname() . "<br><br>";
-                echo "Lastname:  " . $_SESSION['user']->getLastname() . "<br><br>";
-                echo "City:  " . $_SESSION['user']->getCity() . "<br><br>";
-                echo "ZIP:  " . $_SESSION['user']->getZip() . "<br><br>";
-                echo "Adress:  " . $_SESSION['user']->getAdress() . "<br><br>";
-                echo "Newsletter:  " . $_SESSION['user']->getNewsletter() . "<br><br>";
-
-
-                ?>
+                <p><span>Login:</span> <span><?= $_SESSION['user']->getLogin() ?> </span></p>
+                <p><span>Email:</span> <span><?= $_SESSION['user']->getEmail() ?></span></p>
+                <p><span>Firstname:</span> <span><?= $_SESSION['user']->getFirstname() ?> </span></p>
+                <p><span>Lastname:</span> <span><?= $_SESSION['user']->getLastname() ?> </span></p>
+                <p><span>City:</span> <span><?= $_SESSION['user']->getCity() ?> </span></p>
+                <p><span>ZIP:</span> <span><?= $_SESSION['user']->getZip() ?> </span></p>
+                <p><span>Adress:</span> <span><?= $_SESSION['user']->getAdress() ?> </span></p>
+                <p><span>Newsletter:</span> <span><?= $_SESSION['user']->getNewsletter() ?> </span></p>
             </section>
-
-
         </article>
-
-        <section class="button_admin">
-            <?php if ($_SESSION['user']->getStatus() == 1) {
-                echo "<a href='../admin/profil_admin.php'><button>BUTTON ADMIN</button></a>";
-            } ?>
-        </section>
-
-        <section class="button_logout">
-            <a href='deconnexion.php'><button>LOG OUT</button></a>
-
-        </section>
-
-        <article class="links">
-            <section class="persolink">
-
-                <div class="orderlink">
-                    <a href="newsletter.php">
-                        <span><b>Newsletter</b></span>
-                        <img src="../photo/style/Xbox_button_B.svg.png" width="40px"/>
-                    </a>
-                </div>
-
-                <div class="joystick">
-                    <a class="joystick2" href="shopcart.php">
-                        <p>Shopcart</p>
-                        <img src="../photo/style/arrow.png" width="80px"/>
-                    </a>
-                </div>
-
-                <div class="updatelink">
-                    <a href="update.php">
-                        <img src="../photo/style/Xbox_button_A.svg.png" width="40px"/>
-                        <span><b>Update Profile</b></span>
-                    </a>
-                </div>
+        <article class="profiluser2">
+            <div>
+            <section class="button_admin">
+                <?php if ($_SESSION['user']->getStatus() == 1) {
+                    echo "<a href='../admin/profil_admin.php'><button>ADMIN TOOLS</button></a>";
+                } ?>
             </section>
 
+            <section class="button_logout">
+                <a href='deconnexion.php'>
+                    <button>LOG OUT</button>
+                </a>
+
+            </section>
+            </div>
+
+            <article class="links">
+                <section class="persolink">
+
+                    <div class="orderlink">
+                        <a href="newsletter.php">
+                            <span><b>Newsletter</b></span>
+                            <img src="../photo/style/Xbox_button_B.svg.png" width="40px"/>
+                        </a>
+                    </div>
+
+                    <div class="joystick">
+                        <a class="joystick2" href="shopcart.php">
+                            <img src="../photo/style/arrow.png" width="80px"/>
+                            <p>Cart</p>
+                        </a>
+                    </div>
+
+                    <div class="updatelink">
+                        <a href="update.php">
+                            <img src="../photo/style/Xbox_button_A.svg.png" width="40px"/>
+                            <span><b>Update Profile</b></span>
+                        </a>
+                    </div>
+                </section>
+
+            </article>
         </article>
 
     </main>

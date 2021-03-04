@@ -4,10 +4,9 @@ require_once '../classes/admin.php';
 
 $title = 'product form';
 
-if (!isset($_SESSION['user']) OR $_SESSION['user']->getStatus() != 1) {
+if (!isset($_SESSION['user']) or $_SESSION['user']->getStatus() != 1) {
     header('location:../pages/connexion.php');
-}
-else {
+} else {
     if (isset($_POST['submit'])) {
 
         $admin = new admin();
@@ -69,88 +68,86 @@ else {
 ?>
 
 <?php include 'includes/header.php'; ?>
+    <main>
+        <section>
+            <!--Alerte (erreur ou succès)-->
+            <?php if (!empty($errors)): ?>
+                <div>
+                    <?php foreach ($errors as $error) : ?>
+                        <p><?= $error ?></p>
+                    <?php endforeach; ?>
+                </div>
+            <?php elseif (isset($success)): ?>
+                <div>
+                    <p><?= $success ?></p>
+                </div>
+            <?php endif; ?>
+        </section>
+        <h1> Product form </h1>
+        <section class="form">
+            <form method="post" enctype="multipart/form-data" action="product_form.php">
+                <label for="reference">reference</label><br>
+                <input type="text" id="reference" name="reference" placeholder="product reference" required
+                       value="<?php if (isset($_POST['reference'])) {
+                           echo htmlspecialchars($_POST['reference']);
+                       } ?>"> <br><br>
 
-    <h1> Product form </h1>
-    <section class="form">
-
-    <form method="post" enctype="multipart/form-data" action="product_form.php">
-        <label for="reference">reference</label><br>
-        <input type="text" id="reference" name="reference" placeholder="product reference" required
-               value="<?php if (isset($_POST['reference'])) {
-                   echo htmlspecialchars($_POST['reference']);
-               } ?>"> <br><br>
-
-        <label for="category">category</label><br>
-        <select name="category" id="category" required>
-            <option value=""> ----- Choose -----</option>
-            <option value="nintendo"> nintendo</option>
-            <option value="xbox"> xbox</option>
-            <option value="playstation"> playstation</option>
-        </select><br><br>
-
-
-        <label for="subcat">subcategory</label><br>
-        <select name="subcat" id=subcat" required>
-            <option value=""> ----- Choose -----</option>
-            <option value="games"> games</option>
-            <option value="secondhand"> secondhand</option>
-            <option value="consoles"> consoles</option>
-        </select><br><br>
-
-
-        <label for="title">title</label><br>
-        <input type="text" id="title" name="title" required placeholder="product title" maxlength="50"
-               value="<?php if (isset($_POST['title'])) {
-                   echo htmlspecialchars($_POST['title']);
-               } ?>"> <br><br>
-
-        <label for="description">description</label><br>
-        <textarea name="description" id="description" required
-                  placeholder="product description"><?php if (isset($_POST['description'])) {
-                echo htmlspecialchars($_POST['description']);
-            } ?></textarea><br><br>
-
-        <label for="shortdesc">short description</label><br>
-        <textarea name="shortdesc" id="shortdesc" required maxlength="300"
-                  placeholder="max characters: 300 "><?php if (isset($_POST['shortdesc'])) {
-                echo htmlspecialchars($_POST['shortdesc']);
-            } ?></textarea><br><br>
-
-        <label for="file">picture</label><br>
-        <input type="file" name="fileToUpload" id="fileToUpload" required><br><br>
-
-        <label for="price">price</label><br>
-        <input type="text" id="price" name="price" placeholder="product price"  pattern="[0-9]{1,3}" title="1 à 3 chiffres requis : 0-9" required
-               value="<?php if (isset($_POST['price'])) {
-                   echo htmlspecialchars($_POST['price']);
-               } ?>"><br><br>
-
-        <label for="stock">stock</label><br>
-        <input type="text" id="stock" name="stock" placeholder="product stock"  pattern="[0-9]{1,3}"  title="1 à 3 chiffres requis : 0-9" required
-               value="<?php if (isset($_POST['stock'])) {
-                   echo htmlspecialchars($_POST['stock']);
-               } ?>"><br><br>
-
-        <button type="submit" name="submit">send</button>
-    </form>
+                <label for="category">category</label><br>
+                <select name="category" id="category" required>
+                    <option value=""> ----- Choose -----</option>
+                    <option value="nintendo"> nintendo</option>
+                    <option value="xbox"> xbox</option>
+                    <option value="playstation"> playstation</option>
+                </select><br><br>
 
 
+                <label for="subcat">subcategory</label><br>
+                <select name="subcat" id=subcat" required>
+                    <option value=""> ----- Choose -----</option>
+                    <option value="games"> games</option>
+                    <option value="secondhand"> secondhand</option>
+                    <option value="consoles"> consoles</option>
+                </select><br><br>
 
 
+                <label for="title">title</label><br>
+                <input type="text" id="title" name="title" required placeholder="product title" maxlength="50"
+                       value="<?php if (isset($_POST['title'])) {
+                           echo htmlspecialchars($_POST['title']);
+                       } ?>"> <br><br>
 
-    <!--Alerte (erreur ou succès)-->
-    <?php if (!empty($errors)): ?>
-        <div>
-            <?php foreach ($errors as $error) : ?>
-                <p><?= $error ?></p>
-            <?php endforeach; ?>
-        </div>
-    <?php elseif (isset($success)): ?>
-        <div>
-            <p><?= $success ?></p>
-        </div>
-    <?php endif; ?>
-</section>
-</main>
+                <label for="description">description</label><br>
+                <textarea name="description" id="description" required
+                          placeholder="product description"><?php if (isset($_POST['description'])) {
+                        echo htmlspecialchars($_POST['description']);
+                    } ?></textarea><br><br>
+
+                <label for="shortdesc">short description</label><br>
+                <textarea name="shortdesc" id="shortdesc" required maxlength="300"
+                          placeholder="max characters: 300 "><?php if (isset($_POST['shortdesc'])) {
+                        echo htmlspecialchars($_POST['shortdesc']);
+                    } ?></textarea><br><br>
+
+                <label for="file">picture</label><br>
+                <input type="file" name="fileToUpload" id="fileToUpload" required><br><br>
+
+                <label for="price">price</label><br>
+                <input type="text" id="price" name="price" placeholder="product price" pattern="[0-9]{1,3}"
+                       title="1 à 3 chiffres requis : 0-9" required
+                       value="<?php if (isset($_POST['price'])) {
+                           echo htmlspecialchars($_POST['price']);
+                       } ?>"><br><br>
+
+                <label for="stock">stock</label><br>
+                <input type="text" id="stock" name="stock" placeholder="product stock" pattern="[0-9]{1,3}"
+                       title="1 à 3 chiffres requis : 0-9" required
+                       value="<?php if (isset($_POST['stock'])) {
+                           echo htmlspecialchars($_POST['stock']);
+                       } ?>"><br><br>
+
+                <button type="submit" name="submit">send</button>
+            </form>
+        </section>
+    </main>
 
 <?php include 'includes/footer.php'; ?>
