@@ -8,6 +8,7 @@ class user
 {
     private $id_member;
     private $id_message;
+    private $id_review;
     private $login;
     private $lastname;
     private $firstname;
@@ -21,6 +22,8 @@ class user
     private $date_message;
     private $message;
     private $title;
+    private $date_review;
+    private $message_review;
     private $pdo;
 
     function __construct()
@@ -223,6 +226,15 @@ class user
 
     }
 
+    //GET REVIEW
+
+    public function getReview()
+    {
+
+        return $this->review;
+
+    }
+
 
 
     //RECUPERER ORDERS
@@ -246,14 +258,31 @@ class user
 
 
 
+    //ENVOYER LES AVIS
 
-//VISITES
+    public function addReview($message_review, $id_member, $date_review){
 
-public function newVisit($id_produit, $iporid){
-    $this->pdo = new database();
-    $this->pdo->Select("Select id_visit from visits where id_member = '$iporid' AND id_produit = '$id_produit'");
+        $this->pdo = new database();
+        $add_review = $this->pdo->Insert('Insert into review(message_review, id_member, date_review) values(:message_review, :id_member, :date_review)',
+            [
+                'message_review' => $message_review,
+                'id_member' => $id_member,
+                'date_review' => $date_review,
+            ]);
 
-}
+        return $add_review;
+    }
+
+    //RECUPERER LES AVIS
+
+    public function showReview()
+    {
+        $this->pdo = new database();
+        $review = $this->pdo->Select('Select login, date_review, message_review, id_review from `review` inner join `users` on review.id_member = users.id_member');
+        return $review;
+
+    }
+
 
 
 }

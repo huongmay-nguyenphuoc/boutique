@@ -37,7 +37,7 @@ if(isset($_SESSION['user'])) {
 ?>
 
 
-<?php include '../includes/header.php'; ?>
+<?php include 'includes/header.php'; ?>
 
     <h1>Contact form</h1>
 
@@ -63,7 +63,6 @@ if(isset($_SESSION['user'])) {
         <p class="bubbleContact"><b>Contact us if you have any question!</b></p>
     </section>
 
-</main>
 
     <section class="errors">
     <!--Alerte (erreur ou succès)-->
@@ -79,5 +78,7 @@ if(isset($_SESSION['user'])) {
     </div>
 <?php endif; ?>
     </section>
+
+</main>
 
 <?php include '../includes/footer.php'; ?>
