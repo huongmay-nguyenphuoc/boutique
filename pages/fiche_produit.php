@@ -64,10 +64,12 @@ if (isset($_POST['addBasket'])) {
 <main>
 
     <?php if (isset($error)) : ?>
-        <div>
+        <section style="text-align: center" class="smallSectionShop">
+
             <p><?= $error ?></p>
             <a href="categorie.php"> < Back to the shop > </a>
-        </div>
+
+        </section>
 
     <?php else : ?>
 
