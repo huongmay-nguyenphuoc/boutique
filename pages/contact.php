@@ -6,8 +6,9 @@ session_start();
 $title = "Contact";
 $bodyname = "bodyuser";
 
-
-if(isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
+    header('location:../pages/connexion.php');
+}
 
     if (isset($_POST['submit'])) {
 
@@ -28,10 +29,8 @@ if(isset($_SESSION['user'])) {
 
         }
 
+
     }
-
-}
-
 
 
 ?>
@@ -42,43 +41,43 @@ if(isset($_SESSION['user'])) {
     <h1>Contact form</h1>
 
 
-<main class="contact">
+    <main class="contact">
 
 
-<form method="POST" action="contact.php" name="formcontact" class="formcontact">
-    <label for="login">LOGIN</label><br>
-    <input placeholder="login" id="login" type="text" name="login" maxlength="20"
-           value="<?php echo $_SESSION['user']->getLogin(); ?>"><br><br>
+        <form method="POST" action="contact.php" name="formcontact" class="formcontact">
+            <label for="login">LOGIN</label><br>
+            <input placeholder="login" id="login" type="text" name="login" maxlength="20"
+                   value="<?php echo $_SESSION['user']->getLogin(); ?>"><br><br>
 
-    <label for="title">title</label><br>
-    <input placeholder="title" id="title" type="text" name="title" required><br><br>
+            <label for="title">title</label><br>
+            <input placeholder="title" id="title" type="text" name="title" required><br><br>
 
-    <label for="message">Message</label><br>
-    <textarea name="message" cols="15" rows="6" placeholder="Your message" required></textarea><br/><br/>
+            <label for="message">Message</label><br>
+            <textarea name="message" cols="15" rows="6" placeholder="Your message" required></textarea><br/><br/>
 
-    <input type="submit" id="formSubmitContact" value="submit" name="submit"/>
-</form>
+            <input type="submit" id="formSubmitContact" value="submit" name="submit"/>
+        </form>
 
-    <section class="shopKeeperContact">
-        <p class="bubbleContact"><b>Contact us if you have any question!</b></p>
-    </section>
+        <section class="shopKeeperContact">
+            <p class="bubbleContact"><b>Contact us if you have any question!</b></p>
+        </section>
 
 
-    <section class="errors">
-    <!--Alerte (erreur ou succès)-->
-<?php if (!empty($errors)): ?>
-    <div class="error">
-        <?php foreach ($errors as $error) :?>
-            <p><?= $error ?></p>
-        <?php endforeach;?>
-    </div>
-<?php elseif (isset($success)): ?>
-    <div class="error">
-        <p><?php echo $success; ?></p>
-    </div>
-<?php endif; ?>
-    </section>
+        <section class="errors">
+            <!--Alerte (erreur ou succès)-->
+            <?php if (!empty($errors)): ?>
+                <div class="error">
+                    <?php foreach ($errors as $error) : ?>
+                        <p><?= $error ?></p>
+                    <?php endforeach; ?>
+                </div>
+            <?php elseif (isset($success)): ?>
+                <div class="error">
+                    <p><?php echo $success; ?></p>
+                </div>
+            <?php endif; ?>
+        </section>
 
-</main>
+    </main>
 
 <?php include '../includes/footer.php'; ?>

@@ -7,7 +7,6 @@ $bodyname = "bodyapropros";
 $shop = new shop();
 session_start();
 
-
 ?>
 
 
@@ -47,7 +46,6 @@ session_start();
                             <th>date</th>
                             <th>Login</th>
                             <th>message</th>
-
                         </tr>
                         </thead>
 
