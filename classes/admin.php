@@ -25,10 +25,10 @@ class admin
     /************************PRODUIT****************************/
 
     //CHECK REFERENCE EXISTS
-    public function checkProductExists($reference, $title)
+    public function checkProductExists($title)
     {
-        $product = $this->pdo->Select('SELECT reference, title FROM products WHERE reference = :ref or title = :title',
-            ['ref' => $reference, 'title' => $title]);
+        $product = $this->pdo->Select('SELECT title FROM products WHERE title = :title',
+            ['title' => $title]);
         if (!empty($product)) {
             return true;
         } else {

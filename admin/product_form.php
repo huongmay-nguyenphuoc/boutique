@@ -12,7 +12,7 @@ if (!isset($_SESSION['user']) or $_SESSION['user']->getStatus() != 1) {
         $admin = new admin();
 
         //check if product exists in bdd
-        if ($admin->checkProductExists(htmlspecialchars($_POST['reference']), htmlspecialchars($_POST['title']))) {
+        if ($admin->checkProductExists(htmlspecialchars(htmlspecialchars($_POST['title']))) {
             $errors[] = "This product already exists.";
         }
 
