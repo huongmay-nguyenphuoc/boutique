@@ -5,8 +5,9 @@ $title = "About";
 $bodyname = "bodyapropros";
 
 session_start();
-if (isset($_SESSION['user'])) {
 
+if (!isset($_SESSION['user'])) {
+    header('location:connexion.php');
 }
 
 
@@ -17,35 +18,15 @@ if (isset($_SESSION['user'])) {
 
     <main>
 
-<<<<<<< Updated upstream
-        <h1>À PROPOS</h1>
-=======
+
 <h1>À PROPOS</h1>
         <h2>WHO ARE WE?</h2>
->>>>>>> Stashed changes
+
 
         <article class="apropos">
 
 
-<<<<<<< Updated upstream
-            <section class="shopKeeperAP">
-                <p class="bubbleAP"><b>WHO ARE WE?</b></p>
-            </section>
 
-
-            <section class="text-box-AP">
-
-                <p>GhostBursters are based in Marseille, France and best known for their expertise and fast-dispatch of
-                    video games and electronics Internationally.</p>
-                <p>Prices are always competitive and finance is available on a number of items across the site making
-                    things more affordable.</p><br>
-
-                <p>We believe in loyalty and that’s why our customers are rewarded when they repeatedly shop with us and
-                    they can also Share & earn in our affiliate scheme.</p>
-                <p>Don't just take our word for it see what others have to say about us below and connect with us if you
-                    have any questions.</p>
-
-=======
         <section class="shopKeeperAP">
             <article class="text-box-AP">
             <p>GhostBursters are based in Marseille, France and best known for their expertise and fast-dispatch of video games and electronics Internationally.</p>
@@ -65,7 +46,6 @@ if (isset($_SESSION['user'])) {
                         <th>date</th>
                         <th>Login</th>
                         <th>message</th>
-                        <th>Coeurs</th>
 
                     </tr>
 
@@ -81,7 +61,7 @@ if (isset($_SESSION['user'])) {
 
                     <?php } ?>
                 </table>
->>>>>>> Stashed changes
+
             </section>
 
 
