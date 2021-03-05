@@ -569,6 +569,34 @@ max-height: 100%;
     color: white;
     font-size: 1.2em;
     text-align: center;
+
+}
+
+
+/********NEWS***** *******/
+
+.newstime{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto;
+
+}
+
+@media screen and (min-width: 600px){
+    .newstime{
+        width: 80%;
+    }
+}
+
+.newstime h3{
+    text-align: center;
+
+}
+.newstime p{
+    color: black;
+    padding: 20px;
+    text-align: justify;
 }
 
 

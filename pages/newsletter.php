@@ -71,6 +71,7 @@ if ($_SESSION['user']) {
             <section class="shopKeeperNews">
                 <p class="bubbleNews"><b>Don't forget to update your Newsletter state!</b></p>
             </section>
+
         </section>
 
         <section class="errors">
