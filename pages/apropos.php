@@ -40,7 +40,7 @@ if (!isset($_SESSION['user'])) {
 
 
             <section class="bubbleAP">
-                <h3>YOUR REVUES ABOUT OUR SHOP</h3>
+                <h3>YOUR REVIEWS ABOUT OUR SHOP</h3>
                 <table>
                     <tr>
                         <th>date</th>
