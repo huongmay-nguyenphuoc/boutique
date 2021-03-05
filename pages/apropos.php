@@ -28,8 +28,9 @@ if (isset($_SESSION['user'])) {
 
         <section class="shopKeeperAP">
             <article class="text-box-AP">
-            <p>GhostBursters are based in Marseille, France and best known for their expertise and fast-dispatch of video games and electronics Internationally.</p>
-            <p>Prices are always competitive and finance is available on a number of items across the site making things more affordable.</p><br>
+            <p>GameBursters are based in Marseille, France and best known for their expertise and fast-dispatch of video games and electronics.</p>
+            <p>Prices are always competitive and finance is available on a number of items across the site making things more affordable.</p>
+                <p>We delivered in Europe and only here</p><br>
 
             <p>We believe in loyalty and that’s why our customers are rewarded when they repeatedly shop with us and they can also Share & earn in our affiliate scheme.</p>
             <p>Don't just take our word for it see what others have to say about us below and connect with us if you have any questions.</p>
