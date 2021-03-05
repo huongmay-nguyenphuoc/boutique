@@ -53,12 +53,36 @@ if(isset($_SESSION['user'])) {
 <?php include '../includes/header.php'; ?>
 
     <main>
+
+        <section class="congrats">
+
         <article class="success">
 
 
             <section class="shopKeeperOk">
-                <p class="bubbleOk"><b>CONGRATS!!!! It worked!</b></p>
+                <p class="bubbleOk"><b>CONGRATS! DON'T FORGET TO GIVE US A REVIEW</b></p>
             </section>
+
+            <section class="formreview">
+
+                <form method="POST" action="success.php" class="review">
+                    <fieldset>
+                        <legend><b>DON'T FORGET TO LEAVE A REVIEW</b></legend>
+                    <label for="login">LOGIN</label><br>
+                    <input placeholder="login" id="login" type="text" name="login" maxlength="20"  value="<?php echo $_SESSION['user']->getLogin(); ?>"><br><br>
+
+                    <label for="message">Message</label><br>
+                    <textarea name="message" cols="15" rows="10" placeholder="Your message" required></textarea><br/><br/>
+
+
+                    <input type="submit" value="submit" name="submit"/>
+                    </fieldset>
+                </form>
+
+            </section>
+        </article>
+
+        <article class="addreview">
 
             <section class="linksuccess">
                 <a href="profil.php"><b><span> <img src="../photo/style/icons8-hand-right-50.png"
@@ -69,25 +93,7 @@ if(isset($_SESSION['user'])) {
                                     src="../photo/style/icons8-hand-left-50.png" width="40px"/>  </span></b></a>
 
             </section>
-        </article>
 
-        <article>
-
-            <section>
-
-            <form method="POST" action="success.php" class="review">
-                <label for="login">LOGIN</label><br>
-                <input placeholder="login" id="login" type="text" name="login" maxlength="20"  value="<?php echo $_SESSION['user']->getLogin(); ?>"><br><br>
-
-                <label for="message">Message</label><br>
-                <textarea name="message" cols="15" rows="10" placeholder="Your message" required></textarea><br/><br/>
-
-
-                <input type="submit" value="submit" name="submit"/>
-
-            </form>
-
-            </section>
 
             <section class="errors">
                 <!--Alerte (erreur ou succès)-->
@@ -104,7 +110,7 @@ if(isset($_SESSION['user'])) {
                 <?php endif; ?>
             </section>
         </article>
-
+        </section>
 
     </main>
 
