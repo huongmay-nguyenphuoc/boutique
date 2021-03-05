@@ -642,4 +642,8 @@ max-height: 100%;
     flex-direction: column;
 }
 
+    .bubbleAP table {
+        font-size: 0.6em;
+    }
+
     }
