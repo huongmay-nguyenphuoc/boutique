@@ -1,9 +1,10 @@
 <?php
 require_once('../classes/user.php');
+require_once('../classes/shop.php');
 
 $title = "About";
 $bodyname = "bodyapropros";
-
+$shop = new shop();
 session_start();
 
 
@@ -22,12 +23,6 @@ session_start();
         <article class="apropos">
 
 
-            <section class="shopKeeperAP">
-                <article class="text-box-AP">
-                    <p>GhostBursters are based in Marseille, France and best known for their expertise and fast-dispatch
-                        of video games and electronics Internationally.</p>
-                    <p>Prices are always competitive and finance is available on a number of items across the site
-                        making things more affordable.</p><br>
 
         <section class="shopKeeperAP">
             <article class="text-box-AP">
@@ -42,7 +37,7 @@ session_start();
 
 
 
-            <?php if (!empty($_SESSION['user']->showReview())) : ?>
+            <?php if ($shop->showReview()) : ?>
 
                 <section class="bubbleAP">
                     <h3>YOUR REVIEWS ABOUT OUR SHOP</h3>
@@ -57,7 +52,7 @@ session_start();
                         </thead>
 
                         <tbody>
-                        <?php foreach ($_SESSION['user']->showReview() as $review) {
+                        <?php foreach ($shop->showReview() as $review) {
 
                             ?>
                             <tr>
