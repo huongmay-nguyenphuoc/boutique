@@ -424,7 +424,7 @@ a{
 
 .text-box-login p:nth-child(1), .text-box-login p:nth-child(2),
 .text-box-register p:nth-child(1), .text-box-register p:nth-child(2)
-.text-box-AP p:nth-child(1), .text-box-AP p:nth-child(2){
+{
     animation: appear 5s 1 backwards;
 }
 
@@ -484,7 +484,7 @@ max-height: 100%;
     flex-grow: 1;
 }
 
-.bubbleAP table tr, thead {
+.bubbleAP table tr, .bubbleAP table thead, .bubbleAP table tbody {
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -514,6 +514,7 @@ max-height: 100%;
     text-align: justify;
     text-shadow: 1px 1px #ffffff, -1px 1px #ffffff, 1px -1px #ffffff, -1px -1px #ffffff, 1px 1px 5px #ffffff;
     font-size: 1.2em;
+    animation: none;
     color: black;
 }
 
