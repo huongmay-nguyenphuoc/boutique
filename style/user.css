@@ -455,7 +455,7 @@ max-height: 100%;
 
 
 .shopKeeperAP{
-    background: url("../photo/style/witchback2.png") center right no-repeat;
+    background: url("../photo/style/witchback.png") center right no-repeat;
     background-size: contain;
     display: flex;
     justify-content: center;
@@ -480,8 +480,14 @@ max-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    flex-grow: 1;
+}
 
-
+.bubbleAP table tr, thead {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .text-box-AP{

@@ -83,7 +83,7 @@ if (isset($_POST['show'])) {
                         <div id="divAvatar">
                             <img id="avatarHole" width="200px" src="../photo/style/peach1.png">
                             <div id="avatar">
-                                <img width="80px" height="auto" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
+                                <img height="80px" src="../avatars/<?= $_SESSION['user']->getAvatar() ?>">
                             </div>
                         </div>
                         <div>
