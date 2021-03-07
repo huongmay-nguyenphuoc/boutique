@@ -53,6 +53,12 @@ if(isset($_SESSION['user'])) {
 
 <?php include '../includes/header.php'; ?>
 
+
+    <i class="fa fa-heart" data-index="0"></i>
+    <i class="fa fa-heart" data-index="1"></i>
+    <i class="fa fa-heart" data-index="2"></i>
+    <i class="fa fa-heart" data-index="3"></i>
+    <i class="fa fa-heart" data-index="4"></i>
     <main>
 
         <section class="congrats">
@@ -76,15 +82,19 @@ if(isset($_SESSION['user'])) {
                     <textarea name="message" cols="15" rows="10" placeholder="Your message" required></textarea><br/><br/>
 
                         <div class="note_echelle">
-                            <label for="note01">1</label>
+                            <label for="note01"><img src="../photo/style/hearts.png" width="40px"/> </label>
                             <input type="radio" name="note" id="note01" value="1" required />
-                            <label for="note02">2</label>
+
+                            <label for="note02"><img src="../photo/style/hearts.png" width="40px"/></label>
                             <input type="radio" name="note" id="note02" value="2" required />
-                            <label for="note03">3</label>
+
+                            <label for="note03"><img src="../photo/style/hearts.png" width="40px"/></label>
                             <input type="radio" name="note" id="note03" value="3" required />
-                            <label for="note03">4</label>
+
+                            <label for="note03"><img src="../photo/style/hearts.png" width="40px"/></label>
                             <input type="radio" name="note" id="note04" value="4" required />
-                            <label for="note03">5</label>
+
+                            <label for="note03"><img src="../photo/style/hearts.png" width="40px"/></label>
                             <input type="radio" name="note" id="note05" value="5" required />
                         </div>
 
@@ -126,5 +136,6 @@ if(isset($_SESSION['user'])) {
         </section>
 
     </main>
+
 
 <?php include '../includes/footer.php'; ?>
