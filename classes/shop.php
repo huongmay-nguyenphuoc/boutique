@@ -85,7 +85,7 @@ class shop
     public function showReview()
     {
         $this->pdo = new database();
-        $review = $this->pdo->Select('Select login, date_review, message_review, id_review from `review` inner join `users` on review.id_member = users.id_member');
+        $review = $this->pdo->Select('Select login, date_review, message_review, id_review, note from `review` inner join `users` on review.id_member = users.id_member');
         return $review;
 
     }

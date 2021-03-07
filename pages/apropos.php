@@ -46,6 +46,7 @@ session_start();
                             <th>date</th>
                             <th>Login</th>
                             <th>message</th>
+                            <th>hearts</th>
                         </tr>
                         </thead>
 
@@ -57,6 +58,7 @@ session_start();
                                 <td><?= $review['date_review']; ?></td>
                                 <td><?= $review['login']; ?></td>
                                 <td><?= $review['message_review']; ?></td>
+                                <td><?= $review['note']; ?></td>
                             </tr>
 
                         <?php } ?>

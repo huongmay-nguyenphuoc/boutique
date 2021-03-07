@@ -260,14 +260,15 @@ class user
 
     //ENVOYER LES AVIS
 
-    public function addReview($message_review, $id_member, $date_review){
+    public function addReview($message_review, $id_member, $date_review, $note){
 
         $this->pdo = new database();
-        $add_review = $this->pdo->Insert('Insert into review(message_review, id_member, date_review) values(:message_review, :id_member, :date_review)',
+        $add_review = $this->pdo->Insert('Insert into review(message_review, id_member, date_review, note) values(:message_review, :id_member, :date_review, :note)',
             [
                 'message_review' => $message_review,
                 'id_member' => $id_member,
                 'date_review' => $date_review,
+                'note' => $note,
             ]);
 
         return $add_review;
