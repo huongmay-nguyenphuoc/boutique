@@ -58,7 +58,7 @@ session_start();
                                 <td><?= $review['date_review']; ?></td>
                                 <td><?= $review['login']; ?></td>
                                 <td><?= $review['message_review']; ?></td>
-                                <td><?= $review['note']; ?><img src="../photo/style/hearts.png" width="40px"></td>
+                                <td><?= $review['note']; ?>x<img src="../photo/style/hearts.png" width="40px"></td>
                             </tr>
 
                         <?php } ?>
