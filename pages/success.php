@@ -82,20 +82,21 @@ if(isset($_SESSION['user'])) {
                     <textarea name="message" cols="15" rows="10" placeholder="Your message" required></textarea><br/><br/>
 
                         <div class="note_echelle">
-                            <label for="note01">1x<img src="../photo/style/hearts.png" width="40px"/> </label>
+
                             <input type="radio" name="note" id="note01" value="1" required />
+                            <label for="note01"><img src="../photo/style/heart1.png" width="40px"/> </label>
 
-                            <label for="note02">2x<img src="../photo/style/hearts.png" width="40px"/></label>
                             <input type="radio" name="note" id="note02" value="2" required />
+                            <label for="note02"><img src="../photo/style/heart2.png" width="40px"/></label>
 
-                            <label for="note03">3x<img src="../photo/style/hearts.png" width="40px"/></label>
                             <input type="radio" name="note" id="note03" value="3" required />
+                            <label for="note03"><img src="../photo/style/heart3.png" width="40px"/></label>
 
-                            <label for="note03">4x<img src="../photo/style/hearts.png" width="40px"/></label>
                             <input type="radio" name="note" id="note04" value="4" required />
+                            <label for="note03"><img src="../photo/style/heart4.png" width="40px"/></label>
 
-                            <label for="note03">5x<img src="../photo/style/hearts.png" width="40px"/></label>
                             <input type="radio" name="note" id="note05" value="5" required />
+                            <label for="note03"><img src="../photo/style/heart5.png" width="40px"/></label>
                         </div>
 
                     <input type="submit" value="submit" name="submit"/>

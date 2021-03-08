@@ -486,6 +486,12 @@ max-height: 100%;
     text-align: left;
 }
 
+.bubbleAP .heart{
+    display: flex;
+    flex-direction: row;
+
+}
+
 
 .bubbleAP table thead, .bubbleAP table tbody, .bubbleAP table tbody tr, .bubbleAP table thead tr {
     display: flex;
