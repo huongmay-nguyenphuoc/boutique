@@ -6,7 +6,6 @@ $title = "About";
 $bodyname = "bodyapropros";
 $shop = new shop();
 session_start();
-
 ?>
 
 
